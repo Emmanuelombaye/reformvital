@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { brandConfig } from "@/brand.config";
+import ReformVitalLogo from "./ReformVitalLogo";
 
 export default function Navbar() {
   const [langMenuOpen, setLangMenuOpen] = useState(false);
@@ -10,25 +11,39 @@ export default function Navbar() {
   return (
     <nav className="navbar" id="navbar">
       <div className="container navbar-inner">
-        <div className="navbar-brand">
-          <a href="/" className="navbar-logo-text">
-            {brandConfig.name}
-          </a>
-        </div>
+        <a href="/" className="navbar-brand">
+          <ReformVitalLogo height={38} showText={true} />
+        </a>
 
         <ul className="navbar-links">
           {brandConfig.nav.links.map((link) => (
             <li key={link.href}>
               <a href={link.href} className="navbar-link">
-                {link.isSoon && <span className="navbar-dot"></span>}
                 <span>{link.label}</span>
-                {link.tag && <span className="navbar-soon-badge">{link.tag}</span>}
               </a>
             </li>
           ))}
         </ul>
 
         <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+          {/* Phone Quick Link */}
+          <a
+            href={`tel:${brandConfig.nav.phone}`}
+            style={{
+              fontSize: "0.88rem",
+              fontWeight: 700,
+              color: "var(--color-primary)",
+              display: "flex",
+              alignItems: "center",
+              gap: "6px",
+            }}
+          >
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--color-teal)" strokeWidth="2.5">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+            </svg>
+            <span>{brandConfig.nav.phone}</span>
+          </a>
+
           {/* Language Dropdown */}
           <div style={{ position: "relative" }}>
             <button
@@ -54,9 +69,9 @@ export default function Navbar() {
                   right: 0,
                   marginTop: "6px",
                   background: "#FFF",
-                  border: "2px solid #1F2A37",
+                  border: "2px solid #070E17",
                   borderRadius: "10px",
-                  boxShadow: "3px 4px 0px #181C24",
+                  boxShadow: "3px 4px 0px #070E17",
                   padding: "6px",
                   zIndex: 1100,
                   minWidth: "120px",
@@ -69,7 +84,7 @@ export default function Navbar() {
                     padding: "8px 12px",
                     fontWeight: 700,
                     borderRadius: "6px",
-                    background: currentLang === "EN" ? "var(--color-cream)" : "transparent",
+                    background: currentLang === "EN" ? "var(--color-teal-soft)" : "transparent",
                   }}
                   onClick={() => {
                     setCurrentLang("EN");
@@ -85,7 +100,7 @@ export default function Navbar() {
                     padding: "8px 12px",
                     fontWeight: 700,
                     borderRadius: "6px",
-                    background: currentLang === "ES" ? "var(--color-cream)" : "transparent",
+                    background: currentLang === "ES" ? "var(--color-teal-soft)" : "transparent",
                   }}
                   onClick={() => {
                     setCurrentLang("ES");
@@ -98,14 +113,7 @@ export default function Navbar() {
             )}
           </div>
 
-          <a
-            href={brandConfig.nav.loginLink}
-            style={{ fontWeight: 700, fontSize: "0.92rem", color: "var(--color-primary)" }}
-          >
-            {brandConfig.nav.loginText}
-          </a>
-
-          <a href={brandConfig.nav.ctaLink} className="btn btn-primary">
+          <a href={brandConfig.nav.ctaLink} className="btn btn-teal">
             {brandConfig.nav.ctaText}
           </a>
         </div>

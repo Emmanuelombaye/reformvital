@@ -3,12 +3,25 @@ import { brandConfig } from "@/brand.config";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: `${brandConfig.name}: ${brandConfig.tagline}`,
-  description: brandConfig.hero.subheadline,
-  keywords: ["semaglutide", "tirzepatide", "glp-1", "weight loss", "telehealth", brandConfig.name.toLowerCase()],
+  title: `${brandConfig.name} — Modern Medicine. Personalized Health. Real Results.`,
+  description: `${brandConfig.name} combines licensed medical oversight, GLP-1 weight loss, peptide optimization, 24/7 AI accountability coaching, and compounding pharmacy delivery.`,
+  keywords: [
+    "Reform Vital",
+    "semaglutide",
+    "tirzepatide",
+    "retatrutide",
+    "TRT",
+    "hormone optimization",
+    "BPC-157",
+    "NAD+ therapy",
+    "peptides",
+    "AI health coach",
+    "telehealth platform",
+    "longevity medicine",
+  ],
   openGraph: {
-    title: `${brandConfig.name}: ${brandConfig.tagline}`,
-    description: brandConfig.hero.subheadline,
+    title: `${brandConfig.name} — ${brandConfig.tagline}`,
+    description: brandConfig.hero.description,
     type: "website",
   },
 };

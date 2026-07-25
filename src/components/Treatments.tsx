@@ -1,57 +1,79 @@
+"use client";
+
+import { useState } from "react";
 import { brandConfig } from "@/brand.config";
 
 export default function Treatments() {
+  const [activeTab, setActiveTab] = useState(brandConfig.services[0].id);
+
+  const selectedCategory = brandConfig.services.find((s) => s.id === activeTab) || brandConfig.services[0];
+
   return (
-    <section className="section" id="treatments">
+    <section className="section services-section" id="services">
       <div className="container">
         <div style={{ textAlign: "center" }}>
-          <span className="badge badge-purple" style={{ marginBottom: "12px" }}>Proven Programs</span>
-          <h2 className="section-title">Personalized Treatments That Work</h2>
+          <span className="badge badge-teal" style={{ marginBottom: "12px" }}>
+            Comprehensive Care Catalog
+          </span>
+          <h2 className="section-title">Dream Service Menu & Therapies</h2>
           <p className="section-subtitle" style={{ margin: "0 auto" }}>
-            Compounded prescription medications prescribed by U.S. board-certified medical providers.
+            Physician-guided medical protocols, compounded peptides, and metabolic optimization plans tailored to your goals.
           </p>
         </div>
 
-        <div className="treatments-grid">
-          {brandConfig.treatments.map((t) => (
-            <div className="treatment-card" key={t.id}>
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "14px" }}>
-                <span style={{ fontSize: "0.75rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.08em", color: "var(--color-text-muted)" }}>
-                  {t.category}
+        {/* Category Selector Tabs */}
+        <div className="services-nav-tabs">
+          {brandConfig.services.map((cat) => (
+            <button
+              key={cat.id}
+              className={`service-tab-btn ${activeTab === cat.id ? "active" : ""}`}
+              onClick={() => setActiveTab(cat.id)}
+            >
+              {cat.title}
+            </button>
+          ))}
+        </div>
+
+        {/* Active Category Description */}
+        <div
+          style={{
+            background: "#FFF",
+            border: "2px solid var(--color-border-dark)",
+            borderRadius: "var(--radius-md)",
+            padding: "20px 24px",
+            marginTop: "24px",
+            boxShadow: "var(--shadow-retro-md)",
+          }}
+        >
+          <h3 style={{ fontSize: "1.4rem", fontWeight: 900, marginBottom: "4px", color: "var(--color-primary)" }}>
+            {selectedCategory.title}
+          </h3>
+          <p style={{ fontSize: "0.95rem", color: "var(--color-text-muted)" }}>{selectedCategory.subtitle}</p>
+        </div>
+
+        {/* Therapies Cards Grid */}
+        <div className="services-grid">
+          {selectedCategory.therapies.map((therapy, i) => (
+            <div className="service-card" key={i}>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "12px" }}>
+                <span className="badge badge-teal">Physician Prescribed</span>
+                <span style={{ fontSize: "1.25rem", fontWeight: 900, color: "var(--color-teal)" }}>
+                  {therapy.price}
                 </span>
-                <span className={`badge badge-${t.badgeColor}`}>{t.badge}</span>
               </div>
 
-              <h3 style={{ fontSize: "1.35rem", fontWeight: 900, marginBottom: "6px" }}>{t.name}</h3>
-              <div style={{ fontSize: "0.82rem", fontWeight: 700, color: "var(--color-orange)", marginBottom: "14px" }}>
-                {t.tagline}
-              </div>
-              <p style={{ fontSize: "0.88rem", color: "var(--color-text-muted)", lineHeight: 1.6, marginBottom: "20px" }}>
-                {t.description}
+              <h4 style={{ fontSize: "1.3rem", fontWeight: 900, marginBottom: "8px", color: "var(--color-primary)" }}>
+                {therapy.name}
+              </h4>
+              <p style={{ fontSize: "0.9rem", color: "var(--color-text-muted)", lineHeight: 1.6, marginBottom: "20px" }}>
+                {therapy.desc}
               </p>
 
-              <div style={{ marginTop: "auto", paddingTop: "18px", borderTop: "2px dashed #E5E7EB", marginBottom: "20px" }}>
-                <div style={{ fontSize: "2.1rem", fontWeight: 900, color: "var(--color-primary)" }}>
-                  {t.price}
-                  <span style={{ fontSize: "1.1rem", fontWeight: 700, color: "var(--color-text-muted)" }}>
-                    {t.priceUnit}
-                  </span>
-                </div>
-                <div style={{ fontSize: "0.78rem", fontWeight: 600, color: "var(--color-text-muted)" }}>{t.priceNote}</div>
+              <div style={{ marginTop: "auto", paddingTop: "16px", borderTop: "1.5px dashed var(--color-teal-soft)" }}>
+                <a href="#quiz" className="btn btn-teal" style={{ width: "100%", justifyContent: "center" }}>
+                  Consult Physician →
+                </a>
               </div>
-
-              <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "8px", marginBottom: "24px" }}>
-                {t.features.map((f, i) => (
-                  <li key={i} style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "0.84rem", fontWeight: 600 }}>
-                    <span style={{ color: "var(--color-green)", fontWeight: 900 }}>✓</span>
-                    <span>{f}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <a href={t.ctaLink} className="btn btn-primary" style={{ marginTop: "auto", textAlign: "center" }}>
-                {t.ctaText} →
-              </a>
             </div>
           ))}
         </div>
