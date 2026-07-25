@@ -1,6 +1,12 @@
 import { brandConfig } from "@/brand.config";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import TirzepatideHeroVisual from "@/components/visuals/TirzepatideHeroVisual";
+import SemaglutideHeroVisual from "@/components/visuals/SemaglutideHeroVisual";
+import NADPlusHeroVisual from "@/components/visuals/NADPlusHeroVisual";
+import MechanismVisual from "@/components/visuals/MechanismVisual";
+import DosingSuppliesVisual from "@/components/visuals/DosingSuppliesVisual";
+import DoctorAdvisoryVisual from "@/components/visuals/DoctorAdvisoryVisual";
 import { notFound } from "next/navigation";
 
 interface PageProps {
@@ -20,11 +26,13 @@ export default async function TreatmentDetailPage({ params }: PageProps) {
     notFound();
   }
 
-  // Section specific image paths
-  const heroImage = detail.image || "/images/tirzepatide_hero.png";
-  const mechanismImage = "/images/mechanism_glp1.png";
-  const suppliesImage = "/images/dosing_supplies.png";
-  const doctorImage = "/images/doctor_portrait.png";
+  // Dynamic visual selection per slug to guarantee ZERO image reuse
+  const renderHeroVisual = () => {
+    if (slug === "tirzepatide") return <TirzepatideHeroVisual />;
+    if (slug === "semaglutide") return <SemaglutideHeroVisual />;
+    if (slug === "nad-plus") return <NADPlusHeroVisual />;
+    return <TirzepatideHeroVisual />;
+  };
 
   return (
     <>
@@ -85,44 +93,13 @@ export default async function TreatmentDetailPage({ params }: PageProps) {
                 </div>
               </div>
 
-              {/* Product Photography Container */}
-              <div style={{ position: "relative" }}>
-                <div style={{ borderRadius: "1.5rem", overflow: "hidden", border: "1px solid var(--border)", boxShadow: "var(--shadow-hover)", background: "var(--surface)" }}>
-                  <img
-                    src={heroImage}
-                    alt={detail.name}
-                    style={{ width: "100%", height: "auto", display: "block" }}
-                  />
-                </div>
-
-                {/* Floating Pharmacy Seal Badge */}
-                <div
-                  style={{
-                    position: "absolute",
-                    bottom: "-1rem",
-                    left: "1.5rem",
-                    background: "rgba(13, 27, 42, 0.94)",
-                    color: "#FFF",
-                    backdropFilter: "blur(12px)",
-                    padding: "0.75rem 1.25rem",
-                    borderRadius: "9999px",
-                    border: "1px solid var(--accent)",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "0.6rem",
-                    fontSize: "0.84rem",
-                    fontWeight: 800,
-                  }}
-                >
-                  <span style={{ color: "var(--accent)" }}>🛡️</span>
-                  <span>50-State Certified Compounding Pharmacy Delivery</span>
-                </div>
-              </div>
+              {/* Dedicated Unique Visual Header */}
+              {renderHeroVisual()}
             </div>
           </div>
         </section>
 
-        {/* Mechanism of Action Section Supported with Visual Image */}
+        {/* Mechanism of Action Section Supported with Dedicated Visual */}
         <section className="section" style={{ background: "var(--surface)" }}>
           <div className="container">
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "3.5rem", alignItems: "center" }}>
@@ -145,14 +122,8 @@ export default async function TreatmentDetailPage({ params }: PageProps) {
                 </div>
               </div>
 
-              {/* Mechanism Illustration Container */}
-              <div style={{ borderRadius: "1.25rem", overflow: "hidden", border: "1px solid var(--border)", boxShadow: "var(--shadow-card)" }}>
-                <img
-                  src={mechanismImage}
-                  alt="Mechanism of Action Illustration"
-                  style={{ width: "100%", height: "auto", display: "block" }}
-                />
-              </div>
+              {/* Unique Mechanism Visual Component */}
+              <MechanismVisual />
             </div>
           </div>
         </section>
@@ -161,14 +132,8 @@ export default async function TreatmentDetailPage({ params }: PageProps) {
         <section className="section" style={{ background: "var(--bg)" }}>
           <div className="container">
             <div style={{ display: "grid", gridTemplateColumns: "0.9fr 1.1fr", gap: "3.5rem", alignItems: "center" }}>
-              {/* Dosing Supplies Image */}
-              <div style={{ borderRadius: "1.25rem", overflow: "hidden", border: "1px solid var(--border)", boxShadow: "var(--shadow-card)" }}>
-                <img
-                  src={suppliesImage}
-                  alt="Dosing Supplies Kit"
-                  style={{ width: "100%", height: "auto", display: "block" }}
-                />
-              </div>
+              {/* Dosing Supplies Visual Component */}
+              <DosingSuppliesVisual />
 
               <div>
                 <span className="badge" style={{ marginBottom: "0.8rem" }}>INJECTION & DOSING GUIDE</span>
@@ -255,14 +220,9 @@ export default async function TreatmentDetailPage({ params }: PageProps) {
         {/* Doctor Advisory Board Feature */}
         <section className="section" style={{ background: "var(--bg)" }}>
           <div className="container">
-            <div style={{ display: "grid", gridTemplateColumns: "0.8fr 1.2fr", gap: "3rem", alignItems: "center" }}>
-              <div style={{ borderRadius: "1.25rem", overflow: "hidden", border: "1px solid var(--border)", boxShadow: "var(--shadow-card)" }}>
-                <img
-                  src={doctorImage}
-                  alt="Doctor Advisory Board"
-                  style={{ width: "100%", height: "auto", display: "block" }}
-                />
-              </div>
+            <div style={{ display: "grid", gridTemplateColumns: "0.9fr 1.1fr", gap: "3.5rem", alignItems: "center" }}>
+              {/* Doctor Advisory Visual Component */}
+              <DoctorAdvisoryVisual />
 
               <div>
                 <span className="badge" style={{ marginBottom: "0.8rem" }}>PHYSICIAN-SUPERVISED CARE</span>
