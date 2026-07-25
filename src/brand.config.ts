@@ -76,6 +76,13 @@ export const brandConfig = {
     email: "admin@reformvital.com",
   },
 
+  // ──── Stats (Yucca Style) ────
+  stats: [
+    { value: "15,000+", label: "Active Patients Supervised Nationwide" },
+    { value: "100%", label: "Licensed U.S. Medical Directors & MDs" },
+    { value: "4.9 / 5", label: "Excellent · 2,500+ Patient & Doctor Reviews" },
+  ],
+
   // ──── Hero Section ────
   hero: {
     trustpilot: {

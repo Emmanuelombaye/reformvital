@@ -2,30 +2,22 @@ import { brandConfig } from "@/brand.config";
 
 export default function HowItWorks() {
   return (
-    <section className="section" id="how-it-works" style={{ background: "#FFF", borderTop: "2px solid var(--color-border-dark)", borderBottom: "2px solid var(--color-border-dark)" }}>
+    <section className="how" id="how-it-works">
       <div className="container">
-        <div style={{ textAlign: "center" }}>
-          <span className="badge badge-teal" style={{ marginBottom: "12px" }}>
-            Simple 3-Step Process
+        <div className="section-head">
+          <span className="badge" style={{ background: "rgba(0, 180, 216, 0.2)", color: "var(--accent-cyan)", marginBottom: "0.8rem" }}>
+            SIMPLE 3-STEP PROCESS
           </span>
-          <h2 className="section-title">{brandConfig.howItWorks.headline}</h2>
-          <p className="section-subtitle" style={{ margin: "0 auto" }}>
-            {brandConfig.howItWorks.subtitle}
-          </p>
+          <h2 style={{ color: "#FFF" }}>{brandConfig.howItWorks.headline}</h2>
+          <p>{brandConfig.howItWorks.subtitle}</p>
         </div>
 
-        <div className="steps-grid">
+        <div className="steps">
           {brandConfig.howItWorks.steps.map((s, i) => (
             <div className="step-card" key={i}>
-              <div className="step-number" style={{ background: "var(--color-teal)", color: "#FFF" }}>
-                {s.step}
-              </div>
-              <h3 style={{ fontSize: "1.3rem", fontWeight: 900, marginBottom: "10px", color: "var(--color-primary)" }}>
-                {s.title}
-              </h3>
-              <p style={{ fontSize: "0.9rem", color: "var(--color-text-muted)", lineHeight: 1.65 }}>
-                {s.description}
-              </p>
+              <div className="step-label">STEP {s.step}</div>
+              <h3>{s.title}</h3>
+              <p>{s.description}</p>
             </div>
           ))}
         </div>
