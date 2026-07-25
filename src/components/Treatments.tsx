@@ -9,24 +9,20 @@ export default function Treatments() {
   const selectedCategory = brandConfig.services.find((s) => s.id === activeTab) || brandConfig.services[0];
 
   return (
-    <section className="section services-section" id="services">
+    <section className="section" id="services" style={{ background: "var(--surface)" }}>
       <div className="container">
-        <div style={{ textAlign: "center" }}>
-          <span className="badge badge-teal" style={{ marginBottom: "12px" }}>
-            Comprehensive Care Catalog
-          </span>
-          <h2 className="section-title">Dream Service Menu & Therapies</h2>
-          <p className="section-subtitle" style={{ margin: "0 auto" }}>
-            Physician-guided medical protocols, compounded peptides, and metabolic optimization plans tailored to your goals.
-          </p>
+        <div className="section-head">
+          <span className="badge" style={{ marginBottom: "0.8rem" }}>DREAM SERVICE MENU</span>
+          <h2>Personalized Treatments & Protocols</h2>
+          <p>Compounded prescription medications prescribed by U.S. board-certified medical providers.</p>
         </div>
 
-        {/* Category Selector Tabs */}
-        <div className="services-nav-tabs">
+        {/* Category Pill Tabs */}
+        <div className="tabs">
           {brandConfig.services.map((cat) => (
             <button
               key={cat.id}
-              className={`service-tab-btn ${activeTab === cat.id ? "active" : ""}`}
+              className={`tab ${activeTab === cat.id ? "active" : ""}`}
               onClick={() => setActiveTab(cat.id)}
             >
               {cat.title}
@@ -34,45 +30,20 @@ export default function Treatments() {
           ))}
         </div>
 
-        {/* Active Category Description */}
-        <div
-          style={{
-            background: "#FFF",
-            border: "2px solid var(--color-border-dark)",
-            borderRadius: "var(--radius-md)",
-            padding: "20px 24px",
-            marginTop: "24px",
-            boxShadow: "var(--shadow-retro-md)",
-          }}
-        >
-          <h3 style={{ fontSize: "1.4rem", fontWeight: 900, marginBottom: "4px", color: "var(--color-primary)" }}>
-            {selectedCategory.title}
-          </h3>
-          <p style={{ fontSize: "0.95rem", color: "var(--color-text-muted)" }}>{selectedCategory.subtitle}</p>
-        </div>
-
-        {/* Therapies Cards Grid */}
-        <div className="services-grid">
+        {/* Treatment Grid Cards */}
+        <div className="treatment-grid">
           {selectedCategory.therapies.map((therapy, i) => (
-            <div className="service-card" key={i}>
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "12px" }}>
-                <span className="badge badge-teal">Physician Prescribed</span>
-                <span style={{ fontSize: "1.25rem", fontWeight: 900, color: "var(--color-teal)" }}>
-                  {therapy.price}
-                </span>
-              </div>
-
-              <h4 style={{ fontSize: "1.3rem", fontWeight: 900, marginBottom: "8px", color: "var(--color-primary)" }}>
-                {therapy.name}
-              </h4>
-              <p style={{ fontSize: "0.9rem", color: "var(--color-text-muted)", lineHeight: 1.6, marginBottom: "20px" }}>
-                {therapy.desc}
-              </p>
-
-              <div style={{ marginTop: "auto", paddingTop: "16px", borderTop: "1.5px dashed var(--color-teal-soft)" }}>
-                <a href="#quiz" className="btn btn-teal" style={{ width: "100%", justifyContent: "center" }}>
-                  Consult Physician →
-                </a>
+            <div className="treatment-card" key={i}>
+              <div className="treatment-body">
+                <span className="badge">Physician Prescribed</span>
+                <h3>{therapy.name}</h3>
+                <div className="treatment-price">{therapy.price}</div>
+                <p>{therapy.desc}</p>
+                <div style={{ display: "flex", gap: "0.5rem", marginTop: "auto" }}>
+                  <a href="#quiz" className="btn btn-primary" style={{ width: "100%" }}>
+                    See if I qualify →
+                  </a>
+                </div>
               </div>
             </div>
           ))}
