@@ -20,6 +20,12 @@ export default async function TreatmentDetailPage({ params }: PageProps) {
     notFound();
   }
 
+  // Section specific image paths
+  const heroImage = detail.image || "/images/tirzepatide_hero.png";
+  const mechanismImage = "/images/mechanism_glp1.png";
+  const suppliesImage = "/images/dosing_supplies.png";
+  const doctorImage = "/images/doctor_portrait.png";
+
   return (
     <>
       <Navbar />
@@ -65,7 +71,7 @@ export default async function TreatmentDetailPage({ params }: PageProps) {
                       {detail.price}
                     </div>
                     <div style={{ fontSize: "0.82rem", color: "var(--accent)", fontWeight: 700 }}>
-                      ✓ Includes Doctor Consultation & Overnight Pharmacy Shipping
+                      ✓ Includes Doctor Consultation & Free Pharmacy Shipping
                     </div>
                   </div>
 
@@ -83,13 +89,13 @@ export default async function TreatmentDetailPage({ params }: PageProps) {
               <div style={{ position: "relative" }}>
                 <div style={{ borderRadius: "1.5rem", overflow: "hidden", border: "1px solid var(--border)", boxShadow: "var(--shadow-hover)", background: "var(--surface)" }}>
                   <img
-                    src={detail.image}
+                    src={heroImage}
                     alt={detail.name}
                     style={{ width: "100%", height: "auto", display: "block" }}
                   />
                 </div>
 
-                {/* Floating Pharmacy Badge */}
+                {/* Floating Pharmacy Seal Badge */}
                 <div
                   style={{
                     position: "absolute",
@@ -116,58 +122,98 @@ export default async function TreatmentDetailPage({ params }: PageProps) {
           </div>
         </section>
 
-        {/* ScriptsRxDirect Key Benefits Highlights Grid */}
+        {/* Mechanism of Action Section Supported with Visual Image */}
         <section className="section" style={{ background: "var(--surface)" }}>
           <div className="container">
-            <div className="section-head">
-              <span className="badge" style={{ marginBottom: "0.8rem" }}>KEY PROGRAM BENEFITS</span>
-              <h2>Why Doctors Prescribe {detail.name}</h2>
-              <p>Clinical advantages, active ingredient mechanisms, and program support.</p>
-            </div>
-
-            <div className="card-grid two" style={{ gap: "2rem" }}>
-              <div className="testimonial-card">
-                <span className="badge" style={{ marginBottom: "0.8rem" }}>CLINICAL EFFICACY</span>
-                <h3>Targeted Biomarker Action</h3>
-                <p style={{ lineHeight: 1.65 }}>
-                  Mimics endogenous peptide signaling to regulate appetite, enhance nutrient partitioning, and accelerate natural tissue repair pathways.
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "3.5rem", alignItems: "center" }}>
+              <div>
+                <span className="badge" style={{ marginBottom: "0.8rem" }}>HOW IT WORKS IN THE BODY</span>
+                <h2 style={{ fontSize: "2.4rem", marginBottom: "1rem" }}>Mechanism of Action</h2>
+                <p style={{ color: "var(--text-muted)", fontSize: "1.05rem", lineHeight: 1.7, marginBottom: "1.5rem" }}>
+                  {detail.name} operates through targeted receptor signaling. It regulates hunger pathways, enhances cellular insulin sensitivity, and promotes natural metabolic fat oxidation.
                 </p>
+
+                <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+                  <div style={{ background: "var(--bg)", border: "1px solid var(--border)", borderRadius: "var(--radius)", padding: "1.2rem" }}>
+                    <h4 style={{ fontSize: "1.1rem", color: "var(--primary)", marginBottom: "0.3rem" }}>1. Receptor Binding & Activation</h4>
+                    <p style={{ color: "var(--text-muted)", fontSize: "0.92rem" }}>Selective stimulation of metabolic receptors to reduce cravings and appetite triggers.</p>
+                  </div>
+                  <div style={{ background: "var(--bg)", border: "1px solid var(--border)", borderRadius: "var(--radius)", padding: "1.2rem" }}>
+                    <h4 style={{ fontSize: "1.1rem", color: "var(--primary)", marginBottom: "0.3rem" }}>2. Sustained Energy & Metabolism</h4>
+                    <p style={{ color: "var(--text-muted)", fontSize: "0.92rem" }}>Optimizes glucose metabolism while preserving lean muscle tissue during weight reduction.</p>
+                  </div>
+                </div>
               </div>
 
-              <div className="testimonial-card">
-                <span className="badge" style={{ marginBottom: "0.8rem" }}>PHYSICIAN OVERSIGHT</span>
-                <h3>100% Board-Certified Care</h3>
-                <p style={{ lineHeight: 1.65 }}>
-                  Every prescription is reviewed and monitored by licensed U.S. medical directors with continuous quarterly lab follow-up.
-                </p>
-              </div>
-
-              <div className="testimonial-card">
-                <span className="badge" style={{ marginBottom: "0.8rem" }}>24/7 AI COACHING</span>
-                <h3>Continuous Accountability</h3>
-                <p style={{ lineHeight: 1.65 }}>
-                  Integrated with the Reform Vital AI Health Coach for daily habit tracking, protein targets, and weekly progress reports.
-                </p>
-              </div>
-
-              <div className="testimonial-card">
-                <span className="badge" style={{ marginBottom: "0.8rem" }}>COLD-CHAIN SHIPPING</span>
-                <h3>Freshly Compounded Delivery</h3>
-                <p style={{ lineHeight: 1.65 }}>
-                  Direct expedited temperature-controlled delivery containing sterile injection supplies, syringes, and prep pads.
-                </p>
+              {/* Mechanism Illustration Container */}
+              <div style={{ borderRadius: "1.25rem", overflow: "hidden", border: "1px solid var(--border)", boxShadow: "var(--shadow-card)" }}>
+                <img
+                  src={mechanismImage}
+                  alt="Mechanism of Action Illustration"
+                  style={{ width: "100%", height: "auto", display: "block" }}
+                />
               </div>
             </div>
           </div>
         </section>
 
-        {/* ScriptsRxDirect Style Medication Comparison Table */}
+        {/* ScriptsRxDirect Dosing & Supplies Guide Section */}
         <section className="section" style={{ background: "var(--bg)" }}>
+          <div className="container">
+            <div style={{ display: "grid", gridTemplateColumns: "0.9fr 1.1fr", gap: "3.5rem", alignItems: "center" }}>
+              {/* Dosing Supplies Image */}
+              <div style={{ borderRadius: "1.25rem", overflow: "hidden", border: "1px solid var(--border)", boxShadow: "var(--shadow-card)" }}>
+                <img
+                  src={suppliesImage}
+                  alt="Dosing Supplies Kit"
+                  style={{ width: "100%", height: "auto", display: "block" }}
+                />
+              </div>
+
+              <div>
+                <span className="badge" style={{ marginBottom: "0.8rem" }}>INJECTION & DOSING GUIDE</span>
+                <h2 style={{ fontSize: "2.4rem", marginBottom: "1rem" }}>Simple Weekly Administration</h2>
+                <p style={{ color: "var(--text-muted)", fontSize: "1.05rem", lineHeight: 1.65, marginBottom: "1.5rem" }}>
+                  Every shipment includes your compounded medication vial, sterile insulin syringes, alcohol prep pads, and full dosing instructions.
+                </p>
+
+                <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+                  <div style={{ display: "flex", gap: "1rem", alignItems: "flex-start", background: "var(--surface)", padding: "1rem 1.25rem", borderRadius: "0.85rem", border: "1px solid var(--border)" }}>
+                    <div style={{ width: "36px", height: "36px", borderRadius: "50%", background: "var(--accent)", color: "#FFF", display: "grid", placeItems: "center", fontWeight: 900 }}>1</div>
+                    <div>
+                      <h4 style={{ fontSize: "1rem", fontWeight: 800 }}>Clean & Prepare Site</h4>
+                      <p style={{ fontSize: "0.88rem", color: "var(--text-muted)" }}>Wipe the injection area (abdomen or thigh) with an alcohol prep swab.</p>
+                    </div>
+                  </div>
+
+                  <div style={{ display: "flex", gap: "1rem", alignItems: "flex-start", background: "var(--surface)", padding: "1rem 1.25rem", borderRadius: "0.85rem", border: "1px solid var(--border)" }}>
+                    <div style={{ width: "36px", height: "36px", borderRadius: "50%", background: "var(--accent)", color: "#FFF", display: "grid", placeItems: "center", fontWeight: 900 }}>2</div>
+                    <div>
+                      <h4 style={{ fontSize: "1rem", fontWeight: 800 }}>Subcutaneous Dosing</h4>
+                      <p style={{ fontSize: "0.88rem", color: "var(--text-muted)" }}>{detail.howToUse}</p>
+                    </div>
+                  </div>
+
+                  <div style={{ display: "flex", gap: "1rem", alignItems: "flex-start", background: "var(--surface)", padding: "1rem 1.25rem", borderRadius: "0.85rem", border: "1px solid var(--border)" }}>
+                    <div style={{ width: "36px", height: "36px", borderRadius: "50%", background: "var(--accent)", color: "#FFF", display: "grid", placeItems: "center", fontWeight: 900 }}>3</div>
+                    <div>
+                      <h4 style={{ fontSize: "1rem", fontWeight: 800 }}>Log Progress in AI App</h4>
+                      <p style={{ fontSize: "0.88rem", color: "var(--text-muted)" }}>Track weekly weight, protein, and water metrics in your 24/7 AI Health Coach dashboard.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ScriptsRxDirect Comparison Table */}
+        <section className="section" style={{ background: "var(--surface)" }}>
           <div className="container">
             <div className="section-head">
               <span className="badge" style={{ marginBottom: "0.8rem" }}>TRANSPARENT COMPARISON</span>
-              <h2>Reform Vital vs Brand Name Alternatives</h2>
-              <p>See how our physician-guided compounding protocol compares to traditional retail options.</p>
+              <h2>Reform Vital vs Brand Name Retail Options</h2>
+              <p>Compare our physician-guided compounding membership against traditional retail options.</p>
             </div>
 
             <div style={{ overflowX: "auto", background: "var(--surface)", border: "1px solid var(--border)", borderRadius: "1.25rem", boxShadow: "var(--shadow-card)" }}>
@@ -206,27 +252,33 @@ export default async function TreatmentDetailPage({ params }: PageProps) {
           </div>
         </section>
 
-        {/* Dosing & Administration Guide */}
-        <section className="section" style={{ background: "var(--surface)" }}>
+        {/* Doctor Advisory Board Feature */}
+        <section className="section" style={{ background: "var(--bg)" }}>
           <div className="container">
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "3rem" }}>
-              <div>
-                <span className="badge" style={{ marginBottom: "0.8rem" }}>CLINICAL RESEARCH SUMMARY</span>
-                <h3 style={{ fontSize: "1.8rem", marginBottom: "1rem" }}>Trial & Efficacy Data</h3>
-                <div style={{ background: "var(--bg)", border: "1px solid var(--border)", borderRadius: "var(--radius)", padding: "1.5rem" }}>
-                  <p style={{ color: "var(--text-muted)", fontSize: "1rem", lineHeight: 1.65 }}>
-                    {detail.clinicalTrial}
-                  </p>
-                </div>
+            <div style={{ display: "grid", gridTemplateColumns: "0.8fr 1.2fr", gap: "3rem", alignItems: "center" }}>
+              <div style={{ borderRadius: "1.25rem", overflow: "hidden", border: "1px solid var(--border)", boxShadow: "var(--shadow-card)" }}>
+                <img
+                  src={doctorImage}
+                  alt="Doctor Advisory Board"
+                  style={{ width: "100%", height: "auto", display: "block" }}
+                />
               </div>
 
               <div>
-                <span className="badge" style={{ marginBottom: "0.8rem" }}>ADMINISTRATION GUIDE</span>
-                <h3 style={{ fontSize: "1.8rem", marginBottom: "1rem" }}>Dosing & Storage</h3>
-                <div style={{ background: "var(--sand)", border: "1px solid var(--border)", borderRadius: "var(--radius)", padding: "1.5rem" }}>
-                  <p style={{ color: "var(--primary)", fontWeight: 700, fontSize: "1rem", lineHeight: 1.65 }}>
-                    {detail.howToUse}
-                  </p>
+                <span className="badge" style={{ marginBottom: "0.8rem" }}>PHYSICIAN-SUPERVISED CARE</span>
+                <h2 style={{ fontSize: "2.4rem", marginBottom: "1rem" }}>Guided by Board-Certified MDs</h2>
+                <p style={{ color: "var(--text-muted)", fontSize: "1.05rem", lineHeight: 1.7, marginBottom: "1.5rem" }}>
+                  Our medical directors evaluate your health profile, order necessary biomarker labs, and tailor your compounded dosage schedule for safe, long-term success.
+                </p>
+                <div style={{ display: "flex", gap: "1rem" }}>
+                  <div style={{ background: "var(--surface)", border: "1px solid var(--border)", padding: "1rem 1.25rem", borderRadius: "0.85rem" }}>
+                    <strong style={{ display: "block", color: "var(--primary)", fontSize: "1.1rem" }}>Dr. Michael Wasef, MD</strong>
+                    <span style={{ fontSize: "0.82rem", color: "var(--accent)", fontWeight: 700 }}>Internal Medicine Director</span>
+                  </div>
+                  <div style={{ background: "var(--surface)", border: "1px solid var(--border)", padding: "1rem 1.25rem", borderRadius: "0.85rem" }}>
+                    <strong style={{ display: "block", color: "var(--primary)", fontSize: "1.1rem" }}>Dr. Andrew Sakla, DO</strong>
+                    <span style={{ fontSize: "0.82rem", color: "var(--accent)", fontWeight: 700 }}>Regenerative Care Advisory</span>
+                  </div>
                 </div>
               </div>
             </div>
