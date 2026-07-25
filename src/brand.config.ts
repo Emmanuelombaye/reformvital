@@ -1,319 +1,393 @@
 export const brandConfig = {
   // ──── Brand Identity ────
-  name: "YUCCA",
-  fullName: "Yucca Health",
-  tagline: "Treatment that works",
-  slogan: "designed around you.",
-  logo: "/Logo_dark.svg",
-  favicon: "/Yucca-favicon.png",
+  name: "REFORM VITAL",
+  fullName: "Reform Vital Health LLC",
+  legalOwner: "Javier Alexis Solano",
+  tagline: "MODERN MEDICINE. PERSONALIZED HEALTH. REAL RESULTS.",
+  slogan: "Physician-Guided Metabolic Health & Telehealth Optimization",
+  domain: "REFORMVITAL.COM",
+  logo: "/reform-vital-logo.svg",
+  favicon: "/favicon.ico",
 
-  // ──── Color Palette (Yucca Retro-Modern Aesthetic) ────
+  // ──── Core Pillars ────
+  pillars: [
+    { title: "Physician Guided", desc: "Licensed medical providers & medical directors supervising your care" },
+    { title: "Personalized Treatment", desc: "Tailored peptide stacks, GLP-1 plans, and hormone protocols" },
+    { title: "AI Powered Health Coach", desc: "24/7 accountability, habit coaching, and daily tracking" },
+    { title: "Track. Improve. Thrive.", desc: "Measurable biomarker improvements and progress reports" },
+  ],
+
+  // ──── Color Palette (Reform Vital Navy & Teal Aesthetics) ────
   colors: {
-    primary: "#1F2A37",         // Deep charcoal retro ink (#1f2a37)
-    primaryDark: "#181C24",     // Shadow color (#181c24)
-    cream: "#F2EDE0",           // Yucca signature cream background (#f2ede0)
-    surface: "#FFFFFF",         // Card surface
-    sky: "#38BDF8",             // Retro sky blue
-    skySoft: "#E0F2FE",         // Light sky tint
-    orange: "#F97316",          // Accent orange
-    purple: "#A855F7",          // Accent purple
-    purpleSoft: "#F3E8FF",      // Light purple tint
-    green: "#10B981",           // Success green
-    greenSoft: "#D1FAE5",       // Light green tint
-    text: "#1F2A37",            // Retro ink text
-    textMuted: "rgba(31, 42, 55, 0.75)",
-    border: "#1F2A37",          // 2px solid border
-    shadow: "#181C24",          // 4px 5px hard offset shadow
+    primary: "#0D1B2A",         // Deep Navy Blue (#0d1b2a)
+    primaryDark: "#070E17",     // Dark Navy Offset (#070e17)
+    teal: "#00A896",            // Reform Vital DNA Helix Teal (#00a896)
+    cyan: "#00B4D8",            // Vibrant Cyan Accent (#00b4d8)
+    mintSoft: "#F4F8F7",        // Ice Mint Cream Background (#f4f8f7)
+    surface: "#FFFFFF",         // Card Surface White
+    gold: "#D4AF37",            // Luxury Elite Badge Accent
+    text: "#0D1B2A",            // Deep Navy Text
+    textMuted: "rgba(13, 27, 42, 0.72)",
+    border: "#00A896",          // Teal Border
+    shadow: "#070E17",          // Hard Offset Shadow
   },
 
   // ──── Typography ────
   fonts: {
-    heading: "'Figtree', system-ui, sans-serif",
-    body: "'Figtree', system-ui, sans-serif",
+    heading: "'Outfit', 'Inter', system-ui, sans-serif",
+    body: "'Inter', system-ui, sans-serif",
   },
 
   // ──── Offer Banner ────
   offerBanner: {
     enabled: true,
-    eyebrow: "Exclusive Lifetime Offer",
-    code: "YUCCA4LIFE",
-    price: "$146",
+    eyebrow: "LIMITED TELEHEALTH OFFER",
+    code: "VITAL2026",
+    price: "$149",
     period: "/mo",
-    stamp: "For life",
-    subtext: "Lock in your monthly GLP price for life.",
-    ctaText: "Lock in price",
+    stamp: "Doctor Included",
+    subtext: "Physician consultation, custom GLP-1 prescription & overnight pharmacy delivery.",
+    ctaText: "Claim Consultation",
     ctaLink: "#quiz",
   },
 
   // ──── Trust Proofs (Marquee) ────
   trustProofs: [
-    { label: "U.S. Licensed Pharmacies", icon: "shield", color: "#38BDF8" },
-    { label: "Licensed Providers in all 50 States", icon: "plus", color: "#F97316" },
-    { label: "Free Expedited Shipment", icon: "truck", color: "#A855F7" },
+    { label: "Licensed Medical Directors & U.S. Providers", icon: "shield", color: "#00A896" },
+    { label: "100% Online Physician Consultations", icon: "plus", color: "#00B4D8" },
+    { label: "50-State Certified Compounding Pharmacies", icon: "award", color: "#D4AF37" },
+    { label: "Free Expedited Cold-Chain Shipment", icon: "truck", color: "#00A896" },
   ],
 
   // ──── Navigation ────
   nav: {
     links: [
-      { label: "Treatments", href: "#treatments" },
+      { label: "Services Menu", href: "#services" },
+      { label: "Memberships", href: "#memberships" },
+      { label: "AI Health Coach", href: "#ai-coach" },
       { label: "How It Works", href: "#how-it-works" },
-      { label: "About Us", href: "#about" },
-      { label: "Peptides", href: "#peptides", tag: "(Coming Soon)", isSoon: true },
+      { label: "Patient Portal", href: "#portal" },
     ],
-    ctaText: "Get Started",
+    ctaText: "Start Consultation",
     ctaLink: "#quiz",
-    loginText: "Log In",
-    loginLink: "#login",
-    phone: "+1-888-388-1878",
+    loginText: "Patient Portal",
+    loginLink: "#portal",
+    phone: "(561) 444-8793",
+    email: "admin@reformvital.com",
   },
 
   // ──── Hero Section ────
   hero: {
     trustpilot: {
-      score: "4.6",
+      score: "4.9",
       max: "5",
-      reviewsCount: "1,000+",
-      label: "Trustpilot",
+      reviewsCount: "2,500+",
+      label: "Patient Satisfaction",
     },
     dynamicWords: [
-      { text: "Weight Loss", color: "#1F2A37", bg: "#B9A9FE" },
-      { text: "Longevity", color: "#1F2A37", bg: "#81C777" },
-      { text: "Muscle Recovery", color: "#1F2A37", bg: "#FFBC7D" },
+      { text: "GLP-1 Weight Loss", color: "#FFFFFF", bg: "#00A896" },
+      { text: "Hormone Optimization (TRT)", color: "#FFFFFF", bg: "#00B4D8" },
+      { text: "Growth Hormone Peptides", color: "#0D1B2A", bg: "#D4AF37" },
+      { text: "Longevity & NAD+", color: "#FFFFFF", bg: "#0D1B2A" },
+      { text: "Recovery & Repair", color: "#FFFFFF", bg: "#00A896" },
     ],
-    headline: "treatment that works",
-    subheadline: "designed around you.",
-    primaryCtaText: "Lose weight for just $146*",
-    primaryCtaNote: "*New Patients, Semaglutide 6-month plan",
-    secondaryCtaText: "Explore Treatments",
-    ctaLink: "#quiz",
+    headline: "MODERN MEDICINE. PERSONALIZED HEALTH.",
+    subheadline: "REAL RESULTS.",
+    description:
+      "Reform Vital combines licensed medical oversight, personalized treatment plans, AI-powered accountability, and compounding pharmacy delivery for measurable health outcomes.",
+    primaryCtaText: "Start Online Consultation",
+    primaryCtaNote: "*Prescriptions subject to U.S. physician approval",
+    secondaryCtaText: "Explore Dream Service Menu",
+    ctaLink: "#services",
     cardHighlight: {
-      category: "PRESCRIPTION GLP-1",
-      title: "Compounded Semaglutide+",
-      price: "$146",
+      category: "PHYSICIAN-GUIDED METABOLIC PROGRAM",
+      title: "Compounded Semaglutide / Tirzepatide+",
+      price: "$149",
       unit: "/mo",
       bullets: [
-        "Prescribed by Licensed U.S. Doctors",
-        "Free Overnight Cold-Chain Shipping",
-        "Syringes, Alcohol Wipes & Medical Care Included",
+        "100% Online Physician Evaluation & Ongoing Follow-up",
+        "Targeted Metabolic Health & GLP-1 Formulations",
+        "Includes Vitamin B12 Support & Syringes",
+        "Free Expedited Cold-Chain Pharmacy Delivery",
       ],
-      ctaText: "Start Intake Quiz",
+      ctaText: "Begin Health Assessment",
     },
     socialProof: [
-      { value: "20,000+", label: "Active patients\non Yucca Health" },
-      { value: "100,000+", label: "Prescriptions written\nacross 50 states" },
-      { rating: "4.6", ratingText: "Excellent", label: "1,000+ Reviews\non TrustPilot" },
+      { value: "15,000+", label: "Patients Supervised\nNationwide" },
+      { value: "100%", label: "Licensed Medical\nDirectors & MDs" },
+      { rating: "4.9/5", ratingText: "Top Rated", label: "Physician & Patient\nReviews" },
+    ],
+  },
+
+  // ──── Service Categories (Reform Vital Dream Service Menu) ────
+  services: [
+    {
+      id: "weight-loss",
+      title: "Medical Weight Loss",
+      subtitle: "Clinically proven GLP-1 & GIP receptor agonists for sustainable metabolic weight reduction.",
+      therapies: [
+        { name: "Semaglutide+", desc: "Weekly GLP-1 subcutaneous injection + B12", price: "$149/mo" },
+        { name: "Tirzepatide+", desc: "Dual GLP-1 + GIP receptor agonist weekly injection", price: "$249/mo" },
+        { name: "Retatrutide (Reta)", desc: "Triple GIP/GLP-1/Glucagon agonist research protocol", price: "Custom" },
+      ],
+    },
+    {
+      id: "hormones",
+      title: "Hormone Optimization",
+      subtitle: "Physician-guided TRT and endocrine balancing for energy, libido, and muscle retention.",
+      therapies: [
+        { name: "TRT (Testosterone Replacement)", desc: "Bioidentical testosterone cypionate/enanthate protocol", price: "$129/mo" },
+        { name: "Women's Hormone Optimization", desc: "Progesterone, Estradiol & Low-dose Testosterone therapy", price: "$119/mo" },
+        { name: "HCG & Enclomiphene", desc: "Endogenous LH/FSH stimulation protocols", price: "$99/mo" },
+        { name: "Anastrozole", desc: "Estrogen control when clinically indicated", price: "Included" },
+      ],
+    },
+    {
+      id: "growth-hormone",
+      title: "Growth Hormone Optimization",
+      subtitle: "Peptides designed to stimulate natural pituitary hGH secretion, fat oxidation & deep sleep.",
+      therapies: [
+        { name: "Tesamorelin", desc: "Potent secretagogue targeting visceral abdominal fat", price: "$229/mo" },
+        { name: "Sermorelin", desc: "Classic growth hormone secretagogue for sleep & recovery", price: "$189/mo" },
+        { name: "CJC-1295 / Ipamorelin Blend", desc: "Synergistic GHRH + GHRP peptide combination", price: "$199/mo" },
+      ],
+    },
+    {
+      id: "recovery",
+      title: "Recovery & Repair",
+      subtitle: "Regenerative tissue healing, gut mucosal integrity, and anti-inflammatory peptides.",
+      therapies: [
+        { name: "BPC-157", desc: "Body Protection Compound for tendon, ligament, and gut healing", price: "$159/mo" },
+        { name: "TB-500", desc: "Thymosin Beta-4 peptide promoting angiogenesis and muscle repair", price: "$169/mo" },
+        { name: "KPV", desc: "Tripeptide targeting systemic inflammation and gut microbiota", price: "$139/mo" },
+      ],
+    },
+    {
+      id: "longevity",
+      title: "Longevity & Healthy Aging",
+      subtitle: "Cellular energy boosters, mitochondrial rejuvenation, and collagen stimulation.",
+      therapies: [
+        { name: "NAD+ Therapy", desc: "Nicotinamide Adenine Dinucleotide for cellular ATP & DNA repair", price: "$199/mo" },
+        { name: "MOTS-c", desc: "Mitochondrial-derived peptide optimizing metabolic endurance", price: "$189/mo" },
+        { name: "GHK-Cu", desc: "Copper peptide for cellular remodeling & systemic vitality", price: "$149/mo" },
+        { name: "Glutathione", desc: "Master antioxidant injection for liver detox & radiance", price: "$99/mo" },
+      ],
+    },
+    {
+      id: "cognitive",
+      title: "Cognitive Optimization",
+      subtitle: "Neuroprotective peptides for focus, mood resilience, and neuroplasticity.",
+      therapies: [
+        { name: "Semax", desc: "ACTH-derived neuropeptide enhancing BDNF and focus", price: "$149/mo" },
+        { name: "Selank", desc: "Anxiolytic peptide promoting calm focus and stress mitigation", price: "$149/mo" },
+      ],
+    },
+    {
+      id: "sexual-wellness",
+      title: "Sexual Wellness",
+      subtitle: "Targeted therapies for peak performance, intimacy, and vitality.",
+      therapies: [
+        { name: "PT-141 (Bremelanotide)", desc: "Central nervous system peptide for libido enhancement", price: "$139/mo" },
+        { name: "Tadalafil / Sildenafil", desc: "Daily or PRN vascular flow optimization", price: "$69/mo" },
+        { name: "Women's Sexual Wellness", desc: "Custom compounding for female vitality", price: "$119/mo" },
+      ],
+    },
+    {
+      id: "hair",
+      title: "Hair Restoration",
+      subtitle: "Prescription topical & peptide formulations to stop hair loss and stimulate regrowth.",
+      therapies: [
+        { name: "Hair Loss Evaluations", desc: "Comprehensive physician scalp & hormonal biomarker review", price: "Free w/ Plan" },
+        { name: "Prescription Hair Treatments", desc: "Customized Minoxidil + Finasteride / Dutasteride topical", price: "$79/mo" },
+        { name: "GHK-Cu Hair Protocols", desc: "Follicle-stimulating peptide scalp microneedling solution", price: "$129/mo" },
+      ],
+    },
+  ],
+
+  // ──── Membership Tier Programs ────
+  memberships: [
+    {
+      id: "essentials",
+      name: "Essentials Plan",
+      badge: "CORE CARE",
+      price: "$149",
+      period: "/month",
+      desc: "Ideal for patients beginning a single physician-guided therapy.",
+      features: [
+        "Licensed U.S. Physician Consultation",
+        "Prescription Management & Refills",
+        "Compounding Pharmacy Shipping Included",
+        "24/7 AI Health Coach Access",
+        "Quarterly Provider Check-in",
+      ],
+      ctaText: "Choose Essentials",
+      highlight: false,
+    },
+    {
+      id: "performance",
+      name: "Performance Plan",
+      badge: "MOST POPULAR",
+      price: "$249",
+      period: "/month",
+      desc: "Comprehensive metabolic health, peptide stacking & monthly provider guidance.",
+      features: [
+        "Everything in Essentials",
+        "Comprehensive Blood Panel & Lab Review",
+        "Monthly 1-on-1 Physician Coaching",
+        "Custom Peptide Stacking Protocols",
+        "Priority Expedited Cold-Chain Shipping",
+        "Full Patient Dashboard Metrics Tracking",
+      ],
+      ctaText: "Choose Performance",
+      highlight: true,
+    },
+    {
+      id: "elite",
+      name: "Elite Concierge Plan",
+      badge: "EXECUTIVE",
+      price: "$399",
+      period: "/month",
+      desc: "White-glove personalized optimization, advanced lab analysis & direct provider access.",
+      features: [
+        "Everything in Performance",
+        "Advanced Genetic & Hormone Lab Panels",
+        "Direct Concierge Medical Team Messaging",
+        "Personalized Metabolic & Longevity Roadmap",
+        "Dedicated Medical Director Oversight",
+        "Free Quarterly Lab Panels Included",
+      ],
+      ctaText: "Choose Elite",
+      highlight: false,
+    },
+  ],
+
+  // ──── AI Health Coach & Dashboard Features ────
+  aiCoach: {
+    headline: "Your 24/7 AI Health & Accountability Coach",
+    subheadline: "Continuous support between physician check-ins to ensure measurable outcomes.",
+    features: [
+      { title: "Daily Habit Coaching", desc: "Customized reminders for injections, hydration, and protein goals." },
+      { title: "Progress Summaries", desc: "Automated weekly reports on body measurements, HRV, and weight trends." },
+      { title: "Goal Reminders", desc: "Interactive milestone tracking to keep you motivated throughout your journey." },
+      { title: "Educational Guidance", desc: "Instant answers regarding diet, lifestyle adaptation, and peptide research." },
+    ],
+    dashboardMetrics: [
+      "Starting, Current & Goal Weight",
+      "Body Measurements & Progress Photos",
+      "Blood Pressure & Resting Heart Rate",
+      "Sleep Quality & Recovery Score",
+      "Daily Protein & Water Intake Tracking",
+      "Exercise & Workout Logging",
     ],
   },
 
   // ──── Patient Transformation Showcase ────
   transformations: [
     {
-      name: "Lisa C.",
-      lbsLost: "75",
-      timeframe: "in 10 Months",
-      verified: "Verified GLP-1 Patient",
-      badge: "Lost 75 lbs",
-      avatarColor: "#F97316",
+      name: "Marcus V.",
+      lbsLost: "48",
+      timeframe: "in 5 Months",
+      verified: "Verified Semaglutide Patient",
+      badge: "Lost 48 lbs",
+      avatarColor: "#00A896",
     },
     {
-      name: "Blaze B.",
-      lbsLost: "50",
-      timeframe: "in 6 Months",
-      verified: "Verified GLP-1 Patient",
-      badge: "Lost 50 lbs",
-      avatarColor: "#A855F7",
+      name: "Sarah T.",
+      lbsLost: "35",
+      timeframe: "in 4 Months",
+      verified: "Verified Tirzepatide Patient",
+      badge: "Lost 35 lbs",
+      avatarColor: "#00B4D8",
     },
     {
-      name: "Crystal G.",
-      lbsLost: "50",
-      timeframe: "in 6 Months",
-      verified: "Verified GLP-1 Patient",
-      badge: "Lost 50 lbs",
-      avatarColor: "#38BDF8",
-    },
-    {
-      name: "Jamilyn C.",
-      lbsLost: "17",
-      timeframe: "in 6 Weeks",
-      verified: "Verified GLP-1 Patient",
-      badge: "Lost 17 lbs",
-      avatarColor: "#10B981",
-    },
-    {
-      name: "Kim B.",
-      lbsLost: "8",
-      timeframe: "in 6 Weeks",
-      verified: "Verified GLP-1 Patient",
-      badge: "Lost 8 lbs",
-      avatarColor: "#EC4899",
-    },
-  ],
-
-  // ──── Treatments / Medications ────
-  treatments: [
-    {
-      id: "semaglutide",
-      category: "Weight Loss",
-      name: "Personalized Semaglutide+",
-      tagline: "Weekly GLP-1 subcutaneous injection + Vitamin B12",
-      description:
-        "Compounded Semaglutide mimics the GLP-1 hormone to reduce hunger, slow digestion, and promote sustainable weight loss while supporting energy.",
-      price: "$146",
-      priceUnit: "/mo",
-      priceNote: "Starting at $146/mo on 6-month plan",
-      badge: "MOST POPULAR",
-      badgeColor: "orange",
-      features: [
-        "Clinically proven GLP-1 weight loss formula",
-        "Includes Vitamin B12 for energy support",
-        "Doctor consultation & ongoing provider check-ins",
-        "Free overnight pharmacy shipping & supplies",
-      ],
-      ctaText: "Get Semaglutide",
-      ctaLink: "#quiz",
-    },
-    {
-      id: "tirzepatide",
-      category: "Weight Loss",
-      name: "Personalized Tirzepatide+",
-      tagline: "Dual GLP-1 + GIP receptor agonist weekly injection",
-      description:
-        "Compounded Tirzepatide activates both GLP-1 and GIP receptors for maximum appetite suppression, glucose control, and rapid fat loss.",
-      price: "$258",
-      priceUnit: "/mo",
-      priceNote: "Starting at $258/mo on 6-month plan",
-      badge: "MAXIMUM RESULTS",
-      badgeColor: "purple",
-      features: [
-        "Dual-action GLP-1 & GIP receptor activation",
-        "Superior weight loss efficacy in clinical trials",
-        "100% online medical evaluation by U.S. licensed MDs",
-        "All needles, alcohol wipes & discreet shipping included",
-      ],
-      ctaText: "Get Tirzepatide",
-      ctaLink: "#quiz",
-    },
-    {
-      id: "nad",
-      category: "Longevity",
-      name: "NAD+ Cellular Therapy",
-      tagline: "Nicotinamide Adenine Dinucleotide injection",
-      description:
-        "Vital coenzyme injection therapy designed to support cellular energy, DNA repair, mitochondrial health, and mental clarity.",
-      price: "$215",
-      priceUnit: "/mo",
-      priceNote: "$215 for 1 month supply",
-      badge: "LONGEVITY",
-      badgeColor: "sky",
-      features: [
-        "Enhances mitochondrial ATP cellular energy",
-        "Supports cognitive clarity and focus",
-        "Promotes anti-aging & cellular DNA repair",
-        "Prescribed by licensed U.S. medical providers",
-      ],
-      ctaText: "Get NAD+",
-      ctaLink: "#quiz",
-    },
-    {
-      id: "sermorelin",
-      category: "Muscle Recovery",
-      name: "Sermorelin Peptide",
-      tagline: "Daily growth hormone secretagogue therapy",
-      description:
-        "Peptide injection designed to stimulate natural pituitary growth hormone production, muscle recovery, deep sleep, and metabolism.",
-      price: "$199",
-      priceUnit: "/mo",
-      priceNote: "$199 for 1 month supply",
-      badge: "RECOVERY",
-      badgeColor: "green",
-      features: [
-        "Stimulates natural hGH production safely",
-        "Accelerates lean muscle recovery & fat loss",
-        "Improves deep REM sleep architecture",
-        "Direct delivery from U.S. compounding pharmacies",
-      ],
-      ctaText: "Get Sermorelin",
-      ctaLink: "#quiz",
+      name: "David K.",
+      lbsLost: "60",
+      timeframe: "in 7 Months",
+      verified: "Verified TRT & GLP-1 Patient",
+      badge: "Lost 60 lbs",
+      avatarColor: "#D4AF37",
     },
   ],
 
   // ──── How It Works Steps ────
   howItWorks: {
-    headline: "How Yucca Works",
-    subtitle: "Getting your prescription medication delivered takes less than 5 minutes.",
+    headline: "How Reform Vital Works",
+    subtitle: "Physician-guided healthcare delivered straight to your door in 3 simple steps.",
     steps: [
       {
         step: "1",
-        title: "Complete Medical Assessment",
-        description: "Answer quick health questions online. A licensed U.S. doctor reviews your medical history within 24 hours.",
+        title: "Complete Online Consultation",
+        description: "Fill out a comprehensive health assessment and select your optimization goals online in under 5 minutes.",
       },
       {
         step: "2",
-        title: "Doctor Approval & Prescription",
-        description: "If eligible, your provider issues your custom compounded prescription and sends it to our certified pharmacy.",
+        title: "Physician Review & Custom Plan",
+        description: "A licensed U.S. doctor reviews your medical profile, orders necessary labs, and issues your personalized prescription.",
       },
       {
         step: "3",
-        title: "Discreet Delivery to Your Door",
-        description: "Your medication is freshly compounded and shipped straight to your home with free expedited shipping and supplies.",
+        title: "Pharmacy Delivery & AI Coaching",
+        description: "Your freshly compounded medication is shipped cold-chain to your doorstep while your AI Coach guides your daily progress.",
       },
     ],
   },
 
-  // ──── FAQs ────
+  // ──── TeleLaunch & Patient FAQs ────
   faqs: [
     {
-      question: "Do I need insurance to qualify for Yucca treatments?",
-      answer: "No insurance is required! Yucca offers transparent, flat-rate pricing with no hidden fees, co-pays, or surprise medical bills.",
+      question: "What makes Reform Vital different from standard telehealth providers?",
+      answer: "Reform Vital combines licensed medical doctor oversight, personalized peptide/GLP-1 treatment plans, 24/7 AI accountability coaching, and full health metric tracking rather than just selling standard products.",
     },
     {
-      question: "How long does shipping take after doctor approval?",
-      answer: "Once prescribed, your medication is compounded and shipped via free expedited delivery, usually arriving at your door within 2 to 4 business days.",
+      question: "Do I need insurance for Reform Vital programs?",
+      answer: "No insurance is needed! We offer transparent, flat-rate monthly memberships with no hidden co-pays or surprise medical bills.",
     },
     {
-      question: "What is included with my monthly prescription order?",
-      answer: "Every order includes your compounded medication vial, sterile syringes, alcohol prep pads, medical support access, and free shipping.",
+      question: "Are your medications compounded in certified pharmacies?",
+      answer: "Yes. All prescriptions are compounded in state-licensed, 50-state certified U.S. compounding pharmacies adhering to strict quality standards.",
     },
     {
-      question: "What is the difference between Semaglutide and Tirzepatide?",
-      answer: "Semaglutide targets GLP-1 receptors to curb appetite. Tirzepatide is a dual-action GLP-1 + GIP receptor agonist that often produces greater overall weight loss in clinical studies.",
+      question: "How does the AI Health Coach work?",
+      answer: "Your AI Coach acts as a 24/7 accountability partner. It tracks your daily protein, water intake, sleep, and weight metrics, providing habit guidance between physician check-ins.",
     },
     {
-      question: "Can I cancel or pause my subscription anytime?",
-      answer: "Yes, absolutely! You can manage your subscription, pause, or cancel at any time directly through your Yucca patient portal without penalty.",
+      question: "Can I transition between GLP-1 or peptide therapies?",
+      answer: "Yes! Your licensed provider will adjust your treatment protocol (such as moving from Semaglutide to Tirzepatide or adding BPC-157) based on your progress and lab results.",
     },
   ],
 
-  // ──── Reviews / Social Proof ────
+  // ──── Patient & Physician Reviews ────
   reviews: [
     {
       name: "Jessica M.",
       verified: true,
-      text: "Down 34 lbs in 3 months on Semaglutide! Yucca made the process so easy, no doctor waiting rooms, and shipping was super fast.",
+      text: "Down 34 lbs in 3 months on Semaglutide+! Reform Vital made the process so easy, no doctor waiting rooms, and shipping was super fast.",
       stars: 5,
       weightLost: "-34 lbs",
     },
     {
       name: "Carlos T.",
       verified: true,
-      text: "Tirzepatide completely eliminated my late-night cravings. The 6-month price lock at $258/mo is unbeatable compared to brand-name GLP-1s.",
+      text: "Tirzepatide+ completely eliminated my late-night cravings. The physician coaching and AI tracking kept me accountable every week.",
       stars: 5,
       weightLost: "-42 lbs",
     },
     {
-      name: "Rachel K.",
+      name: "Dr. Marcus V., MD",
       verified: true,
-      text: "Customer support is top notch. They answered all my dosage questions within an hour. Highly recommend Yucca to anyone struggling with weight loss.",
+      text: "Reform Vital's approach combining physician oversight with personalized peptide stacks and AI tracking is the future of preventative telehealth.",
       stars: 5,
-      weightLost: "-28 lbs",
+      weightLost: "Physician Advisory",
     },
   ],
 
-  // ──── Footer ────
+  // ──── Footer & Contact ────
   footer: {
+    company: "Reform Vital Health LLC",
+    legalOwner: "Javier Alexis Solano",
     disclaimer:
-      "DISCLAIMER: Yucca Health offers telehealth services connecting patients with licensed U.S. medical providers. Prescriptions are subject to doctor approval. Compounded medications are prepared by state-licensed compounding pharmacies.",
-    copyright: "© 2026 Yucca Health Inc. All rights reserved.",
+      "DISCLAIMER: Reform Vital Health LLC provides telehealth platform access connecting patients with licensed U.S. healthcare providers. Prescriptions are issued strictly upon physician clinical evaluation and approval. Compounded medications are prepared by state-licensed compounding pharmacies. Statements on this site have not been evaluated by the FDA.",
+    copyright: "© 2026 Reform Vital Health LLC. All rights reserved.",
   },
 };
 
