@@ -1,253 +1,139 @@
 "use client";
 
-import { useState } from "react";
 import { brandConfig } from "@/brand.config";
 
-const categoryImageMap: Record<string, { image: string; tag: string; title: string }> = {
-  "weight-loss": {
-    image: "/images/tirzepatide_hero.png",
-    tag: "MEDICAL WEIGHT LOSS",
-    title: "Clinician-Guided Weight Management",
-  },
-  "hormones": {
-    image: "/images/hero_showcase.png",
-    tag: "MEN'S & WOMEN'S HORMONE HEALTH",
-    title: "Testosterone & Endocrine Care",
-  },
-  "growth-hormone": {
-    image: "/images/sermorelin_hero.png",
-    tag: "GROWTH HORMONE OPTIMIZATION",
-    title: "Pituitary Secretagogue Protocols",
-  },
-  "recovery": {
-    image: "/images/bpc_tissue.png",
-    tag: "RECOVERY & TISSUE REPAIR",
-    title: "BPC-157 & Regenerative Peptides",
-  },
-  "longevity": {
-    image: "/images/nad_cellular.png",
-    tag: "LONGEVITY & HEALTHY AGING",
-    title: "NAD+ Cellular Energy Matrix",
-  },
-  "cognitive": {
-    image: "/images/longevity_nad.png",
-    tag: "COGNITIVE OPTIMIZATION",
-    title: "Neuropeptide Focus & BDNF Care",
-  },
-  "sexual-wellness": {
-    image: "/images/weight_loss_glp1.png",
-    tag: "SEXUAL WELLNESS & VITALITY",
-    title: "PT-141 & Vascular Flow Therapy",
-  },
-  "hair": {
-    image: "/images/hero_showcase.png",
-    tag: "PRESCRIPTION HAIR RESTORATION",
-    title: "Custom Topical & Peptide Regrowth",
-  },
-};
-
 export default function Treatments() {
-  const [activeTab, setActiveTab] = useState(brandConfig.services[0].id);
-  const selectedTabCategory = brandConfig.services.find((s) => s.id === activeTab) || brandConfig.services[0];
-
   return (
-    <section className="section" id="services" style={{ background: "var(--surface)", padding: "5rem 0" }}>
+    <section className="section" id="services" style={{ background: "var(--surface)", padding: "4.5rem 0" }}>
       <div className="container">
-        {/* NexaMD Style Section Header */}
-        <div className="section-head" style={{ textAlign: "center", maxWidth: "52rem", margin: "0 auto 3.5rem" }}>
+        {/* Section Header */}
+        <div className="section-head" style={{ textAlign: "center", maxWidth: "48rem", margin: "0 auto 3rem" }}>
           <p className="eyebrow" style={{ color: "var(--accent)", fontWeight: 800, letterSpacing: "0.12em", marginBottom: "0.5rem" }}>
-            PERSONALIZED CARE PROGRAMS
+            PHYSICIAN-GUIDED CARE PROTOCOLS
           </p>
           <h2 style={{ fontSize: "clamp(2.2rem, 4vw, 3.2rem)", fontWeight: 900, marginBottom: "0.8rem" }}>
-            Explore Care Programs
+            Precision Healthcare. Compounded for You.
           </h2>
           <p style={{ fontSize: "1.1rem", color: "var(--text-muted)", lineHeight: 1.6 }}>
-            Connect online with licensed clinicians for doctor-prescribed compounded medications. Clear pricing & doctor consultation included before treatment begins.
+            Select from 8 specialized care lines prescribed by U.S. board-certified medical directors and compounded by 50-state certified pharmacies.
           </p>
         </div>
 
-        {/* NexaMD Style Treatments Grid Showcase */}
+        {/* Creative Featured Hero Teaser Box */}
+        <div
+          style={{
+            background: "linear-gradient(135deg, #0D1B2A 0%, #162A45 60%, #00A896 100%)",
+            borderRadius: "1.75rem",
+            padding: "clamp(1.75rem, 4vw, 3.2rem)",
+            color: "#FFF",
+            boxShadow: "0 20px 50px rgba(13, 27, 42, 0.25)",
+            marginBottom: "3.5rem",
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+            gap: "2.5rem",
+            alignItems: "center",
+          }}
+        >
+          <div>
+            <div style={{ display: "flex", gap: "0.6rem", marginBottom: "1rem", flexWrap: "wrap" }}>
+              <span style={{ background: "var(--accent)", color: "#FFF", padding: "0.3rem 0.85rem", borderRadius: "9999px", fontSize: "0.75rem", fontWeight: 900 }}>
+                FEATURED PROGRAM
+              </span>
+              <span style={{ background: "rgba(255,255,255,0.15)", color: "#FFF", padding: "0.3rem 0.85rem", borderRadius: "9999px", fontSize: "0.75rem", fontWeight: 800 }}>
+                METABOLIC WEIGHT LOSS
+              </span>
+            </div>
+
+            <h3 style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.6rem)", fontWeight: 900, color: "#FFF", marginBottom: "0.8rem", lineHeight: 1.2 }}>
+              Compounded Semaglutide & Tirzepatide+
+            </h3>
+
+            <p style={{ color: "rgba(255,255,255,0.85)", fontSize: "1.05rem", lineHeight: 1.65, marginBottom: "1.75rem" }}>
+              Clinically proven dual-action GLP-1/GIP receptor agonists prescribed online with Vitamin B12, sterile injection supplies, and free cold-chain pharmacy delivery.
+            </p>
+
+            <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+              <a href="/treatments" className="btn btn-primary" style={{ padding: "0.95rem 1.8rem", fontSize: "0.98rem" }}>
+                Explore All 8 Care Protocols →
+              </a>
+              <a href="/start" className="btn btn-ghost" style={{ background: "rgba(255,255,255,0.1)", color: "#FFF", borderColor: "rgba(255,255,255,0.2)" }}>
+                Start Online Assessment
+              </a>
+            </div>
+          </div>
+
+          <div style={{ borderRadius: "1.25rem", overflow: "hidden", border: "2px solid rgba(0, 168, 150, 0.5)", boxShadow: "0 15px 35px rgba(0,0,0,0.3)" }}>
+            <img
+              src="/images/tirzepatide_hero.png"
+              alt="Compounded Metabolic Health Protocol"
+              style={{ width: "100%", height: "auto", display: "block" }}
+            />
+          </div>
+        </div>
+
+        {/* 4 Core Pillars Overview Cards Grid */}
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
-            gap: "2rem",
-            marginBottom: "4.5rem",
+            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+            gap: "1.5rem",
+            marginBottom: "3rem",
           }}
         >
-          {brandConfig.services.map((cat, idx) => {
-            const meta = categoryImageMap[cat.id] || {
-              image: "/images/tirzepatide_hero.png",
-              tag: cat.title.toUpperCase(),
-              title: cat.title,
-            };
+          <div style={{ background: "var(--bg)", border: "1px solid var(--border)", borderRadius: "1.25rem", padding: "1.5rem", boxShadow: "var(--shadow-card)" }}>
+            <div style={{ fontSize: "1.8rem", marginBottom: "0.5rem" }}>⚡</div>
+            <h4 style={{ fontSize: "1.2rem", fontWeight: 900, marginBottom: "0.3rem", color: "var(--primary)" }}>Metabolic Weight Loss</h4>
+            <p style={{ fontSize: "0.88rem", color: "var(--text-muted)", lineHeight: 1.5, marginBottom: "1rem" }}>
+              Targeted appetite regulation with Semaglutide, Tirzepatide & Retatrutide.
+            </p>
+            <a href="/treatments/semaglutide" style={{ fontSize: "0.85rem", fontWeight: 800, color: "var(--accent)" }}>
+              View GLP-1 Details →
+            </a>
+          </div>
 
-            const primarySlug = cat.therapies[0]?.slug || "semaglutide";
+          <div style={{ background: "var(--bg)", border: "1px solid var(--border)", borderRadius: "1.25rem", padding: "1.5rem", boxShadow: "var(--shadow-card)" }}>
+            <div style={{ fontSize: "1.8rem", marginBottom: "0.5rem" }}>🧬</div>
+            <h4 style={{ fontSize: "1.2rem", fontWeight: 900, marginBottom: "0.3rem", color: "var(--primary)" }}>Hormone Optimization</h4>
+            <p style={{ fontSize: "0.88rem", color: "var(--text-muted)", lineHeight: 1.5, marginBottom: "1rem" }}>
+              Bioidentical TRT, Enclomiphene & endocrine balance protocols.
+            </p>
+            <a href="/treatments/trt" style={{ fontSize: "0.85rem", fontWeight: 800, color: "var(--accent)" }}>
+              View TRT Details →
+            </a>
+          </div>
 
-            return (
-              <article
-                key={cat.id}
-                style={{
-                  background: "var(--bg)",
-                  border: "1px solid var(--border)",
-                  borderRadius: "1.25rem",
-                  overflow: "hidden",
-                  boxShadow: "var(--shadow-card)",
-                  display: "flex",
-                  flexDirection: "column",
-                  transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                }}
-              >
-                {/* Media Image Frame */}
-                <div style={{ position: "relative", height: "210px", width: "100%", overflow: "hidden" }}>
-                  <img
-                    src={meta.image}
-                    alt={cat.title}
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                      display: "block",
-                      transition: "transform 0.5s ease",
-                    }}
-                  />
-                  <div
-                    style={{
-                      position: "absolute",
-                      inset: 0,
-                      background: "linear-gradient(180deg, transparent 40%, rgba(13, 27, 42, 0.75) 100%)",
-                    }}
-                  />
-                  <span
-                    style={{
-                      position: "absolute",
-                      top: "1rem",
-                      left: "1rem",
-                      background: "var(--accent)",
-                      color: "#FFF",
-                      padding: "0.3rem 0.85rem",
-                      borderRadius: "9999px",
-                      fontSize: "0.75rem",
-                      fontWeight: 800,
-                      letterSpacing: "0.06em",
-                    }}
-                  >
-                    CARE PROGRAM
-                  </span>
-                </div>
+          <div style={{ background: "var(--bg)", border: "1px solid var(--border)", borderRadius: "1.25rem", padding: "1.5rem", boxShadow: "var(--shadow-card)" }}>
+            <div style={{ fontSize: "1.8rem", marginBottom: "0.5rem" }}>🔬</div>
+            <h4 style={{ fontSize: "1.2rem", fontWeight: 900, marginBottom: "0.3rem", color: "var(--primary)" }}>Longevity & NAD+</h4>
+            <p style={{ fontSize: "0.88rem", color: "var(--text-muted)", lineHeight: 1.5, marginBottom: "1rem" }}>
+              Mitochondrial ATP cellular energy & sirtuin activation coenzymes.
+            </p>
+            <a href="/treatments/nad-plus" style={{ fontSize: "0.85rem", fontWeight: 800, color: "var(--accent)" }}>
+              View NAD+ Details →
+            </a>
+          </div>
 
-                {/* Body Content */}
-                <div style={{ padding: "1.75rem", display: "flex", flexDirection: "column", flex: 1 }}>
-                  <p style={{ fontSize: "0.78rem", fontWeight: 800, color: "var(--accent-cyan)", letterSpacing: "0.08em", marginBottom: "0.4rem" }}>
-                    PROTOCOL 0{idx + 1} • {meta.tag}
-                  </p>
-
-                  <h3 style={{ fontSize: "1.45rem", fontWeight: 900, marginBottom: "0.5rem", color: "var(--primary)" }}>
-                    {meta.title}
-                  </h3>
-
-                  <p style={{ color: "var(--text-muted)", fontSize: "0.92rem", lineHeight: 1.6, marginBottom: "1.25rem" }}>
-                    {cat.subtitle}
-                  </p>
-
-                  {/* Formulations List Pills */}
-                  <div style={{ marginTop: "auto", marginBottom: "1.25rem" }}>
-                    <div style={{ display: "flex", flexWrap: "wrap", gap: "0.4rem" }}>
-                      {cat.therapies.map((t) => (
-                        <span
-                          key={t.name}
-                          style={{
-                            background: "var(--surface)",
-                            border: "1px solid var(--border)",
-                            padding: "0.25rem 0.65rem",
-                            borderRadius: "0.5rem",
-                            fontSize: "0.78rem",
-                            fontWeight: 700,
-                            color: "var(--primary)",
-                          }}
-                        >
-                          {t.name}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div style={{ borderTop: "1px solid var(--border)", paddingTop: "1rem", marginBottom: "1.25rem" }}>
-                    <div style={{ fontSize: "1.5rem", fontWeight: 900, color: "var(--primary)" }}>
-                      {cat.therapies[0]?.price || "$149/mo"}
-                    </div>
-                    <div style={{ fontSize: "0.8rem", color: "var(--accent)", fontWeight: 700 }}>
-                      Doctor Consultation & Shipping Included
-                    </div>
-                  </div>
-
-                  {/* Dual Action Buttons */}
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.75rem" }}>
-                    <a
-                      href={`/treatments/${primarySlug}`}
-                      className="btn btn-ghost"
-                      style={{ fontSize: "0.88rem", padding: "0.75rem" }}
-                    >
-                      View Details
-                    </a>
-                    <a
-                      href="/start"
-                      className="btn btn-primary"
-                      style={{ fontSize: "0.88rem", padding: "0.75rem" }}
-                    >
-                      Check Eligibility
-                    </a>
-                  </div>
-                </div>
-              </article>
-            );
-          })}
+          <div style={{ background: "var(--bg)", border: "1px solid var(--border)", borderRadius: "1.25rem", padding: "1.5rem", boxShadow: "var(--shadow-card)" }}>
+            <div style={{ fontSize: "1.8rem", marginBottom: "0.5rem" }}>🩹</div>
+            <h4 style={{ fontSize: "1.2rem", fontWeight: 900, marginBottom: "0.3rem", color: "var(--primary)" }}>Recovery & Tissue Repair</h4>
+            <p style={{ fontSize: "0.88rem", color: "var(--text-muted)", lineHeight: 1.5, marginBottom: "1rem" }}>
+              BPC-157 & TB-500 pentadecapeptides for tendon and mucosal healing.
+            </p>
+            <a href="/treatments/bpc-157" style={{ fontSize: "0.85rem", fontWeight: 800, color: "var(--accent)" }}>
+              View BPC-157 Details →
+            </a>
+          </div>
         </div>
 
-        {/* Tabbed Interactive Deep Dive Section */}
-        <div style={{ borderTop: "2px dashed var(--border)", paddingTop: "3.5rem" }}>
-          <div className="section-head" style={{ marginBottom: "1.5rem", textAlign: "center" }}>
-            <p className="eyebrow" style={{ color: "var(--accent)", fontWeight: 800 }}>
-              ITEMIZED PRESCRIPTION CATALOG
-            </p>
-            <h3 style={{ fontSize: "2.2rem", fontWeight: 900 }}>Individual Medication Formulations</h3>
-          </div>
-
-          <div className="tabs">
-            {brandConfig.services.map((cat) => (
-              <button
-                key={cat.id}
-                className={`tab ${activeTab === cat.id ? "active" : ""}`}
-                onClick={() => setActiveTab(cat.id)}
-              >
-                {cat.title}
-              </button>
-            ))}
-          </div>
-
-          {/* Individual Therapy Medication Cards Grid */}
-          <div className="treatment-grid" style={{ marginTop: "2rem" }}>
-            {selectedTabCategory.therapies.map((therapy, i) => (
-              <div className="treatment-card" key={i}>
-                <div className="treatment-body">
-                  <span className="badge">Physician Prescribed</span>
-                  <h3>{therapy.name}</h3>
-                  <div className="treatment-price">{therapy.price}</div>
-                  <p>{therapy.desc}</p>
-                  <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem", marginTop: "auto" }}>
-                    {therapy.slug && (
-                      <a href={`/treatments/${therapy.slug}`} className="btn btn-primary" style={{ width: "100%" }}>
-                        View Clinical Protocol →
-                      </a>
-                    )}
-                    <a href="/start" className="btn btn-ghost" style={{ width: "100%" }}>
-                      See If I Qualify
-                    </a>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+        {/* View All Catalog Footer Banner */}
+        <div style={{ textAlign: "center", paddingTop: "1.5rem" }}>
+          <a
+            href="/treatments"
+            className="btn btn-navy"
+            style={{ padding: "1.1rem 2.5rem", fontSize: "1.05rem" }}
+          >
+            View Complete 8-Category Dream Service Menu Catalog →
+          </a>
         </div>
       </div>
     </section>
