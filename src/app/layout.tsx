@@ -20,6 +20,14 @@ export const metadata: Metadata = {
     "telehealth platform",
     "longevity medicine",
   ],
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/icon-32.png", type: "image/png", sizes: "32x32" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+  },
   openGraph: {
     title: `${brandConfig.name} — ${brandConfig.tagline}`,
     description: brandConfig.hero.description,
