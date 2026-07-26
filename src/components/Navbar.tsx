@@ -15,15 +15,11 @@ const dropdownProtocols = [
   { slug: "hair-restoration", title: "Prescription Hair Restoration", tag: "Minoxidil + Finasteride + GHK-Cu", icon: "✨" },
 ];
 
-/** Center nav — short, single-line labels only */
+/** All center links share identical padding — FAQ is never next to Portal */
 const PRIMARY_LINKS = [
   { label: "Memberships", href: "/memberships" },
   { label: "How It Works", href: "/how-it-works" },
   { label: "AI Coach", href: "/ai-coach" },
-];
-
-/** Secondary links live in More — keeps FAQ away from Portal */
-const MORE_LINKS = [
   { label: "About", href: "/about" },
   { label: "FAQ", href: "/faq" },
 ];
@@ -31,19 +27,13 @@ const MORE_LINKS = [
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [moreOpen, setMoreOpen] = useState(false);
   const [mobileTreatmentsOpen, setMobileTreatmentsOpen] = useState(false);
   const treatmentsRef = useRef<HTMLLIElement>(null);
-  const moreRef = useRef<HTMLLIElement>(null);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      const target = event.target as Node;
-      if (treatmentsRef.current && !treatmentsRef.current.contains(target)) {
+      if (treatmentsRef.current && !treatmentsRef.current.contains(event.target as Node)) {
         setDropdownOpen(false);
-      }
-      if (moreRef.current && !moreRef.current.contains(target)) {
-        setMoreOpen(false);
       }
     }
     document.addEventListener("mousedown", handleClickOutside);
@@ -62,10 +52,7 @@ export default function Navbar() {
             <li
               ref={treatmentsRef}
               className={`nav-item${dropdownOpen ? " is-open" : ""}`}
-              onMouseEnter={() => {
-                setDropdownOpen(true);
-                setMoreOpen(false);
-              }}
+              onMouseEnter={() => setDropdownOpen(true)}
               onMouseLeave={() => setDropdownOpen(false)}
             >
               <a
@@ -116,47 +103,13 @@ export default function Navbar() {
                 </a>
               </li>
             ))}
-
-            <li
-              ref={moreRef}
-              className={`nav-item${moreOpen ? " is-open" : ""}`}
-              onMouseEnter={() => {
-                setMoreOpen(true);
-                setDropdownOpen(false);
-              }}
-              onMouseLeave={() => setMoreOpen(false)}
-            >
-              <button
-                type="button"
-                className="nav-item-link nav-item-link--button"
-                aria-expanded={moreOpen}
-                aria-haspopup="true"
-                onClick={() => setMoreOpen((v) => !v)}
-              >
-                More
-                <svg className="nav-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden>
-                  <polyline points="6 9 12 15 18 9" />
-                </svg>
-              </button>
-              <div className="nav-dropdown nav-dropdown--more" role="menu">
-                {MORE_LINKS.map((link) => (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    className="nav-more-link"
-                    role="menuitem"
-                    onClick={() => setMoreOpen(false)}
-                  >
-                    {link.label}
-                  </a>
-                ))}
-              </div>
-            </li>
           </ul>
 
+          {/* Actions are a separate column — Portal never sits beside FAQ */}
           <div className="nav-end">
-            <a href={brandConfig.nav.loginLink} className="nav-login">
-              Log in
+            <div className="nav-end-divider" aria-hidden />
+            <a href={brandConfig.nav.loginLink} className="nav-portal">
+              Portal
             </a>
             <a
               href={`tel:${brandConfig.nav.phone}`}
@@ -218,7 +171,7 @@ export default function Navbar() {
             )}
 
             <ul className="nav-mobile-list">
-              {[...PRIMARY_LINKS, ...MORE_LINKS].map((link) => (
+              {PRIMARY_LINKS.map((link) => (
                 <li key={link.href}>
                   <a href={link.href} onClick={() => setMobileMenuOpen(false)}>
                     {link.label}
@@ -227,7 +180,7 @@ export default function Navbar() {
               ))}
               <li className="nav-mobile-meta">
                 <a href={brandConfig.nav.loginLink} onClick={() => setMobileMenuOpen(false)}>
-                  Log in to patient portal
+                  Patient portal
                 </a>
                 <a href={`tel:${brandConfig.nav.phone}`} className="nav-mobile-accent">
                   Call {brandConfig.nav.phone}
