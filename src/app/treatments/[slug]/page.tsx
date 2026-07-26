@@ -1,59 +1,119 @@
-import { brandConfig } from "@/brand.config";
+import Image from "next/image";
+import {
+  getAllTreatmentSlugs,
+  resolveTreatmentDetail,
+} from "@/brand.config";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import TirzepatideHeroVisual from "@/components/visuals/TirzepatideHeroVisual";
-import SemaglutideHeroVisual from "@/components/visuals/SemaglutideHeroVisual";
-import NADPlusHeroVisual from "@/components/visuals/NADPlusHeroVisual";
 import MechanismVisual from "@/components/visuals/MechanismVisual";
-import DosingSuppliesVisual from "@/components/visuals/DosingSuppliesVisual";
-import DoctorAdvisoryVisual from "@/components/visuals/DoctorAdvisoryVisual";
 import { notFound } from "next/navigation";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
+const slugImageMap: Record<string, string> = {
+  semaglutide: "/images/Tirzepatide.png",
+  tirzepatide: "/images/Tirzepatide.png",
+  retatrutide: "/images/Tirzepatide.png",
+  trt: "/images/TRTTestosterone.png",
+  "womens-hormones": "/images/TRTTestosterone.png",
+  "hcg-enclomiphene": "/images/TRTTestosterone.png",
+  sermorelin: "/images/Sermorelin.png",
+  tesamorelin: "/images/Sermorelin.png",
+  "cjc-ipamorelin": "/images/Sermorelin.png",
+  "bpc-157": "/images/Recovery & Tissue.png",
+  "tb-500": "/images/Recovery & Tissue.png",
+  kpv: "/images/Recovery & Tissue.png",
+  "nad-plus": "/images/NAD+ Cellular.png",
+  "mots-c": "/images/NAD+ Cellular.png",
+  "ghk-cu": "/images/NAD+ Cellular.png",
+  semax: "/images/Neuropeptide.png",
+  selank: "/images/Neuropeptide.png",
+  "pt-141": "/images/Bremelanotide.png",
+  tadalafil: "/images/Bremelanotide.png",
+  "hair-restoration": "/images/Minoxidil.png",
+  "metabolic-panel": "/images/NAD+ Cellular.png",
+  "preventive-wellness": "/images/NAD+ Cellular.png",
+  "body-composition": "/images/NAD+ Cellular.png",
+};
+
 export async function generateStaticParams() {
-  const slugs = Object.keys(brandConfig.treatmentDetails);
-  return slugs.map((slug) => ({ slug }));
+  return getAllTreatmentSlugs().map((slug) => ({ slug }));
 }
 
 export default async function TreatmentDetailPage({ params }: PageProps) {
   const { slug } = await params;
-  const detail = brandConfig.treatmentDetails[slug as keyof typeof brandConfig.treatmentDetails];
+  const detail = resolveTreatmentDetail(slug);
 
   if (!detail) {
     notFound();
   }
 
-  // Dynamic visual selection per slug to guarantee ZERO image reuse
-  const renderHeroVisual = () => {
-    if (slug === "tirzepatide") return <TirzepatideHeroVisual />;
-    if (slug === "semaglutide") return <SemaglutideHeroVisual />;
-    if (slug === "nad-plus") return <NADPlusHeroVisual />;
-    return <TirzepatideHeroVisual />;
-  };
+  const heroImage =
+    slugImageMap[slug] || detail.image || "/images/Tirzepatide.png";
 
   return (
     <>
       <Navbar />
       <main>
-        {/* ScriptsRxDirect Style Top Hero Header */}
         <section className="hero" style={{ padding: "4rem 0 3.5rem" }}>
           <div className="container">
-            <div style={{ display: "grid", gridTemplateColumns: "1.1fr 0.9fr", gap: "3rem", alignItems: "center" }}>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+                gap: "3rem",
+                alignItems: "center",
+              }}
+            >
               <div>
-                <div style={{ display: "flex", gap: "0.6rem", marginBottom: "1rem", flexWrap: "wrap" }}>
-                  <span className="badge" style={{ background: "var(--accent)", color: "#FFF" }}>{detail.badge}</span>
+                <div
+                  style={{
+                    display: "flex",
+                    gap: "0.6rem",
+                    marginBottom: "1rem",
+                    flexWrap: "wrap",
+                  }}
+                >
+                  <span
+                    className="badge"
+                    style={{ background: "var(--accent)", color: "#FFF" }}
+                  >
+                    {detail.badge}
+                  </span>
                   <span className="badge">{detail.category}</span>
                   <span className="badge badge-cyan">U.S. DOCTOR PRESCRIBED</span>
                 </div>
 
-                <h1 style={{ fontSize: "3.2rem", marginBottom: "0.8rem" }}>{detail.name}</h1>
-                <p style={{ fontSize: "1.25rem", color: "var(--accent)", fontWeight: 700, marginBottom: "1.2rem", lineHeight: 1.4 }}>
+                <h1
+                  style={{
+                    fontSize: "clamp(2.4rem, 4vw, 3.5rem)",
+                    marginBottom: "0.8rem",
+                    fontWeight: 900,
+                  }}
+                >
+                  {detail.name}
+                </h1>
+                <p
+                  style={{
+                    fontSize: "1.25rem",
+                    color: "var(--accent)",
+                    fontWeight: 700,
+                    marginBottom: "1.2rem",
+                    lineHeight: 1.4,
+                  }}
+                >
                   {detail.tagline}
                 </p>
-                <p style={{ fontSize: "1.05rem", color: "var(--text-muted)", lineHeight: 1.65, marginBottom: "2rem" }}>
+                <p
+                  style={{
+                    fontSize: "1.05rem",
+                    color: "var(--text-muted)",
+                    lineHeight: 1.65,
+                    marginBottom: "2rem",
+                  }}
+                >
                   {detail.description}
                 </p>
 
@@ -69,192 +129,517 @@ export default async function TreatmentDetailPage({ params }: PageProps) {
                     justifyContent: "space-between",
                     gap: "1rem",
                     boxShadow: "var(--shadow-card)",
+                    flexWrap: "wrap",
                   }}
                 >
                   <div>
-                    <div style={{ fontSize: "0.82rem", fontWeight: 800, color: "var(--text-muted)", textTransform: "uppercase" }}>
+                    <div
+                      style={{
+                        fontSize: "0.82rem",
+                        fontWeight: 800,
+                        color: "var(--text-muted)",
+                        textTransform: "uppercase",
+                      }}
+                    >
                       FLAT-RATE MEMBERSHIP
                     </div>
-                    <div style={{ fontSize: "2.6rem", fontWeight: 900, color: "var(--primary)" }}>
+                    <div
+                      style={{
+                        fontSize: "2.6rem",
+                        fontWeight: 900,
+                        color: "var(--primary)",
+                      }}
+                    >
                       {detail.price}
                     </div>
-                    <div style={{ fontSize: "0.82rem", color: "var(--accent)", fontWeight: 700 }}>
+                    <div
+                      style={{
+                        fontSize: "0.82rem",
+                        color: "var(--accent)",
+                        fontWeight: 700,
+                      }}
+                    >
                       ✓ Includes Doctor Consultation & Free Pharmacy Shipping
                     </div>
                   </div>
 
-                  <a href="/start" className="btn btn-primary" style={{ padding: "1.1rem 2rem", fontSize: "1.05rem" }}>
+                  <a
+                    href="/start"
+                    className="btn btn-primary"
+                    style={{ padding: "1.1rem 2rem", fontSize: "1.05rem" }}
+                  >
                     Start Assessment →
                   </a>
                 </div>
 
-                <div style={{ fontSize: "0.84rem", color: "var(--text-muted)", fontWeight: 600 }}>
-                  * Prescriptions subject to U.S. board-certified physician approval. Formulated by state-licensed compounding pharmacies.
+                <div
+                  style={{
+                    fontSize: "0.84rem",
+                    color: "var(--text-muted)",
+                    fontWeight: 600,
+                  }}
+                >
+                  * Prescriptions subject to U.S. board-certified physician
+                  approval. Formulated by 503A state-licensed compounding
+                  pharmacies.
                 </div>
               </div>
 
-              {/* Dedicated Unique Visual Header */}
-              {renderHeroVisual()}
+              <div
+                style={{
+                  position: "relative",
+                  borderRadius: "1.5rem",
+                  overflow: "hidden",
+                  border: "2px solid rgba(0, 168, 150, 0.4)",
+                  boxShadow: "0 20px 45px rgba(13, 27, 42, 0.2)",
+                  background: "var(--surface)",
+                }}
+              >
+                <Image
+                  src={heroImage}
+                  alt={`${detail.name} Prescription Protocol`}
+                  width={800}
+                  height={600}
+                  style={{
+                    width: "100%",
+                    height: "auto",
+                    display: "block",
+                    objectFit: "cover",
+                  }}
+                  priority={true}
+                  quality={90}
+                />
+                <div
+                  style={{
+                    position: "absolute",
+                    bottom: "1rem",
+                    left: "1rem",
+                    right: "1rem",
+                    background: "rgba(7, 14, 23, 0.85)",
+                    backdropFilter: "blur(10px)",
+                    padding: "0.85rem 1.2rem",
+                    borderRadius: "0.85rem",
+                    border: "1px solid rgba(255, 255, 255, 0.2)",
+                    color: "#FFF",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    gap: "0.75rem",
+                    flexWrap: "wrap",
+                  }}
+                >
+                  <span style={{ fontSize: "0.82rem", fontWeight: 800 }}>
+                    503A CERTIFIED COMPOUNDED FORMULATION
+                  </span>
+                  <span
+                    style={{
+                      fontSize: "0.75rem",
+                      color: "var(--accent-cyan)",
+                      fontWeight: 800,
+                    }}
+                  >
+                    OVERNIGHT SHIPPING
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Mechanism of Action Section Supported with Dedicated Visual */}
-        <section className="section" style={{ background: "var(--surface)" }}>
+        <section
+          className="section"
+          style={{ background: "var(--bg)", padding: "3.5rem 0" }}
+        >
           <div className="container">
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "3.5rem", alignItems: "center" }}>
+            <h2
+              style={{
+                fontSize: "2rem",
+                fontWeight: 900,
+                marginBottom: "1.5rem",
+              }}
+            >
+              What&apos;s Included
+            </h2>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+                gap: "1rem",
+              }}
+            >
+              {detail.features.map((feature) => (
+                <div
+                  key={feature}
+                  style={{
+                    background: "var(--surface)",
+                    border: "1px solid var(--border)",
+                    borderRadius: "0.85rem",
+                    padding: "1.1rem 1.25rem",
+                    fontSize: "0.95rem",
+                    fontWeight: 600,
+                    color: "var(--primary)",
+                    lineHeight: 1.45,
+                  }}
+                >
+                  <span style={{ color: "var(--accent)", marginRight: "0.45rem" }}>
+                    ✓
+                  </span>
+                  {feature}
+                </div>
+              ))}
+            </div>
+            <p
+              style={{
+                marginTop: "1.5rem",
+                color: "var(--text-muted)",
+                fontSize: "0.95rem",
+                lineHeight: 1.6,
+              }}
+            >
+              {detail.clinicalTrial}
+            </p>
+          </div>
+        </section>
+
+        <section
+          className="section"
+          style={{ background: "var(--surface)", padding: "4.5rem 0" }}
+        >
+          <div className="container">
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+                gap: "3.5rem",
+                alignItems: "center",
+              }}
+            >
               <div>
-                <span className="badge" style={{ marginBottom: "0.8rem" }}>HOW IT WORKS IN THE BODY</span>
-                <h2 style={{ fontSize: "2.4rem", marginBottom: "1rem" }}>Mechanism of Action</h2>
-                <p style={{ color: "var(--text-muted)", fontSize: "1.05rem", lineHeight: 1.7, marginBottom: "1.5rem" }}>
-                  {detail.name} operates through targeted receptor signaling. It regulates hunger pathways, enhances cellular insulin sensitivity, and promotes natural metabolic fat oxidation.
+                <span className="badge" style={{ marginBottom: "0.8rem" }}>
+                  HOW IT WORKS IN THE BODY
+                </span>
+                <h2
+                  style={{
+                    fontSize: "2.4rem",
+                    fontWeight: 900,
+                    marginBottom: "1rem",
+                  }}
+                >
+                  Mechanism of Action
+                </h2>
+                <p
+                  style={{
+                    color: "var(--text-muted)",
+                    fontSize: "1.05rem",
+                    lineHeight: 1.7,
+                    marginBottom: "1.5rem",
+                  }}
+                >
+                  {detail.name} operates through targeted receptor signaling. It
+                  regulates metabolic pathways, enhances cellular energy, and
+                  promotes optimal physiological performance.
                 </p>
 
-                <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-                  <div style={{ background: "var(--bg)", border: "1px solid var(--border)", borderRadius: "var(--radius)", padding: "1.2rem" }}>
-                    <h4 style={{ fontSize: "1.1rem", color: "var(--primary)", marginBottom: "0.3rem" }}>1. Receptor Binding & Activation</h4>
-                    <p style={{ color: "var(--text-muted)", fontSize: "0.92rem" }}>Selective stimulation of metabolic receptors to reduce cravings and appetite triggers.</p>
+                <div
+                  style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
+                >
+                  <div
+                    style={{
+                      background: "var(--bg)",
+                      border: "1px solid var(--border)",
+                      borderRadius: "var(--radius)",
+                      padding: "1.2rem",
+                    }}
+                  >
+                    <h4
+                      style={{
+                        fontSize: "1.1rem",
+                        color: "var(--primary)",
+                        marginBottom: "0.3rem",
+                        fontWeight: 800,
+                      }}
+                    >
+                      1. Receptor Binding & Activation
+                    </h4>
+                    <p style={{ color: "var(--text-muted)", fontSize: "0.92rem" }}>
+                      Selective stimulation of metabolic receptors to regulate
+                      systemic hormone and energy signaling.
+                    </p>
                   </div>
-                  <div style={{ background: "var(--bg)", border: "1px solid var(--border)", borderRadius: "var(--radius)", padding: "1.2rem" }}>
-                    <h4 style={{ fontSize: "1.1rem", color: "var(--primary)", marginBottom: "0.3rem" }}>2. Sustained Energy & Metabolism</h4>
-                    <p style={{ color: "var(--text-muted)", fontSize: "0.92rem" }}>Optimizes glucose metabolism while preserving lean muscle tissue during weight reduction.</p>
+                  <div
+                    style={{
+                      background: "var(--bg)",
+                      border: "1px solid var(--border)",
+                      borderRadius: "var(--radius)",
+                      padding: "1.2rem",
+                    }}
+                  >
+                    <h4
+                      style={{
+                        fontSize: "1.1rem",
+                        color: "var(--primary)",
+                        marginBottom: "0.3rem",
+                        fontWeight: 800,
+                      }}
+                    >
+                      2. Sustained Energy & Metabolism
+                    </h4>
+                    <p style={{ color: "var(--text-muted)", fontSize: "0.92rem" }}>
+                      Optimizes physiological metabolism while preserving lean
+                      muscle tissue during treatment.
+                    </p>
                   </div>
                 </div>
               </div>
 
-              {/* Unique Mechanism Visual Component */}
               <MechanismVisual />
             </div>
           </div>
         </section>
 
-        {/* ScriptsRxDirect Dosing & Supplies Guide Section */}
-        <section className="section" style={{ background: "var(--bg)" }}>
+        <section
+          className="section"
+          style={{ background: "var(--bg)", padding: "4.5rem 0" }}
+        >
           <div className="container">
-            <div style={{ display: "grid", gridTemplateColumns: "0.9fr 1.1fr", gap: "3.5rem", alignItems: "center" }}>
-              {/* Dosing Supplies Visual Component */}
-              <DosingSuppliesVisual />
-
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+                gap: "3.5rem",
+                alignItems: "center",
+              }}
+            >
               <div>
-                <span className="badge" style={{ marginBottom: "0.8rem" }}>INJECTION & DOSING GUIDE</span>
-                <h2 style={{ fontSize: "2.4rem", marginBottom: "1rem" }}>Simple Weekly Administration</h2>
-                <p style={{ color: "var(--text-muted)", fontSize: "1.05rem", lineHeight: 1.65, marginBottom: "1.5rem" }}>
-                  Every shipment includes your compounded medication vial, sterile insulin syringes, alcohol prep pads, and full dosing instructions.
+                <span className="badge" style={{ marginBottom: "0.8rem" }}>
+                  DOSING GUIDE
+                </span>
+                <h2
+                  style={{
+                    fontSize: "2.4rem",
+                    fontWeight: 900,
+                    marginBottom: "1rem",
+                  }}
+                >
+                  Simple Administration
+                </h2>
+                <p
+                  style={{
+                    color: "var(--text-muted)",
+                    fontSize: "1.05rem",
+                    lineHeight: 1.65,
+                    marginBottom: "1.5rem",
+                  }}
+                >
+                  Every shipment includes your compounded medication, sterile
+                  supplies when required, and step-by-step physician dosing
+                  instructions.
                 </p>
 
-                <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-                  <div style={{ display: "flex", gap: "1rem", alignItems: "flex-start", background: "var(--surface)", padding: "1rem 1.25rem", borderRadius: "0.85rem", border: "1px solid var(--border)" }}>
-                    <div style={{ width: "36px", height: "36px", borderRadius: "50%", background: "var(--accent)", color: "#FFF", display: "grid", placeItems: "center", fontWeight: 900 }}>1</div>
+                <div
+                  style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
+                >
+                  <div
+                    style={{
+                      display: "flex",
+                      gap: "1rem",
+                      alignItems: "flex-start",
+                      background: "var(--surface)",
+                      padding: "1rem 1.25rem",
+                      borderRadius: "0.85rem",
+                      border: "1px solid var(--border)",
+                    }}
+                  >
+                    <div
+                      style={{
+                        width: "36px",
+                        height: "36px",
+                        borderRadius: "50%",
+                        background: "var(--accent)",
+                        color: "#FFF",
+                        display: "grid",
+                        placeItems: "center",
+                        fontWeight: 900,
+                      }}
+                    >
+                      1
+                    </div>
                     <div>
-                      <h4 style={{ fontSize: "1rem", fontWeight: 800 }}>Clean & Prepare Site</h4>
-                      <p style={{ fontSize: "0.88rem", color: "var(--text-muted)" }}>Wipe the injection area (abdomen or thigh) with an alcohol prep swab.</p>
+                      <h4 style={{ fontSize: "1rem", fontWeight: 800 }}>
+                        Clean & Prepare
+                      </h4>
+                      <p
+                        style={{ fontSize: "0.88rem", color: "var(--text-muted)" }}
+                      >
+                        Follow the hygiene steps on your dosing card before each
+                        dose.
+                      </p>
                     </div>
                   </div>
 
-                  <div style={{ display: "flex", gap: "1rem", alignItems: "flex-start", background: "var(--surface)", padding: "1rem 1.25rem", borderRadius: "0.85rem", border: "1px solid var(--border)" }}>
-                    <div style={{ width: "36px", height: "36px", borderRadius: "50%", background: "var(--accent)", color: "#FFF", display: "grid", placeItems: "center", fontWeight: 900 }}>2</div>
+                  <div
+                    style={{
+                      display: "flex",
+                      gap: "1rem",
+                      alignItems: "flex-start",
+                      background: "var(--surface)",
+                      padding: "1rem 1.25rem",
+                      borderRadius: "0.85rem",
+                      border: "1px solid var(--border)",
+                    }}
+                  >
+                    <div
+                      style={{
+                        width: "36px",
+                        height: "36px",
+                        borderRadius: "50%",
+                        background: "var(--accent)",
+                        color: "#FFF",
+                        display: "grid",
+                        placeItems: "center",
+                        fontWeight: 900,
+                      }}
+                    >
+                      2
+                    </div>
                     <div>
-                      <h4 style={{ fontSize: "1rem", fontWeight: 800 }}>Subcutaneous Dosing</h4>
-                      <p style={{ fontSize: "0.88rem", color: "var(--text-muted)" }}>{detail.howToUse}</p>
+                      <h4 style={{ fontSize: "1rem", fontWeight: 800 }}>
+                        Follow Your Protocol
+                      </h4>
+                      <p
+                        style={{ fontSize: "0.88rem", color: "var(--text-muted)" }}
+                      >
+                        {detail.howToUse}
+                      </p>
                     </div>
                   </div>
 
-                  <div style={{ display: "flex", gap: "1rem", alignItems: "flex-start", background: "var(--surface)", padding: "1rem 1.25rem", borderRadius: "0.85rem", border: "1px solid var(--border)" }}>
-                    <div style={{ width: "36px", height: "36px", borderRadius: "50%", background: "var(--accent)", color: "#FFF", display: "grid", placeItems: "center", fontWeight: 900 }}>3</div>
+                  <div
+                    style={{
+                      display: "flex",
+                      gap: "1rem",
+                      alignItems: "flex-start",
+                      background: "var(--surface)",
+                      padding: "1rem 1.25rem",
+                      borderRadius: "0.85rem",
+                      border: "1px solid var(--border)",
+                    }}
+                  >
+                    <div
+                      style={{
+                        width: "36px",
+                        height: "36px",
+                        borderRadius: "50%",
+                        background: "var(--accent)",
+                        color: "#FFF",
+                        display: "grid",
+                        placeItems: "center",
+                        fontWeight: 900,
+                      }}
+                    >
+                      3
+                    </div>
                     <div>
-                      <h4 style={{ fontSize: "1rem", fontWeight: 800 }}>Log Progress in AI App</h4>
-                      <p style={{ fontSize: "0.88rem", color: "var(--text-muted)" }}>Track weekly weight, protein, and water metrics in your 24/7 AI Health Coach dashboard.</p>
+                      <h4 style={{ fontSize: "1rem", fontWeight: 800 }}>
+                        Log Progress with AI Coach
+                      </h4>
+                      <p
+                        style={{ fontSize: "0.88rem", color: "var(--text-muted)" }}
+                      >
+                        Track weekly metrics in your 24/7 AI Health Coach
+                        dashboard.
+                      </p>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ScriptsRxDirect Comparison Table */}
-        <section className="section" style={{ background: "var(--surface)" }}>
-          <div className="container">
-            <div className="section-head">
-              <span className="badge" style={{ marginBottom: "0.8rem" }}>TRANSPARENT COMPARISON</span>
-              <h2>Reform Vital vs Brand Name Retail Options</h2>
-              <p>Compare our physician-guided compounding membership against traditional retail options.</p>
-            </div>
-
-            <div style={{ overflowX: "auto", background: "var(--surface)", border: "1px solid var(--border)", borderRadius: "1.25rem", boxShadow: "var(--shadow-card)" }}>
-              <table style={{ width: "100%", borderCollapse: "collapse", textAlign: "left", fontSize: "0.95rem" }}>
-                <thead>
-                  <tr style={{ background: "var(--primary)", color: "#FFF" }}>
-                    <th style={{ padding: "1.2rem", fontWeight: 800 }}>Feature / Service</th>
-                    <th style={{ padding: "1.2rem", fontWeight: 800, background: "var(--accent)" }}>Reform Vital {detail.name}</th>
-                    <th style={{ padding: "1.2rem", fontWeight: 800 }}>Retail Brand Name</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr style={{ borderBottom: "1px solid var(--border)" }}>
-                    <td style={{ padding: "1rem 1.2rem", fontWeight: 700 }}>Monthly Cost</td>
-                    <td style={{ padding: "1rem 1.2rem", fontWeight: 900, color: "var(--accent)" }}>{detail.price} (Flat Rate)</td>
-                    <td style={{ padding: "1rem 1.2rem", color: "var(--text-muted)" }}>$1,000 – $1,350/mo</td>
-                  </tr>
-                  <tr style={{ borderBottom: "1px solid var(--border)" }}>
-                    <td style={{ padding: "1rem 1.2rem", fontWeight: 700 }}>U.S. Doctor Evaluation</td>
-                    <td style={{ padding: "1rem 1.2rem", fontWeight: 800, color: "var(--accent)" }}>✓ Included (100% Online)</td>
-                    <td style={{ padding: "1rem 1.2rem", color: "var(--text-muted)" }}>Separate Office Copay Required</td>
-                  </tr>
-                  <tr style={{ borderBottom: "1px solid var(--border)" }}>
-                    <td style={{ padding: "1rem 1.2rem", fontWeight: 700 }}>Syringes & Injection Supplies</td>
-                    <td style={{ padding: "1rem 1.2rem", fontWeight: 800, color: "var(--accent)" }}>✓ Free Cold-Chain Delivery</td>
-                    <td style={{ padding: "1rem 1.2rem", color: "var(--text-muted)" }}>Pharmacy Pickup Only</td>
-                  </tr>
-                  <tr style={{ borderBottom: "1px solid var(--border)" }}>
-                    <td style={{ padding: "1rem 1.2rem", fontWeight: 700 }}>24/7 AI Health & Habit Coach</td>
-                    <td style={{ padding: "1rem 1.2rem", fontWeight: 800, color: "var(--accent)" }}>✓ Included Free</td>
-                    <td style={{ padding: "1rem 1.2rem", color: "var(--text-muted)" }}>✕ Not Available</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </section>
-
-        {/* Doctor Advisory Board Feature */}
-        <section className="section" style={{ background: "var(--bg)" }}>
-          <div className="container">
-            <div style={{ display: "grid", gridTemplateColumns: "0.9fr 1.1fr", gap: "3.5rem", alignItems: "center" }}>
-              {/* Doctor Advisory Visual Component */}
-              <DoctorAdvisoryVisual />
 
               <div>
-                <span className="badge" style={{ marginBottom: "0.8rem" }}>PHYSICIAN-SUPERVISED CARE</span>
-                <h2 style={{ fontSize: "2.4rem", marginBottom: "1rem" }}>Guided by Board-Certified MDs</h2>
-                <p style={{ color: "var(--text-muted)", fontSize: "1.05rem", lineHeight: 1.7, marginBottom: "1.5rem" }}>
-                  Our medical directors evaluate your health profile, order necessary biomarker labs, and tailor your compounded dosage schedule for safe, long-term success.
+                <span className="badge" style={{ marginBottom: "0.8rem" }}>
+                  MEDICAL SUPERVISION
+                </span>
+                <h2
+                  style={{
+                    fontSize: "2.4rem",
+                    fontWeight: 900,
+                    marginBottom: "1rem",
+                  }}
+                >
+                  Board-Certified Physician Oversight
+                </h2>
+                <p
+                  style={{
+                    color: "var(--text-muted)",
+                    fontSize: "1.05rem",
+                    lineHeight: 1.65,
+                    marginBottom: "1.5rem",
+                  }}
+                >
+                  Every prescription is reviewed and approved by U.S.
+                  board-certified physicians, led by Medical Directors Dr.
+                  Michael Wasef, MD & Dr. Andrew Sakla, DO.
                 </p>
-                <div style={{ display: "flex", gap: "1rem" }}>
-                  <div style={{ background: "var(--surface)", border: "1px solid var(--border)", padding: "1rem 1.25rem", borderRadius: "0.85rem" }}>
-                    <strong style={{ display: "block", color: "var(--primary)", fontSize: "1.1rem" }}>Dr. Michael Wasef, MD</strong>
-                    <span style={{ fontSize: "0.82rem", color: "var(--accent)", fontWeight: 700 }}>Internal Medicine Director</span>
+
+                <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+                  <div
+                    style={{
+                      background: "var(--surface)",
+                      border: "1px solid var(--border)",
+                      borderRadius: "0.85rem",
+                      padding: "1rem",
+                      flex: 1,
+                    }}
+                  >
+                    <strong
+                      style={{
+                        display: "block",
+                        fontSize: "1.05rem",
+                        fontWeight: 800,
+                        color: "var(--primary)",
+                      }}
+                    >
+                      Dr. Michael Wasef, MD
+                    </strong>
+                    <span
+                      style={{
+                        fontSize: "0.82rem",
+                        color: "var(--accent)",
+                        fontWeight: 700,
+                      }}
+                    >
+                      Medical Director
+                    </span>
                   </div>
-                  <div style={{ background: "var(--surface)", border: "1px solid var(--border)", padding: "1rem 1.25rem", borderRadius: "0.85rem" }}>
-                    <strong style={{ display: "block", color: "var(--primary)", fontSize: "1.1rem" }}>Dr. Andrew Sakla, DO</strong>
-                    <span style={{ fontSize: "0.82rem", color: "var(--accent)", fontWeight: 700 }}>Regenerative Care Advisory</span>
+                  <div
+                    style={{
+                      background: "var(--surface)",
+                      border: "1px solid var(--border)",
+                      borderRadius: "0.85rem",
+                      padding: "1rem",
+                      flex: 1,
+                    }}
+                  >
+                    <strong
+                      style={{
+                        display: "block",
+                        fontSize: "1.05rem",
+                        fontWeight: 800,
+                        color: "var(--primary)",
+                      }}
+                    >
+                      Dr. Andrew Sakla, DO
+                    </strong>
+                    <span
+                      style={{
+                        fontSize: "0.82rem",
+                        color: "var(--accent)",
+                        fontWeight: 700,
+                      }}
+                    >
+                      Medical Director
+                    </span>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* High-Converting CTA Banner */}
-        <section className="cta">
-          <div className="container">
-            <div className="section-head">
-              <h2>Get Started with {detail.name} Today</h2>
-              <p>Answer a short medical intake questionnaire to connect with a licensed physician.</p>
-              <div style={{ marginTop: "2rem" }}>
-                <a href="/start" className="btn btn-primary" style={{ padding: "1.15rem 2.6rem", fontSize: "1.08rem" }}>
-                  Start Physician Assessment Now →
-                </a>
               </div>
             </div>
           </div>

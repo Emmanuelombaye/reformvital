@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { brandConfig } from "@/brand.config";
+import ScrollMotion from "@/components/motion/ScrollMotion";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -38,6 +39,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body>
+        <ScrollMotion />
         {children}
       </body>
     </html>

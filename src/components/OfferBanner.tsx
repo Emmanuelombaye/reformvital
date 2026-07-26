@@ -4,19 +4,21 @@ export default function OfferBanner() {
   if (!brandConfig.offerBanner.enabled) return null;
 
   return (
-    <aside className="promo" aria-label="Exclusive Telehealth Offer">
-      <div className="container promo-inner">
-        <div style={{ display: "inline-flex", flexWrap: "wrap", alignItems: "center", justifyContent: "center", gap: "0.4rem", lineHeight: 1.4 }}>
-          <strong style={{ color: "var(--accent-cyan)", letterSpacing: "0.04em", whiteSpace: "nowrap" }}>
-            {brandConfig.offerBanner.eyebrow}:
-          </strong>
-          <span>Use code <strong>{brandConfig.offerBanner.code}</strong> — {brandConfig.offerBanner.subtext}</span>
-        </div>
-        <a
-          href={brandConfig.offerBanner.ctaLink}
-          style={{ whiteSpace: "nowrap", flexShrink: 0 }}
-        >
-          {brandConfig.offerBanner.ctaText} →
+    <aside className="rv-promo" aria-label="Exclusive Telehealth Offer">
+      <div className="container rv-promo-inner">
+        <p className="rv-promo-copy">
+          <span className="rv-promo-eyebrow">{brandConfig.offerBanner.eyebrow}</span>
+          <span className="rv-promo-sep" aria-hidden>
+            ·
+          </span>
+          <span>
+            Use code <strong className="rv-promo-code">{brandConfig.offerBanner.code}</strong>
+            <span className="rv-promo-sub"> — {brandConfig.offerBanner.subtext}</span>
+          </span>
+        </p>
+        <a href={brandConfig.offerBanner.ctaLink} className="rv-promo-cta">
+          {brandConfig.offerBanner.ctaText}
+          <span aria-hidden>→</span>
         </a>
       </div>
     </aside>

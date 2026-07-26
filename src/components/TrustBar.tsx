@@ -1,19 +1,21 @@
-import React from "react";
 import { brandConfig } from "@/brand.config";
 
 export default function TrustBar() {
-  const items = [...brandConfig.trustProofs, ...brandConfig.trustProofs, ...brandConfig.trustProofs, ...brandConfig.trustProofs];
+  const items = brandConfig.trustProofs;
 
   return (
-    <div className="marquee" aria-label="Trust proofs">
-      <div className="container">
-        <ul className="marquee-track">
-          {items.map((proof, i) => (
-            <li key={i}>
-              <span>{proof.label}</span>
-            </li>
-          ))}
-        </ul>
+    <div className="rv-trust" aria-label="Trust signals">
+      <div className="container rv-trust-inner">
+        {items.map((proof) => (
+          <div key={proof.label} className="rv-trust-item">
+            <span
+              className="rv-trust-dot"
+              style={{ background: proof.color || "var(--accent)" }}
+              aria-hidden
+            />
+            <span>{proof.label}</span>
+          </div>
+        ))}
       </div>
     </div>
   );

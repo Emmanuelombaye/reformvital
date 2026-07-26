@@ -34,8 +34,8 @@ export const brandConfig = {
 
   // ──── Typography ────
   fonts: {
-    heading: "'Outfit', 'Inter', system-ui, sans-serif",
-    body: "'Inter', system-ui, sans-serif",
+    heading: "'Figtree', system-ui, sans-serif",
+    body: "'Figtree', system-ui, sans-serif",
   },
 
   // ──── Offer Banner ────
@@ -53,10 +53,9 @@ export const brandConfig = {
 
   // ──── Trust Proofs (Marquee) ────
   trustProofs: [
-    { label: "Licensed Medical Directors & U.S. Providers", icon: "shield", color: "#00A896" },
-    { label: "100% Online Physician Consultations", icon: "plus", color: "#00B4D8" },
-    { label: "50-State Certified Compounding Pharmacies", icon: "award", color: "#D4AF37" },
-    { label: "Free Expedited Cold-Chain Shipment", icon: "truck", color: "#00A896" },
+    { label: "Free Expedited Shipment", icon: "truck", color: "#B9A9FE" },
+    { label: "U.S. Licensed Pharmacies", icon: "award", color: "#00B4D8" },
+    { label: "Licensed Providers in all 50 States", icon: "shield", color: "#F59E0B" },
   ],
 
   // ──── Multi-Page Navigation ────
@@ -65,47 +64,48 @@ export const brandConfig = {
       { label: "Treatments", href: "/treatments" },
       { label: "Memberships", href: "/memberships" },
       { label: "How It Works", href: "/how-it-works" },
-      { label: "AI Health Coach", href: "/ai-coach" },
-      { label: "About Us", href: "/about" },
+      { label: "AI Coach", href: "/ai-coach" },
+      { label: "Resources", href: "/resources" },
+      { label: "About", href: "/about" },
       { label: "FAQ", href: "/faq" },
     ],
     ctaText: "Start Assessment",
     ctaLink: "/start",
-    loginText: "Patient Portal",
-    loginLink: "/start",
+    loginText: "Portal",
+    loginLink: "/portal",
     phone: "(561) 444-8793",
     email: "admin@reformvital.com",
   },
 
-  // ──── Stats (Yucca Style) ────
+  // ──── Stats ────
   stats: [
-    { value: "15,000+", label: "Active Patients Supervised Nationwide" },
     { value: "100%", label: "Licensed U.S. Medical Directors & MDs" },
-    { value: "4.9 / 5", label: "Excellent · 2,500+ Patient & Doctor Reviews" },
+    { value: "50 States", label: "Physician-Guided Telehealth Coverage" },
+    { value: "24/7", label: "AI Health Coach Between Visits" },
   ],
 
   // ──── Hero Section ────
   hero: {
     trustpilot: {
-      score: "4.9",
-      max: "5",
-      reviewsCount: "2,500+",
-      label: "Patient Satisfaction",
+      score: "Licensed",
+      max: "Care",
+      reviewsCount: "U.S.",
+      label: "Physician-Guided Telehealth",
     },
     dynamicWords: [
-      { text: "GLP-1 Weight Loss", color: "#FFFFFF", bg: "#00A896" },
-      { text: "Hormone Optimization (TRT)", color: "#FFFFFF", bg: "#00B4D8" },
-      { text: "Growth Hormone Peptides", color: "#0D1B2A", bg: "#D4AF37" },
-      { text: "Longevity & NAD+", color: "#FFFFFF", bg: "#0D1B2A" },
-      { text: "Recovery & Repair", color: "#FFFFFF", bg: "#00A896" },
+      { text: "Metabolic Reset", color: "#5EEAD4" },
+      { text: "Hormone Vitality", color: "#38BDF8" },
+      { text: "Peptide Therapy", color: "#FBBF24" },
+      { text: "Cellular Edge", color: "#A3E635" },
+      { text: "Vital Rebuild", color: "#C4B5FD" },
     ],
-    headline: "MODERN MEDICINE. PERSONALIZED HEALTH.",
-    subheadline: "REAL RESULTS.",
+    headline: "Physician-Guided Care",
+    subheadline: "designed around you.",
     description:
-      "Reform Vital combines licensed medical oversight, personalized treatment plans, AI-powered accountability, and compounding pharmacy delivery for measurable health outcomes.",
-    primaryCtaText: "Start Online Assessment",
-    primaryCtaNote: "*Prescriptions subject to U.S. physician approval",
-    secondaryCtaText: "View All Treatments",
+      "Licensed providers. Science-backed treatments. Fully online.",
+    primaryCtaText: "Begin Protocol",
+    primaryCtaNote: "Physician consult included · Semaglutide plan*",
+    secondaryCtaText: "Browse Care Menu",
     ctaLink: "/start",
     cardHighlight: {
       category: "PHYSICIAN-GUIDED METABOLIC PROGRAM",
@@ -121,9 +121,9 @@ export const brandConfig = {
       ctaText: "Begin Health Assessment",
     },
     socialProof: [
-      { value: "15,000+", label: "Patients Supervised\nNationwide" },
-      { value: "100%", label: "Licensed Medical\nDirectors & MDs" },
-      { rating: "4.9/5", ratingText: "Top Rated", label: "Physician & Patient\nReviews" },
+      { value: "100%", label: "Licensed U.S. medical directors" },
+      { value: "50 States", label: "Physician-guided telehealth care" },
+      { rating: "24/7", ratingText: "Always on", label: "AI coach between physician visits" },
     ],
   },
 
@@ -203,6 +203,16 @@ export const brandConfig = {
       subtitle: "Prescription topical & peptide formulations to stop hair loss and stimulate regrowth.",
       therapies: [
         { slug: "hair-restoration", name: "Hair Loss Evaluations & Protocols", desc: "Customized Minoxidil + Finasteride + GHK-Cu hair solution", price: "$79/mo" },
+      ],
+    },
+    {
+      id: "preventive",
+      title: "Metabolic Health & Preventive Wellness",
+      subtitle: "Advanced labs, metabolic assessments, nutrition guidance, body-composition tracking, and ongoing provider monitoring.",
+      therapies: [
+        { slug: "metabolic-panel", name: "Advanced Metabolic Lab Panel", desc: "Comprehensive biomarker testing with physician review", price: "$199" },
+        { slug: "preventive-wellness", name: "Preventive Wellness Program", desc: "Personalized optimization plan with lifestyle + lab monitoring", price: "$149/mo" },
+        { slug: "body-composition", name: "Body Composition & Progress Tracking", desc: "Ongoing measurements, photos, and metabolic trend coaching", price: "$79/mo" },
       ],
     },
   ],
@@ -304,7 +314,7 @@ export const brandConfig = {
       category: "Growth Hormone Optimization",
       price: "$189/mo",
       tagline: "Growth hormone secretagogue stimulating natural pituitary hGH secretion",
-      image: "/images/recovery_bpc157.png",
+      image: "/images/Sermorelin.png",
       badge: "HGH SECRETAGOGUE",
       description:
         "Sermorelin is a GHRH secretagogue that stimulates your pituitary gland to naturally produce and secrete human Growth Hormone (hGH), supporting deep sleep, fat burning, and skin elasticity.",
@@ -317,17 +327,326 @@ export const brandConfig = {
       clinicalTrial: "Proven to elevate IGF-1 levels safely in adult growth hormone deficiency trials.",
       howToUse: "Administer subcutaneously at bedtime prior to sleep.",
     },
+    "retatrutide": {
+      name: "Retatrutide (Reta) Protocol",
+      category: "Medical Weight Loss",
+      price: "Custom",
+      tagline: "Triple GIP / GLP-1 / Glucagon agonist research protocol for advanced metabolic reset",
+      image: "/images/Tirzepatide.png",
+      badge: "ADVANCED METABOLIC",
+      description:
+        "Retatrutide is an investigational-style triple-agonist pathway protocol evaluated by Reform Vital physicians for patients who need intensified metabolic support beyond dual GLP-1/GIP therapy.",
+      features: [
+        "Physician evaluation for advanced metabolic candidacy",
+        "Triple-pathway appetite and energy regulation focus",
+        "Custom dosing roadmap with close clinical follow-up",
+        "Cold-chain pharmacy fulfillment when prescribed",
+      ],
+      clinicalTrial: "Early research on triple agonists has shown substantial body-weight reduction potential under medical supervision.",
+      howToUse: "Dosing schedule is individualized and confirmed by your prescribing physician.",
+    },
+    "womens-hormones": {
+      name: "Women's Hormone Optimization",
+      category: "Hormone Optimization",
+      price: "$119/mo",
+      tagline: "Physician-guided progesterone, estradiol, and low-dose testosterone balancing",
+      image: "/images/TRTTestosterone.png",
+      badge: "WOMEN'S HRT",
+      description:
+        "A clinician-led hormone protocol designed for women navigating perimenopause, menopause, low energy, mood shifts, or libido changes—with labs informing a personalized prescription plan.",
+      features: [
+        "Comprehensive hormone symptom and history review",
+        "Lab-informed progesterone, estradiol, and low-dose testosterone options",
+        "Ongoing provider titration for comfort and safety",
+        "AI coach support for sleep, stress, and lifestyle adherence",
+      ],
+      clinicalTrial: "Hormone optimization under medical supervision can improve energy, sleep quality, and sexual wellness markers.",
+      howToUse: "Administer as directed by your physician based on formulation (cream, capsule, or injectable).",
+    },
+    "hcg-enclomiphene": {
+      name: "HCG & Enclomiphene Protocol",
+      category: "Hormone Optimization",
+      price: "$99/mo",
+      tagline: "Endogenous LH/FSH stimulation for fertility-minded hormone support",
+      image: "/images/TRTTestosterone.png",
+      badge: "FERTILITY SUPPORT",
+      description:
+        "HCG and Enclomiphene protocols help stimulate natural LH/FSH signaling—often used alongside TRT strategies when preserving endogenous production and fertility goals matter.",
+      features: [
+        "Physician review of fertility and hormone goals",
+        "HCG and/or Enclomiphene pathways when clinically appropriate",
+        "Lab monitoring to guide titration",
+        "Coordinated with broader hormone optimization plans",
+      ],
+      clinicalTrial: "Selective estrogen receptor modulators and HCG are used clinically to support endogenous testosterone pathways.",
+      howToUse: "Inject or dose orally as prescribed; timing depends on your physician protocol.",
+    },
+    "tesamorelin": {
+      name: "Tesamorelin",
+      category: "Growth Hormone Optimization",
+      price: "$229/mo",
+      tagline: "Potent GHRH analog targeting visceral abdominal fat and body composition",
+      image: "/images/Sermorelin.png",
+      badge: "VISCERAL FAT FOCUS",
+      description:
+        "Tesamorelin is a growth-hormone-releasing hormone analog used in physician-guided protocols aimed at reducing visceral adipose tissue while supporting recovery and metabolic composition.",
+      features: [
+        "Targets visceral fat reduction pathways",
+        "Supports lean composition goals under medical care",
+        "Nightly administration with provider dosing guidance",
+        "Includes pharmacy shipping and follow-up check-ins",
+      ],
+      clinicalTrial: "Tesamorelin has been studied for reductions in visceral adipose tissue in clinical settings.",
+      howToUse: "Administer subcutaneously once daily as directed, typically in the evening.",
+    },
+    "cjc-ipamorelin": {
+      name: "CJC-1295 / Ipamorelin Blend",
+      category: "Growth Hormone Optimization",
+      price: "$199/mo",
+      tagline: "Synergistic GHRH + GHRP peptide combination for recovery and sleep",
+      image: "/images/Sermorelin.png",
+      badge: "PEPTIDE BLEND",
+      description:
+        "This blend pairs a GHRH analog with Ipamorelin to encourage natural growth-hormone pulses—commonly used for recovery, sleep quality, and body-composition support.",
+      features: [
+        "Synergistic GHRH + GHRP signaling",
+        "Supports recovery and overnight restoration",
+        "Physician-set dosing frequency",
+        "Sterile supplies and cold-chain shipping included",
+      ],
+      clinicalTrial: "GHRH/GHRP combinations are studied for stimulating physiologic GH release patterns.",
+      howToUse: "Typically injected subcutaneously 1–2 times daily or at bedtime per physician instructions.",
+    },
+    "tb-500": {
+      name: "TB-500 (Thymosin Beta-4)",
+      category: "Recovery & Repair",
+      price: "$169/mo",
+      tagline: "Angiogenesis and muscle-repair peptide for soft-tissue recovery",
+      image: "/images/Recovery & Tissue.png",
+      badge: "RECOVERY PEPTIDE",
+      description:
+        "TB-500 is a synthetic fragment related to Thymosin Beta-4 used in regenerative protocols focused on mobility, soft-tissue repair, and recovery after strain.",
+      features: [
+        "Supports angiogenesis and tissue remodeling pathways",
+        "Often paired with BPC-157 in recovery stacks",
+        "Physician oversight for dosing and duration",
+        "Compounded and shipped from licensed U.S. pharmacies",
+      ],
+      clinicalTrial: "Thymosin Beta-4 research explores roles in cell migration and tissue repair.",
+      howToUse: "Inject subcutaneously on the schedule prescribed by your clinician.",
+    },
+    "kpv": {
+      name: "KPV Tripeptide",
+      category: "Recovery & Repair",
+      price: "$139/mo",
+      tagline: "Anti-inflammatory tripeptide targeting gut comfort and systemic calm",
+      image: "/images/Recovery & Tissue.png",
+      badge: "GUT & INFLAMMATION",
+      description:
+        "KPV is a short anti-inflammatory peptide used in physician-guided protocols aimed at gut mucosal support and calming inflammatory signaling.",
+      features: [
+        "Focus on inflammation and gut comfort pathways",
+        "Compatible with broader recovery protocols",
+        "Oral or injectable options when prescribed",
+        "Ongoing AI coach lifestyle and symptom logging",
+      ],
+      clinicalTrial: "KPV has been researched for anti-inflammatory activity in mucosal and systemic models.",
+      howToUse: "Take or inject exactly as directed on your physician dosing card.",
+    },
+    "mots-c": {
+      name: "MOTS-c Mitochondrial Peptide",
+      category: "Longevity & Healthy Aging",
+      price: "$189/mo",
+      tagline: "Mitochondrial-derived peptide for metabolic endurance and cellular efficiency",
+      image: "/images/NAD+ Cellular.png",
+      badge: "MITOCHONDRIAL",
+      description:
+        "MOTS-c is a mitochondrial-encoded peptide protocol used to support metabolic flexibility, exercise endurance signaling, and cellular energy efficiency under medical guidance.",
+      features: [
+        "Targets mitochondrial metabolic signaling",
+        "Supports endurance and energy goals",
+        "Pairs well with NAD+ longevity protocols",
+        "Physician evaluation and pharmacy fulfillment included",
+      ],
+      clinicalTrial: "MOTS-c research explores metabolic regulation and exercise-related adaptations.",
+      howToUse: "Administer subcutaneously on your prescribed weekly or multi-weekly schedule.",
+    },
+    "ghk-cu": {
+      name: "GHK-Cu Copper Peptide",
+      category: "Longevity & Healthy Aging",
+      price: "$149/mo",
+      tagline: "Copper peptide for cellular remodeling, skin vitality, and recovery support",
+      image: "/images/NAD+ Cellular.png",
+      badge: "CELLULAR REMODELING",
+      description:
+        "GHK-Cu is a copper-binding tripeptide used in longevity and restorative protocols for cellular remodeling, skin quality, and tissue support.",
+      features: [
+        "Supports collagen and tissue remodeling pathways",
+        "Used in longevity and hair/skin-adjacent protocols",
+        "Physician-directed dosing and duration",
+        "Licensed compounding pharmacy fulfillment",
+      ],
+      clinicalTrial: "GHK-Cu has been studied for wound healing and regenerative gene-expression effects.",
+      howToUse: "Inject or apply as prescribed depending on your compounded formulation.",
+    },
+    "semax": {
+      name: "Semax Neuropeptide",
+      category: "Cognitive Optimization",
+      price: "$149/mo",
+      tagline: "ACTH-derived neuropeptide supporting BDNF pathways, focus, and mental clarity",
+      image: "/images/Neuropeptide.png",
+      badge: "FOCUS & BDNF",
+      description:
+        "Semax is a neuropeptide protocol used under physician guidance to support focus, cognitive resilience, and neurotrophic signaling.",
+      features: [
+        "Cognitive focus and mental clarity support",
+        "Nasal or injectable routes when prescribed",
+        "Pairs with Selank for calm focus stacks",
+        "Provider oversight with AI coach habit tracking",
+      ],
+      clinicalTrial: "Semax research explores neurotrophic and cognitive-performance pathways.",
+      howToUse: "Use intranasally or as otherwise directed by your prescribing clinician.",
+    },
+    "selank": {
+      name: "Selank Anxiolytic Peptide",
+      category: "Cognitive Optimization",
+      price: "$149/mo",
+      tagline: "Calm-focus peptide supporting stress resilience without heavy sedation",
+      image: "/images/Neuropeptide.png",
+      badge: "CALM FOCUS",
+      description:
+        "Selank is used in physician-guided cognitive protocols to promote calm focus and stress mitigation while supporting everyday mental performance.",
+      features: [
+        "Stress resilience and calm focus support",
+        "Often stacked with Semax when appropriate",
+        "Physician titration for comfort",
+        "Lifestyle coaching via Reform Vital AI Coach",
+      ],
+      clinicalTrial: "Selank has been studied for anxiolytic and cognitive-modulating properties.",
+      howToUse: "Administer intranasally or per your physician’s written instructions.",
+    },
+    "pt-141": {
+      name: "PT-141 (Bremelanotide)",
+      category: "Sexual Wellness",
+      price: "$139/mo",
+      tagline: "Central nervous system peptide for desire and arousal pathway support",
+      image: "/images/Bremelanotide.png",
+      badge: "LIBIDO SUPPORT",
+      description:
+        "PT-141 (bremelanotide) acts on melanocortin pathways in the central nervous system and is prescribed for patients seeking physician-guided sexual desire and arousal support.",
+      features: [
+        "CNS-targeted desire pathway support",
+        "As-needed or protocol-based dosing options",
+        "Confidential online physician evaluation",
+        "Discreet pharmacy shipping included",
+      ],
+      clinicalTrial: "Bremelanotide is an FDA-studied melanocortin agonist for hypoactive sexual desire in appropriate patients.",
+      howToUse: "Inject subcutaneously as directed before anticipated activity, per physician guidance.",
+    },
+    "tadalafil": {
+      name: "Tadalafil / Sildenafil",
+      category: "Sexual Wellness",
+      price: "$69/mo",
+      tagline: "Daily or PRN vascular flow optimization for sexual performance",
+      image: "/images/Bremelanotide.png",
+      badge: "VASCULAR SUPPORT",
+      description:
+        "PDE5 inhibitor protocols (tadalafil or sildenafil) improve blood-flow signaling for sexual performance and may be prescribed daily or as-needed after clinical screening.",
+      features: [
+        "Daily low-dose or PRN options",
+        "Physician screening for cardiovascular safety",
+        "Transparent flat monthly membership pricing",
+        "Fast discreet fulfillment",
+      ],
+      clinicalTrial: "PDE5 inhibitors are extensively studied for erectile function and vascular performance.",
+      howToUse: "Take orally as prescribed—timing depends on daily vs on-demand protocols.",
+    },
+    "hair-restoration": {
+      name: "Prescription Hair Restoration",
+      category: "Hair Restoration",
+      price: "$79/mo",
+      tagline: "Custom Minoxidil + Finasteride + GHK-Cu protocols for denser, healthier hair",
+      image: "/images/Minoxidil.png",
+      badge: "HAIR PROTOCOL",
+      description:
+        "A compounded hair-restoration plan combining proven actives and peptide support, tailored after an online physician evaluation of pattern loss and scalp goals.",
+      features: [
+        "Custom topical formulations when prescribed",
+        "Minoxidil / finasteride pathways with peptide support",
+        "Progress photo guidance via AI coach",
+        "Flat-rate membership with free shipping",
+      ],
+      clinicalTrial: "Minoxidil and finasteride remain cornerstone therapies in androgenetic alopecia research.",
+      howToUse: "Apply topical solution or take oral components exactly as labeled by your clinician.",
+    },
+    "metabolic-panel": {
+      name: "Advanced Metabolic Lab Panel",
+      category: "Metabolic Health & Preventive Wellness",
+      price: "$199",
+      tagline: "Physician-reviewed biomarker testing for metabolic, hormone, and longevity baselines",
+      image: "/images/NAD+ Cellular.png",
+      badge: "LAB FOUNDATION",
+      description:
+        "A comprehensive metabolic lab panel designed to establish your baseline—glucose markers, lipids, key hormones, and inflammation signals—reviewed by a Reform Vital physician before any protocol begins.",
+      features: [
+        "Advanced biomarker panel with physician interpretation",
+        "Clear next-step recommendations for therapy or lifestyle",
+        "Results summarized in your patient dashboard",
+        "Optional follow-up panels for progress tracking",
+      ],
+      clinicalTrial: "Lab-informed care improves personalization and safety for metabolic and hormone protocols.",
+      howToUse: "Complete your ordered labs at a partner draw site; your physician reviews results online.",
+    },
+    "preventive-wellness": {
+      name: "Preventive Wellness Program",
+      category: "Metabolic Health & Preventive Wellness",
+      price: "$149/mo",
+      tagline: "Personalized metabolic optimization with nutrition, lifestyle, and ongoing provider monitoring",
+      image: "/images/NAD+ Cellular.png",
+      badge: "PREVENTIVE CARE",
+      description:
+        "A physician-guided preventive program combining metabolic assessments, nutrition and lifestyle guidance, and continuous monitoring—so you optimize health before problems escalate.",
+      features: [
+        "Metabolic health assessment and goal mapping",
+        "Nutritional and lifestyle protocol from your care team",
+        "Monthly provider monitoring and plan adjustments",
+        "24/7 AI coach for habits, protein, sleep, and hydration",
+      ],
+      clinicalTrial: "Preventive, continuous-care models improve adherence and early detection of metabolic risk.",
+      howToUse: "Complete onboarding assessment, follow your personalized plan, and check in via portal and AI coach.",
+    },
+    "body-composition": {
+      name: "Body Composition & Progress Tracking",
+      category: "Metabolic Health & Preventive Wellness",
+      price: "$79/mo",
+      tagline: "Measurements, progress photos, and metabolic trend coaching between visits",
+      image: "/images/NAD+ Cellular.png",
+      badge: "TRACK & THRIVE",
+      description:
+        "Stay accountable with structured body-composition tracking—measurements, progress photos, and trend insights—reviewed alongside your physician plan and AI coach.",
+      features: [
+        "Guided measurement and progress-photo workflows",
+        "Weight, waist, and composition trend summaries",
+        "AI coach reminders and weekly progress digests",
+        "Provider visibility into your trajectory between visits",
+      ],
+      clinicalTrial: "Regular measurement and feedback loops improve long-term metabolic outcomes.",
+      howToUse: "Log measurements weekly in your portal; review trends with your coach and clinician.",
+    },
   },
 
   // ──── Membership Tier Programs ────
   memberships: [
     {
       id: "essentials",
-      name: "Essentials Plan",
+      name: "Essentials",
+      focus: "Medical Weight Loss",
       badge: "CORE CARE",
       price: "$149",
       period: "/month",
-      desc: "Ideal for patients beginning a single physician-guided therapy.",
+      monthlyPrice: 149,
+      quarterlyPrice: 119,
+      desc: "Ideal for patients beginning a single physician-guided therapy—GLP-1 weight loss or foundational care.",
       features: [
         "Licensed U.S. Physician Consultation",
         "Prescription Management & Refills",
@@ -340,11 +659,14 @@ export const brandConfig = {
     },
     {
       id: "performance",
-      name: "Performance Plan",
+      name: "Performance",
+      focus: "TRT & Metabolic Stacking",
       badge: "MOST POPULAR",
       price: "$249",
       period: "/month",
-      desc: "Comprehensive metabolic health, peptide stacking & monthly provider guidance.",
+      monthlyPrice: 249,
+      quarterlyPrice: 199,
+      desc: "Comprehensive metabolic health, hormone optimization, peptide stacking & monthly provider guidance.",
       features: [
         "Everything in Essentials",
         "Comprehensive Blood Panel & Lab Review",
@@ -358,11 +680,14 @@ export const brandConfig = {
     },
     {
       id: "elite",
-      name: "Elite Concierge Plan",
+      name: "Elite Concierge",
+      focus: "Longevity & Executive Care",
       badge: "EXECUTIVE",
       price: "$399",
       period: "/month",
-      desc: "White-glove personalized optimization, advanced lab analysis & direct provider access.",
+      monthlyPrice: 399,
+      quarterlyPrice: 319,
+      desc: "White-glove longevity optimization, advanced labs, multi-peptide protocols & direct medical director access.",
       features: [
         "Everything in Performance",
         "Advanced Genetic & Hormone Lab Panels",
@@ -451,23 +776,38 @@ export const brandConfig = {
   faqs: [
     {
       question: "What makes Reform Vital different from standard telehealth providers?",
-      answer: "Reform Vital combines licensed medical doctor oversight, personalized peptide/GLP-1 treatment plans, 24/7 AI accountability coaching, and full health metric tracking rather than just selling standard products.",
+      answer:
+        "Reform Vital combines licensed medical doctor oversight, personalized peptide/GLP-1 treatment plans, 24/7 AI accountability coaching, and full health metric tracking—rather than simply selling products online.",
     },
     {
       question: "Do I need insurance for Reform Vital programs?",
-      answer: "No insurance is needed! We offer transparent, flat-rate monthly memberships with no hidden co-pays or surprise medical bills.",
+      answer:
+        "No insurance is required. We offer transparent, flat-rate monthly memberships with physician consultation and pharmacy fulfillment included—no hidden co-pays or surprise medical bills.",
     },
     {
       question: "Are your medications compounded in certified pharmacies?",
-      answer: "Yes. All prescriptions are compounded in state-licensed, 50-state certified U.S. compounding pharmacies adhering to strict quality standards.",
+      answer:
+        "Yes. Prescriptions are compounded in state-licensed, 50-state certified U.S. compounding pharmacies that follow strict quality standards. Medications ship only after physician approval.",
     },
     {
       question: "How does the AI Health Coach work?",
-      answer: "Your AI Coach acts as a 24/7 accountability partner. It tracks your daily protein, water intake, sleep, and weight metrics, providing habit guidance between physician check-ins.",
+      answer:
+        "Your AI Coach is a 24/7 accountability partner between physician visits. It helps track protein, hydration, sleep, and weight trends and keeps you on protocol—without diagnosing or replacing your clinician.",
     },
     {
       question: "Can I transition between GLP-1 or peptide therapies?",
-      answer: "Yes! Your licensed provider will adjust your treatment protocol (such as moving from Semaglutide to Tirzepatide or adding BPC-157) based on your progress and lab results.",
+      answer:
+        "Yes. Your licensed provider can adjust your protocol—such as moving from Semaglutide to Tirzepatide or adding recovery peptides—based on your progress, labs, and clinical judgment.",
+    },
+    {
+      question: "How fast will my medication arrive?",
+      answer:
+        "Once your physician approves a prescription, compounded medication is fulfilled by licensed pharmacies and shipped cold-chain in discreet packaging—typically with expedited delivery options included in membership.",
+    },
+    {
+      question: "Is there a patient portal for tracking progress?",
+      answer:
+        "Yes. The Reform Vital Patient Portal is where you’ll manage goals, metrics, and AI coach check-ins between visits. Start with an online assessment to begin clinical onboarding and portal access.",
     },
   ],
 
@@ -507,3 +847,22 @@ export const brandConfig = {
 };
 
 export type BrandConfig = typeof brandConfig;
+
+export type TreatmentDetail =
+  (typeof brandConfig.treatmentDetails)[keyof typeof brandConfig.treatmentDetails];
+
+export function getAllTreatmentSlugs(): string[] {
+  const fromServices = brandConfig.services.flatMap((s) =>
+    s.therapies.map((t) => t.slug),
+  );
+  const fromDetails = Object.keys(brandConfig.treatmentDetails);
+  return Array.from(new Set([...fromServices, ...fromDetails]));
+}
+
+export function resolveTreatmentDetail(slug: string): TreatmentDetail | null {
+  const detail =
+    brandConfig.treatmentDetails[
+      slug as keyof typeof brandConfig.treatmentDetails
+    ];
+  return detail ?? null;
+}
