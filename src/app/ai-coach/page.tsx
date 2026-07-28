@@ -6,6 +6,11 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import styles from "./page.module.css";
 
+// Static image imports for instant automatic blur placeholders
+import aiCoachDashboard from "../../../public/images/ai_coach_dashboard.png";
+import aiCoachPatient from "../../../public/images/ai_coach_patient.png";
+import aiCoachDoctor from "../../../public/images/ai_coach_doctor.png";
+
 const chatDemoPrompts = [
   {
     label: "💊 Log Weekly Dose",
@@ -31,7 +36,7 @@ const coachPillars = [
     description:
       "Your AI coach learns your protocol cadence and sends non-intrusive nudges when it is time to log injections, protein targets, hydration, and movement.",
     proof: "98.4% adherence lift across active members",
-    image: "/images/ai_coach_dashboard.png",
+    image: aiCoachDashboard,
     alt: "AI coach dashboard with adherence and macro tracking",
   },
   {
@@ -40,7 +45,7 @@ const coachPillars = [
     description:
       "Members get immediate guidance on injection timing, symptom logs, nutrition tradeoffs, and protocol check-ins without waiting for office hours.",
     proof: "Evidence-aligned responses tuned to provider plans",
-    image: "/images/ai_coach_patient.png",
+    image: aiCoachPatient,
     alt: "Patient checking AI coach messages on smartphone",
   },
   {
@@ -49,7 +54,7 @@ const coachPillars = [
     description:
       "Weight, blood pressure, dosing consistency, and symptoms are turned into concise provider reports so your medical team can optimize your plan faster.",
     proof: "Structured reporting synchronized with follow-up care",
-    image: "/images/ai_coach_doctor.png",
+    image: aiCoachDoctor,
     alt: "Physician reviewing patient biomarker report dashboard",
   },
 ];
@@ -266,6 +271,7 @@ export default function AICoachPage() {
                       fill
                       sizes="(max-width: 900px) 100vw, 33vw"
                       style={{ objectFit: "cover" }}
+                      placeholder="blur"
                     />
                     <span className={styles.featureBadge}>{pillar.badge}</span>
                   </div>

@@ -7,6 +7,8 @@ const nextConfig: NextConfig = {
   },
   images: {
     qualities: [75, 85, 90],
+    formats: ["image/avif", "image/webp"],
+    minimumCacheTTL: 2678400, // 31 days
   },
   allowedDevOrigins: ["127.0.0.1", "localhost"],
 };
