@@ -73,7 +73,7 @@ export const brandConfig = {
     ctaLink: "/start",
     loginText: "Portal",
     loginLink: "/portal",
-    phone: "(561) 444-8793",
+    phone: "(786) 651-2127",
     email: "admin@reformvital.com",
   },
 
