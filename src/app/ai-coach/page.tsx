@@ -186,6 +186,34 @@ const coachFaqs = [
   }
 ];
 
+interface SmoothImageProps {
+  src: any;
+  alt: string;
+  fill?: boolean;
+  sizes?: string;
+  style?: React.CSSProperties;
+  placeholder?: "blur" | "empty";
+}
+
+function SmoothImage({ src, alt, fill, sizes, style, placeholder }: SmoothImageProps) {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  return (
+    <div className={`${styles.imageWrapper} ${isLoaded ? styles.imageWrapperLoaded : ""}`}>
+      <Image
+        src={src}
+        alt={alt}
+        fill={fill}
+        sizes={sizes}
+        style={style}
+        placeholder={placeholder}
+        onLoad={() => setIsLoaded(true)}
+        className={`${styles.smoothImage} ${isLoaded ? styles.smoothImageLoaded : ""}`}
+      />
+    </div>
+  );
+}
+
 export default function AICoachPage() {
   const [selectedPromptIndex, setSelectedPromptIndex] = useState(0);
   const [activeMetricId, setActiveMetricId] = useState("dose");
@@ -265,7 +293,7 @@ export default function AICoachPage() {
               {coachPillars.map((pillar) => (
                 <article key={pillar.title} className={styles.featureCard}>
                   <div className={styles.featureImageWrap}>
-                    <Image
+                    <SmoothImage
                       src={pillar.image}
                       alt={pillar.alt}
                       fill
@@ -336,7 +364,7 @@ export default function AICoachPage() {
               </div>
 
               {/* Content Panel */}
-              <div className={styles.metricsContent}>
+              <div className={styles.metricsContent} key={activeMetricId}>
                 <div className={styles.metricsContentHeader}>
                   <span className={styles.metricsContentIcon}>{activeMetric.icon}</span>
                   <h3>{activeMetric.title}</h3>
@@ -484,7 +512,7 @@ export default function AICoachPage() {
                 </div>
                 <span className={styles.chatStatus}>24/7 ACTIVE</span>
               </div>
-              <div className={styles.chatThread}>
+              <div className={styles.chatThread} key={selectedPromptIndex}>
                 <div className={styles.userBubble}>
                   <span>YOU (PATIENT)</span>
                   <p>{activeDemo.userText}</p>
