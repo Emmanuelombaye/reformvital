@@ -17,9 +17,30 @@ export default function StartAssessmentPage() {
           <div className="container" style={{ maxWidth: "42rem" }}>
             <div style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: "var(--radius)", padding: "2.5rem", boxShadow: "var(--shadow-hover)" }}>
               {/* Progress Indicator */}
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "2rem", borderBottom: "1px solid var(--border)", paddingBottom: "1rem" }}>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "2rem", borderBottom: "1px solid var(--border)", paddingBottom: "1rem", gap: "1rem", flexWrap: "wrap" }}>
                 <span className="badge">PHYSICIAN INTAKE QUESTIONNAIRE</span>
-                <span style={{ fontWeight: 800, color: "var(--accent)" }}>Step {step} of 3</span>
+                <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }} aria-label={`Step ${step} of 3`}>
+                  {[1, 2, 3].map((n) => (
+                    <span
+                      key={n}
+                      className="rv-step-num"
+                      style={{
+                        width: "1.85rem",
+                        height: "1.85rem",
+                        minWidth: "1.85rem",
+                        minHeight: "1.85rem",
+                        maxWidth: "1.85rem",
+                        maxHeight: "1.85rem",
+                        flex: "0 0 1.85rem",
+                        fontSize: "0.8rem",
+                        background: n <= step ? "var(--accent)" : "var(--border)",
+                        color: n <= step ? "#fff" : "var(--text-muted)",
+                      }}
+                    >
+                      {n}
+                    </span>
+                  ))}
+                </div>
               </div>
 
               {step === 1 && (

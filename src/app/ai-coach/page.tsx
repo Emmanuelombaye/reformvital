@@ -61,17 +61,17 @@ const coachPillars = [
 
 const workflow = [
   {
-    step: "Step 1",
+    step: 1,
     title: "Connect Baseline and Goals",
     description: "We capture your intake, labs, protocol goals, and preferred check-in rhythm in under two minutes.",
   },
   {
-    step: "Step 2",
+    step: 2,
     title: "Coach Runs Daily Accountability",
     description: "You receive smart reminders, daily scorecards, and practical recommendations based on your current phase.",
   },
   {
-    step: "Step 3",
+    step: 3,
     title: "Doctors Review Trends, Not Guesswork",
     description: "Your provider sees clean summaries and trend deltas before each follow-up for more precise decisions.",
   },
@@ -208,6 +208,7 @@ function SmoothImage({ src, alt, fill, sizes, style, placeholder }: SmoothImageP
         style={style}
         placeholder={placeholder}
         onLoad={() => setIsLoaded(true)}
+        onError={() => setIsLoaded(true)}
         className={`${styles.smoothImage} ${isLoaded ? styles.smoothImageLoaded : ""}`}
       />
     </div>
@@ -325,7 +326,9 @@ export default function AICoachPage() {
             <div className={styles.workflowGrid}>
               {workflow.map((item) => (
                 <div key={item.title} className={styles.workflowCard}>
-                  <span className={styles.workflowStep}>{item.step}</span>
+                  <span className={`rv-step-num ${styles.workflowStep}`} aria-hidden="true">
+                    {item.step}
+                  </span>
                   <h3>{item.title}</h3>
                   <p>{item.description}</p>
                 </div>

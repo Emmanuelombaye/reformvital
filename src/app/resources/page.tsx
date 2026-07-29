@@ -142,10 +142,7 @@ export default function ResourcesPage() {
     <>
       <Navbar />
       <main className="rv-resources">
-        <section
-          className="rv-resources-hero"
-          data-animate="rise"
-        >
+        <section className="rv-resources-hero">
           <div className="container">
             <span className="badge" style={{ marginBottom: "0.85rem" }}>
               EDUCATION LIBRARY
@@ -164,7 +161,7 @@ export default function ResourcesPage() {
           </div>
         </section>
 
-        <section className="section rv-resources-featured" data-animate="rise">
+        <section className="section rv-resources-featured">
           <div className="container">
             <div className="section-head" style={{ marginBottom: "2rem" }}>
               <h2 style={{ fontSize: "clamp(1.6rem, 3vw, 2rem)", marginBottom: "0.45rem" }}>
@@ -199,7 +196,7 @@ export default function ResourcesPage() {
           </div>
         </section>
 
-        <section id="videos" className="section rv-resources-videos" data-animate="rise">
+        <section id="videos" className="section rv-resources-videos">
           <div className="container">
             <div className="section-head" style={{ marginBottom: "2rem" }}>
               <h2 style={{ fontSize: "clamp(1.6rem, 3vw, 2rem)", marginBottom: "0.45rem" }}>
@@ -243,7 +240,7 @@ export default function ResourcesPage() {
           </div>
         </section>
 
-        <section id="library" className="section rv-resources-library" data-animate="rise">
+        <section id="library" className="section rv-resources-library">
           <div className="container">
             <div className="section-head" style={{ marginBottom: "2rem" }}>
               <h2 style={{ fontSize: "clamp(1.6rem, 3vw, 2rem)", marginBottom: "0.45rem" }}>
@@ -278,7 +275,7 @@ export default function ResourcesPage() {
           </div>
         </section>
 
-        <section id="external" className="section rv-resources-external" data-animate="rise">
+        <section id="external" className="section rv-resources-external">
           <div className="container">
             <div className="section-head" style={{ marginBottom: "2rem" }}>
               <h2 style={{ fontSize: "clamp(1.6rem, 3vw, 2rem)", marginBottom: "0.45rem" }}>

@@ -382,13 +382,21 @@ export default function MembershipTiers() {
                     }}
                   >
                     <span
+                      className="rv-step-num"
+                      aria-hidden="true"
                       style={{
-                        fontSize: "0.75rem",
-                        fontWeight: 900,
-                        color: isActive ? "var(--accent-cyan)" : "rgba(255,255,255,0.6)",
+                        background: isActive ? "var(--accent)" : "rgba(255,255,255,0.18)",
+                        width: "2rem",
+                        height: "2rem",
+                        minWidth: "2rem",
+                        minHeight: "2rem",
+                        maxWidth: "2rem",
+                        maxHeight: "2rem",
+                        flex: "0 0 2rem",
+                        fontSize: "0.85rem",
                       }}
                     >
-                      STEP {s.step}
+                      {Number(s.step)}
                     </span>
                     <span
                       style={{

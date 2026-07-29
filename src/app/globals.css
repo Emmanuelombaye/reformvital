@@ -1061,15 +1061,23 @@ h1, h2, h3, h4, h5, h6 {
   right: -0.15rem;
   bottom: -0.15rem;
   z-index: 2;
-  width: 2.4rem;
-  height: 2.4rem;
+  box-sizing: border-box;
+  width: 2.25rem;
+  height: 2.25rem;
+  min-width: 2.25rem;
+  min-height: 2.25rem;
+  aspect-ratio: 1 / 1;
   border-radius: 50%;
-  display: grid;
-  place-items: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background: var(--step-accent, var(--accent));
   color: #fff;
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 900;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  overflow: hidden;
   box-shadow: 0 8px 18px rgba(13, 27, 42, 0.22);
   border: 3px solid #fff;
 }
@@ -1447,6 +1455,31 @@ h1, h2, h3, h4, h5, h6 {
   .rv-faq-index {
     display: none;
   }
+}
+
+/* ── Treatment page step numbers (perfect circles) ── */
+.rv-step-num {
+  box-sizing: border-box;
+  flex: 0 0 2.25rem;
+  width: 2.25rem;
+  height: 2.25rem;
+  min-width: 2.25rem;
+  min-height: 2.25rem;
+  max-width: 2.25rem;
+  max-height: 2.25rem;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0;
+  font-variant-numeric: tabular-nums;
+  overflow: hidden;
 }
 
 /* ── Tabs Component ── */
@@ -1873,6 +1906,15 @@ h1, h2, h3, h4, h5, h6 {
 .rv-motion-on .rv-reveal:not(.is-inview) {
   opacity: 0;
   transform: translate3d(0, 48px, 0);
+  animation: rvRevealFailsafe 4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes rvRevealFailsafe {
+  0%, 80% { opacity: 0; }
+  100% {
+    opacity: 1;
+    transform: perspective(1000px) translate3d(0, 0, 0) rotateX(0) rotateY(0) scale(1);
+  }
 }
 
 .rv-reveal {
@@ -1921,6 +1963,7 @@ h1, h2, h3, h4, h5, h6 {
 .rv-reveal.is-inview {
   opacity: 1;
   transform: perspective(1000px) translate3d(0, 0, 0) rotateX(0) rotateY(0) scale(1);
+  animation: none;
 }
 
 .rv-reveal[data-animate="bounce"].is-inview {

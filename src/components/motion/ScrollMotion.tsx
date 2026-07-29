@@ -2,6 +2,9 @@
 
 import { useEffect } from "react";
 
+const MAX_REVEAL_DELAY_MS = 400;
+const FAILSAFE_REVEAL_MS = 2500;
+
 /**
  * Site-wide premium motion engine:
  * scroll reveals · 3D tilt · magnetic hover · nav polish · page enter
@@ -40,9 +43,10 @@ export default function ScrollMotion() {
     const skipClosest =
       "#qualify, header, .promo, .nav, .rv-scroll-progress, .rv-float-orb, .rv-cursor-glow, .rv-treatments-dropdown";
 
+    // Never animate whole page sections — tall blocks at opacity:0 look blank.
+    const skipRevealTags = new Set(["SECTION", "MAIN"]);
+
     const autoSelectors = [
-      "main > section",
-      "main .section",
       ".section-head",
       ".rv-how-step",
       ".rv-faq-item",
@@ -64,7 +68,6 @@ export default function ScrollMotion() {
       ".offer-card",
       "main article",
       "main .card",
-      "#memberships .container > div > div",
       ".rv-footer-contact-link",
     ];
 
@@ -95,27 +98,33 @@ export default function ScrollMotion() {
       ".rv-footer-cta",
     ];
 
+    const shouldSkipReveal = (el: Element) => {
+      if (el.closest(skipClosest)) return true;
+      if ((el as HTMLElement).dataset.rvSkipMotion === "1") return true;
+      if (skipRevealTags.has(el.tagName)) return true;
+      if (el.classList.contains("section")) return true;
+      return false;
+    };
+
     const markTargets = () => {
       document.querySelectorAll("[data-animate]").forEach((el) => {
-        if (el.closest(skipClosest)) return;
+        if (shouldSkipReveal(el)) return;
         el.classList.add("rv-reveal");
         ioTargets.add(el);
       });
 
       autoSelectors.forEach((sel) => {
         document.querySelectorAll(sel).forEach((el, i) => {
-          if (el.closest(skipClosest)) return;
-          if ((el as HTMLElement).dataset.rvSkipMotion === "1") return;
+          if (shouldSkipReveal(el)) return;
           if (!el.hasAttribute("data-animate")) {
             el.setAttribute("data-animate", variants[i % variants.length]);
-            el.setAttribute("data-delay", String((i % 7) * 55));
+            el.setAttribute("data-delay", String(Math.min((i % 7) * 55, MAX_REVEAL_DELAY_MS)));
           }
           el.classList.add("rv-reveal");
           ioTargets.add(el);
         });
       });
 
-      // Stagger direct children in common grids
       document
         .querySelectorAll(
           ".rv-resources-feature-grid, .rv-resources-library-grid, .rv-resources-video-grid, .rv-resources-external-grid",
@@ -123,7 +132,8 @@ export default function ScrollMotion() {
         .forEach((grid) => {
           Array.from(grid.children).forEach((child, i) => {
             if (!(child instanceof HTMLElement)) return;
-            child.setAttribute("data-delay", String(i * 80));
+            if (shouldSkipReveal(child)) return;
+            child.setAttribute("data-delay", String(Math.min(i * 80, MAX_REVEAL_DELAY_MS)));
             child.classList.add("rv-reveal");
             if (!child.hasAttribute("data-animate")) {
               child.setAttribute("data-animate", variants[i % variants.length]);
@@ -133,20 +143,38 @@ export default function ScrollMotion() {
         });
     };
 
+    const revealVisibleNow = () => {
+      const vh = window.innerHeight;
+      ioTargets.forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < vh * 0.98 && rect.bottom > 0) {
+          el.classList.add("is-inview");
+        }
+      });
+    };
+
+    const revealStuckElements = () => {
+      ioTargets.forEach((el) => {
+        if (!el.classList.contains("is-inview")) {
+          el.classList.add("is-inview");
+        }
+      });
+    };
+
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const delay = Number(entry.target.getAttribute("data-delay") || 0);
-            window.setTimeout(() => {
-              entry.target.classList.add("is-inview");
-            }, delay);
-          } else if (entry.boundingClientRect.top > 120) {
-            entry.target.classList.remove("is-inview");
-          }
+          if (!entry.isIntersecting) return;
+          const delay = Math.min(
+            Number(entry.target.getAttribute("data-delay") || 0),
+            MAX_REVEAL_DELAY_MS,
+          );
+          window.setTimeout(() => {
+            entry.target.classList.add("is-inview");
+          }, delay);
         });
       },
-      { threshold: 0.12, rootMargin: "0px 0px -5% 0px" },
+      { threshold: 0, rootMargin: "0px 0px -2% 0px" },
     );
 
     const observeAll = () => {
@@ -157,18 +185,16 @@ export default function ScrollMotion() {
           io.observe(el);
         }
       });
+      revealVisibleNow();
     };
 
     observeAll();
 
     requestAnimationFrame(() => {
-      ioTargets.forEach((el) => {
-        const rect = el.getBoundingClientRect();
-        if (rect.top < window.innerHeight * 0.94 && rect.bottom > 0) {
-          el.classList.add("is-inview");
-        }
-      });
+      revealVisibleNow();
     });
+
+    const failsafeTimer = window.setTimeout(revealStuckElements, FAILSAFE_REVEAL_MS);
 
     let ticking = false;
     const onScroll = () => {
@@ -182,6 +208,8 @@ export default function ScrollMotion() {
           String(y / Math.max(document.body.scrollHeight - vh, 1)),
         );
         root.classList.toggle("rv-scrolled", y > 12);
+
+        revealVisibleNow();
 
         document.querySelectorAll<HTMLElement>("[data-parallax]").forEach((el) => {
           const speed = Number(el.dataset.parallax || 0.15);
@@ -204,6 +232,8 @@ export default function ScrollMotion() {
     };
 
     window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", revealVisibleNow, { passive: true });
+    window.addEventListener("load", revealVisibleNow);
     onScroll();
 
     const onTiltMove = (e: MouseEvent) => {
@@ -286,9 +316,12 @@ export default function ScrollMotion() {
     mo.observe(document.body, { childList: true, subtree: true });
 
     return () => {
+      window.clearTimeout(failsafeTimer);
       io.disconnect();
       mo.disconnect();
       window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", revealVisibleNow);
+      window.removeEventListener("load", revealVisibleNow);
       window.removeEventListener("pointermove", onPointer);
     };
   }, []);

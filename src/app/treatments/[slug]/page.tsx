@@ -343,52 +343,50 @@ export default async function TreatmentDetailPage({ params }: PageProps) {
                 <div
                   style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
                 >
-                  <div
-                    style={{
-                      background: "var(--bg)",
-                      border: "1px solid var(--border)",
-                      borderRadius: "var(--radius)",
-                      padding: "1.2rem",
-                    }}
-                  >
-                    <h4
+                  {[
+                    {
+                      n: 1,
+                      title: "Receptor Binding & Activation",
+                      body: "Selective stimulation of metabolic receptors to regulate systemic hormone and energy signaling.",
+                    },
+                    {
+                      n: 2,
+                      title: "Sustained Energy & Metabolism",
+                      body: "Optimizes physiological metabolism while preserving lean muscle tissue during treatment.",
+                    },
+                  ].map((step) => (
+                    <div
+                      key={step.n}
                       style={{
-                        fontSize: "1.1rem",
-                        color: "var(--primary)",
-                        marginBottom: "0.3rem",
-                        fontWeight: 800,
+                        display: "flex",
+                        gap: "1rem",
+                        alignItems: "flex-start",
+                        background: "var(--bg)",
+                        border: "1px solid var(--border)",
+                        borderRadius: "var(--radius)",
+                        padding: "1.2rem",
                       }}
                     >
-                      1. Receptor Binding & Activation
-                    </h4>
-                    <p style={{ color: "var(--text-muted)", fontSize: "0.92rem" }}>
-                      Selective stimulation of metabolic receptors to regulate
-                      systemic hormone and energy signaling.
-                    </p>
-                  </div>
-                  <div
-                    style={{
-                      background: "var(--bg)",
-                      border: "1px solid var(--border)",
-                      borderRadius: "var(--radius)",
-                      padding: "1.2rem",
-                    }}
-                  >
-                    <h4
-                      style={{
-                        fontSize: "1.1rem",
-                        color: "var(--primary)",
-                        marginBottom: "0.3rem",
-                        fontWeight: 800,
-                      }}
-                    >
-                      2. Sustained Energy & Metabolism
-                    </h4>
-                    <p style={{ color: "var(--text-muted)", fontSize: "0.92rem" }}>
-                      Optimizes physiological metabolism while preserving lean
-                      muscle tissue during treatment.
-                    </p>
-                  </div>
+                      <span className="rv-step-num" aria-hidden="true">
+                        {step.n}
+                      </span>
+                      <div>
+                        <h4
+                          style={{
+                            fontSize: "1.1rem",
+                            color: "var(--primary)",
+                            marginBottom: "0.3rem",
+                            fontWeight: 800,
+                          }}
+                        >
+                          {step.title}
+                        </h4>
+                        <p style={{ color: "var(--text-muted)", fontSize: "0.92rem" }}>
+                          {step.body}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
 
@@ -439,118 +437,53 @@ export default async function TreatmentDetailPage({ params }: PageProps) {
                 <div
                   style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
                 >
-                  <div
-                    style={{
-                      display: "flex",
-                      gap: "1rem",
-                      alignItems: "flex-start",
-                      background: "var(--surface)",
-                      padding: "1rem 1.25rem",
-                      borderRadius: "0.85rem",
-                      border: "1px solid var(--border)",
-                    }}
-                  >
+                  {[
+                    {
+                      n: 1,
+                      title: "Clean & Prepare",
+                      body: "Follow the hygiene steps on your dosing card before each dose.",
+                    },
+                    {
+                      n: 2,
+                      title: "Follow Your Protocol",
+                      body: detail.howToUse,
+                    },
+                    {
+                      n: 3,
+                      title: "Log Progress with AI Coach",
+                      body: "Track weekly metrics in your 24/7 AI Health Coach dashboard.",
+                    },
+                  ].map((step) => (
                     <div
+                      key={step.n}
                       style={{
-                        width: "36px",
-                        height: "36px",
-                        borderRadius: "50%",
-                        background: "var(--accent)",
-                        color: "#FFF",
-                        display: "grid",
-                        placeItems: "center",
-                        fontWeight: 900,
+                        display: "flex",
+                        gap: "1rem",
+                        alignItems: "flex-start",
+                        background: "var(--surface)",
+                        padding: "1rem 1.25rem",
+                        borderRadius: "0.85rem",
+                        border: "1px solid var(--border)",
                       }}
                     >
-                      1
+                      <span className="rv-step-num" aria-hidden="true">
+                        {step.n}
+                      </span>
+                      <div>
+                        <h4 style={{ fontSize: "1rem", fontWeight: 800 }}>
+                          {step.title}
+                        </h4>
+                        <p
+                          style={{
+                            fontSize: "0.88rem",
+                            color: "var(--text-muted)",
+                          }}
+                        >
+                          {step.body}
+                        </p>
+                      </div>
                     </div>
-                    <div>
-                      <h4 style={{ fontSize: "1rem", fontWeight: 800 }}>
-                        Clean & Prepare
-                      </h4>
-                      <p
-                        style={{ fontSize: "0.88rem", color: "var(--text-muted)" }}
-                      >
-                        Follow the hygiene steps on your dosing card before each
-                        dose.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div
-                    style={{
-                      display: "flex",
-                      gap: "1rem",
-                      alignItems: "flex-start",
-                      background: "var(--surface)",
-                      padding: "1rem 1.25rem",
-                      borderRadius: "0.85rem",
-                      border: "1px solid var(--border)",
-                    }}
-                  >
-                    <div
-                      style={{
-                        width: "36px",
-                        height: "36px",
-                        borderRadius: "50%",
-                        background: "var(--accent)",
-                        color: "#FFF",
-                        display: "grid",
-                        placeItems: "center",
-                        fontWeight: 900,
-                      }}
-                    >
-                      2
-                    </div>
-                    <div>
-                      <h4 style={{ fontSize: "1rem", fontWeight: 800 }}>
-                        Follow Your Protocol
-                      </h4>
-                      <p
-                        style={{ fontSize: "0.88rem", color: "var(--text-muted)" }}
-                      >
-                        {detail.howToUse}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div
-                    style={{
-                      display: "flex",
-                      gap: "1rem",
-                      alignItems: "flex-start",
-                      background: "var(--surface)",
-                      padding: "1rem 1.25rem",
-                      borderRadius: "0.85rem",
-                      border: "1px solid var(--border)",
-                    }}
-                  >
-                    <div
-                      style={{
-                        width: "36px",
-                        height: "36px",
-                        borderRadius: "50%",
-                        background: "var(--accent)",
-                        color: "#FFF",
-                        display: "grid",
-                        placeItems: "center",
-                        fontWeight: 900,
-                      }}
-                    >
-                      3
-                    </div>
-                    <div>
-                      <h4 style={{ fontSize: "1rem", fontWeight: 800 }}>
-                        Log Progress with AI Coach
-                      </h4>
-                      <p
-                        style={{ fontSize: "0.88rem", color: "var(--text-muted)" }}
-                      >
-                        Track weekly metrics in your 24/7 AI Health Coach
-                        dashboard.
-                      </p>
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </div>
 
