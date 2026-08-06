@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { brandConfig } from "@/brand.config";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -51,23 +52,25 @@ export default function AboutPage() {
               <h2 style={{ fontSize: "2.2rem", marginBottom: "2rem" }}>Medical Advisory Team</h2>
 
               <div className="card-grid two" style={{ gap: "2rem" }}>
-                <div className="testimonial-card">
-                  <span className="badge" style={{ marginBottom: "0.8rem" }}>Board-Certified</span>
-                  <h3>Dr. Michael Wasef, MD</h3>
-                  <p style={{ color: "var(--accent)", fontWeight: 700, fontSize: "0.9rem", marginBottom: "0.8rem" }}>
-                    Internal Medicine Physician & Telemedicine Advisory
-                  </p>
-                  <p>Licensed nationwide specializing in metabolic health, GLP-1 weight loss protocols, and preventive endocrinology.</p>
-                </div>
-
-                <div className="testimonial-card">
-                  <span className="badge" style={{ marginBottom: "0.8rem" }}>Board-Certified</span>
-                  <h3>Dr. Andrew Sakla, DO</h3>
-                  <p style={{ color: "var(--accent)", fontWeight: 700, fontSize: "0.9rem", marginBottom: "0.8rem" }}>
-                    Internal Medicine & Regenerative Medicine Director
-                  </p>
-                  <p>Pioneering evidence-based peptide therapy, TRT optimization, and cellular longevity treatments.</p>
-                </div>
+                {brandConfig.medicalTeam.map((doctor) => (
+                  <div className="testimonial-card" key={doctor.name}>
+                    <div style={{ borderRadius: "0.85rem", overflow: "hidden", marginBottom: "1rem" }}>
+                      <Image
+                        src={doctor.image}
+                        alt={doctor.name}
+                        width={480}
+                        height={360}
+                        style={{ width: "100%", height: "auto", objectFit: "cover" }}
+                      />
+                    </div>
+                    <span className="badge" style={{ marginBottom: "0.8rem" }}>Board-Certified</span>
+                    <h3>{doctor.name}</h3>
+                    <p style={{ color: "var(--accent)", fontWeight: 700, fontSize: "0.9rem", marginBottom: "0.8rem" }}>
+                      {doctor.title}
+                    </p>
+                    <p>{doctor.bio}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

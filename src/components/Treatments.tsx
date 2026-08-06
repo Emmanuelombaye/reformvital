@@ -8,29 +8,37 @@ const featuredLines = [
   {
     title: "Metabolic Weight Loss",
     desc: "Targeted appetite regulation with Semaglutide, Tirzepatide & Retatrutide.",
+    whoItHelps: "Adults seeking sustainable weight loss with physician oversight.",
+    benefits: "Reduced cravings, metabolic reset, and cold-chain pharmacy delivery included.",
     href: "/treatments/semaglutide",
-    cta: "View GLP-1 Details →",
+    cta: "Start My Health Assessment →",
     icon: "bolt" as const,
   },
   {
     title: "Hormone Optimization",
     desc: "Bioidentical TRT, Enclomiphene & endocrine balance protocols.",
+    whoItHelps: "Men and women with fatigue, low energy, or hormone imbalance symptoms.",
+    benefits: "Lab-guided dosing, libido support, and lean mass retention.",
     href: "/treatments/trt",
-    cta: "View TRT Details →",
+    cta: "Meet With a Provider →",
     icon: "dna" as const,
   },
   {
     title: "Longevity & NAD+",
     desc: "Mitochondrial ATP cellular energy & sirtuin activation coenzymes.",
+    whoItHelps: "Those focused on cellular energy, recovery, and healthy aging.",
+    benefits: "Physician-guided NAD+ protocols with ongoing biomarker monitoring.",
     href: "/treatments/nad-plus",
-    cta: "View NAD+ Details →",
+    cta: "Learn How It Works →",
     icon: "lab" as const,
   },
   {
     title: "Recovery & Tissue Repair",
     desc: "BPC-157 & TB-500 pentadecapeptides for tendon and mucosal healing.",
+    whoItHelps: "Active adults with joint, tendon, or recovery-focused goals.",
+    benefits: "Clinical oversight, structured dosing, and follow-up adjustments.",
     href: "/treatments/bpc-157",
-    cta: "View BPC-157 Details →",
+    cta: "Book My Consultation →",
     icon: "repair" as const,
   },
 ];
@@ -49,7 +57,7 @@ export default function Treatments() {
             Precision Healthcare. Compounded for You.
           </h2>
           <p style={{ fontSize: "1.1rem", color: "var(--text-muted)", lineHeight: 1.6 }}>
-            Select from specialized care lines—including metabolic & preventive wellness—prescribed by U.S. board-certified medical directors and compounded by 50-state certified pharmacies.
+            Long-term health partnerships—not one-time prescriptions. Select from specialized care lines with ongoing provider support, lab reviews, and personalized optimization.
           </p>
         </div>
 
@@ -130,8 +138,14 @@ export default function Treatments() {
               <h4 style={{ fontSize: "1.2rem", fontWeight: 900, marginBottom: "0.3rem", color: "var(--primary)" }}>
                 {line.title}
               </h4>
-              <p style={{ fontSize: "0.88rem", color: "var(--text-muted)", lineHeight: 1.5, marginBottom: "1rem" }}>
+              <p style={{ fontSize: "0.88rem", color: "var(--text-muted)", lineHeight: 1.5, marginBottom: "0.65rem" }}>
                 {line.desc}
+              </p>
+              <p style={{ fontSize: "0.82rem", color: "var(--primary)", fontWeight: 600, lineHeight: 1.45, marginBottom: "0.35rem" }}>
+                <strong>Who it helps:</strong> {line.whoItHelps}
+              </p>
+              <p style={{ fontSize: "0.82rem", color: "var(--text-muted)", lineHeight: 1.45, marginBottom: "1rem" }}>
+                {line.benefits}
               </p>
               <a href={line.href} style={{ fontSize: "0.85rem", fontWeight: 800, color: "var(--accent)" }}>
                 {line.cta}

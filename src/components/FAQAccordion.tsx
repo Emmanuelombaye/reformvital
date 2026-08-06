@@ -24,7 +24,7 @@ export default function FAQAccordion() {
             <a href={`mailto:${brandConfig.nav.email}`}>{brandConfig.nav.email}</a>
             <a href={`tel:${brandConfig.nav.phone}`}>{brandConfig.nav.phone}</a>
             <a href="/start" className="btn btn-primary rv-faq-cta">
-              Start Assessment →
+              Start My Health Assessment →
             </a>
           </div>
         </div>

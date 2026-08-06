@@ -65,7 +65,7 @@ export const brandConfig = {
       { label: "Memberships", href: "/memberships" },
       { label: "How It Works", href: "/how-it-works" },
       { label: "AI Coach", href: "/ai-coach" },
-      { label: "Resources", href: "/resources" },
+      { label: "Health Academy", href: "/resources" },
       { label: "About", href: "/about" },
       { label: "FAQ", href: "/faq" },
     ],
@@ -99,13 +99,14 @@ export const brandConfig = {
       { text: "Cellular Edge", color: "#A3E635" },
       { text: "Vital Rebuild", color: "#C4B5FD" },
     ],
-    headline: "Physician-Guided Care",
-    subheadline: "designed around you.",
+    headline: "Your Health. Optimized for Life.",
+    subheadline:
+      "Medical Weight Loss · Hormone Optimization · Longevity · Preventive Wellness",
     description:
-      "Licensed providers. Science-backed treatments. Fully online.",
-    primaryCtaText: "Begin Protocol",
-    primaryCtaNote: "Physician consult included · Semaglutide plan*",
-    secondaryCtaText: "Browse Care Menu",
+      "Personalized healthcare designed around you—licensed providers, science-backed treatments, fully online.",
+    primaryCtaText: "Start My Health Assessment",
+    primaryCtaNote: "Physician consult included · No insurance required",
+    secondaryCtaText: "Learn How It Works",
     ctaLink: "/start",
     cardHighlight: {
       category: "PHYSICIAN-GUIDED METABOLIC PROGRAM",
@@ -752,23 +753,226 @@ export const brandConfig = {
   // ──── How It Works Steps ────
   howItWorks: {
     headline: "How Reform Vital Works",
-    subtitle: "Physician-guided healthcare delivered straight to your door in 3 simple steps.",
+    subtitle: "Physician-guided healthcare in four simple steps—from assessment to ongoing optimization.",
     steps: [
       {
         step: "1",
-        title: "Complete Online Consultation",
-        description: "Fill out a comprehensive health assessment and select your optimization goals online in under 5 minutes.",
+        title: "Complete Your Health Assessment",
+        description: "Share your health history, goals, and lifestyle in a secure online assessment—takes under 5 minutes.",
       },
       {
         step: "2",
-        title: "Physician Review & Custom Plan",
-        description: "A licensed U.S. doctor reviews your medical profile, orders necessary labs, and issues your personalized prescription.",
+        title: "Meet Your Provider",
+        description: "A licensed U.S. physician reviews your profile, orders labs if needed, and consults with you on your plan.",
       },
       {
         step: "3",
-        title: "Pharmacy Delivery & AI Coaching",
-        description: "Your freshly compounded medication is shipped cold-chain to your doorstep while your AI Coach guides your daily progress.",
+        title: "Receive Your Personalized Treatment Plan",
+        description: "Your custom protocol—GLP-1, hormones, peptides, or wellness—is prescribed and fulfilled by licensed pharmacies.",
       },
+      {
+        step: "4",
+        title: "Ongoing Care & Optimization",
+        description: "Follow-ups, treatment adjustments, secure messaging, and AI coaching keep you progressing long-term.",
+      },
+    ],
+  },
+
+  trustSignals: [
+    { label: "HIPAA Secure", icon: "shield" },
+    { label: "Licensed Medical Providers", icon: "provider" },
+    { label: "Personalized Treatment Plans", icon: "plan" },
+    { label: "Pharmacy Partner", icon: "pharmacy" },
+    { label: "Ongoing Provider Support", icon: "support" },
+    { label: "Secure Online Consultations", icon: "consult" },
+  ],
+
+  whyReformVital: {
+    headline: "Why Reform Vital?",
+    subtitle: "Concierge healthcare built on trust, personalization, and long-term partnership—not just prescriptions.",
+    pillars: [
+      {
+        title: "Personalized Care",
+        desc: "Every protocol is tailored to your biomarkers, goals, and lifestyle—not a one-size-fits-all approach.",
+      },
+      {
+        title: "Ongoing Provider Support",
+        desc: "Licensed physicians stay involved with follow-ups, lab reviews, and treatment adjustments.",
+      },
+      {
+        title: "Whole-Person Wellness",
+        desc: "We address metabolic health, hormones, recovery, longevity, and prevention together.",
+      },
+      {
+        title: "Evidence-Based Medicine",
+        desc: "Physician-reviewed protocols grounded in clinical science and transparent about what works.",
+      },
+    ],
+  },
+
+  patientJourney: {
+    headline: "Your Patient Journey",
+    subtitle: "From first assessment to long-term health optimization—every step is physician-guided.",
+    steps: [
+      { label: "Assessment", desc: "Complete your health profile online" },
+      { label: "Consultation", desc: "Meet your licensed provider" },
+      { label: "Treatment", desc: "Receive your personalized protocol" },
+      { label: "Medication Delivery", desc: "Shipped to your door" },
+      { label: "Follow-Up", desc: "Ongoing check-ins & adjustments" },
+      { label: "Long-Term Optimization", desc: "Sustainable health partnership" },
+    ],
+  },
+
+  healthAcademy: {
+    title: "Reform Vital Health Academy",
+    subtitle:
+      "The most trusted destination for health optimization—physician-reviewed guides, actionable tips, and evidence-based education.",
+    categories: [
+      { slug: "longevity", label: "Longevity", href: "/resources/category/longevity" },
+      { slug: "weight", label: "Weight Optimization", href: "/resources/category/weight" },
+      { slug: "hormones", label: "Hormone Optimization", href: "/resources/category/hormones" },
+      { slug: "nutrition", label: "Nutrition", href: "/resources/category/nutrition" },
+      { slug: "labs", label: "Advanced Labs", href: "/resources/category/labs" },
+      { slug: "sleep", label: "Sleep", href: "/resources/category/sleep" },
+      { slug: "performance", label: "Performance", href: "/resources/category/performance" },
+      { slug: "heart", label: "Heart Health", href: "/resources/category/heart" },
+      { slug: "mens", label: "Men's Health", href: "/resources/category/mens" },
+      { slug: "womens", label: "Women's Health", href: "/resources/category/womens" },
+      { slug: "peptides", label: "Peptide Education", href: "/resources/category/peptides" },
+      { slug: "gut", label: "Gut Health", href: "/resources/category/gut" },
+      { slug: "mental", label: "Mental Wellness", href: "/resources/category/mental" },
+      { slug: "supplements", label: "Supplements", href: "/resources/category/supplements" },
+      { slug: "recipes", label: "Healthy Recipes", href: "/resources/category/recipes" },
+      { slug: "insights", label: "Physician Insights", href: "/resources/category/insights" },
+    ],
+    topicClusters: [
+      {
+        title: "Metabolic & Weight Care",
+        articles: [
+          {
+            title: "How GLP-1 Therapies Support Metabolic Reset",
+            summary: "A plain-language overview of Semaglutide and Tirzepatide—appetite signaling, expectations, and physician monitoring.",
+            href: "/resources/articles/glp1-metabolic-reset",
+          },
+          {
+            title: "What to Expect in Your First 90 Days",
+            summary: "Realistic timelines, side-effect management, and how your provider adjusts your protocol.",
+            href: "/resources/articles/first-90-days-glp1",
+          },
+          {
+            title: "Medical Weight Loss vs. Product-Only Sellers",
+            summary: "Why physician oversight, labs, and follow-up care matter for safe, sustainable results.",
+            href: "/resources/articles/medical-weight-loss-vs-sellers",
+          },
+        ],
+      },
+      {
+        title: "Hormone & Longevity Science",
+        articles: [
+          {
+            title: "Hormone Optimization 101",
+            summary: "Why labs come first for TRT and women's hormone therapy—and how protocols are personalized.",
+            href: "/resources/articles/hormone-optimization-101",
+          },
+          {
+            title: "Longevity & Cellular Energy (NAD+)",
+            summary: "What NAD+ support aims to address, who may be a candidate, and clinical oversight.",
+            href: "/resources/articles/nad-longevity-cellular-energy",
+          },
+          {
+            title: "Understanding Your Lab Results",
+            summary: "Key biomarkers for metabolic health, hormones, and inflammation—and what they mean.",
+            href: "/resources/articles/understanding-labs",
+          },
+        ],
+      },
+      {
+        title: "Living Well Between Visits",
+        articles: [
+          {
+            title: "Using Your AI Health Coach",
+            summary: "Track protein, hydration, sleep, and adherence between appointments.",
+            href: "/resources/articles/ai-health-coach-between-visits",
+          },
+          {
+            title: "Nutrition for Sustainable Weight Management",
+            summary: "Protein targets, meal timing, and building habits that support your protocol.",
+            href: "/resources/articles/nutrition-weight-management",
+          },
+          {
+            title: "Recovery & Performance Peptides",
+            summary: "An overview of recovery-focused peptide pathways and clinical oversight.",
+            href: "/resources/articles/recovery-peptides-overview",
+          },
+        ],
+      },
+    ],
+    tools: [
+      { label: "BMI Calculator", href: "/resources/tools#bmi" },
+      { label: "Protein Calculator", href: "/resources/tools#protein" },
+      { label: "Water Intake Guide", href: "/resources/tools#water" },
+      { label: "Macro Calculator", href: "/resources/tools#macro" },
+      { label: "Healthy Weight Range", href: "/resources/tools#weight-range" },
+      { label: "Biological Age Quiz", href: "/resources/tools#bio-age" },
+      { label: "Sleep Assessment", href: "/resources/tools#sleep" },
+      { label: "Longevity Risk Quiz", href: "/resources/tools#longevity" },
+    ],
+    downloadableGuides: [
+      { title: "Longevity Blueprint", desc: "A physician-aligned roadmap for cellular health and healthy aging.", href: "/resources/guides/longevity-blueprint" },
+      { title: "Executive Health Guide", desc: "Performance-focused wellness for busy professionals.", href: "/resources/guides/executive-health-guide" },
+      { title: "Weight Optimization Guide", desc: "GLP-1 therapy expectations, nutrition, and sustainable habits.", href: "/resources/guides/weight-optimization-guide" },
+      { title: "Hormone Health Guide", desc: "TRT, women's hormones, and when labs matter.", href: "/resources/guides/hormone-health-guide" },
+      { title: "Understanding Your Labs", desc: "Decode metabolic panels, hormones, and inflammation markers.", href: "/resources/guides/understanding-your-labs" },
+      { title: "Healthy Aging Handbook", desc: "Preventive strategies for energy, mobility, and cognition.", href: "/resources/guides/healthy-aging-handbook" },
+      { title: "Sleep Guide", desc: "Recovery, circadian rhythm, and hormone connection.", href: "/resources/guides/sleep-guide" },
+      { title: "Nutrition Playbook", desc: "Protein, macros, and meal planning for protocol success.", href: "/resources/guides/nutrition-playbook" },
+    ],
+    successStories: [
+      { outcome: "Increased Energy", story: "TRT + Sermorelin stack restored daily vitality and deep REM sleep within 90 days.", href: "/resources/articles/mens-health-vitality" },
+      { outcome: "Improved Biomarkers", story: "HbA1c dropped from 6.4% to 5.1% with physician-guided Tirzepatide+ and quarterly labs.", href: "/resources/articles/understanding-labs" },
+      { outcome: "Sustainable Weight Management", story: "54 lbs lost over 5 months with ongoing provider titration—not a quick fix.", href: "/resources/articles/first-90-days-glp1" },
+      { outcome: "Better Fitness", story: "Recovery peptide protocol plus structured training returned to marathon training pain-free.", href: "/resources/articles/recovery-peptides-overview" },
+      { outcome: "Healthy Aging", story: "NAD+ and preventive wellness protocols supporting long-term metabolic health.", href: "/resources/articles/nad-longevity-cellular-energy" },
+      { outcome: "Confidence & Lifestyle", story: "Nutrition coaching and GLP-1 support rebuilt sustainable habits—not yo-yo dieting.", href: "/resources/articles/nutrition-weight-management" },
+    ],
+    monthlyReport: {
+      title: "Reform Vital Health Report",
+      month: "August 2026",
+      topics: ["GLP-1 research updates", "Longevity nutrition", "Seasonal wellness", "Physician Q&A"],
+      summary: "Monthly insights on research, longevity, nutrition, exercise, and physician commentary—so you stay informed between visits.",
+      href: "/resources/report",
+    },
+  },
+
+  medicalTeam: [
+    {
+      name: "Dr. Michael Wasef, MD",
+      title: "Internal Medicine Physician & Telemedicine Advisory",
+      specialty: "Metabolic Health · GLP-1 Protocols · Preventive Endocrinology",
+      bio: "Licensed nationwide specializing in metabolic health, GLP-1 weight loss protocols, and preventive endocrinology.",
+      credentials: "Board-Certified · U.S. Licensed",
+      image: "/images/doctor-wasef.png",
+    },
+    {
+      name: "Dr. Andrew Sakla, DO",
+      title: "Internal Medicine & Regenerative Medicine Director",
+      specialty: "Peptide Therapy · TRT · Cellular Longevity",
+      bio: "Pioneering evidence-based peptide therapy, TRT optimization, and cellular longevity treatments.",
+      credentials: "Board-Certified · U.S. Licensed",
+      image: "/images/doctor-sakla.png",
+    },
+  ],
+
+  memberExperience: {
+    headline: "Everything Included With Membership",
+    subtitle: "Concierge care beyond the prescription—secure messaging, follow-ups, and progress tracking included.",
+    inclusions: [
+      { label: "Secure Provider Messaging", desc: "Direct messaging with your licensed medical team between visits." },
+      { label: "Scheduled Follow-Ups", desc: "Regular check-ins to review progress and adjust your protocol." },
+      { label: "Lab Reviews", desc: "Physician interpretation of metabolic, hormone, and wellness panels." },
+      { label: "Treatment Adjustments", desc: "Protocol changes based on your response, labs, and clinical judgment." },
+      { label: "Prescription Management", desc: "Refills, dosage titration, and pharmacy coordination handled for you." },
+      { label: "Progress Tracking", desc: "AI coach metrics, portal dashboards, and quarterly provider reports." },
     ],
   },
 
@@ -808,6 +1012,31 @@ export const brandConfig = {
       question: "Is there a patient portal for tracking progress?",
       answer:
         "Yes. The Reform Vital Patient Portal is where you’ll manage goals, metrics, and AI coach check-ins between visits. Start with an online assessment to begin clinical onboarding and portal access.",
+    },
+    {
+      question: "Who are the physicians overseeing my care?",
+      answer:
+        "Reform Vital care is supervised by board-certified U.S. physicians including Dr. Michael Wasef, MD (Internal Medicine) and Dr. Andrew Sakla, DO (Regenerative Medicine). Every prescription is issued only after individual clinical review.",
+    },
+    {
+      question: "Do I need lab work before starting treatment?",
+      answer:
+        "Many protocols—especially hormone optimization and metabolic programs—begin with labs so your provider can personalize dosing safely. Your physician will order panels as clinically appropriate during onboarding.",
+    },
+    {
+      question: "Which states do you serve?",
+      answer:
+        "Reform Vital provides physician-guided telehealth in all 50 U.S. states. Licensed providers and 503A compounding pharmacies fulfill prescriptions nationwide after clinical approval.",
+    },
+    {
+      question: "How does follow-up care work?",
+      answer:
+        "Membership includes scheduled follow-ups, secure messaging with your medical team, treatment adjustments, lab reviews, and AI coach progress tracking—so care continues long after your first prescription.",
+    },
+    {
+      question: "Can I use insurance for labs or medications?",
+      answer:
+        "Reform Vital memberships use transparent flat-rate pricing without insurance requirements. Some patients choose to submit receipts for out-of-network reimbursement—check with your plan administrator.",
     },
   ],
 

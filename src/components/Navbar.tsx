@@ -25,7 +25,7 @@ const PRIMARY_LINKS = [
   { label: "Memberships", href: "/memberships" },
   { label: "How It Works", href: "/how-it-works" },
   { label: "AI Coach", href: "/ai-coach" },
-  { label: "Resources", href: "/resources" },
+  { label: "Health Academy", href: "/resources" },
 ];
 
 const MORE_LINKS = [

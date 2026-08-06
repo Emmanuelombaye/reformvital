@@ -14,7 +14,7 @@ const companyLinks = [
   { label: "About Us", href: "/about" },
   { label: "How It Works", href: "/how-it-works" },
   { label: "AI Health Coach", href: "/ai-coach" },
-  { label: "Resources", href: "/resources" },
+  { label: "Health Academy", href: "/resources" },
   { label: "Patient Portal", href: "/portal" },
 ];
 

@@ -3,7 +3,7 @@ import { brandConfig } from "@/brand.config";
 const stepVisuals = [
   {
     image: "/images/how-step-consult.png",
-    alt: "Patient completing online health consultation",
+    alt: "Patient completing online health assessment",
     shape: "rv-shape-blob",
     accent: "#00A896",
     time: "5 MIN",
@@ -17,10 +17,17 @@ const stepVisuals = [
   },
   {
     image: "/images/how-step-delivery.png",
-    alt: "Compounded medication delivered with AI coaching support",
+    alt: "Personalized treatment plan and pharmacy fulfillment",
     shape: "rv-shape-arch",
     accent: "#5EEAD4",
-    time: "TO YOUR DOOR",
+    time: "PRESCRIBED",
+  },
+  {
+    image: "/images/how-step-ongoing.png",
+    alt: "Ongoing care, follow-ups, and AI coaching support",
+    shape: "rv-shape-blob",
+    accent: "#C4B5FD",
+    time: "ONGOING",
   },
 ] as const;
 
@@ -33,7 +40,7 @@ export default function HowItWorks() {
 
       <div className="container">
         <div className="rv-how-head" data-animate="rise" data-delay="0">
-          <span className="rv-how-eyebrow">SIMPLE 3-STEP PROCESS</span>
+          <span className="rv-how-eyebrow">SIMPLE 4-STEP PROCESS</span>
           <h2>{headline}</h2>
           <p>{subtitle}</p>
         </div>
@@ -43,7 +50,7 @@ export default function HowItWorks() {
 
           {steps.map((step, i) => {
             const visual = stepVisuals[i];
-            const anim = i === 0 ? "tilt-left" : i === 1 ? "bounce" : "tilt-right";
+            const anim = i === 0 ? "tilt-left" : i === 1 ? "bounce" : i === 2 ? "rise" : "tilt-right";
             return (
               <article
                 className="rv-how-step"
@@ -76,7 +83,7 @@ export default function HowItWorks() {
 
         <div className="rv-how-cta">
           <a href="/start" className="btn btn-primary">
-            Begin Online Consultation →
+            Start My Health Assessment →
           </a>
         </div>
       </div>

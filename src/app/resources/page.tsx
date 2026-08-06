@@ -1,5 +1,8 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import AcademyStickyNav from "@/components/academy/AcademyStickyNav";
+import { brandConfig } from "@/brand.config";
+import { getGuidePdfUrl } from "@/content/academy";
 
 const featured = [
   {
@@ -7,7 +10,7 @@ const featured = [
     type: "Guide",
     summary:
       "A plain-language overview of Semaglutide and Tirzepatide: appetite signaling, first-90-day expectations, and how physician monitoring keeps care safe.",
-    href: "/treatments/semaglutide",
+    href: "/resources/articles/glp1-metabolic-reset",
     image: "/images/resource-glp1.jpg",
     imageAlt: "GLP-1 therapy education visual",
   },
@@ -15,8 +18,8 @@ const featured = [
     title: "Hormone Optimization 101",
     type: "Education",
     summary:
-      "Why labs come first for TRT and women’s hormone therapy—and how Reform Vital personalizes protocols around your biomarkers.",
-    href: "/treatments/trt",
+      "Why labs come first for TRT and women's hormone therapy—and how Reform Vital personalizes protocols around your biomarkers.",
+    href: "/resources/articles/hormone-optimization-101",
     image: "/images/resource-hormones.jpg",
     imageAlt: "Hormone optimization education visual",
   },
@@ -25,60 +28,36 @@ const featured = [
     type: "How-to",
     summary:
       "Track protein, hydration, sleep, and adherence between appointments—accountability support that never replaces your physician.",
-    href: "/ai-coach",
+    href: "/resources/articles/ai-health-coach-between-visits",
     image: "/images/resource-ai-coach.jpg",
     imageAlt: "AI health coach dashboard visual",
   },
 ];
 
-const library = [
+const recentArticles = [
   {
-    title: "Preventive Labs & Metabolic Wellness",
-    type: "Program",
-    summary:
-      "Advanced panels, body-composition tracking, and ongoing monitoring so optimization starts with data—not guesswork.",
-    href: "/treatments/preventive-wellness",
-    image: "/images/resource-longevity.jpg",
+    title: "What to Expect in Your First 90 Days on GLP-1 Therapy",
+    category: "Weight Optimization",
+    date: "August 2026",
+    href: "/resources/articles/first-90-days-glp1",
   },
   {
-    title: "Longevity & Cellular Energy (NAD+)",
-    type: "Therapy",
-    summary:
-      "What NAD+ support aims to address, who may be a candidate, and how Reform Vital structures physician-guided protocols.",
-    href: "/treatments/nad-plus",
-    image: "/images/resource-longevity.jpg",
+    title: "Understanding Your Lab Results: A Patient Guide",
+    category: "Advanced Labs",
+    date: "August 2026",
+    href: "/resources/articles/understanding-labs",
   },
   {
-    title: "Recovery & Tissue Support Peptides",
-    type: "Therapy",
-    summary:
-      "An overview of recovery-focused peptide pathways and how clinical oversight shapes dosing and follow-up.",
-    href: "/treatments/bpc-157",
-    image: "/images/resource-recovery.jpg",
+    title: "Sleep, Recovery, and Hormone Health",
+    category: "Sleep",
+    date: "July 2026",
+    href: "/resources/articles/sleep-recovery-hormones",
   },
   {
-    title: "Memberships: Essentials, Performance & Elite",
-    type: "Overview",
-    summary:
-      "Compare white-glove care tiers—physician consults, pharmacy shipping, and concierge support included.",
-    href: "/memberships",
-    image: "/images/resource-hormones.jpg",
-  },
-  {
-    title: "How Reform Vital Telehealth Works",
-    type: "Process",
-    summary:
-      "Assessment → physician review → compounded medication shipped to your door. See each step clearly.",
-    href: "/how-it-works",
-    image: "/images/how-step-consult.png",
-  },
-  {
-    title: "FAQ: Telehealth, Compounding & Shipping",
-    type: "FAQ",
-    summary:
-      "Insurance, 503A pharmacies, switching therapies, and how we differ from product-only sellers.",
-    href: "/faq",
-    image: "/images/how-step-delivery.png",
+    title: "Longevity & Cellular Energy: NAD+ Explained",
+    category: "Longevity",
+    date: "July 2026",
+    href: "/resources/articles/nad-longevity-cellular-energy",
   },
 ];
 
@@ -138,25 +117,164 @@ const externalReads = [
 ];
 
 export default function ResourcesPage() {
+  const academy = brandConfig.healthAcademy;
+
   return (
     <>
       <Navbar />
-      <main className="rv-resources">
-        <section className="rv-resources-hero">
+      <main className="rv-academy">
+        <AcademyStickyNav />
+        <section className="rv-academy-hero">
           <div className="container">
             <span className="badge" style={{ marginBottom: "0.85rem" }}>
-              EDUCATION LIBRARY
+              HEALTH ACADEMY
             </span>
-            <h1>Resources for Informed Care</h1>
-            <p>
-              Guides, physician-aligned videos, and trusted external references—so you
-              understand the science, the process, and what Reform Vital membership
-              includes before you start.
-            </p>
-            <div className="rv-resources-hero-links">
-              <a href="#videos">Watch videos</a>
-              <a href="#library">Browse guides</a>
-              <a href="#external">Trusted sources</a>
+            <h1>{academy.title}</h1>
+            <p>{academy.subtitle}</p>
+            <div className="rv-academy-hero-links">
+              <a href="#categories">Browse categories</a>
+              <a href="#topics">Featured topics</a>
+              <a href="#guides">Downloadable guides</a>
+              <a href="/resources/tools">Interactive tools</a>
+              <a href="/resources/report">Monthly report</a>
+            </div>
+          </div>
+        </section>
+
+        <section id="categories" className="section rv-academy-categories">
+          <div className="container">
+            <div className="section-head" style={{ marginBottom: "2rem" }}>
+              <h2 style={{ fontSize: "clamp(1.6rem, 3vw, 2rem)", marginBottom: "0.45rem" }}>
+                Health categories to explore
+              </h2>
+              <p style={{ color: "var(--text-muted)", maxWidth: "42rem" }}>
+                Physician-reviewed guides across every pillar of health optimization.
+              </p>
+            </div>
+
+            <div className="rv-academy-category-grid">
+              {academy.categories.map((cat) => (
+                <a key={cat.slug} href={cat.href} className="rv-academy-category" data-animate="rise">
+                  {cat.label}
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="topics" className="section rv-academy-clusters">
+          <div className="container">
+            {academy.topicClusters.map((cluster) => (
+              <div key={cluster.title} className="rv-academy-cluster" data-animate="rise">
+                <h2 className="rv-academy-cluster-title">{cluster.title}</h2>
+                <div className="rv-academy-cluster-grid">
+                  {cluster.articles.map((article) => (
+                    <a key={article.title} href={article.href} className="rv-academy-article">
+                      <h3>{article.title}</h3>
+                      <p>{article.summary}</p>
+                      <span className="rv-resource-cta">Read article →</span>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section id="guides" className="section rv-academy-guides">
+          <div className="container">
+            <div className="section-head" style={{ marginBottom: "2rem" }}>
+              <h2 style={{ fontSize: "clamp(1.6rem, 3vw, 2rem)", marginBottom: "0.45rem" }}>
+                Downloadable guides
+              </h2>
+              <p style={{ color: "var(--text-muted)", maxWidth: "42rem" }}>
+                Premium PDF resources—physician-aligned playbooks for longevity, hormones, nutrition, and more.
+              </p>
+            </div>
+
+            <div className="rv-academy-guides-grid">
+              {academy.downloadableGuides.map((guide) => {
+                const slug = guide.href.split("/").pop() ?? "";
+                const pdfUrl = slug ? getGuidePdfUrl(slug) : "#";
+                return (
+                  <article key={guide.title} className="rv-academy-guide" data-animate="rise">
+                    <span className="rv-academy-guide-icon" aria-hidden>PDF</span>
+                    <h3>{guide.title}</h3>
+                    <p>{guide.desc}</p>
+                    <div className="rv-academy-guide-links">
+                      <a href={pdfUrl} className="rv-resource-cta" download>
+                        Download PDF →
+                      </a>
+                      <a href={guide.href} className="rv-resource-cta rv-resource-cta--muted">
+                        Read online →
+                      </a>
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        <section id="tools" className="section rv-academy-tools">
+          <div className="container">
+            <div className="section-head" style={{ marginBottom: "2rem" }}>
+              <h2 style={{ fontSize: "clamp(1.6rem, 3vw, 2rem)", marginBottom: "0.45rem" }}>
+                Interactive tools
+              </h2>
+              <p style={{ color: "var(--text-muted)", maxWidth: "40rem" }}>
+                Quick assessments to help you understand your health baseline.
+              </p>
+            </div>
+
+            <div className="rv-academy-tools-grid">
+              {academy.tools.map((tool) => (
+                <a key={tool.label} href={tool.href} className="rv-academy-tool" data-animate="bounce">
+                  <span>{tool.label}</span>
+                  <span aria-hidden>→</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="stories" className="section rv-academy-stories">
+          <div className="container">
+            <div className="section-head" style={{ marginBottom: "2rem" }}>
+              <h2 style={{ fontSize: "clamp(1.6rem, 3vw, 2rem)", marginBottom: "0.45rem" }}>
+                Success stories
+              </h2>
+              <p style={{ color: "var(--text-muted)", maxWidth: "42rem" }}>
+                Real outcomes—energy, biomarkers, fitness, and sustainable weight management with physician support.
+              </p>
+            </div>
+
+            <div className="rv-academy-stories-grid">
+              {academy.successStories.map((story) => (
+                <a key={story.outcome} href={story.href} className="rv-academy-story" data-animate="tilt-right">
+                  <span className="rv-resource-type">{story.outcome}</span>
+                  <p>{story.story}</p>
+                  <span className="rv-resource-cta">Read more →</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="section rv-academy-monthly">
+          <div className="container">
+            <div className="rv-academy-monthly-card" data-animate="bounce">
+              <span className="rv-resource-type">{academy.monthlyReport.month}</span>
+              <h2>{academy.monthlyReport.title}</h2>
+              <p>{academy.monthlyReport.summary}</p>
+              <ul className="rv-academy-monthly-topics">
+                {academy.monthlyReport.topics.map((topic) => (
+                  <li key={topic}>{topic}</li>
+                ))}
+              </ul>
+              <a href={academy.monthlyReport.href} className="btn btn-primary">
+                Read this month&apos;s report →
+              </a>
             </div>
           </div>
         </section>
@@ -190,6 +308,31 @@ export default function ResourcesPage() {
                     <p>{item.summary}</p>
                     <span className="rv-resource-cta">Read guide →</span>
                   </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="recent" className="section rv-academy-recent">
+          <div className="container">
+            <div className="section-head" style={{ marginBottom: "2rem" }}>
+              <h2 style={{ fontSize: "clamp(1.6rem, 3vw, 2rem)", marginBottom: "0.45rem" }}>
+                Recent articles
+              </h2>
+              <p style={{ color: "var(--text-muted)", maxWidth: "40rem" }}>
+                Physician-reviewed education updated regularly.
+              </p>
+            </div>
+
+            <div className="rv-academy-recent-grid">
+              {recentArticles.map((article) => (
+                <a key={article.title} href={article.href} className="rv-academy-recent-card" data-animate="tilt-left">
+                  <span className="rv-academy-recent-meta">
+                    {article.date} / {article.category}
+                  </span>
+                  <h3>{article.title}</h3>
+                  <span className="rv-resource-cta">Read →</span>
                 </a>
               ))}
             </div>
@@ -240,41 +383,6 @@ export default function ResourcesPage() {
           </div>
         </section>
 
-        <section id="library" className="section rv-resources-library">
-          <div className="container">
-            <div className="section-head" style={{ marginBottom: "2rem" }}>
-              <h2 style={{ fontSize: "clamp(1.6rem, 3vw, 2rem)", marginBottom: "0.45rem" }}>
-                Full library
-              </h2>
-              <p style={{ color: "var(--text-muted)", maxWidth: "40rem" }}>
-                Internal pages with program details, process explainers, and FAQs.
-              </p>
-            </div>
-
-            <div className="rv-resources-library-grid">
-              {library.map((item) => (
-                <a
-                  key={item.title}
-                  href={item.href}
-                  className="rv-resource-card"
-                  data-animate="rise"
-                >
-                  <div className="rv-resource-card-media">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={item.image} alt="" />
-                  </div>
-                  <div className="rv-resource-card-body">
-                    <span className="rv-resource-type">{item.type}</span>
-                    <h3>{item.title}</h3>
-                    <p>{item.summary}</p>
-                    <span className="rv-resource-cta">View →</span>
-                  </div>
-                </a>
-              ))}
-            </div>
-          </div>
-        </section>
-
         <section id="external" className="section rv-resources-external">
           <div className="container">
             <div className="section-head" style={{ marginBottom: "2rem" }}>
@@ -316,7 +424,7 @@ export default function ResourcesPage() {
               </p>
               <div className="rv-resources-cta-actions">
                 <a href="/start" className="btn btn-primary">
-                  Start Medical Assessment →
+                  Schedule a Consultation →
                 </a>
                 <a href="/treatments" className="btn btn-outline" style={{ color: "#fff", borderColor: "rgba(255,255,255,0.35)" }}>
                   Browse treatments

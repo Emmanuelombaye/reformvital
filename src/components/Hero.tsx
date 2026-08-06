@@ -1,96 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Image from "next/image";
 
-const rotatorWords = [
-  {
-    text: "Metabolic Reset",
-    color: "#5EEAD4",
-    fontStyle: "italic" as const,
-    fontWeight: 700,
-    letterSpacing: "-0.03em",
-  },
-  {
-    text: "Hormone Vitality",
-    color: "#38BDF8",
-    fontStyle: "normal" as const,
-    fontWeight: 600,
-    letterSpacing: "0.01em",
-  },
-  {
-    text: "Peptide Therapy",
-    color: "#FBBF24",
-    fontStyle: "italic" as const,
-    fontWeight: 700,
-    letterSpacing: "-0.02em",
-  },
-  {
-    text: "Cellular Edge",
-    color: "#A3E635",
-    fontStyle: "normal" as const,
-    fontWeight: 800,
-    letterSpacing: "0.04em",
-  },
-  {
-    text: "Vital Rebuild",
-    color: "#C4B5FD",
-    fontStyle: "italic" as const,
-    fontWeight: 600,
-    letterSpacing: "-0.025em",
-  },
-];
-
-const trustCards = [
-  {
-    value: "15,000+",
-    valueColor: "#00A896",
-    label: "Active patients on Reform Vital",
-  },
-  {
-    value: "100,000+",
-    valueColor: "#F59E0B",
-    label: "Prescriptions written across 50 states",
-  },
-  {
-    value: "★ 4.9 Excellent",
-    valueColor: "#00A896",
-    label: "2,500+ Reviews from patients & doctors",
-  },
-];
-
 export default function Hero() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [displayed, setDisplayed] = useState(rotatorWords[0].text);
-  const [activeWord, setActiveWord] = useState(rotatorWords[0]);
-  const [typing, setTyping] = useState(true);
-
-  useEffect(() => {
-    const word = rotatorWords[activeIndex];
-    setActiveWord(word);
-    setTyping(true);
-    let i = 0;
-    setDisplayed("");
-
-    const typeTimer = setInterval(() => {
-      i += 1;
-      setDisplayed(word.text.slice(0, i));
-      if (i >= word.text.length) {
-        clearInterval(typeTimer);
-        setTyping(false);
-      }
-    }, 65);
-
-    const holdTimer = setTimeout(() => {
-      setActiveIndex((prev) => (prev + 1) % rotatorWords.length);
-    }, 65 * word.text.length + 1700);
-
-    return () => {
-      clearInterval(typeTimer);
-      clearTimeout(holdTimer);
-    };
-  }, [activeIndex]);
-
   return (
     <section
       id="qualify"
@@ -126,41 +38,27 @@ export default function Hero() {
 
 
         <div className="rv-hero-content">
-          <h1 className="sr-only">Metabolic Reset Physician-Guided Care</h1>
-          <div className="rv-hero-headline" aria-hidden>
-            <span
-              className="rv-hero-rotator"
-              style={{
-                color: activeWord.color,
-                fontStyle: activeWord.fontStyle,
-                fontWeight: activeWord.fontWeight,
-                letterSpacing: activeWord.letterSpacing,
-                borderRight: typing ? "2px solid currentColor" : "2px solid transparent",
-              }}
-            >
-              {displayed}
-            </span>
+          <h1 className="rv-hero-title">
+            Your Health.
             <br />
-            Physician-Guided Care
-          </div>
-
-          <p className="rv-hero-sub">designed around you.</p>
+            <span className="rv-hero-title-accent">Optimized for Life.</span>
+          </h1>
+          <p className="rv-hero-sub">
+            Medical Weight Loss · Hormone Optimization · Longevity · Preventive Wellness
+          </p>
         </div>
 
         <div className="rv-hero-ctas">
           <a href="/start" className="rv-hero-btn rv-hero-btn--primary">
-            <span className="rv-hero-btn-label">Begin Protocol</span>
-            <span className="rv-hero-btn-price">
-              $149<span>/mo</span>
-            </span>
+            <span className="rv-hero-btn-label">Start My Health Assessment</span>
           </a>
-          <a href="/treatments" className="rv-hero-btn rv-hero-btn--secondary">
-            Browse Care Menu
+          <a href="/how-it-works" className="rv-hero-btn rv-hero-btn--secondary">
+            Learn How It Works
             <span className="rv-hero-btn-arrow" aria-hidden>
               →
             </span>
           </a>
-          <p className="rv-hero-note">Physician consult included · Semaglutide plan*</p>
+          <p className="rv-hero-note">Long-term partnership · Physician-guided · No insurance required</p>
         </div>
       </div>
 
@@ -275,6 +173,23 @@ export default function Hero() {
           padding: 1.5rem 1.25rem;
         }
 
+        .rv-hero-title {
+          font-family: var(--font-heading);
+          font-size: clamp(2.2rem, 5.5vw, 4rem);
+          font-weight: 700;
+          line-height: 1.08;
+          letter-spacing: -0.035em;
+          color: #fff;
+          margin-bottom: 0.85rem;
+          text-shadow: 0 2px 24px rgba(0, 0, 0, 0.35);
+        }
+
+        .rv-hero-title-accent {
+          font-style: italic;
+          font-weight: 600;
+          color: #5EEAD4;
+        }
+
         .rv-hero-headline {
           font-family: var(--font-heading);
           font-size: clamp(2.2rem, 5.5vw, 4.25rem);
@@ -295,13 +210,15 @@ export default function Hero() {
 
         .rv-hero-sub {
           font-family: var(--font-body);
-          font-size: clamp(1.1rem, 2vw, 1.45rem);
-          font-style: italic;
-          font-weight: 400;
-          color: rgba(255, 255, 255, 0.95);
+          font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+          font-weight: 500;
+          color: rgba(255, 255, 255, 0.92);
           margin-bottom: 0;
-          letter-spacing: -0.01em;
+          letter-spacing: 0.02em;
           text-shadow: 0 1px 12px rgba(0, 0, 0, 0.3);
+          max-width: 36rem;
+          margin-left: auto;
+          margin-right: auto;
         }
 
         .rv-hero-ctas {
@@ -453,7 +370,7 @@ export default function Hero() {
             padding: 0.5rem 1rem 2rem;
           }
 
-          .rv-hero-headline {
+          .rv-hero-title {
             font-size: clamp(2rem, 8vw, 2.85rem);
           }
 
@@ -487,7 +404,7 @@ export default function Hero() {
             padding: 0.85rem 0.9rem 0.85rem 1.05rem;
           }
 
-          .rv-hero-headline {
+          .rv-hero-title {
             font-size: clamp(1.85rem, 9vw, 2.4rem);
           }
 

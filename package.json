@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "generate:guides": "python scripts/generate_guide_pdfs.py",
+    "replace:images": "python scripts/replace_client_images.py"
   },
   "dependencies": {
     "next": "16.2.11",
