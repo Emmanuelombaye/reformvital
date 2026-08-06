@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { brandConfig } from "@/brand.config";
 
 export default function MemberExperience() {
@@ -20,10 +21,23 @@ export default function MemberExperience() {
               data-animate="rise"
               data-delay={String(i * 80)}
             >
-              <span className="rv-member-exp-check" aria-hidden>✓</span>
-              <div>
-                <h3>{item.label}</h3>
-                <p>{item.desc}</p>
+              {"image" in item && item.image ? (
+                <div className="rv-member-exp-photo">
+                  <Image
+                    src={item.image}
+                    alt=""
+                    width={360}
+                    height={220}
+                    style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                  />
+                </div>
+              ) : null}
+              <div className="rv-member-exp-body">
+                <span className="rv-member-exp-check" aria-hidden>✓</span>
+                <div>
+                  <h3>{item.label}</h3>
+                  <p>{item.desc}</p>
+                </div>
               </div>
             </div>
           ))}

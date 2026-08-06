@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { brandConfig } from "@/brand.config";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -9,15 +10,17 @@ export default function PortalPage() {
     <>
       <Navbar />
       <main>
-        <section
-          className="section"
-          style={{
-            background: "linear-gradient(180deg, #0D1B2A 0%, #162A45 70%, #0D1B2A 100%)",
-            padding: "4.5rem 0 3.5rem",
-            color: "#FFF",
-          }}
-        >
-          <div className="container" style={{ maxWidth: "46rem" }}>
+        <section className="rv-page-hero rv-page-hero--photo rv-page-hero--dark">
+          <Image
+            src="/images/portal-performance.png"
+            alt="Reform Vital patient performance dashboard lifestyle"
+            fill
+            priority
+            sizes="100vw"
+            style={{ objectFit: "cover", objectPosition: "center" }}
+          />
+          <div className="rv-page-hero-scrim rv-page-hero-scrim--dark" aria-hidden />
+          <div className="container rv-page-hero-content" style={{ maxWidth: "46rem" }}>
             <span
               className="badge"
               style={{
@@ -29,24 +32,10 @@ export default function PortalPage() {
             >
               PATIENT PORTAL
             </span>
-            <h1
-              style={{
-                fontSize: "clamp(2.2rem, 4vw, 3rem)",
-                fontWeight: 900,
-                marginBottom: "0.85rem",
-                color: "#FFF",
-              }}
-            >
+            <h1>
               Your care dashboard is coming online
             </h1>
-            <p
-              style={{
-                fontSize: "1.1rem",
-                lineHeight: 1.65,
-                color: "rgba(255,255,255,0.78)",
-                marginBottom: "1.75rem",
-              }}
-            >
+            <p>
               The Reform Vital Patient Portal will house your goals, lab trends,
               AI coach check-ins, and progress metrics between physician visits.
               While secure login is being finalized, start your clinical
@@ -56,15 +45,7 @@ export default function PortalPage() {
               <a href="/start" className="btn btn-primary">
                 Start Assessment →
               </a>
-              <a
-                href="/ai-coach"
-                className="btn"
-                style={{
-                  background: "transparent",
-                  border: "1px solid rgba(255,255,255,0.35)",
-                  color: "#FFF",
-                }}
-              >
+              <a href="/ai-coach" className="btn btn-outline">
                 Preview AI Coach
               </a>
             </div>

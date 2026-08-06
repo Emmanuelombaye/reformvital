@@ -323,11 +323,12 @@ export default function Hero() {
         .rv-hero-note {
           font-family: var(--font-body);
           font-size: 0.72rem;
-          color: rgba(244, 248, 247, 0.78);
-          font-weight: 500;
+          color: rgba(255, 255, 255, 0.92);
+          font-weight: 600;
           text-align: right;
           margin: 0;
           letter-spacing: 0.01em;
+          text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
         }
 
         @media (max-width: 1100px) {

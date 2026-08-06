@@ -174,6 +174,24 @@ REPLACEMENTS: list[tuple[str, str, int, int, str, dict[str, float] | None]] = [
     ("29", "Bremelanotide.png", 2752, 1536, "PNG", None),
     ("46", "Minoxidil.png", 2752, 1536, "PNG", None),
     ("41", "recovery_bpc157.png", 1024, 1024, "PNG", None),
+    # Remaining unused client crops → photo-less sections
+    ("04", "about-villa.png", 1536, 1024, "PNG", None),
+    ("11", "why-personalized.png", 1024, 1024, "PNG", None),
+    ("12", "membership-hero.png", 1536, 1024, "PNG", None),
+    ("13", "story-habits.png", 1536, 1024, "PNG", None),
+    ("15", "portal-performance.png", 1536, 1024, "PNG", None),
+    ("16", "member-nutrition.png", 1024, 1024, "PNG", None),
+    ("18", "why-support.png", 1024, 1024, "PNG", None),
+    ("19", "academy-nutrition.png", 1024, 1024, "PNG", None),
+    ("20", "academy-recipes.png", 1024, 1024, "PNG", None),
+    ("23", "why-wellness.png", 1024, 1024, "PNG", None),
+    ("25", "about-longevity.png", 1536, 1024, "PNG", None),
+    ("28", "member-clinical.png", 1024, 1024, "PNG", None),
+    ("31", "start-wellness.png", 1024, 1280, "PNG", None),
+    ("33", "why-evidence.png", 1024, 1024, "PNG", None),
+    ("34", "academy-supplements.png", 1024, 1024, "PNG", None),
+    ("36", "story-nutrition.png", 1024, 1024, "PNG", None),
+    ("37", "member-renew.png", 1536, 1024, "PNG", None),
 ]
 
 

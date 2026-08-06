@@ -154,8 +154,12 @@ export default function ResourcesPage() {
 
             <div className="rv-academy-category-grid">
               {academy.categories.map((cat) => (
-                <a key={cat.slug} href={cat.href} className="rv-academy-category" data-animate="rise">
-                  {cat.label}
+                <a key={cat.slug} href={cat.href} className="rv-academy-category rv-academy-category--photo" data-animate="rise">
+                  {"image" in cat && cat.image ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img src={cat.image} alt="" className="rv-academy-category-img" />
+                  ) : null}
+                  <span>{cat.label}</span>
                 </a>
               ))}
             </div>
@@ -251,10 +255,16 @@ export default function ResourcesPage() {
 
             <div className="rv-academy-stories-grid">
               {academy.successStories.map((story) => (
-                <a key={story.outcome} href={story.href} className="rv-academy-story" data-animate="tilt-right">
-                  <span className="rv-resource-type">{story.outcome}</span>
-                  <p>{story.story}</p>
-                  <span className="rv-resource-cta">Read more →</span>
+                <a key={story.outcome} href={story.href} className="rv-academy-story rv-academy-story--photo" data-animate="tilt-right">
+                  {"image" in story && story.image ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img src={story.image} alt="" className="rv-academy-story-img" />
+                  ) : null}
+                  <div className="rv-academy-story-body">
+                    <span className="rv-resource-type">{story.outcome}</span>
+                    <p>{story.story}</p>
+                    <span className="rv-resource-cta">Read more →</span>
+                  </div>
                 </a>
               ))}
             </div>
@@ -426,7 +436,7 @@ export default function ResourcesPage() {
                 <a href="/start" className="btn btn-primary">
                   Schedule a Consultation →
                 </a>
-                <a href="/treatments" className="btn btn-outline" style={{ color: "#fff", borderColor: "rgba(255,255,255,0.35)" }}>
+                <a href="/treatments" className="btn btn-outline">
                   Browse treatments
                 </a>
               </div>

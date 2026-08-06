@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -14,7 +15,17 @@ export default function StartAssessmentPage() {
       <Navbar />
       <main>
         <section className="section" style={{ background: "linear-gradient(180deg, #F4F8F7 0%, #E6F2F0 100%)", minHeight: "75vh" }}>
-          <div className="container" style={{ maxWidth: "42rem" }}>
+          <div className="container rv-start-layout">
+            <div className="rv-start-photo" data-animate="rise">
+              <Image
+                src="/images/start-wellness.png"
+                alt="Begin your Reform Vital wellness journey"
+                width={640}
+                height={800}
+                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                priority
+              />
+            </div>
             <div style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: "var(--radius)", padding: "2.5rem", boxShadow: "var(--shadow-hover)" }}>
               {/* Progress Indicator */}
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "2rem", borderBottom: "1px solid var(--border)", paddingBottom: "1rem", gap: "1rem", flexWrap: "wrap" }}>

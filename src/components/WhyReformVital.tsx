@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { brandConfig } from "@/brand.config";
 
 export default function WhyReformVital() {
@@ -21,6 +22,17 @@ export default function WhyReformVital() {
               data-delay={String(i * 100)}
               data-tilt
             >
+              {"image" in pillar && pillar.image ? (
+                <div className="rv-why-photo">
+                  <Image
+                    src={pillar.image}
+                    alt=""
+                    width={400}
+                    height={280}
+                    style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                  />
+                </div>
+              ) : null}
               <span className="rv-why-num">{String(i + 1).padStart(2, "0")}</span>
               <h3>{pillar.title}</h3>
               <p>{pillar.desc}</p>
