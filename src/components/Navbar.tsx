@@ -35,14 +35,25 @@ export default function Navbar() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [mobileMenuOpen]);
+
+  const closeMobile = () => setMobileMenuOpen(false);
+
   return (
     <header className="rv-site-header">
       <OfferBanner />
       <TrustBar />
 
-      <nav className="nav" id="navbar" aria-label="Primary">
+      <nav className={`nav${mobileMenuOpen ? " is-mobile-open" : ""}`} id="navbar" aria-label="Primary">
         <div className="container nav-shell">
-          <a href="/" className="brand" aria-label="Reform Vital home">
+          <a href="/" className="brand" aria-label="Reform Vital home" onClick={closeMobile}>
             <ReformVitalLogo height={30} showText showTagline={false} />
           </a>
 
@@ -98,15 +109,16 @@ export default function Navbar() {
               </svg>
               <span className="nav-phone-text">{brandConfig.nav.phone}</span>
             </a>
-            <a href={brandConfig.nav.ctaLink} className="btn btn-primary nav-cta">
+            <a href={brandConfig.nav.ctaLink} className="btn btn-primary nav-cta nav-cta--desktop">
               Start Assessment
             </a>
             <button
               type="button"
               className="mobile-toggle-btn"
               onClick={() => setMobileMenuOpen((v) => !v)}
-              aria-label="Toggle navigation menu"
+              aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
               aria-expanded={mobileMenuOpen}
+              aria-controls="rv-mobile-nav"
             >
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 {mobileMenuOpen ? (
@@ -120,29 +132,32 @@ export default function Navbar() {
         </div>
 
         {mobileMenuOpen && (
-          <div className="rv-mobile-drawer">
+          <div className="rv-mobile-drawer" id="rv-mobile-nav">
             <ul className="rv-mobile-list">
               {[...PRIMARY_LINKS, ...MORE_LINKS].map((link) => (
                 <li key={link.href}>
-                  <a
-                    href={link.href}
-                    className="rv-mobile-link"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
+                  <a href={link.href} className="rv-mobile-link" onClick={closeMobile}>
                     {link.label}
                   </a>
                 </li>
               ))}
               <li className="rv-mobile-meta">
-                <a
-                  href={brandConfig.nav.loginLink}
-                  className="rv-mobile-link"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
+                <a href={brandConfig.nav.loginLink} className="rv-mobile-link" onClick={closeMobile}>
                   Log in to patient portal
                 </a>
-                <a href={`tel:${brandConfig.nav.phone}`} className="rv-mobile-link rv-mobile-link--accent">
+                <a
+                  href={`tel:${brandConfig.nav.phone}`}
+                  className="rv-mobile-link rv-mobile-link--accent"
+                  onClick={closeMobile}
+                >
                   Call {brandConfig.nav.phone}
+                </a>
+                <a
+                  href={brandConfig.nav.ctaLink}
+                  className="btn btn-primary rv-mobile-cta"
+                  onClick={closeMobile}
+                >
+                  Start Assessment
                 </a>
               </li>
             </ul>
