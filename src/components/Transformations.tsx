@@ -296,21 +296,23 @@ export default function Transformations() {
           {/* Featured Spotlight Grid */}
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "2.5rem", alignItems: "center" }}>
             <div
+              className="rv-transform-spotlight-media"
               style={{
                 position: "relative",
                 borderRadius: "1.25rem",
                 overflow: "hidden",
                 border: "2px solid rgba(0, 168, 150, 0.5)",
                 boxShadow: "0 20px 40px rgba(0,0,0,0.5)",
-                maxHeight: "480px",
+                aspectRatio: "16 / 9",
+                background: "#0a1520",
               }}
             >
               <Image
                 src={currentItem.image}
                 alt={`${currentItem.name} Transformation Result`}
-                width={800}
-                height={550}
-                style={{ width: "100%", height: "auto", objectFit: "cover", display: "block" }}
+                fill
+                sizes="(max-width: 768px) 92vw, 50vw"
+                style={{ objectFit: "cover", objectPosition: "center center" }}
                 loading="eager"
                 priority={true}
                 quality={85}
@@ -443,13 +445,23 @@ export default function Transformations() {
                     transition: "all 0.3s ease",
                   }}
                 >
-                  <div style={{ position: "relative", height: "135px", borderRadius: "0.85rem", overflow: "hidden", marginBottom: "0.85rem" }}>
+                  <div
+                    className="rv-transform-thumb"
+                    style={{
+                      position: "relative",
+                      aspectRatio: "16 / 9",
+                      borderRadius: "0.85rem",
+                      overflow: "hidden",
+                      marginBottom: "0.85rem",
+                      background: "#e8f0ee",
+                    }}
+                  >
                     <Image
                       src={item.image}
                       alt={item.name}
-                      width={280}
-                      height={160}
-                      style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                      fill
+                      sizes="250px"
+                      style={{ objectFit: "cover", objectPosition: "center center" }}
                       loading="lazy"
                       quality={75}
                     />

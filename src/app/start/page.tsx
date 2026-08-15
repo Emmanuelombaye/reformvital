@@ -20,9 +20,9 @@ export default function StartAssessmentPage() {
               <Image
                 src="/images/start-wellness.png"
                 alt="Begin your Reform Vital wellness journey"
-                width={640}
-                height={800}
-                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                fill
+                sizes="(max-width: 900px) 92vw, 40vw"
+                style={{ objectFit: "cover", objectPosition: "center 18%" }}
                 priority
               />
             </div>

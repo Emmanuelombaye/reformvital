@@ -26,9 +26,9 @@ export default function MemberExperience() {
                   <Image
                     src={item.image}
                     alt=""
-                    width={360}
-                    height={220}
-                    style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                    fill
+                    sizes="(max-width: 900px) 92vw, 33vw"
+                    className="rv-member-exp-photo__img"
                   />
                 </div>
               ) : null}

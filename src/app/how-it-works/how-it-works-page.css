@@ -152,7 +152,7 @@
 
 .rv-hiw-step-media__frame {
   position: relative;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 3 / 2;
   border-radius: inherit;
   overflow: hidden;
   background: #E8F0EE;
@@ -162,6 +162,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 22%;
   display: block;
   transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -402,12 +403,13 @@
 }
 
 .rv-hiw-why-card__media {
-  aspect-ratio: 16 / 11;
+  aspect-ratio: 3 / 2;
   background: #E8F0EE;
   overflow: hidden;
 }
 
 .rv-hiw-why-card__media--product {
+  aspect-ratio: 1 / 1;
   background: linear-gradient(165deg, #F7F5F0 0%, #EEF2F1 100%);
   display: grid;
   place-items: center;
@@ -418,6 +420,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 20%;
   display: block;
   transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -427,6 +430,7 @@
   height: 88%;
   max-width: 70%;
   object-fit: contain;
+  object-position: center;
 }
 
 .rv-hiw-why-card:hover .rv-hiw-why-card__media img {
@@ -476,14 +480,18 @@
 }
 
 .rv-hiw-priority__media {
-  min-height: 240px;
+  position: relative;
+  aspect-ratio: 4 / 3;
+  min-height: 0;
   background: #E8F0EE;
+  overflow: hidden;
 }
 
 .rv-hiw-priority__media img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 20%;
   display: block;
 }
 
@@ -620,13 +628,17 @@
 }
 
 .rv-hiw-cta__media {
-  min-height: 240px;
+  position: relative;
+  aspect-ratio: 4 / 3;
+  min-height: 0;
+  overflow: hidden;
 }
 
 .rv-hiw-cta__media img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 20%;
   display: block;
 }
 

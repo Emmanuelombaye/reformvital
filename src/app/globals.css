@@ -1049,6 +1049,7 @@ h1, h2, h3, h4, h5, h6 {
   height: 100% !important;
   max-width: none !important;
   object-fit: cover !important;
+  object-position: center 20%;
   display: block;
   transition: transform 0.45s ease;
 }
@@ -2400,7 +2401,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .rv-resource-feature-media {
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 3 / 2;
   overflow: hidden;
   background: #0D1B2A;
 }
@@ -2409,6 +2410,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center center;
   display: block;
 }
 
@@ -2544,7 +2546,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .rv-resource-card-media {
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 3 / 2;
   overflow: hidden;
   background: #E6F2F0;
 }
@@ -2553,6 +2555,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center center;
   display: block;
 }
 
@@ -2979,8 +2982,10 @@ h1, h2, h3, h4, h5, h6 {
 .rv-academy-category-img {
   display: block;
   width: 100%;
-  height: 7.5rem;
+  aspect-ratio: 3 / 2;
+  height: auto;
   object-fit: cover;
+  object-position: center center;
 }
 
 .rv-academy-category--photo span {
@@ -3323,8 +3328,20 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .rv-member-exp-photo {
-  height: 8.5rem;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
+  background: #e8f0ee;
+}
+
+.rv-member-exp-photo img,
+.rv-member-exp-photo__img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
 }
 
 .rv-member-exp-body {
@@ -3475,8 +3492,10 @@ h1, h2, h3, h4, h5, h6 {
 .rv-academy-story-img {
   display: block;
   width: 100%;
-  height: 10rem;
+  aspect-ratio: 3 / 2;
+  height: auto;
   object-fit: cover;
+  object-position: center center;
 }
 
 .rv-academy-story-body {
@@ -3900,10 +3919,21 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .rv-start-photo {
+  position: relative;
   border-radius: 1.25rem;
   overflow: hidden;
   border: 1px solid var(--border);
-  min-height: 28rem;
+  aspect-ratio: 4 / 5;
+  min-height: 0;
+  background: #e8f0ee;
+}
+
+.rv-start-photo img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+  object-position: center 18%;
+  display: block;
 }
 
 @media (max-width: 900px) {
@@ -3912,8 +3942,9 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .rv-start-photo {
-    min-height: 16rem;
-    max-height: 20rem;
+    aspect-ratio: 4 / 5;
+    max-height: none;
+    min-height: 0;
   }
 
   .rv-why-grid {
@@ -4766,13 +4797,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .rv-yx-tx-card__media--pack {
-  height: 240px;
+  aspect-ratio: 1 / 1;
+  height: auto;
   background: #F3F0EA;
 }
 
 @media (min-width: 640px) {
   .rv-yx-tx-card--pack .rv-yx-tx-card__media--pack {
-    height: 280px;
+    aspect-ratio: 1 / 1;
+    height: auto;
   }
 }
 
@@ -5239,7 +5272,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .rv-yx-featured__media {
   position: relative;
-  min-height: 240px;
+  aspect-ratio: 4 / 3;
+  min-height: 0;
+  overflow: hidden;
 }
 
 .rv-yx-featured__scrim {
@@ -5366,14 +5401,16 @@ h1, h2, h3, h4, h5, h6 {
 
 .rv-yx-tx-card__media {
   position: relative;
-  height: 220px;
+  aspect-ratio: 3 / 2;
+  height: auto;
   background: #0D1B2A;
   overflow: hidden;
 }
 
 @media (min-width: 640px) {
   .rv-yx-tx-card--mensrx .rv-yx-tx-card__media {
-    height: 260px;
+    aspect-ratio: 3 / 2;
+    height: auto;
   }
 }
 
@@ -5381,6 +5418,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center center;
   display: block;
   transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -5744,14 +5782,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .rv-yx-expect-card__media {
-  aspect-ratio: 16 / 11;
+  aspect-ratio: 1 / 1;
   background: #E8F0EE;
+  overflow: hidden;
 }
 
 .rv-yx-expect-card__media img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center center;
   display: block;
 }
 
@@ -5820,7 +5860,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .rv-yx-knowall__media {
   position: relative;
-  min-height: 220px;
+  aspect-ratio: 1 / 1;
+  min-height: 0;
   border-radius: 1.25rem;
   background: linear-gradient(180deg, #E8F4F2, #D4EBE7);
   overflow: hidden;
@@ -6291,8 +6332,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .rv-mag-lead__card img {
   width: 7.5rem;
-  height: 5.5rem;
+  aspect-ratio: 4 / 3;
+  height: auto;
   object-fit: cover;
+  object-position: center center;
   border-radius: 0.75rem;
   display: block;
 }
@@ -6458,6 +6501,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   aspect-ratio: 3 / 2;
   object-fit: cover;
+  object-position: center center;
   display: block;
 }
 
@@ -6864,7 +6908,8 @@ h1, h2, h3, h4, h5, h6 {
 
   .rv-mag-lead__card img {
     width: 5.5rem;
-    height: 4.5rem;
+    aspect-ratio: 4 / 3;
+    height: auto;
   }
 
   .rv-mag-cta__actions .btn,
