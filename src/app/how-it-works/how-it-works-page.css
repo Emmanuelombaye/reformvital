@@ -439,7 +439,7 @@
 
 .rv-hiw-why-card__media--product {
   aspect-ratio: 1 / 1;
-  background: linear-gradient(165deg, #F7F5F0 0%, #EEF2F1 100%);
+  background: var(--rv-pack-stage, #f3f0ea);
   display: grid;
   place-items: center;
   padding: 1.25rem;
