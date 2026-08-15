@@ -42,9 +42,12 @@ export default function ScrollMotion() {
     ];
 
     const skipClosest =
-      "#qualify, header, .promo, .nav, .rv-scroll-progress, .rv-float-orb, .rv-cursor-glow, .rv-treatments-dropdown";
+      "#qualify, header, .promo, .nav, .rv-scroll-progress, .rv-float-orb, .rv-cursor-glow, .rv-treatments-dropdown, .rv-start, .rv-hero-media, .rv-why-photo, .rv-mag-mast__media, .deliverMedia, .demoLifestyle, .rv-hiw-step-media, .rv-hiw-step-media__frame, .rv-hiw-why-card__media, .rv-hiw-priority__media, .rv-hiw-cta__media, .rv-transform-spotlight-media, .rv-transform-thumb, .rv-member-exp-photo, .rv-yx-expect-card__media, .rv-dual-img, .rv-tx-media__art, .rv-page-hero";
 
     const skipRevealTags = new Set(["SECTION", "MAIN"]);
+
+    const skipMediaFrame =
+      ".rv-hero-media, .rv-why-photo, .rv-mag-mast__media, .deliverMedia, .demoLifestyle, .rv-hiw-step-media, .rv-hiw-step-media__frame, .rv-hiw-why-card__media, .rv-hiw-priority__media, .rv-hiw-cta__media, .rv-transform-spotlight-media, .rv-transform-thumb, .rv-member-exp-photo, .rv-yx-expect-card__media, .rv-dual-img, .rv-tx-media__art, .rv-page-hero, .rv-start-photo";
 
     const autoSelectors = [
       ".section-head",
@@ -107,16 +110,12 @@ export default function ScrollMotion() {
     const tiltSelectors = [
       ".rv-tilt",
       "[data-tilt]",
-      ".rv-how-visual",
       ".rv-faq-item",
       ".rv-pillar",
       ".treatment-card",
       ".rv-yx__card",
       ".rv-yx-tx-card",
-      ".rv-tx-media",
-      ".rv-why-card",
       ".rv-yx-protocol-card",
-      ".rv-yx-expect-card",
       ".rv-resource-feature",
       ".rv-resource-card",
       ".rv-resource-video",
@@ -124,7 +123,6 @@ export default function ScrollMotion() {
       ".membership-card",
       ".tier-card",
       ".review-card",
-      ".transform-card",
       ".coach-card",
     ];
 
@@ -141,6 +139,7 @@ export default function ScrollMotion() {
     const shouldSkipReveal = (el: Element) => {
       if (el.closest(skipClosest)) return true;
       if ((el as HTMLElement).dataset.rvSkipMotion === "1") return true;
+      if (el.matches(skipMediaFrame)) return true;
       if (skipRevealTags.has(el.tagName) && !el.hasAttribute("data-animate")) return true;
       if (el.classList.contains("section") && !el.hasAttribute("data-animate")) return true;
       return false;

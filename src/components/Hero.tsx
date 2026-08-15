@@ -99,6 +99,10 @@ export default function Hero() {
           inset: 0;
           z-index: 0;
           overflow: hidden;
+          isolation: isolate;
+          contain: paint;
+          transform: none !important;
+          transform-style: flat !important;
           border-radius: inherit;
           pointer-events: none;
         }
@@ -107,6 +111,7 @@ export default function Hero() {
           z-index: 0;
           pointer-events: none;
           object-fit: contain !important;
+          transform: none !important;
         }
 
         .rv-hero-visual--desktop {

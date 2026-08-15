@@ -323,9 +323,8 @@ export default function AICoachPage() {
                 <article
                   key={row.badge}
                   className={`${styles.deliverRow}${row.reverse ? ` ${styles.deliverRowReverse}` : ""}`}
-                  data-animate="peak-fade"
                 >
-                  <div className={styles.deliverCopy}>
+                  <div className={styles.deliverCopy} data-animate="peak-fade">
                     <span className={styles.deliverBadge}>{row.badge}</span>
                     <h3>{row.title}</h3>
                     <p>{row.description}</p>
@@ -591,7 +590,7 @@ export default function AICoachPage() {
                   </a>
                 </div>
               </div>
-              <div className={styles.demoLifestyle} aria-hidden data-animate="peak-fade">
+              <div className={styles.demoLifestyle} aria-hidden>
                 <SmoothImage
                   src={lifestyleMindfulness}
                   alt=""

@@ -56,13 +56,18 @@ body {
   overflow-x: hidden;
 }
 
-/* Hardware-Accelerated Fast Image Rendering & Optimization */
+/* Fast image rendering — never force translateZ (it escapes overflow:hidden / preserve-3d) */
 img {
   max-width: 100%;
   height: auto;
   content-visibility: auto;
   backface-visibility: hidden;
-  transform: translateZ(0);
+}
+
+/* next/image fill must not inherit height:auto / max-width fights */
+img[data-nimg="fill"] {
+  max-width: none;
+  height: 100%;
 }
 
 a {
@@ -2764,14 +2769,22 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 1.1rem;
   padding: 0;
   overflow: hidden;
+  isolation: isolate;
+  contain: paint;
+  transform-style: flat;
   transition: border-color 0.2s ease, transform 0.25s ease;
 }
 
 .rv-why-photo {
   position: relative;
+  z-index: 0;
   width: 100%;
   aspect-ratio: 4 / 3;
   overflow: hidden;
+  isolation: isolate;
+  contain: paint;
+  transform: none !important;
+  transform-style: flat !important;
   background: linear-gradient(165deg, #eef5f3 0%, #e2ece9 100%);
   display: grid;
   place-items: center;
@@ -3517,13 +3530,21 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 1rem;
   padding: 0;
   overflow: hidden;
+  isolation: isolate;
+  contain: paint;
+  transform-style: flat;
 }
 
 .rv-member-exp-photo {
   position: relative;
+  z-index: 0;
   width: 100%;
   aspect-ratio: 1 / 1;
   overflow: hidden;
+  isolation: isolate;
+  contain: paint;
+  transform: none !important;
+  transform-style: flat !important;
   background: #e8f0ee;
 }
 
@@ -4059,6 +4080,9 @@ h1, h2, h3, h4, h5, h6 {
 /* —— Photo page heroes (about / memberships / portal) —— */
 .rv-page-hero {
   position: relative;
+  isolation: isolate;
+  contain: paint;
+  transform-style: flat;
   /* Client page heroes are 3:2 (1536×1024) — show full frame */
   aspect-ratio: 3 / 2;
   min-height: 0;
@@ -4516,6 +4540,10 @@ h1, h2, h3, h4, h5, h6 {
   position: absolute;
   inset: 0;
   overflow: hidden;
+  isolation: isolate;
+  contain: paint;
+  transform: none !important;
+  transform-style: flat !important;
   background: #F3F0EA;
 }
 
@@ -6289,9 +6317,14 @@ h1, h2, h3, h4, h5, h6 {
 
 .rv-yx-expect-card__media {
   position: relative;
+  z-index: 0;
   aspect-ratio: 4 / 3;
   background: linear-gradient(165deg, #eef5f3 0%, #e2ece9 100%);
   overflow: hidden;
+  isolation: isolate;
+  contain: paint;
+  transform: none !important;
+  transform-style: flat !important;
   display: grid;
   place-items: center;
   padding: 0.7rem;
@@ -6299,12 +6332,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .rv-yx-expect-card__media img {
-  width: 100%;
-  height: 100%;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
   object-fit: contain;
   object-position: center center;
   display: block;
   border-radius: 0.65rem;
+  transform: none !important;
 }
 
 .rv-yx-expect-card h3 {
@@ -6706,11 +6741,12 @@ h1, h2, h3, h4, h5, h6 {
   display: grid;
   gap: 1.75rem;
   align-items: center;
+  isolation: isolate;
 }
 
 @media (min-width: 900px) {
   .rv-mag-mast__grid {
-    grid-template-columns: 1fr 0.95fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr);
     gap: 2.5rem;
   }
 }
@@ -6741,10 +6777,16 @@ h1, h2, h3, h4, h5, h6 {
 
 .rv-mag-mast__media {
   position: relative;
+  z-index: 0;
+  min-width: 0;
   aspect-ratio: 4 / 5;
   max-height: none;
   border-radius: 1.5rem;
   overflow: hidden;
+  isolation: isolate;
+  contain: paint;
+  transform: none !important;
+  transform-style: flat !important;
   box-shadow: 0 22px 50px rgba(13, 27, 42, 0.14);
   border: 1.5px solid rgba(13, 27, 42, 0.08);
   background: linear-gradient(165deg, #eef5f3 0%, #e2ece9 100%);
@@ -6754,13 +6796,21 @@ h1, h2, h3, h4, h5, h6 {
   box-sizing: border-box;
 }
 
+.rv-mag-mast__copy {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+}
+
 .rv-mag-mast__media img {
-  width: 100%;
-  height: 100%;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
   object-fit: contain;
   object-position: center center;
   display: block;
   border-radius: 1rem;
+  transform: none !important;
 }
 
 .rv-mag-lead {
@@ -7483,5 +7533,93 @@ h1, h2, h3, h4, h5, h6 {
   .rv-yx-expect__grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* ═══════════════════════════════════════════════════════
+   CLIP-SAFE MEDIA — stop fill images painting over copy
+   (same failure class as /start questionnaire clipping)
+   ═══════════════════════════════════════════════════════ */
+.rv-hero-media,
+.rv-page-hero,
+.rv-why-photo,
+.rv-why-card,
+.rv-member-exp-photo,
+.rv-member-exp-item,
+.rv-mag-mast__media,
+.rv-resource-feature-media,
+.rv-resource-card-media,
+.rv-yx-expect-card,
+.rv-yx-expect-card__media,
+.rv-yx-knowall__media,
+.rv-yx-protocol__vials,
+.rv-tx-media,
+.rv-tx-media__art,
+.rv-dual-img,
+.rv-hiw-step-media,
+.rv-hiw-step-media__frame,
+.rv-hiw-why-card,
+.rv-hiw-why-card__media,
+.rv-hiw-priority__media,
+.rv-hiw-cta__media,
+.rv-transform-spotlight-media,
+.rv-transform-thumb,
+.rv-transform-card,
+.rv-start-photo {
+  isolation: isolate;
+  contain: paint;
+  transform-style: flat !important;
+}
+
+.rv-hero-media,
+.rv-why-photo,
+.rv-member-exp-photo,
+.rv-mag-mast__media,
+.rv-resource-feature-media,
+.rv-resource-card-media,
+.rv-yx-expect-card__media,
+.rv-tx-media__art,
+.rv-dual-img,
+.rv-hiw-step-media__frame,
+.rv-hiw-why-card__media,
+.rv-hiw-priority__media,
+.rv-hiw-cta__media,
+.rv-transform-spotlight-media,
+.rv-transform-thumb,
+.rv-start-photo {
+  overflow: hidden;
+  transform: none !important;
+}
+
+.rv-hero-media img,
+.rv-page-hero img,
+.rv-why-photo img,
+.rv-member-exp-photo img,
+.rv-mag-mast__media img,
+.rv-resource-feature-media img,
+.rv-resource-card-media img,
+.rv-yx-expect-card__media img,
+.rv-tx-media__art img,
+.rv-dual-img img,
+.rv-hiw-step-media__frame img,
+.rv-hiw-why-card__media img,
+.rv-hiw-priority__media img,
+.rv-hiw-cta__media img,
+.rv-transform-spotlight-media img,
+.rv-transform-thumb img,
+.rv-start-photo img,
+img[data-nimg="fill"] {
+  transform: none !important;
+}
+
+/* Split layouts: never let tracks collapse / overlap */
+.rv-mag-mast__copy,
+.rv-mag-mast__media,
+.rv-transform-spotlight-media,
+.rv-yx-knowall__media,
+.rv-yx-knowall__copy,
+.rv-tx-copy,
+.rv-tx-media {
+  min-width: 0;
+  max-width: 100%;
 }
 

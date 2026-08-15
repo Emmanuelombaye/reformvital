@@ -20,7 +20,6 @@ export default function WhyReformVital() {
               className="rv-why-card"
               data-animate="peak-fade"
               data-delay={String(i * 80)}
-              data-tilt
             >
               {"image" in pillar && pillar.image ? (
                 <div className="rv-why-photo">

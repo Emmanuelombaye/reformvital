@@ -164,15 +164,16 @@ export default function ResourcesPage() {
                 </a>
               </div>
             </div>
-            <div className="rv-mag-mast__media">
+            <div className="rv-mag-mast__media" data-rv-skip-motion="1">
               <Image
                 src="/images/start-wellness.webp"
                 alt="Reform Vital Health Academy lifestyle"
-                fill
+                width={900}
+                height={1125}
                 sizes="(max-width: 900px) 92vw, 42vw"
                 quality={65}
                 priority
-                style={{ objectFit: "contain" }}
+                style={{ objectFit: "contain", width: "100%", height: "100%" }}
               />
             </div>
           </div>
