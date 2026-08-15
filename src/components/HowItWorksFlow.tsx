@@ -97,7 +97,7 @@ function StickySteps() {
               className={`rv-hiw-step ${isLast ? "rv-hiw-step--last" : "rv-hiw-step--sticky"}`}
               style={{ zIndex: i + 1 }}
             >
-              <article className="rv-hiw-step-card">
+              <article className="rv-hiw-step-card" data-animate="peak-fade">
                 <div className="rv-hiw-step-media">
                   <div className="rv-hiw-step-media__frame">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -108,6 +108,7 @@ function StickySteps() {
                       loading={i === 0 ? "eager" : "lazy"}
                       decoding="async"
                     />
+                    <div className="rv-hiw-step-media__shine" aria-hidden />
                   </div>
                   {"chips" in step && step.chips ? (
                     <div className="rv-hiw-step-chips">
@@ -169,7 +170,7 @@ export default function HowItWorksFlow() {
           <div className="rv-hiw-flow">
             <StickySteps />
 
-            <section className="rv-hiw-process" aria-labelledby="rv-hiw-process-title">
+            <section className="rv-hiw-process" aria-labelledby="rv-hiw-process-title" data-animate="rise">
               <div className="rv-hiw-process__head">
                 <p className="rv-hiw-process__eyebrow">Clinical process</p>
                 <h2 className="rv-hiw-process__title" id="rv-hiw-process-title">
@@ -199,14 +200,20 @@ export default function HowItWorksFlow() {
               </ol>
             </section>
 
-            <section className="rv-hiw-why">
+            <section className="rv-hiw-why" data-animate="peak-fade">
               <h2 className="rv-hiw-why__title">
                 Why <em>Reform Vital</em>?
               </h2>
               <div className="rv-hiw-why__grid">
                 {HOW_WHY.map((item) => (
-                  <article key={item.title} className="rv-hiw-why-card">
-                    <div className="rv-hiw-why-card__media">
+                  <article key={item.title} className="rv-hiw-why-card" data-animate="peak-fade">
+                    <div
+                      className={`rv-hiw-why-card__media${
+                        item.image.src.includes("/packs/") || item.image.src.includes("vial-")
+                          ? " rv-hiw-why-card__media--product"
+                          : ""
+                      }`}
+                    >
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img src={item.image.src} alt={item.image.alt} loading="lazy" />
                     </div>
@@ -224,7 +231,7 @@ export default function HowItWorksFlow() {
               </div>
             </section>
 
-            <section className="rv-hiw-priority">
+            <section className="rv-hiw-priority" data-animate="rise">
               <div className="rv-hiw-priority__card">
                 <div className="rv-hiw-priority__media">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -248,7 +255,7 @@ export default function HowItWorksFlow() {
               </div>
             </section>
 
-            <section className="rv-hiw-faq">
+            <section className="rv-hiw-faq" data-animate="peak-fade">
               <p className="rv-hiw-faq__eyebrow">We&rsquo;ve got you.</p>
               <h2 className="rv-hiw-faq__title">You have questions, we have answers.</h2>
               <div className="rv-hiw-faq__list">
@@ -268,7 +275,7 @@ export default function HowItWorksFlow() {
               </div>
             </section>
 
-            <section className="rv-hiw-cta">
+            <section className="rv-hiw-cta" data-animate="bounce">
               <div className="rv-hiw-cta__grid">
                 <div className="rv-hiw-cta__media">
                   {/* eslint-disable-next-line @next/next/no-img-element */}

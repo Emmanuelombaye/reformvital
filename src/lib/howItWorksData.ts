@@ -1,4 +1,4 @@
-/** Reform Vital — Yucca/Pax How It Works sticky flow data */
+/** Reform Vital — Yucca sticky How It Works, Reform imagery + copy */
 
 export const HOW_STEPS = [
   {
@@ -7,8 +7,8 @@ export const HOW_STEPS = [
     titleItalic: "treatment plan",
     body: "Browse physician-guided pathways—GLP-1, hormones, peptides, longevity—and pick the plan that matches your goals. Then complete a short medical history so our providers can confirm you're a good fit.",
     image: {
-      src: "/images/how-step-consult.png",
-      alt: "Patient browsing Reform Vital treatment options",
+      src: "/images/featured-metabolic.png",
+      alt: "Reform Vital personalized treatment pathways",
     },
     chips: ["GLP-1", "Hormones", "Peptides"],
     callout: {
@@ -23,7 +23,7 @@ export const HOW_STEPS = [
     titleItalic: "verify identity",
     body: "Complete your secure intake, then verify your identity with a quick ID step. It's a standard part of telehealth—and it keeps prescriptions issued safely.",
     image: {
-      src: "/images/how-step-consult.png",
+      src: "/images/start-wellness.png",
       alt: "Secure Reform Vital checkout and identity verification",
     },
     chips: ["Secure checkout", "ID verification", "Cancel anytime"],
@@ -45,7 +45,7 @@ export const HOW_STEPS = [
     titleItalic: "medication",
     body: "Once approved, your prescription is sent to a licensed partner pharmacy and fulfilled to your exact plan. Medication ships via expedited cold-chain delivery—discreetly packaged to your door.",
     image: {
-      src: "/images/how-step-delivery.png",
+      src: "/images/member-rx.png",
       alt: "Reform Vital medication delivered in discreet packaging",
     },
     chips: ["Licensed pharmacy", "Expedited shipping", "Discreet packaging"],
@@ -60,7 +60,7 @@ export const HOW_STEPS = [
     titleItalic: "treatment",
     body: "Care doesn't stop at delivery. From day one you get patient portal access, onboarding guidance, AI coaching between visits, and a care team for questions and adjustments.",
     image: {
-      src: "/images/how-step-ongoing.png",
+      src: "/images/member-renew.png",
       alt: "Patient starting treatment with Reform Vital care support",
     },
     chips: ["Patient portal", "AI coach", "Ongoing support"],
@@ -70,24 +70,24 @@ export const HOW_STEPS = [
 export const HOW_WHY = [
   {
     image: {
-      src: "/images/vial-glp1.png",
-      alt: "Reform Vital GLP-1 treatment vials",
+      src: "/images/packs/glp1-a.png",
+      alt: "Reform Vital pharmaceutical-grade treatment packaging",
     },
     title: "Transparent & Trusted",
     body: "From compounding partners to doorstep delivery—pharmaceutical-grade quality with clear clinical oversight.",
   },
   {
     image: {
-      src: "/images/how-step-physician.png",
-      alt: "Licensed provider reviewing patient care",
+      src: "/images/doctor_portrait.png",
+      alt: "Licensed Reform Vital medical provider",
     },
     title: "Care Built Around You",
     body: "Protocols tailored to your goals, history, labs, and how your body responds over time.",
   },
   {
     image: {
-      src: "/images/how-step-ongoing.png",
-      alt: "Patient on a Reform Vital health journey",
+      src: "/images/about-longevity.png",
+      alt: "Clinically guided healthy aging journey",
     },
     title: "Clinically Guided Care",
     body: "Provider-led memberships with follow-ups, adjustments, and AI coaching between visits.",
@@ -96,8 +96,8 @@ export const HOW_WHY = [
 
 export const HOW_MEDIA = {
   priority: {
-    src: "/images/how-step-ongoing.png",
-    alt: "Reform Vital patient care and progress support",
+    src: "/images/portal-performance.png",
+    alt: "Reform Vital patient portal and progress tracking",
   },
   cta: {
     src: "/images/lifestyle-morning.png",
