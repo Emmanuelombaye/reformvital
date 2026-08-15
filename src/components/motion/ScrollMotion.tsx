@@ -31,11 +31,12 @@ export default function ScrollMotion() {
 
     const variants = [
       "rise",
+      "peak-fade",
       "tilt-left",
       "tilt-right",
       "bounce",
       "zoom",
-      "flip",
+      "peak-fade",
       "slide-left",
       "slide-right",
     ];
@@ -58,6 +59,22 @@ export default function ScrollMotion() {
       ".rv-yx__card",
       ".rv-yx-tx-card",
       ".rv-yx-featured",
+      ".rv-yx-explore",
+      ".rv-yx-stage",
+      ".rv-yx-side",
+      ".rv-yx-protocol",
+      ".rv-yx-protocol-card",
+      ".rv-yx-expect",
+      ".rv-yx-expect-card",
+      ".rv-yx-knowall",
+      ".rv-yx-catalog__intro",
+      ".rv-hiw-page-hero",
+      ".rv-hiw-step-card",
+      ".rv-hiw-process-card",
+      ".rv-hiw-why-card",
+      ".rv-hiw-priority__card",
+      ".rv-hiw-faq__item",
+      ".rv-hiw-cta__grid",
       ".rv-resource-feature",
       ".rv-resource-card",
       ".rv-resource-video",
@@ -84,6 +101,9 @@ export default function ScrollMotion() {
       ".treatment-card",
       ".rv-yx__card",
       ".rv-yx-tx-card",
+      ".rv-yx-stage",
+      ".rv-yx-protocol-card",
+      ".rv-yx-expect-card",
       ".rv-resource-feature",
       ".rv-resource-card",
       ".rv-resource-video",
@@ -107,8 +127,9 @@ export default function ScrollMotion() {
     const shouldSkipReveal = (el: Element) => {
       if (el.closest(skipClosest)) return true;
       if ((el as HTMLElement).dataset.rvSkipMotion === "1") return true;
-      if (skipRevealTags.has(el.tagName)) return true;
-      if (el.classList.contains("section")) return true;
+      // Allow explicit data-animate on sections; skip bare section/main wrappers
+      if (skipRevealTags.has(el.tagName) && !el.hasAttribute("data-animate")) return true;
+      if (el.classList.contains("section") && !el.hasAttribute("data-animate")) return true;
       return false;
     };
 

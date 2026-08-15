@@ -1,32 +1,96 @@
 "use client";
 
-import { useState } from "react";
-import Image from "next/image";
+import { useEffect, useMemo, useState } from "react";
 import { brandConfig } from "@/brand.config";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import TreatmentExploreHero from "@/components/TreatmentExploreHero";
 import DualProductImage from "@/components/DualProductImage";
-import { getCategoryMeta, getTherapyPackPair } from "@/lib/treatmentCatalog";
+import { getCategoryMeta, getTherapyStagePair } from "@/lib/treatmentCatalog";
+
+const EXPECT_WEEKS = [
+  {
+    tag: "Week 1–2",
+    text: "Onboarding, first doses, and provider check-ins as your body adjusts.",
+    img: "/images/how-step-consult.png",
+  },
+  {
+    tag: "Week 4–8",
+    text: "Titration and follow-up as appetite, energy, and markers stabilize.",
+    img: "/images/how-step-physician.png",
+  },
+  {
+    tag: "Month 3+",
+    text: "Ongoing optimization with portal access, AI coaching, and refills if prescribed.",
+    img: "/images/how-step-ongoing.png",
+  },
+];
+
+const PROTOCOL_SIGNALS = [
+  {
+    title: "Works with your biology",
+    body: "Protocols are chosen to support pathways your body already uses — not one-size-fits-all stacks.",
+  },
+  {
+    title: "Reviewed before fulfillment",
+    body: "A licensed U.S. provider reviews history and goals before any prescription is issued.",
+  },
+  {
+    title: "Adjusted as you progress",
+    body: "Follow-ups and messaging keep dosing and support aligned with how you respond.",
+  },
+];
 
 export default function TreatmentsPage() {
-  const [activeTab, setActiveTab] = useState(brandConfig.services[0].id);
-  const category =
-    brandConfig.services.find((s) => s.id === activeTab) || brandConfig.services[0];
+  const services = brandConfig.services;
+  const [activeTab, setActiveTab] = useState(services[0].id);
+  const [animKey, setAnimKey] = useState(0);
+  const category = useMemo(
+    () => services.find((s) => s.id === activeTab) || services[0],
+    [activeTab, services],
+  );
   const meta = getCategoryMeta(category.id);
-  const featured = category.therapies[0];
+  const [therapySlug, setTherapySlug] = useState(category.therapies[0]?.slug ?? "");
+
+  useEffect(() => {
+    const still = category.therapies.some((t) => t.slug === therapySlug);
+    if (!still) setTherapySlug(category.therapies[0]?.slug ?? "");
+  }, [category, therapySlug]);
+
+  const selected =
+    category.therapies.find((t) => t.slug === therapySlug) || category.therapies[0];
+  const detail =
+    selected &&
+    brandConfig.treatmentDetails[
+      selected.slug as keyof typeof brandConfig.treatmentDetails
+    ];
+
+  const selectCategory = (id: string) => {
+    setActiveTab(id);
+    setAnimKey((k) => k + 1);
+  };
+
+  const selectTherapy = (slug: string) => {
+    setTherapySlug(slug);
+    setAnimKey((k) => k + 1);
+  };
+
+  const stagePair = selected
+    ? getTherapyStagePair(selected.slug)
+    : { primary: meta.image, secondary: meta.image };
 
   return (
     <>
       <Navbar />
-      <main className="rv-yx-catalog">
+      <main className="rv-yx-catalog rv-yx-catalog--explore">
         <header className="rv-yx-catalog__intro" data-animate="rise">
           <p className="eyebrow">BROWSE BY TREATMENT</p>
           <h1>
-            Care pathways <em>reviewed by US-licensed providers</em>
+            Personalized treatments <em>built around your goals</em>
           </h1>
           <p>
             Private online assessment · Flat-rate memberships · Discreet pharmacy delivery if
-            prescribed. Hover a card to preview the second product angle.
+            prescribed.
           </p>
         </header>
 
@@ -35,7 +99,7 @@ export default function TreatmentsPage() {
           role="tablist"
           aria-label="Care categories"
         >
-          {brandConfig.services.map((s) => {
+          {services.map((s) => {
             const m = getCategoryMeta(s.id);
             const active = s.id === category.id;
             return (
@@ -45,7 +109,7 @@ export default function TreatmentsPage() {
                 role="tab"
                 aria-selected={active}
                 className={`rv-yx-catalog__tab${active ? " is-active" : ""}`}
-                onClick={() => setActiveTab(s.id)}
+                onClick={() => selectCategory(s.id)}
               >
                 {m.shortLabel}
               </button>
@@ -53,84 +117,102 @@ export default function TreatmentsPage() {
           })}
         </div>
 
-        <section className="rv-yx-catalog__pane" aria-labelledby="catalog-pane-title">
-          <article key={category.id} className="rv-yx-featured" data-animate="zoom">
-            <div className="rv-yx-featured__media">
-              <Image
-                src={meta.image}
-                alt={category.title}
-                fill
-                priority
-                sizes="100vw"
-                style={{ objectFit: "cover", objectPosition: "center top" }}
-                quality={90}
-              />
-              <div className="rv-yx-featured__scrim" aria-hidden />
-            </div>
-            <div className="rv-yx-featured__body">
-              <span className="rv-yx-featured__tag">{meta.tag}</span>
-              <h2 id="catalog-pane-title">{category.title}</h2>
-              <p>{meta.blurb || category.subtitle}</p>
-              <div className="rv-yx-featured__actions">
-                <a href="/start" className="rv-yx__btn rv-yx__btn--primary">
-                  Start Your Online Visit
-                </a>
-                {featured && (
-                  <a
-                    href={`/treatments/${featured.slug}`}
-                    className="rv-yx__btn rv-yx__btn--ghost"
-                  >
-                    View Details
-                  </a>
-                )}
+        <section className="rv-yx-catalog__pane rv-yx-catalog__pane--explore" data-tone={meta.tone}>
+          <TreatmentExploreHero
+            tone={meta.tone}
+            stageTitle={`Personalized ${meta.shortLabel}`}
+            tag={meta.tag}
+            blurb={detail?.tagline || selected?.desc || meta.blurb || category.subtitle}
+            therapies={category.therapies}
+            selectedSlug={selected?.slug || ""}
+            onSelectTherapy={selectTherapy}
+            animKey={`${category.id}-${animKey}`}
+          />
+
+          {/* Protocol / science */}
+          <section className="rv-yx-protocol" aria-labelledby="rv-protocol-heading" data-animate="peak-fade">
+            <div className="rv-yx-protocol__left">
+              <h2 id="rv-protocol-heading">
+                Your body isn&apos;t working against you. It just needs the{" "}
+                <em>right signal</em>.
+              </h2>
+              <p>
+                {category.subtitle} Care is reviewed by a licensed provider and adjusted as you
+                progress.
+              </p>
+              <div className="rv-yx-protocol__vials" aria-hidden>
+                <DualProductImage
+                  primary={stagePair.primary}
+                  secondary={stagePair.secondary}
+                  alt=""
+                />
               </div>
             </div>
-          </article>
-
-          <p className="rv-yx-catalog__lead">{category.subtitle}</p>
-
-          {/* 2×2 MensRx pack grid with PeakHealth dual-image hover */}
-          <div className="rv-yx-catalog__grid rv-yx-catalog__grid--2x2">
-            {category.therapies.map((t, i) => {
-              const detail =
-                brandConfig.treatmentDetails[
-                  t.slug as keyof typeof brandConfig.treatmentDetails
-                ];
-              const pair = getTherapyPackPair(t.slug);
-              return (
-                <article
-                  key={t.slug}
-                  className="rv-yx-tx-card rv-yx-tx-card--mensrx rv-yx-tx-card--pack rv-tilt"
-                  data-animate="rise"
-                  data-delay={String(Math.min(i * 70, 350))}
-                >
-                  <div className="rv-yx-tx-card__media rv-yx-tx-card__media--pack">
-                    <DualProductImage
-                      primary={pair.primary}
-                      secondary={pair.secondary}
-                      alt={t.name}
-                    />
-                    <span className="rv-yx-tx-card__price-pill">{t.price}</span>
-                  </div>
-                  <div className="rv-yx-tx-card__body">
-                    <h3>{t.name}</h3>
-                    <p>{detail?.tagline || t.desc}</p>
-                    <div className="rv-yx-tx-card__actions">
-                      <a href="/start" className="rv-yx__btn rv-yx__btn--primary">
-                        Start Visit
-                      </a>
-                      <a
-                        href={`/treatments/${t.slug}`}
-                        className="rv-yx__btn rv-yx__btn--secondary"
-                      >
-                        View Details
-                      </a>
-                    </div>
-                  </div>
+            <div className="rv-yx-protocol__right">
+              {PROTOCOL_SIGNALS.map((card, i) => (
+                <article key={card.title} className="rv-yx-protocol-card" style={{ ["--i" as string]: i }}>
+                  <span className="rv-yx-protocol-card__n" aria-hidden>
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h3>{card.title}</h3>
+                  <p>{card.body}</p>
                 </article>
-              );
-            })}
-          </div>
+              ))}
+              <a href="/start" className="rv-yx-side__cta rv-yx-protocol__cta">
+                Get Started
+              </a>
+            </div>
+          </section>
+
+          {/* What to expect */}
+          <section className="rv-yx-expect" aria-labelledby="rv-expect-heading" data-animate="rise">
+            <h2 id="rv-expect-heading">
+              What to expect <em>on your journey</em>
+            </h2>
+            <p className="rv-yx-expect__sub">
+              Timelines vary. Your provider guides dosing and follow-up for {meta.shortLabel.toLowerCase()}{" "}
+              care.
+            </p>
+            <div className="rv-yx-expect__grid">
+              {EXPECT_WEEKS.map((w) => (
+                <article key={w.tag} className="rv-yx-expect-card">
+                  <div className="rv-yx-expect-card__media">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={w.img} alt="" loading="lazy" />
+                  </div>
+                  <h3>{w.tag}</h3>
+                  <p>{w.text}</p>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          {/* Know-all CTA */}
+          <section className="rv-yx-knowall" data-animate="peak-fade">
+            <div className="rv-yx-knowall__copy">
+              <p className="rv-yx-knowall__eyebrow">Ready when you are</p>
+              <h2>See if {selected?.name || meta.shortLabel} is right for you</h2>
+              <p>
+                Complete a quick clinical intake. A licensed provider reviews within 24 hours —
+                you&apos;re only charged if treatment is prescribed.
+              </p>
+              <div className="rv-yx-knowall__actions">
+                <a href="/start" className="rv-yx-side__cta">
+                  See if I qualify
+                </a>
+                <a href="/how-it-works" className="rv-yx-side__link">
+                  How Reform Vital works →
+                </a>
+              </div>
+            </div>
+            <div className="rv-yx-knowall__media" aria-hidden>
+              <DualProductImage
+                primary={stagePair.primary}
+                secondary={stagePair.secondary}
+                alt=""
+              />
+            </div>
+          </section>
         </section>
       </main>
       <Footer />

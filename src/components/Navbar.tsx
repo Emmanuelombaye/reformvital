@@ -5,24 +5,9 @@ import { brandConfig } from "@/brand.config";
 import OfferBanner from "./OfferBanner";
 import TrustBar from "./TrustBar";
 import ReformVitalLogo from "./ReformVitalLogo";
-import TealIcon from "./TealIcon";
-
-const metabolicProtocols = [
-  { slug: "semaglutide", title: "Medical Weight Loss (GLP-1)", tag: "Semaglutide / Tirzepatide", icon: "bolt" as const },
-  { slug: "trt", title: "Hormone Optimization (TRT)", tag: "Testosterone Cypionate & HRT", icon: "dna" as const },
-  { slug: "sermorelin", title: "Growth Hormone Secretagogues", tag: "Sermorelin & Tesamorelin", icon: "moon" as const },
-  { slug: "bpc-157", title: "Recovery & Tissue Repair", tag: "BPC-157 & TB-500 Peptides", icon: "repair" as const },
-  { slug: "hair-restoration", title: "Hair Restoration", tag: "Minoxidil · Finasteride · GHK-Cu", icon: "shield" as const },
-];
-
-const longevityProtocols = [
-  { slug: "nad-plus", title: "Longevity & Cellular Energy", tag: "NAD+ Coenzyme Matrix", icon: "lab" as const },
-  { slug: "semax", title: "Cognitive Optimization", tag: "Semax & Selank Neuropeptides", icon: "brain" as const },
-  { slug: "pt-141", title: "Sexual Wellness & Vitality", tag: "PT-141 Bremelanotide", icon: "flame" as const },
-  { slug: "preventive-wellness", title: "Metabolic & Preventive Wellness", tag: "Labs · Nutrition · Monitoring", icon: "clipboard" as const },
-];
 
 const PRIMARY_LINKS = [
+  { label: "Treatments", href: "/treatments" },
   { label: "Memberships", href: "/memberships" },
   { label: "How It Works", href: "/how-it-works" },
   { label: "AI Coach", href: "/ai-coach" },
@@ -36,18 +21,12 @@ const MORE_LINKS = [
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
   const [moreOpen, setMoreOpen] = useState(false);
-  const [mobileTreatmentsOpen, setMobileTreatmentsOpen] = useState(false);
-  const treatmentsRef = useRef<HTMLLIElement>(null);
   const moreRef = useRef<HTMLLIElement>(null);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       const target = event.target as Node;
-      if (treatmentsRef.current && !treatmentsRef.current.contains(target)) {
-        setDropdownOpen(false);
-      }
       if (moreRef.current && !moreRef.current.contains(target)) {
         setMoreOpen(false);
       }
@@ -68,83 +47,6 @@ export default function Navbar() {
           </a>
 
           <ul className="nav-menu">
-            <li
-              ref={treatmentsRef}
-              className={`nav-item nav-item--mega${dropdownOpen ? " is-open" : ""}`}
-              onMouseEnter={() => {
-                setDropdownOpen(true);
-                setMoreOpen(false);
-              }}
-              onMouseLeave={() => setDropdownOpen(false)}
-            >
-              <a
-                href="/treatments"
-                className="nav-item-link"
-                aria-expanded={dropdownOpen}
-                aria-haspopup="true"
-              >
-                Treatments
-                <svg className="nav-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden>
-                  <polyline points="6 9 12 15 18 9" />
-                </svg>
-              </a>
-
-              <div className="nav-mega">
-                <div className="rv-mega-panel">
-                  <div className="rv-mega-head">
-                    <span className="rv-mega-kicker">Care programs</span>
-                    <span className="rv-mega-note">U.S. doctor supervised</span>
-                  </div>
-                  <div className="rv-mega-grid">
-                    <div>
-                      <span className="rv-mega-col-label">Metabolic & hormone</span>
-                      <div className="rv-mega-list">
-                        {metabolicProtocols.map((item) => (
-                          <a
-                            key={item.slug}
-                            href={`/treatments/${item.slug}`}
-                            className="rv-mega-item"
-                            onClick={() => setDropdownOpen(false)}
-                          >
-                            <TealIcon name={item.icon} size={18} />
-                            <div>
-                              <strong>{item.title}</strong>
-                              <span>{item.tag}</span>
-                            </div>
-                          </a>
-                        ))}
-                      </div>
-                    </div>
-                    <div>
-                      <span className="rv-mega-col-label">Longevity & recovery</span>
-                      <div className="rv-mega-list">
-                        {longevityProtocols.map((item) => (
-                          <a
-                            key={item.slug}
-                            href={`/treatments/${item.slug}`}
-                            className="rv-mega-item"
-                            onClick={() => setDropdownOpen(false)}
-                          >
-                            <TealIcon name={item.icon} size={18} />
-                            <div>
-                              <strong>{item.title}</strong>
-                              <span>{item.tag}</span>
-                            </div>
-                          </a>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                  <div className="rv-mega-foot">
-                    <span>All protocols compounded by 503A pharmacies</span>
-                    <a href="/treatments" onClick={() => setDropdownOpen(false)}>
-                      Explore full catalog →
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </li>
-
             {PRIMARY_LINKS.map((link) => (
               <li key={link.href} className="nav-item">
                 <a href={link.href} className="nav-item-link">
@@ -156,10 +58,7 @@ export default function Navbar() {
             <li
               ref={moreRef}
               className={`nav-item nav-item--more${moreOpen ? " is-open" : ""}`}
-              onMouseEnter={() => {
-                setMoreOpen(true);
-                setDropdownOpen(false);
-              }}
+              onMouseEnter={() => setMoreOpen(true)}
               onMouseLeave={() => setMoreOpen(false)}
             >
               <button
@@ -222,40 +121,6 @@ export default function Navbar() {
 
         {mobileMenuOpen && (
           <div className="rv-mobile-drawer">
-            <div className="rv-mobile-block">
-              <button
-                type="button"
-                className="rv-mobile-accordion"
-                onClick={() => setMobileTreatmentsOpen((v) => !v)}
-              >
-                <span>Treatments</span>
-                <span className={mobileTreatmentsOpen ? "is-open" : ""} aria-hidden>
-                  ▼
-                </span>
-              </button>
-              {mobileTreatmentsOpen && (
-                <div className="rv-mobile-sub">
-                  {[...metabolicProtocols, ...longevityProtocols].map((item) => (
-                    <a
-                      key={item.slug}
-                      href={`/treatments/${item.slug}`}
-                      className="rv-mobile-link"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      {item.title}
-                    </a>
-                  ))}
-                  <a
-                    href="/treatments"
-                    className="rv-mobile-link rv-mobile-link--accent"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    → View all treatments
-                  </a>
-                </div>
-              )}
-            </div>
-
             <ul className="rv-mobile-list">
               {[...PRIMARY_LINKS, ...MORE_LINKS].map((link) => (
                 <li key={link.href}>

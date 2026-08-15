@@ -1,10 +1,9 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import Image from "next/image";
 import { brandConfig } from "@/brand.config";
-import DualProductImage from "@/components/DualProductImage";
-import { getCategoryMeta, getTherapyPackPair } from "@/lib/treatmentCatalog";
+import TreatmentExploreHero from "@/components/TreatmentExploreHero";
+import { getCategoryMeta } from "@/lib/treatmentCatalog";
 
 export default function Treatments() {
   const services = brandConfig.services;
@@ -31,9 +30,6 @@ export default function Treatments() {
     brandConfig.treatmentDetails[
       selected.slug as keyof typeof brandConfig.treatmentDetails
     ];
-  const pack = selected
-    ? getTherapyPackPair(selected.slug)
-    : { primary: meta.image, secondary: meta.image };
 
   const selectCategory = (id: string) => {
     setCategoryId(id);
@@ -83,95 +79,17 @@ export default function Treatments() {
       </div>
 
       <div className="rv-yx__panes">
-        <article
-          key={`${category.id}-${selected?.slug}-${animKey}`}
-          className="rv-yx__card rv-yx__card--mensrx rv-yx__card--pack rv-tilt"
-          data-tone={meta.tone}
-          data-animate="zoom"
-        >
-          <div className="rv-yx__media rv-yx__media--pack">
-            <DualProductImage
-              primary={pack.primary}
-              secondary={pack.secondary}
-              alt={selected?.name || category.title}
-            />
-            <div className="rv-yx__media-badges">
-              <span className="rv-yx__chip rv-yx__chip--tone">{meta.tag}</span>
-              <span className="rv-yx__chip rv-yx__chip--seller">Provider-guided</span>
-            </div>
-            {selected?.price && (
-              <span className="rv-yx__media-price rv-yx__media-price--ink">
-                from <strong>{selected.price.replace(/\/mo$/, "")}</strong>
-                {selected.price.includes("/mo") ? "/mo" : ""}
-              </span>
-            )}
-          </div>
-
-          <div className="rv-yx__copy">
-            <p className="rv-yx__card-eyebrow">{category.title}</p>
-            <h3>{selected?.name || category.title}</h3>
-            <p className="rv-yx__blurb">
-              {detail?.tagline || selected?.desc || meta.blurb || category.subtitle}
-            </p>
-
-            {category.therapies.length > 1 && (
-              <div className="rv-yx__meds" role="radiogroup" aria-label="Choose protocol">
-                {category.therapies.map((t) => {
-                  const active = selected?.slug === t.slug;
-                  return (
-                    <button
-                      key={t.slug}
-                      type="button"
-                      role="radio"
-                      aria-checked={active}
-                      className={`rv-yx__med${active ? " is-active" : ""}`}
-                      onClick={() => selectTherapy(t.slug)}
-                    >
-                      <strong>{t.name}</strong>
-                      <span>{t.price}</span>
-                    </button>
-                  );
-                })}
-              </div>
-            )}
-
-            <div className="rv-yx__cta">
-              <a href="/start" className="rv-yx__btn rv-yx__btn--primary">
-                Start Your Online Visit
-              </a>
-              <a
-                href={selected ? `/treatments/${selected.slug}` : "/treatments"}
-                className="rv-yx__btn rv-yx__btn--secondary"
-              >
-                View Details
-              </a>
-            </div>
-            <p className="rv-yx__fineprint">
-              Available only if prescribed · Treatment is not guaranteed · Discreet shipping
-            </p>
-          </div>
-        </article>
+        <TreatmentExploreHero
+          tone={meta.tone}
+          stageTitle={`Personalized ${meta.shortLabel}`}
+          tag={meta.tag}
+          blurb={detail?.tagline || selected?.desc || meta.blurb || category.subtitle}
+          therapies={category.therapies}
+          selectedSlug={selected?.slug || ""}
+          onSelectTherapy={selectTherapy}
+          animKey={`${category.id}-${animKey}`}
+        />
       </div>
-
-      {/* MensRx-style 2×2 quick pack preview for active category */}
-      {category.therapies.length > 0 && (
-        <div className="rv-yx-pack-grid" data-animate="rise" data-delay="100">
-          {category.therapies.slice(0, 4).map((t) => {
-            const pair = getTherapyPackPair(t.slug);
-            return (
-              <button
-                key={t.slug}
-                type="button"
-                className={`rv-yx-pack-tile${selected?.slug === t.slug ? " is-active" : ""}`}
-                onClick={() => selectTherapy(t.slug)}
-              >
-                <DualProductImage primary={pair.primary} secondary={pair.secondary} alt={t.name} />
-                <span className="rv-yx-pack-tile__label">{t.name}</span>
-              </button>
-            );
-          })}
-        </div>
-      )}
 
       <div className="rv-yx__foot" data-animate="rise" data-delay="120">
         <a href="/treatments" className="rv-yx__catalog-link">

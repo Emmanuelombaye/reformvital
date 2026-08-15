@@ -1,13 +1,14 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import HowItWorks from "@/components/HowItWorks";
+import HowItWorksFlow from "@/components/HowItWorksFlow";
+import "./how-it-works-page.css";
 
 export default function HowItWorksPage() {
   return (
     <>
       <Navbar />
       <main>
-        <HowItWorks />
+        <HowItWorksFlow />
       </main>
       <Footer />
     </>

@@ -1,7 +1,32 @@
 /** Shared Reform Vital treatment catalog helpers.
  * Category browse = client lifestyle.
- * Protocol cards = MensRx-style pack A/B pairs + PeakHealth dual-image hover fade.
+ * Protocol cards = MensRx pack A/B pairs + PeakHealth dual-image hover fade.
+ * Homepage stage = Yucca-style vial presentation with pack secondary on hover.
  */
+
+/** Clean vial art for Yucca-style product stages */
+export const THERAPY_VIAL_MAP: Record<string, string> = {
+  semaglutide: "/images/vial-glp1.png",
+  tirzepatide: "/images/vial-glp1.png",
+  retatrutide: "/images/vial-glp1.png",
+  trt: "/images/vial-trt.png",
+  "womens-hormones": "/images/vial-trt.png",
+  "hcg-enclomiphene": "/images/packs/enclomiphene-a.png",
+  sermorelin: "/images/vial-sermorelin.png",
+  tesamorelin: "/images/vial-sermorelin.png",
+  "cjc-ipamorelin": "/images/vial-sermorelin.png",
+  "bpc-157": "/images/vial-bpc.png",
+  "tb-500": "/images/vial-bpc.png",
+  kpv: "/images/vial-bpc.png",
+  "nad-plus": "/images/vial-nad.png",
+  "mots-c": "/images/vial-nad.png",
+  "ghk-cu": "/images/vial-nad.png",
+  semax: "/images/vial-neuropeptide.png",
+  selank: "/images/vial-neuropeptide.png",
+  "pt-141": "/images/vial-pt141.png",
+  tadalafil: "/images/packs/tadalafil-a.png",
+  "hair-restoration": "/images/vial-hair.png",
+};
 
 export const CATEGORY_META: Record<
   string,
@@ -194,6 +219,16 @@ export function getTherapyPackPair(slug: string): ProductImagePair {
       secondary: "/images/packs/glp1-b.png",
     }
   );
+}
+
+/** Yucca homepage stage: vial primary, pack secondary (PeakHealth hover fade) */
+export function getTherapyStagePair(slug: string): ProductImagePair {
+  const pack = getTherapyPackPair(slug);
+  const vial = THERAPY_VIAL_MAP[slug];
+  if (vial) {
+    return { primary: vial, secondary: pack.primary };
+  }
+  return pack;
 }
 
 export function getTherapyImage(slug: string, fallback?: string) {
