@@ -983,64 +983,100 @@ export const brandConfig = {
   // ──── TeleLaunch & Patient FAQs ────
   faqs: [
     {
+      category: "getting-started",
       question: "What makes Reform Vital different from standard telehealth providers?",
       answer:
         "Reform Vital combines licensed medical doctor oversight, personalized peptide/GLP-1 treatment plans, 24/7 AI accountability coaching, and full health metric tracking—rather than simply selling products online.",
     },
     {
+      category: "getting-started",
+      question: "How do I get started?",
+      answer:
+        "Complete the online health assessment (Start Assessment). A licensed U.S. provider reviews your intake, may order labs if clinically appropriate, and only then decides whether a protocol is right for you. Treatment is never guaranteed.",
+    },
+    {
+      category: "getting-started",
+      question: "Who is eligible for Reform Vital care?",
+      answer:
+        "Adults in all 50 U.S. states may complete an assessment. Final eligibility depends on your medical history, current medications, and clinician judgment. Some conditions or therapies may not be appropriate—your provider will explain alternatives.",
+    },
+    {
+      category: "membership",
       question: "Do I need insurance for Reform Vital programs?",
       answer:
         "No insurance is required. We offer transparent, flat-rate monthly memberships with physician consultation and pharmacy fulfillment included—no hidden co-pays or surprise medical bills.",
     },
     {
+      category: "membership",
+      question: "Can I cancel or pause my membership?",
+      answer:
+        "Yes. Memberships can be paused or cancelled according to your plan terms. Message your care team through the portal or email admin@reformvital.com and we will walk you through timing, remaining doses, and safe discontinuation if needed.",
+    },
+    {
+      category: "membership",
+      question: "Can I use insurance for labs or medications?",
+      answer:
+        "Reform Vital memberships use transparent flat-rate pricing without insurance requirements. Some patients choose to submit receipts for out-of-network reimbursement—check with your plan administrator.",
+    },
+    {
+      category: "pharmacy",
       question: "Are your medications compounded in certified pharmacies?",
       answer:
         "Yes. Prescriptions are compounded in state-licensed, 50-state certified U.S. compounding pharmacies that follow strict quality standards. Medications ship only after physician approval.",
     },
     {
-      question: "How does the AI Health Coach work?",
-      answer:
-        "Your AI Coach is a 24/7 accountability partner between physician visits. It helps track protein, hydration, sleep, and weight trends and keeps you on protocol—without diagnosing or replacing your clinician.",
-    },
-    {
-      question: "Can I transition between GLP-1 or peptide therapies?",
-      answer:
-        "Yes. Your licensed provider can adjust your protocol—such as moving from Semaglutide to Tirzepatide or adding recovery peptides—based on your progress, labs, and clinical judgment.",
-    },
-    {
+      category: "pharmacy",
       question: "How fast will my medication arrive?",
       answer:
         "Once your physician approves a prescription, compounded medication is fulfilled by licensed pharmacies and shipped cold-chain in discreet packaging—typically with expedited delivery options included in membership.",
     },
     {
-      question: "Is there a patient portal for tracking progress?",
+      category: "pharmacy",
+      question: "What if I experience side effects?",
       answer:
-        "Yes. The Reform Vital Patient Portal is where you’ll manage goals, metrics, and AI coach check-ins between visits. Start with an online assessment to begin clinical onboarding and portal access.",
+        "Contact your Reform Vital care team promptly through secure messaging or by phone. Mild GI symptoms can be common when starting GLP-1 therapies; severe abdominal pain, persistent vomiting, allergic reaction, or other urgent symptoms require immediate medical attention—call 911 or go to the ER if needed.",
     },
     {
-      question: "Who are the physicians overseeing my care?",
+      category: "treatments",
+      question: "Can I transition between GLP-1 or peptide therapies?",
       answer:
-        "Reform Vital care is supervised by board-certified U.S. physicians including Dr. Michael Wasef, MD (Internal Medicine) and Dr. Andrew Sakla, DO (Regenerative Medicine). Every prescription is issued only after individual clinical review.",
+        "Yes. Your licensed provider can adjust your protocol—such as moving from Semaglutide to Tirzepatide or adding recovery peptides—based on your progress, labs, and clinical judgment.",
     },
     {
+      category: "treatments",
       question: "Do I need lab work before starting treatment?",
       answer:
         "Many protocols—especially hormone optimization and metabolic programs—begin with labs so your provider can personalize dosing safely. Your physician will order panels as clinically appropriate during onboarding.",
     },
     {
+      category: "treatments",
       question: "Which states do you serve?",
       answer:
         "Reform Vital provides physician-guided telehealth in all 50 U.S. states. Licensed providers and 503A compounding pharmacies fulfill prescriptions nationwide after clinical approval.",
     },
     {
+      category: "treatments",
+      question: "Who are the physicians overseeing my care?",
+      answer:
+        "Reform Vital care is supervised by board-certified U.S. physicians including Dr. Michael Wasef, MD (Internal Medicine) and Dr. Andrew Sakla, DO (Regenerative Medicine). Every prescription is issued only after individual clinical review.",
+    },
+    {
+      category: "ai-portal",
+      question: "How does the AI Health Coach work?",
+      answer:
+        "Your AI Coach is a 24/7 accountability partner between physician visits. It helps track protein, hydration, sleep, and weight trends and keeps you on protocol—without diagnosing or replacing your clinician.",
+    },
+    {
+      category: "ai-portal",
+      question: "Is there a patient portal for tracking progress?",
+      answer:
+        "Yes. The Reform Vital Patient Portal is where you’ll manage goals, metrics, and AI coach check-ins between visits. Start with an online assessment to begin clinical onboarding and portal access.",
+    },
+    {
+      category: "ai-portal",
       question: "How does follow-up care work?",
       answer:
         "Membership includes scheduled follow-ups, secure messaging with your medical team, treatment adjustments, lab reviews, and AI coach progress tracking—so care continues long after your first prescription.",
-    },
-    {
-      question: "Can I use insurance for labs or medications?",
-      answer:
-        "Reform Vital memberships use transparent flat-rate pricing without insurance requirements. Some patients choose to submit receipts for out-of-network reimbursement—check with your plan administrator.",
     },
   ],
 

@@ -1,168 +1,182 @@
 "use client";
 
+import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import { brandConfig } from "@/brand.config";
-import { TealIconBadge } from "./TealIcon";
-
-const featuredLines = [
-  {
-    title: "Metabolic Weight Loss",
-    desc: "Targeted appetite regulation with Semaglutide, Tirzepatide & Retatrutide.",
-    whoItHelps: "Adults seeking sustainable weight loss with physician oversight.",
-    benefits: "Reduced cravings, metabolic reset, and cold-chain pharmacy delivery included.",
-    href: "/treatments/semaglutide",
-    cta: "Start My Health Assessment →",
-    icon: "bolt" as const,
-  },
-  {
-    title: "Hormone Optimization",
-    desc: "Bioidentical TRT, Enclomiphene & endocrine balance protocols.",
-    whoItHelps: "Men and women with fatigue, low energy, or hormone imbalance symptoms.",
-    benefits: "Lab-guided dosing, libido support, and lean mass retention.",
-    href: "/treatments/trt",
-    cta: "Meet With a Provider →",
-    icon: "dna" as const,
-  },
-  {
-    title: "Longevity & NAD+",
-    desc: "Mitochondrial ATP cellular energy & sirtuin activation coenzymes.",
-    whoItHelps: "Those focused on cellular energy, recovery, and healthy aging.",
-    benefits: "Physician-guided NAD+ protocols with ongoing biomarker monitoring.",
-    href: "/treatments/nad-plus",
-    cta: "Learn How It Works →",
-    icon: "lab" as const,
-  },
-  {
-    title: "Recovery & Tissue Repair",
-    desc: "BPC-157 & TB-500 pentadecapeptides for tendon and mucosal healing.",
-    whoItHelps: "Active adults with joint, tendon, or recovery-focused goals.",
-    benefits: "Clinical oversight, structured dosing, and follow-up adjustments.",
-    href: "/treatments/bpc-157",
-    cta: "Book My Consultation →",
-    icon: "repair" as const,
-  },
-];
+import DualProductImage from "@/components/DualProductImage";
+import { getCategoryMeta, getTherapyPackPair } from "@/lib/treatmentCatalog";
 
 export default function Treatments() {
-  const categoryCount = brandConfig.services.length;
+  const services = brandConfig.services;
+  const [categoryId, setCategoryId] = useState(services[0]?.id ?? "weight-loss");
+  const [animKey, setAnimKey] = useState(0);
+  const category = useMemo(
+    () => services.find((s) => s.id === categoryId) || services[0],
+    [categoryId, services],
+  );
+  const meta = getCategoryMeta(category.id);
+  const [therapySlug, setTherapySlug] = useState(category.therapies[0]?.slug ?? "");
+
+  useEffect(() => {
+    const stillInCategory = category.therapies.some((t) => t.slug === therapySlug);
+    if (!stillInCategory) {
+      setTherapySlug(category.therapies[0]?.slug ?? "");
+    }
+  }, [category, therapySlug]);
+
+  const selected =
+    category.therapies.find((t) => t.slug === therapySlug) || category.therapies[0];
+  const detail =
+    selected &&
+    brandConfig.treatmentDetails[
+      selected.slug as keyof typeof brandConfig.treatmentDetails
+    ];
+  const pack = selected
+    ? getTherapyPackPair(selected.slug)
+    : { primary: meta.image, secondary: meta.image };
+
+  const selectCategory = (id: string) => {
+    setCategoryId(id);
+    setAnimKey((k) => k + 1);
+  };
+
+  const selectTherapy = (slug: string) => {
+    setTherapySlug(slug);
+    setAnimKey((k) => k + 1);
+  };
 
   return (
-    <section className="section" id="services" style={{ background: "var(--surface)", padding: "4.5rem 0" }}>
-      <div className="container">
-        <div className="section-head" style={{ textAlign: "center", maxWidth: "48rem", margin: "0 auto 3rem" }}>
-          <p className="eyebrow" style={{ color: "var(--accent)", fontWeight: 800, letterSpacing: "0.12em", marginBottom: "0.5rem" }}>
-            PHYSICIAN-GUIDED CARE PROTOCOLS
-          </p>
-          <h2 style={{ fontSize: "clamp(2.2rem, 4vw, 3.2rem)", fontWeight: 900, marginBottom: "0.8rem" }}>
-            Precision Healthcare. Compounded for You.
-          </h2>
-          <p style={{ fontSize: "1.1rem", color: "var(--text-muted)", lineHeight: 1.6 }}>
-            Long-term health partnerships—not one-time prescriptions. Select from specialized care lines with ongoing provider support, lab reviews, and personalized optimization.
-          </p>
+    <section className="rv-yx" id="services" data-tone={meta.tone}>
+      <div className="rv-yx__bg" aria-hidden />
+
+      <div className="rv-yx__head" data-animate="rise">
+        <p className="rv-yx__eyebrow">Browse by treatment</p>
+        <h2>
+          Personalized care to help you <em>feel like yourself again</em>
+        </h2>
+        <p>
+          US-licensed provider review · Flat-rate memberships · Discreet cold-chain delivery
+          if prescribed
+        </p>
+      </div>
+
+      <div className="rv-yx__tabs-wrap" data-animate="rise" data-delay="80">
+        <div className="rv-yx__tabs" role="tablist" aria-label="Care categories">
+          {services.map((s) => {
+            const m = getCategoryMeta(s.id);
+            const active = s.id === category.id;
+            return (
+              <button
+                key={s.id}
+                type="button"
+                role="tab"
+                aria-selected={active}
+                className={`rv-yx__tab${active ? " is-active" : ""}`}
+                data-tone={m.tone}
+                onClick={() => selectCategory(s.id)}
+              >
+                {m.shortLabel}
+              </button>
+            );
+          })}
         </div>
+      </div>
 
-        <div
-          style={{
-            background: "linear-gradient(135deg, #0D1B2A 0%, #162A45 60%, #00A896 100%)",
-            borderRadius: "1.75rem",
-            padding: "clamp(1.75rem, 4vw, 3.2rem)",
-            color: "#FFF",
-            boxShadow: "0 20px 50px rgba(13, 27, 42, 0.25)",
-            marginBottom: "3.5rem",
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-            gap: "2.5rem",
-            alignItems: "center",
-          }}
+      <div className="rv-yx__panes">
+        <article
+          key={`${category.id}-${selected?.slug}-${animKey}`}
+          className="rv-yx__card rv-yx__card--mensrx rv-yx__card--pack rv-tilt"
+          data-tone={meta.tone}
+          data-animate="zoom"
         >
-          <div>
-            <div style={{ display: "flex", gap: "0.6rem", marginBottom: "1rem", flexWrap: "wrap" }}>
-              <span style={{ background: "var(--accent)", color: "#FFF", padding: "0.3rem 0.85rem", borderRadius: "9999px", fontSize: "0.75rem", fontWeight: 900 }}>
-                FEATURED PROGRAM
-              </span>
-              <span style={{ background: "rgba(255,255,255,0.15)", color: "#FFF", padding: "0.3rem 0.85rem", borderRadius: "9999px", fontSize: "0.75rem", fontWeight: 800 }}>
-                METABOLIC WEIGHT LOSS
-              </span>
-            </div>
-
-            <h3 style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.6rem)", fontWeight: 900, color: "#FFF", marginBottom: "0.8rem", lineHeight: 1.2 }}>
-              Compounded Semaglutide & Tirzepatide+
-            </h3>
-            <p style={{ fontSize: "1.05rem", color: "rgba(255,255,255,0.85)", lineHeight: 1.6, marginBottom: "1.5rem" }}>
-              Physician-guided GLP-1 care with consult, compounding, and cold-chain delivery included. Flat-rate from $149/mo.
-            </p>
-            <a href="/start" className="btn btn-ghost" style={{ background: "rgba(255,255,255,0.1)", color: "#FFF", borderColor: "rgba(255,255,255,0.2)" }}>
-              Begin Assessment →
-            </a>
-          </div>
-          <div
-            style={{
-              borderRadius: "1.25rem",
-              overflow: "hidden",
-              border: "1px solid rgba(255,255,255,0.2)",
-              boxShadow: "0 16px 40px rgba(0,0,0,0.25)",
-            }}
-          >
-            <Image
-              src="/images/featured-metabolic.png"
-              alt="Physician-guided metabolic health and longevity lifestyle"
-              width={720}
-              height={540}
-              style={{ width: "100%", height: "auto", display: "block", objectFit: "cover" }}
-              quality={85}
+          <div className="rv-yx__media rv-yx__media--pack">
+            <DualProductImage
+              primary={pack.primary}
+              secondary={pack.secondary}
+              alt={selected?.name || category.title}
             />
+            <div className="rv-yx__media-badges">
+              <span className="rv-yx__chip rv-yx__chip--tone">{meta.tag}</span>
+              <span className="rv-yx__chip rv-yx__chip--seller">Provider-guided</span>
+            </div>
+            {selected?.price && (
+              <span className="rv-yx__media-price rv-yx__media-price--ink">
+                from <strong>{selected.price.replace(/\/mo$/, "")}</strong>
+                {selected.price.includes("/mo") ? "/mo" : ""}
+              </span>
+            )}
           </div>
-        </div>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-            gap: "1.5rem",
-            marginBottom: "3rem",
-          }}
-        >
-          {featuredLines.map((line) => (
-            <div
-              key={line.title}
-              className="treatment-card"
-              style={{
-                background: "var(--bg)",
-                border: "1px solid var(--border)",
-                borderRadius: "1.25rem",
-                padding: "1.5rem",
-                boxShadow: "var(--shadow-card)",
-              }}
-            >
-              <TealIconBadge name={line.icon} />
-              <h4 style={{ fontSize: "1.2rem", fontWeight: 900, marginBottom: "0.3rem", color: "var(--primary)" }}>
-                {line.title}
-              </h4>
-              <p style={{ fontSize: "0.88rem", color: "var(--text-muted)", lineHeight: 1.5, marginBottom: "0.65rem" }}>
-                {line.desc}
-              </p>
-              <p style={{ fontSize: "0.82rem", color: "var(--primary)", fontWeight: 600, lineHeight: 1.45, marginBottom: "0.35rem" }}>
-                <strong>Who it helps:</strong> {line.whoItHelps}
-              </p>
-              <p style={{ fontSize: "0.82rem", color: "var(--text-muted)", lineHeight: 1.45, marginBottom: "1rem" }}>
-                {line.benefits}
-              </p>
-              <a href={line.href} style={{ fontSize: "0.85rem", fontWeight: 800, color: "var(--accent)" }}>
-                {line.cta}
+          <div className="rv-yx__copy">
+            <p className="rv-yx__card-eyebrow">{category.title}</p>
+            <h3>{selected?.name || category.title}</h3>
+            <p className="rv-yx__blurb">
+              {detail?.tagline || selected?.desc || meta.blurb || category.subtitle}
+            </p>
+
+            {category.therapies.length > 1 && (
+              <div className="rv-yx__meds" role="radiogroup" aria-label="Choose protocol">
+                {category.therapies.map((t) => {
+                  const active = selected?.slug === t.slug;
+                  return (
+                    <button
+                      key={t.slug}
+                      type="button"
+                      role="radio"
+                      aria-checked={active}
+                      className={`rv-yx__med${active ? " is-active" : ""}`}
+                      onClick={() => selectTherapy(t.slug)}
+                    >
+                      <strong>{t.name}</strong>
+                      <span>{t.price}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            )}
+
+            <div className="rv-yx__cta">
+              <a href="/start" className="rv-yx__btn rv-yx__btn--primary">
+                Start Your Online Visit
+              </a>
+              <a
+                href={selected ? `/treatments/${selected.slug}` : "/treatments"}
+                className="rv-yx__btn rv-yx__btn--secondary"
+              >
+                View Details
               </a>
             </div>
-          ))}
-        </div>
+            <p className="rv-yx__fineprint">
+              Available only if prescribed · Treatment is not guaranteed · Discreet shipping
+            </p>
+          </div>
+        </article>
+      </div>
 
-        <div style={{ textAlign: "center", paddingTop: "1.5rem" }}>
-          <a
-            href="/treatments"
-            className="btn btn-navy"
-            style={{ padding: "1.1rem 2.5rem", fontSize: "1.05rem" }}
-          >
-            View Complete {categoryCount}-Category Dream Service Menu →
-          </a>
+      {/* MensRx-style 2×2 quick pack preview for active category */}
+      {category.therapies.length > 0 && (
+        <div className="rv-yx-pack-grid" data-animate="rise" data-delay="100">
+          {category.therapies.slice(0, 4).map((t) => {
+            const pair = getTherapyPackPair(t.slug);
+            return (
+              <button
+                key={t.slug}
+                type="button"
+                className={`rv-yx-pack-tile${selected?.slug === t.slug ? " is-active" : ""}`}
+                onClick={() => selectTherapy(t.slug)}
+              >
+                <DualProductImage primary={pair.primary} secondary={pair.secondary} alt={t.name} />
+                <span className="rv-yx-pack-tile__label">{t.name}</span>
+              </button>
+            );
+          })}
         </div>
+      )}
+
+      <div className="rv-yx__foot" data-animate="rise" data-delay="120">
+        <a href="/treatments" className="rv-yx__catalog-link">
+          Explore full {services.length}-category care catalog →
+        </a>
       </div>
     </section>
   );

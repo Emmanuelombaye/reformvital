@@ -1,42 +1,17 @@
-import Image from "next/image";
 import {
   getAllTreatmentSlugs,
   resolveTreatmentDetail,
 } from "@/brand.config";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import DualProductImage from "@/components/DualProductImage";
 import MechanismVisual from "@/components/visuals/MechanismVisual";
+import { getTherapyPackPair } from "@/lib/treatmentCatalog";
 import { notFound } from "next/navigation";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
-
-const slugImageMap: Record<string, string> = {
-  semaglutide: "/images/Tirzepatide.png",
-  tirzepatide: "/images/Tirzepatide.png",
-  retatrutide: "/images/Tirzepatide.png",
-  trt: "/images/TRTTestosterone.png",
-  "womens-hormones": "/images/TRTTestosterone.png",
-  "hcg-enclomiphene": "/images/TRTTestosterone.png",
-  sermorelin: "/images/Sermorelin.png",
-  tesamorelin: "/images/Sermorelin.png",
-  "cjc-ipamorelin": "/images/Sermorelin.png",
-  "bpc-157": "/images/Recovery & Tissue.png",
-  "tb-500": "/images/Recovery & Tissue.png",
-  kpv: "/images/Recovery & Tissue.png",
-  "nad-plus": "/images/NAD+ Cellular.png",
-  "mots-c": "/images/NAD+ Cellular.png",
-  "ghk-cu": "/images/NAD+ Cellular.png",
-  semax: "/images/Neuropeptide.png",
-  selank: "/images/Neuropeptide.png",
-  "pt-141": "/images/Bremelanotide.png",
-  tadalafil: "/images/Bremelanotide.png",
-  "hair-restoration": "/images/Minoxidil.png",
-  "metabolic-panel": "/images/why-evidence.png",
-  "preventive-wellness": "/images/longevity_nad.png",
-  "body-composition": "/images/portal-performance.png",
-};
 
 export async function generateStaticParams() {
   return getAllTreatmentSlugs().map((slug) => ({ slug }));
@@ -50,8 +25,7 @@ export default async function TreatmentDetailPage({ params }: PageProps) {
     notFound();
   }
 
-  const heroImage =
-    slugImageMap[slug] || detail.image || "/images/Tirzepatide.png";
+  const pack = getTherapyPackPair(slug);
 
   return (
     <>
@@ -186,28 +160,20 @@ export default async function TreatmentDetailPage({ params }: PageProps) {
               </div>
 
               <div
+                className="rv-yx-detail-pack"
                 style={{
                   position: "relative",
                   borderRadius: "1.5rem",
                   overflow: "hidden",
                   border: "2px solid rgba(0, 168, 150, 0.4)",
                   boxShadow: "0 20px 45px rgba(13, 27, 42, 0.2)",
-                  background: "var(--surface)",
+                  background: "#F3F0EA",
                 }}
               >
-                <Image
-                  src={heroImage}
+                <DualProductImage
+                  primary={pack.primary}
+                  secondary={pack.secondary}
                   alt={`${detail.name} Prescription Protocol`}
-                  width={800}
-                  height={600}
-                  style={{
-                    width: "100%",
-                    height: "auto",
-                    display: "block",
-                    objectFit: "cover",
-                  }}
-                  priority={true}
-                  quality={90}
                 />
                 <div
                   style={{
@@ -223,6 +189,7 @@ export default async function TreatmentDetailPage({ params }: PageProps) {
                     color: "#FFF",
                     display: "flex",
                     alignItems: "center",
+                    zIndex: 2,
                     justifyContent: "space-between",
                     gap: "0.75rem",
                     flexWrap: "wrap",

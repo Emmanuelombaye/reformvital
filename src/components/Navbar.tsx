@@ -12,6 +12,7 @@ const metabolicProtocols = [
   { slug: "trt", title: "Hormone Optimization (TRT)", tag: "Testosterone Cypionate & HRT", icon: "dna" as const },
   { slug: "sermorelin", title: "Growth Hormone Secretagogues", tag: "Sermorelin & Tesamorelin", icon: "moon" as const },
   { slug: "bpc-157", title: "Recovery & Tissue Repair", tag: "BPC-157 & TB-500 Peptides", icon: "repair" as const },
+  { slug: "hair-restoration", title: "Hair Restoration", tag: "Minoxidil · Finasteride · GHK-Cu", icon: "shield" as const },
 ];
 
 const longevityProtocols = [

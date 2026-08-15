@@ -7,7 +7,7 @@ export default function FAQPage() {
     <>
       <Navbar />
       <main>
-        <FAQAccordion />
+        <FAQAccordion showPageHero />
       </main>
       <Footer />
     </>
