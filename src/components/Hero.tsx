@@ -13,29 +13,30 @@ export default function Hero() {
       }}
     >
       <div className="rv-hero-card">
-        {/* Desktop: wide split composition */}
-        <Image
-          src="/images/hero-commercial-wide.png"
-          alt="Physician telehealth consultation with Reform Vital"
-          fill
-          sizes="100vw"
-          className="rv-hero-visual rv-hero-visual--desktop"
-          style={{ objectFit: "cover", objectPosition: "center 22%" }}
-          priority
-        />
-        {/* Mobile: tall stacked composition — client art is 2:3 */}
-        <Image
-          src="/images/hero-commercial-mobile.png"
-          alt="Wellness and longevity lifestyle with Reform Vital"
-          fill
-          sizes="100vw"
-          className="rv-hero-visual rv-hero-visual--mobile"
-          style={{ objectFit: "cover", objectPosition: "center 18%" }}
-          priority
-        />
-
-        <div className="rv-hero-scrim" aria-hidden />
-
+        {/* Clip media only — keep CTAs outside overflow so buttons never get cut */}
+        <div className="rv-hero-media">
+          {/* Desktop: wide split composition */}
+          <Image
+            src="/images/hero-commercial-wide.png"
+            alt="Physician telehealth consultation with Reform Vital"
+            fill
+            sizes="100vw"
+            className="rv-hero-visual rv-hero-visual--desktop"
+            style={{ objectFit: "contain", objectPosition: "center center" }}
+            priority
+          />
+          {/* Mobile: tall stacked composition — client art is 2:3 */}
+          <Image
+            src="/images/hero-commercial-mobile.png"
+            alt="Wellness and longevity lifestyle with Reform Vital"
+            fill
+            sizes="100vw"
+            className="rv-hero-visual rv-hero-visual--mobile"
+            style={{ objectFit: "contain", objectPosition: "center center" }}
+            priority
+          />
+          <div className="rv-hero-scrim" aria-hidden />
+        </div>
 
         <div className="rv-hero-content">
           <h1 className="rv-hero-title">
@@ -77,7 +78,7 @@ export default function Hero() {
 
         .rv-hero-card {
           position: relative;
-          overflow: hidden;
+          overflow: visible;
           border-radius: 1.5rem;
           border: 2px solid #1f2a37;
           width: 100%;
@@ -93,20 +94,29 @@ export default function Hero() {
           text-align: center;
         }
 
+        .rv-hero-media {
+          position: absolute;
+          inset: 0;
+          z-index: 0;
+          overflow: hidden;
+          border-radius: inherit;
+          pointer-events: none;
+        }
+
         .rv-hero-visual {
           z-index: 0;
           pointer-events: none;
-          object-fit: cover !important;
+          object-fit: contain !important;
         }
 
         .rv-hero-visual--desktop {
           display: block !important;
-          object-position: center 22% !important;
+          object-position: center center !important;
         }
 
         .rv-hero-visual--mobile {
           display: none !important;
-          object-position: center 18% !important;
+          object-position: center center !important;
         }
 
         .rv-hero-scrim {
@@ -235,6 +245,8 @@ export default function Hero() {
           align-items: flex-end;
           gap: 0.7rem;
           max-width: min(22rem, calc(100% - 2.5rem));
+          /* Keep CTAs fully inside the rounded frame */
+          padding: 0.15rem;
         }
 
         .rv-hero-btn {
@@ -253,6 +265,7 @@ export default function Hero() {
           width: 100%;
           white-space: normal;
           overflow: visible;
+          box-sizing: border-box;
         }
 
         .rv-hero-btn-label {
@@ -349,11 +362,11 @@ export default function Hero() {
           .rv-hero-card {
             /* Match client mobile art (1024×1536 → 2:3) */
             aspect-ratio: 2 / 3;
-            max-height: none;
-            min-height: 0;
+            max-height: min(92vh, 52rem);
+            min-height: 34rem;
             justify-content: flex-start;
             padding-top: clamp(2.25rem, 7vh, 3.5rem);
-            padding-bottom: 11rem;
+            padding-bottom: 12rem;
           }
 
           .rv-hero-visual--desktop {
@@ -362,18 +375,18 @@ export default function Hero() {
 
           .rv-hero-visual--mobile {
             display: block !important;
-            object-position: center 16% !important;
+            object-position: center center !important;
           }
 
           .rv-hero-scrim {
             background:
               linear-gradient(
                 180deg,
-                rgba(13, 27, 42, 0.18) 0%,
-                rgba(13, 27, 42, 0.4) 26%,
-                rgba(13, 27, 42, 0.5) 48%,
-                rgba(13, 27, 42, 0.18) 68%,
-                rgba(13, 27, 42, 0.62) 100%
+                rgba(13, 27, 42, 0.22) 0%,
+                rgba(13, 27, 42, 0.38) 24%,
+                rgba(13, 27, 42, 0.2) 48%,
+                rgba(13, 27, 42, 0.15) 66%,
+                rgba(13, 27, 42, 0.72) 100%
               );
           }
 
@@ -389,7 +402,7 @@ export default function Hero() {
           .rv-hero-ctas {
             left: 1rem;
             right: 1rem;
-            bottom: 1.15rem;
+            bottom: 1.25rem;
             max-width: none;
             align-items: stretch;
           }
@@ -403,17 +416,20 @@ export default function Hero() {
           .rv-hero-card {
             aspect-ratio: 2 / 3;
             border-radius: 1.15rem;
+            max-height: min(90vh, 48rem);
+            min-height: 32rem;
             padding-top: clamp(1.85rem, 6vh, 3rem);
-            padding-bottom: 10.75rem;
+            padding-bottom: 11.5rem;
           }
 
           .rv-hero-visual--mobile {
-            object-position: center 14% !important;
+            object-position: center center !important;
           }
 
           .rv-hero-btn {
             font-size: 0.92rem;
-            padding: 0.85rem 0.9rem 0.85rem 1.05rem;
+            padding: 0.9rem 0.9rem 0.9rem 1.05rem;
+            min-height: 3.1rem;
           }
 
           .rv-hero-title {
@@ -421,7 +437,8 @@ export default function Hero() {
           }
 
           .rv-hero-sub {
-            font-size: 1.05rem;
+            font-size: 1.02rem;
+            line-height: 1.45;
           }
         }
       `}</style>

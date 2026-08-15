@@ -15,7 +15,7 @@ export default function AboutPage() {
             fill
             priority
             sizes="100vw"
-            style={{ objectFit: "cover", objectPosition: "center" }}
+            style={{ objectFit: "contain", objectPosition: "center" }}
           />
           <div className="rv-page-hero-scrim" aria-hidden />
           <div className="container rv-page-hero-content">
@@ -47,7 +47,7 @@ export default function AboutPage() {
                   alt="Longevity lifestyle with Reform Vital"
                   width={720}
                   height={480}
-                  style={{ width: "100%", height: "auto", objectFit: "cover", borderRadius: "1.25rem" }}
+                  style={{ width: "100%", height: "auto", objectFit: "contain", borderRadius: "1.25rem" }}
                 />
               </div>
             </div>
@@ -69,7 +69,7 @@ export default function AboutPage() {
                   alt="Clinical renewal suite"
                   width={720}
                   height={480}
-                  style={{ width: "100%", height: "auto", objectFit: "cover", borderRadius: "1.25rem" }}
+                  style={{ width: "100%", height: "auto", objectFit: "contain", borderRadius: "1.25rem" }}
                 />
               </div>
             </div>
@@ -87,7 +87,7 @@ export default function AboutPage() {
                         alt={doctor.name}
                         width={480}
                         height={360}
-                        style={{ width: "100%", height: "auto", objectFit: "cover" }}
+                        style={{ width: "100%", height: "auto", objectFit: "contain" }}
                       />
                     </div>
                     <span className="badge" style={{ marginBottom: "0.8rem" }}>Board-Certified</span>

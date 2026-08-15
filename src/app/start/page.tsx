@@ -22,7 +22,7 @@ export default function StartAssessmentPage() {
                 alt="Begin your Reform Vital wellness journey"
                 fill
                 sizes="(max-width: 900px) 92vw, 40vw"
-                style={{ objectFit: "cover", objectPosition: "center 18%" }}
+                style={{ objectFit: "contain", objectPosition: "center center" }}
                 priority
               />
             </div>

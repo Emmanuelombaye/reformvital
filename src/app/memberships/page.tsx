@@ -15,7 +15,7 @@ export default function MembershipsPage() {
             fill
             priority
             sizes="100vw"
-            style={{ objectFit: "cover", objectPosition: "center top" }}
+            style={{ objectFit: "contain", objectPosition: "center center" }}
           />
           <div className="rv-page-hero-scrim" aria-hidden />
           <div className="container rv-page-hero-content">

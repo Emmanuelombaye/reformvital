@@ -1034,73 +1034,51 @@ h1, h2, h3, h4, h5, h6 {
 
 .rv-how-visual {
   position: relative;
-  width: 180px;
-  height: 180px;
+  width: min(200px, 56vw);
+  height: min(200px, 56vw);
   margin: 0 auto 1.35rem;
   isolation: isolate;
-  background: #dfecea;
+  background: #e8f0ee;
   flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  padding: 0.65rem;
+  box-sizing: border-box;
 }
 
 .rv-how-img {
-  position: absolute;
-  inset: 0;
+  position: relative !important;
+  inset: auto !important;
   width: 100% !important;
   height: 100% !important;
-  max-width: none !important;
-  object-fit: cover !important;
-  object-position: center 20%;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+  object-position: center center !important;
   display: block;
   transition: transform 0.45s ease;
 }
 
 .rv-how-step:hover .rv-how-img {
-  transform: scale(1.06);
+  transform: scale(1.04);
 }
 
-/* Unique shape 1 — soft organic blob */
-.rv-shape-blob {
-  border-radius: 42% 58% 48% 52% / 48% 42% 58% 52%;
+/* Soft Yucca frames — no hard crop shapes that slice faces */
+.rv-shape-blob,
+.rv-shape-hex,
+.rv-shape-arch {
+  border-radius: 1.35rem !important;
+  clip-path: none !important;
   overflow: hidden;
   box-shadow:
-    0 18px 40px rgba(13, 27, 42, 0.14),
-    0 0 0 4px rgba(0, 168, 150, 0.18);
-  animation: rvBlobMorph 8s ease-in-out infinite;
-}
-
-@keyframes rvBlobMorph {
-  0%,
-  100% {
-    border-radius: 42% 58% 48% 52% / 48% 42% 58% 52%;
-  }
-  50% {
-    border-radius: 55% 45% 58% 42% / 42% 55% 45% 58%;
-  }
-}
-
-/* Unique shape 2 — hexagon */
-.rv-shape-hex {
-  clip-path: polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
-  overflow: hidden;
-  filter: drop-shadow(0 16px 28px rgba(13, 27, 42, 0.18));
+    0 14px 32px rgba(13, 27, 42, 0.12),
+    0 0 0 3px rgba(0, 168, 150, 0.16);
+  filter: none !important;
+  animation: none !important;
 }
 
 .rv-shape-hex::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  clip-path: polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
-  box-shadow: inset 0 0 0 3px rgba(0, 180, 216, 0.45);
-  pointer-events: none;
-}
-
-/* Unique shape 3 — rounded arch / shield */
-.rv-shape-arch {
-  border-radius: 50% 50% 18% 18% / 42% 42% 28% 28%;
-  overflow: hidden;
-  box-shadow:
-    0 18px 40px rgba(13, 27, 42, 0.14),
-    0 0 0 4px rgba(94, 234, 212, 0.28);
+  display: none !important;
 }
 
 .rv-how-num {
@@ -2403,15 +2381,20 @@ h1, h2, h3, h4, h5, h6 {
 .rv-resource-feature-media {
   aspect-ratio: 3 / 2;
   overflow: hidden;
-  background: #0D1B2A;
+  background: linear-gradient(165deg, #eef5f3 0%, #e2ece9 100%);
+  display: grid;
+  place-items: center;
+  padding: 0.55rem;
+  box-sizing: border-box;
 }
 
 .rv-resource-feature-media img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center center;
   display: block;
+  border-radius: 0.55rem;
 }
 
 .rv-resource-feature-body {
@@ -2548,15 +2531,20 @@ h1, h2, h3, h4, h5, h6 {
 .rv-resource-card-media {
   aspect-ratio: 3 / 2;
   overflow: hidden;
-  background: #E6F2F0;
+  background: linear-gradient(165deg, #eef5f3 0%, #e2ece9 100%);
+  display: grid;
+  place-items: center;
+  padding: 0.55rem;
+  box-sizing: border-box;
 }
 
 .rv-resource-card-media img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center center;
   display: block;
+  border-radius: 0.5rem;
 }
 
 .rv-resource-card-body {
@@ -2743,17 +2731,25 @@ h1, h2, h3, h4, h5, h6 {
 .rv-why-photo {
   position: relative;
   width: 100%;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
-  background: #e8f0ee;
+  background: linear-gradient(165deg, #eef5f3 0%, #e2ece9 100%);
+  display: grid;
+  place-items: center;
+  padding: 0.75rem;
+  box-sizing: border-box;
 }
 
 .rv-why-photo__img {
+  position: relative !important;
   width: 100% !important;
   height: 100% !important;
-  object-fit: cover;
-  object-position: center center;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+  object-position: center center !important;
   display: block;
+  border-radius: 0.75rem;
 }
 
 .rv-why-body {
@@ -2982,10 +2978,13 @@ h1, h2, h3, h4, h5, h6 {
 .rv-academy-category-img {
   display: block;
   width: 100%;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 4 / 3;
   height: auto;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center center;
+  background: linear-gradient(165deg, #eef5f3 0%, #e2ece9 100%);
+  padding: 0.55rem;
+  box-sizing: border-box;
 }
 
 .rv-academy-category--photo span {
@@ -3492,10 +3491,13 @@ h1, h2, h3, h4, h5, h6 {
 .rv-academy-story-img {
   display: block;
   width: 100%;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 4 / 3;
   height: auto;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center center;
+  background: linear-gradient(165deg, #eef5f3 0%, #e2ece9 100%);
+  padding: 0.55rem;
+  box-sizing: border-box;
 }
 
 .rv-academy-story-body {
@@ -3667,8 +3669,9 @@ h1, h2, h3, h4, h5, h6 {
   height: auto;
   display: block;
   aspect-ratio: 3 / 2;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center center;
+  background: #e8f0ee;
 }
 
 .rv-article-block {
@@ -3863,23 +3866,31 @@ h1, h2, h3, h4, h5, h6 {
 /* —— Photo page heroes (about / memberships / portal) —— */
 .rv-page-hero {
   position: relative;
-  /* Client page heroes are 3:2 (1536×1024) — avoid short clamp crops */
+  /* Client page heroes are 3:2 (1536×1024) — show full frame */
   aspect-ratio: 3 / 2;
   min-height: 0;
   display: flex;
   align-items: flex-end;
   overflow: hidden;
+  background: #0d1b2a;
 }
 
 .rv-page-hero > img,
 .rv-page-hero > span img {
-  object-fit: cover !important;
-  object-position: center 20% !important;
+  object-fit: contain !important;
+  object-position: center center !important;
 }
 
 @media (max-width: 640px) {
   .rv-page-hero {
-    aspect-ratio: 3 / 2;
+    aspect-ratio: 4 / 5;
+    min-height: 22rem;
+  }
+
+  .rv-page-hero > img,
+  .rv-page-hero > span img {
+    object-fit: contain !important;
+    object-position: center center !important;
   }
 }
 
@@ -3946,8 +3957,8 @@ h1, h2, h3, h4, h5, h6 {
 .rv-start-photo img {
   width: 100% !important;
   height: 100% !important;
-  object-fit: cover;
-  object-position: center 18%;
+  object-fit: contain !important;
+  object-position: center center !important;
   display: block;
 }
 
@@ -3987,12 +3998,13 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .rv-why-photo {
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 4 / 3;
+    padding: 0.65rem;
   }
 
   .rv-why-photo__img {
-    object-fit: cover;
-    object-position: center center;
+    object-fit: contain !important;
+    object-position: center center !important;
   }
 
   .rv-why-body {
@@ -4716,8 +4728,12 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
   min-height: 240px;
   aspect-ratio: 4 / 5;
-  background: #0D1B2A;
+  background: linear-gradient(165deg, #F7F5F0 0%, #EEF2F1 100%);
   overflow: hidden;
+  display: grid;
+  place-items: center;
+  padding: 0.75rem;
+  box-sizing: border-box;
 }
 
 .rv-yx__media--pack {
@@ -4873,8 +4889,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .rv-yx__img {
-  object-fit: cover;
-  object-position: center top;
+  object-fit: contain;
+  object-position: center center;
   transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -5416,15 +5432,19 @@ h1, h2, h3, h4, h5, h6 {
 
 .rv-yx-tx-card__media {
   position: relative;
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 4 / 3;
   height: auto;
-  background: #0D1B2A;
+  background: linear-gradient(165deg, #F7F5F0 0%, #EEF2F1 100%);
   overflow: hidden;
+  display: grid;
+  place-items: center;
+  padding: 0.85rem;
+  box-sizing: border-box;
 }
 
 @media (min-width: 640px) {
   .rv-yx-tx-card--mensrx .rv-yx-tx-card__media {
-    aspect-ratio: 3 / 2;
+    aspect-ratio: 4 / 3;
     height: auto;
   }
 }
@@ -5432,7 +5452,7 @@ h1, h2, h3, h4, h5, h6 {
 .rv-yx-tx-card__media img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center center;
   display: block;
   transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
@@ -5797,17 +5817,22 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .rv-yx-expect-card__media {
-  aspect-ratio: 1 / 1;
-  background: #E8F0EE;
+  aspect-ratio: 4 / 3;
+  background: linear-gradient(165deg, #eef5f3 0%, #e2ece9 100%);
   overflow: hidden;
+  display: grid;
+  place-items: center;
+  padding: 0.7rem;
+  box-sizing: border-box;
 }
 
 .rv-yx-expect-card__media img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center center;
   display: block;
+  border-radius: 0.65rem;
 }
 
 .rv-yx-expect-card h3 {
@@ -5880,6 +5905,17 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 1.25rem;
   background: linear-gradient(180deg, #E8F4F2, #D4EBE7);
   overflow: hidden;
+}
+
+.rv-yx-knowall__media .rv-dual-img__primary,
+.rv-yx-knowall__media .rv-dual-img__secondary,
+.rv-yx-protocol__vials .rv-dual-img__primary,
+.rv-yx-protocol__vials .rv-dual-img__secondary {
+  background-size: contain;
+  background-position: center center;
+  padding: 8%;
+  background-origin: content-box;
+  background-clip: content-box;
 }
 
 /* ── Mobile polish (Yucca-tight + Peak soft motion) ── */
@@ -6240,14 +6276,20 @@ h1, h2, h3, h4, h5, h6 {
   overflow: hidden;
   box-shadow: 0 22px 50px rgba(13, 27, 42, 0.14);
   border: 1.5px solid rgba(13, 27, 42, 0.08);
+  background: linear-gradient(165deg, #eef5f3 0%, #e2ece9 100%);
+  display: grid;
+  place-items: center;
+  padding: 0.65rem;
+  box-sizing: border-box;
 }
 
 .rv-mag-mast__media img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center 15%;
+  object-fit: contain;
+  object-position: center center;
   display: block;
+  border-radius: 1rem;
 }
 
 .rv-mag-lead {
@@ -6277,6 +6319,7 @@ h1, h2, h3, h4, h5, h6 {
   text-decoration: none;
   color: #fff;
   box-shadow: 0 18px 40px rgba(13, 27, 42, 0.12);
+  background: #0d1b2a;
 }
 
 .rv-mag-lead__hero img {
@@ -6284,8 +6327,8 @@ h1, h2, h3, h4, h5, h6 {
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center 30%;
+  object-fit: contain;
+  object-position: center center;
 }
 
 .rv-mag-lead__hero-body {
@@ -6351,7 +6394,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 7.5rem;
   aspect-ratio: 3 / 2;
   height: auto;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center center;
   border-radius: 0.75rem;
   display: block;
@@ -6400,7 +6443,7 @@ h1, h2, h3, h4, h5, h6 {
 .rv-mag-bento__tile img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center center;
   display: block;
   transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
@@ -6455,8 +6498,8 @@ h1, h2, h3, h4, h5, h6 {
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center 30%;
+  object-fit: contain;
+  object-position: center center;
 }
 
 .rv-mag-stories__quote {
@@ -6519,7 +6562,7 @@ h1, h2, h3, h4, h5, h6 {
 .rv-mag-stories__card img {
   width: 100%;
   aspect-ratio: 3 / 2;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center center;
   display: block;
 }
@@ -6576,7 +6619,7 @@ h1, h2, h3, h4, h5, h6 {
 .rv-mag-guide__cover img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center center;
   display: block;
 }
@@ -6654,7 +6697,7 @@ h1, h2, h3, h4, h5, h6 {
 .rv-mag-editorial__block img {
   width: 4.5rem;
   height: 4.5rem;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 0.65rem;
 }
 
@@ -6718,7 +6761,7 @@ h1, h2, h3, h4, h5, h6 {
   aspect-ratio: 1 / 1;
   height: auto;
   min-height: 0;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center center;
   flex-shrink: 0;
 }
@@ -6778,7 +6821,7 @@ h1, h2, h3, h4, h5, h6 {
 .rv-mag-video__thumb img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center center;
 }
 
@@ -6939,5 +6982,65 @@ h1, h2, h3, h4, h5, h6 {
   .rv-mag-cta__actions .btn,
   .rv-mag-mast__actions .btn {
     width: 100%;
+  }
+}
+
+/* -- Yucca no-crop safeguard (lifestyle + product frames) -- */
+.rv-why-photo,
+.rv-resource-feature-media,
+.rv-resource-card-media,
+.rv-yx-expect-card__media,
+.rv-hiw-step-media__frame,
+.rv-hiw-why-card__media,
+.rv-start-photo,
+.rv-mag-mast__media,
+.rv-transform-spotlight-media,
+.rv-transform-thumb {
+  background-color: #e8f0ee;
+}
+
+@media (max-width: 767px) {
+  .rv-why-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .rv-how-visual {
+    width: min(220px, 72vw);
+    height: min(220px, 72vw);
+  }
+
+  .rv-yx-expect__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* -- Yucca no-crop safeguard (lifestyle + product frames) -- */
+.rv-why-photo,
+.rv-resource-feature-media,
+.rv-resource-card-media,
+.rv-yx-expect-card__media,
+.rv-hiw-step-media__frame,
+.rv-hiw-why-card__media,
+.rv-start-photo,
+.rv-mag-mast__media,
+.rv-transform-spotlight-media,
+.rv-transform-thumb {
+  background-color: #e8f0ee;
+}
+
+@media (max-width: 767px) {
+  .rv-why-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .rv-how-visual {
+    width: min(220px, 72vw);
+    height: min(220px, 72vw);
+  }
+
+  .rv-yx-expect__grid {
+    grid-template-columns: 1fr;
   }
 }

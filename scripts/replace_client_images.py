@@ -159,13 +159,22 @@ def load_all_crops() -> dict[str, Image.Image]:
     return crops
 
 
+# Strip contact-sheet ID numbers (usually bottom-left) from every client crop.
+DEFAULT_TRIM: dict[str, float] = {
+    "left_pct": 0.1,
+    "bottom_pct": 0.14,
+    "right_pct": 0.02,
+    "top_pct": 0.02,
+}
+
 # Thematic client-photo placements only (no mismatched treatment product fills).
+# trim=None → DEFAULT_TRIM; pass {} to skip trimming for a specific asset.
 REPLACEMENTS: list[tuple[str, str, int, int, str, dict[str, float] | None]] = [
     # ── Heroes (Batch 1) ──
-    ("01", "hero-commercial-wide.png", 1536, 1024, "PNG", {"left_pct": 0.08, "bottom_pct": 0.12}),
-    ("03", "hero-commercial-mobile.png", 1024, 1536, "PNG", {"left_pct": 0.08, "bottom_pct": 0.12}),
+    ("01", "hero-commercial-wide.png", 1536, 1024, "PNG", None),
+    ("03", "hero-commercial-mobile.png", 1024, 1536, "PNG", None),
     # ── How it works ──
-    ("01", "how-step-consult.png", 1024, 1024, "PNG", {"left_pct": 0.08, "bottom_pct": 0.12}),
+    ("01", "how-step-consult.png", 1024, 1024, "PNG", None),
     ("02", "how-step-physician.png", 1024, 1024, "PNG", None),
     ("27", "how-step-delivery.png", 1024, 1024, "PNG", None),  # clinic / pharmacy facility
     ("38", "how-step-ongoing.png", 1024, 1024, "PNG", None),
@@ -198,8 +207,8 @@ REPLACEMENTS: list[tuple[str, str, int, int, str, dict[str, float] | None]] = [
     ("22", "TRTTestosterone.png", 2752, 1536, "PNG", None),
     # ── Treatment heroes — CLIENT photos only (replace prior studio regen) ──
     # GLP-1 / weight loss → telehealth consult + metabolic lifestyle
-    ("01", "Tirzepatide.png", 2752, 1536, "PNG", {"left_pct": 0.08, "bottom_pct": 0.12}),
-    ("01", "tirzepatide_hero.png", 1024, 1024, "PNG", {"left_pct": 0.08, "bottom_pct": 0.12}),
+    ("01", "Tirzepatide.png", 2752, 1536, "PNG", None),
+    ("01", "tirzepatide_hero.png", 1024, 1024, "PNG", None),
     ("18", "weight_loss_glp1.png", 1024, 1024, "PNG", None),
     ("18", "resource-glp1.jpg", 1536, 1024, "JPEG", None),
     # Growth hormone / Sermorelin → morning vitality lifestyle
@@ -269,8 +278,10 @@ def main() -> None:
             print(f"  SKIP {fname} — missing crop {cid}")
             continue
         crop = crops[cid]
-        if trim:
-            crop = trim_contact_label(crop, **trim)
+        # None → default sheet-number trim; {} → no trim
+        effective = DEFAULT_TRIM if trim is None else trim
+        if effective:
+            crop = trim_contact_label(crop, **effective)
         save(crop, OUT / fname, w, h, fmt)
 
     print("\nDone.")

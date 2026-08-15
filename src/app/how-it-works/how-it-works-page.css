@@ -155,15 +155,22 @@
   aspect-ratio: 3 / 2;
   border-radius: inherit;
   overflow: hidden;
-  background: #E8F0EE;
+  background: linear-gradient(165deg, #eef5f3 0%, #e2ece9 100%);
+  display: grid;
+  place-items: center;
+  padding: 0.85rem 0.85rem 3.1rem;
+  box-sizing: border-box;
 }
 
 .rv-hiw-step-media__img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center 22%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center center;
   display: block;
+  border-radius: 0.75rem;
   transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -403,9 +410,13 @@
 }
 
 .rv-hiw-why-card__media {
-  aspect-ratio: 3 / 2;
-  background: #E8F0EE;
+  aspect-ratio: 4 / 3;
+  background: linear-gradient(165deg, #eef5f3 0%, #e2ece9 100%);
   overflow: hidden;
+  display: grid;
+  place-items: center;
+  padding: 0.65rem;
+  box-sizing: border-box;
 }
 
 .rv-hiw-why-card__media--product {
@@ -419,9 +430,10 @@
 .rv-hiw-why-card__media img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center 20%;
+  object-fit: contain;
+  object-position: center center;
   display: block;
+  border-radius: 0.55rem;
   transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -483,16 +495,21 @@
   position: relative;
   aspect-ratio: 3 / 2;
   min-height: 0;
-  background: #E8F0EE;
+  background: linear-gradient(165deg, #eef5f3 0%, #e2ece9 100%);
   overflow: hidden;
+  display: grid;
+  place-items: center;
+  padding: 0.75rem;
+  box-sizing: border-box;
 }
 
 .rv-hiw-priority__media img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center 20%;
+  object-fit: contain;
+  object-position: center center;
   display: block;
+  border-radius: 0.75rem;
 }
 
 .rv-hiw-priority__copy {
@@ -632,14 +649,20 @@
   aspect-ratio: 1 / 1;
   min-height: 0;
   overflow: hidden;
+  background: #13253a;
+  display: grid;
+  place-items: center;
+  padding: 0.85rem;
+  box-sizing: border-box;
 }
 
 .rv-hiw-cta__media img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center 20%;
+  object-fit: contain;
+  object-position: center center;
   display: block;
+  border-radius: 0.75rem;
 }
 
 .rv-hiw-cta__copy {

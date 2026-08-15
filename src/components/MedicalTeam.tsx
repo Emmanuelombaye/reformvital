@@ -30,7 +30,7 @@ export default function MedicalTeam() {
                   alt={doctor.name}
                   width={400}
                   height={480}
-                  style={{ width: "100%", height: "auto", objectFit: "cover", borderRadius: "0.85rem" }}
+                  style={{ width: "100%", height: "auto", objectFit: "contain", borderRadius: "0.85rem" }}
                 />
               </div>
               <span className="rv-medical-team-badge">{doctor.credentials}</span>

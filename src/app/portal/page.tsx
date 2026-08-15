@@ -17,7 +17,7 @@ export default function PortalPage() {
             fill
             priority
             sizes="100vw"
-            style={{ objectFit: "cover", objectPosition: "center" }}
+            style={{ objectFit: "contain", objectPosition: "center" }}
           />
           <div className="rv-page-hero-scrim rv-page-hero-scrim--dark" aria-hidden />
           <div className="container rv-page-hero-content" style={{ maxWidth: "46rem" }}>

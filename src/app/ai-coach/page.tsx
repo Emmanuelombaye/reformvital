@@ -264,7 +264,7 @@ export default function AICoachPage() {
               alt=""
               fill
               sizes="100vw"
-              style={{ objectFit: "cover", objectPosition: "center 35%" }}
+              style={{ objectFit: "contain", objectPosition: "center center" }}
               placeholder="blur"
               priority
             />
@@ -344,7 +344,7 @@ export default function AICoachPage() {
                       style={
                         row.fit === "contain"
                           ? { objectFit: "contain", objectPosition: "center" }
-                          : { objectFit: "cover", objectPosition: "center 20%" }
+                          : { objectFit: "contain", objectPosition: "center center" }
                       }
                       placeholder="blur"
                     />
@@ -535,7 +535,7 @@ export default function AICoachPage() {
                   alt="Member staying accountable between physician visits"
                   fill
                   sizes="(max-width: 900px) 100vw, 42vw"
-                  style={{ objectFit: "cover", objectPosition: "center 25%" }}
+                  style={{ objectFit: "contain", objectPosition: "center center" }}
                   placeholder="blur"
                 />
               </div>

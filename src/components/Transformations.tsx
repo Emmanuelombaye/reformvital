@@ -294,7 +294,15 @@ export default function Transformations() {
           </div>
 
           {/* Featured Spotlight Grid */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "2.5rem", alignItems: "center" }}>
+          <div
+            className="rv-transform-spotlight-grid"
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))",
+              gap: "2rem",
+              alignItems: "center",
+            }}
+          >
             <div
               className="rv-transform-spotlight-media"
               style={{
@@ -304,7 +312,7 @@ export default function Transformations() {
                 border: "2px solid rgba(0, 168, 150, 0.5)",
                 boxShadow: "0 20px 40px rgba(0,0,0,0.5)",
                 aspectRatio: "16 / 9",
-                background: "#0a1520",
+                background: "linear-gradient(165deg, #0d1b2a 0%, #13253a 100%)",
               }}
             >
               <Image
@@ -312,7 +320,7 @@ export default function Transformations() {
                 alt={`${currentItem.name} Transformation Result`}
                 fill
                 sizes="(max-width: 768px) 92vw, 50vw"
-                style={{ objectFit: "cover", objectPosition: "center center" }}
+                style={{ objectFit: "contain", objectPosition: "center center" }}
                 loading="eager"
                 priority={true}
                 quality={85}
@@ -461,7 +469,7 @@ export default function Transformations() {
                       alt={item.name}
                       fill
                       sizes="250px"
-                      style={{ objectFit: "cover", objectPosition: "center center" }}
+                      style={{ objectFit: "contain", objectPosition: "center center" }}
                       loading="lazy"
                       quality={75}
                     />
