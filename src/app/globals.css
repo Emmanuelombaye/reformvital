@@ -4819,7 +4819,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .rv-dual-img--fade:hover .rv-dual-img__primary {
-  transform: scale(1.02);
+  transform: none;
 }
 
 @media (hover: none) {
@@ -5112,35 +5112,41 @@ h1, h2, h3, h4, h5, h6 {
 .rv-tx-media__art {
   position: relative;
   margin-top: 1rem;
-  min-height: 320px;
-  width: calc(100% + 2.7rem);
-  margin-left: -1.35rem;
-  margin-right: -1.35rem;
-  margin-bottom: -0.35rem;
+  min-height: 340px;
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 0;
   display: block;
   overflow: hidden;
   background: var(--rv-pack-stage);
+  border-radius: 0 0 18px 18px;
+  /* Keep bottle fully inside the frame (away from badge + card radius) */
+  padding: 0.85rem 1rem 3.25rem;
+  box-sizing: border-box;
 }
 
 .rv-tx-media__art .rv-dual-img {
   position: absolute !important;
-  inset: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
+  inset: 0.85rem 1rem 3.25rem 1rem !important;
+  width: auto !important;
+  height: auto !important;
   margin: 0 !important;
   border-radius: 0 !important;
   box-shadow: none !important;
-  background: var(--rv-pack-stage) !important;
+  background: transparent !important;
+  overflow: visible !important;
 }
 
 .rv-tx-media__art .rv-dual-img__primary,
 .rv-tx-media__art .rv-dual-img__secondary {
   object-fit: contain !important;
-  object-position: center bottom !important;
+  object-position: center center !important;
   filter: none !important;
   border-radius: 0 !important;
   box-shadow: none !important;
   transform: none !important;
+  padding: 0 !important;
 }
 
 .rv-tx-media:hover .rv-dual-img--fade .rv-dual-img__secondary {
@@ -5256,8 +5262,10 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  padding: 0;
-  background: var(--rv-pack-stage);
+  object-position: center center;
+  padding: 10%;
+  box-sizing: border-box;
+  background: transparent;
   border-radius: 0;
   filter: none;
   box-shadow: none;
@@ -5539,12 +5547,22 @@ h1, h2, h3, h4, h5, h6 {
 
 .rv-yx-pack-tile .rv-dual-img {
   position: relative;
-  height: 120px;
+  height: 140px;
+  overflow: hidden;
+}
+
+.rv-yx-pack-tile .rv-dual-img__primary,
+.rv-yx-pack-tile .rv-dual-img__secondary {
+  object-fit: contain !important;
+  object-position: center center !important;
+  padding: 8% !important;
+  box-sizing: border-box;
+  transform: none !important;
 }
 
 @media (min-width: 640px) {
   .rv-yx-pack-tile .rv-dual-img {
-    height: 140px;
+    height: 160px;
   }
 }
 
@@ -5594,15 +5612,29 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--rv-pack-stage);
 }
 
-.rv-yx__img--contain {
+.rv-yx-tx-card__media--pack .rv-dual-img__primary,
+.rv-yx-tx-card__media--pack .rv-dual-img__secondary,
+.rv-yx-tx-card__media--vial img,
+.rv-yx-detail-pack .rv-dual-img__primary,
+.rv-yx-detail-pack .rv-dual-img__secondary {
   object-fit: contain !important;
   object-position: center center !important;
-  padding: 8%;
+  padding: 10% !important;
+  box-sizing: border-box;
   transform: none !important;
 }
 
-.rv-yx__card:hover .rv-yx__img--contain {
-  transform: scale(1.03) !important;
+.rv-yx__img--contain {
+  object-fit: contain !important;
+  object-position: center center !important;
+  padding: 10% !important;
+  box-sizing: border-box;
+  transform: none !important;
+}
+
+.rv-yx__card:hover .rv-yx__img--contain,
+.rv-yx-tx-card__media--vial:hover img {
+  transform: none !important;
 }
 
 .rv-yx__media-scrim--soft {
@@ -5627,7 +5659,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .rv-yx-tx-card__media--vial:hover img {
-  transform: scale(1.04);
+  transform: none !important;
 }
 
 @media (min-width: 900px) {
@@ -6671,9 +6703,10 @@ h1, h2, h3, h4, h5, h6 {
 .rv-yx-protocol__vials .rv-dual-img__secondary {
   object-fit: contain !important;
   object-position: center center !important;
-  padding: 6%;
+  padding: 10% !important;
   box-sizing: border-box;
-  background: var(--rv-pack-stage);
+  background: transparent;
+  transform: none !important;
 }
 
 /* Uniform pack studio stage — bottles blend with container (no inner box) */
@@ -6793,12 +6826,20 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .rv-tx-media__art {
-    min-height: 280px;
-    width: calc(100% + 2.2rem);
-    margin-left: -1.1rem;
-    margin-right: -1.1rem;
+    min-height: 300px;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
     margin-top: 0.75rem;
-    margin-bottom: -0.25rem;
+    margin-bottom: 0;
+    padding: 0.65rem 0.75rem 3rem;
+    border-radius: 0 0 14px 14px;
+  }
+
+  .rv-tx-media__art .rv-dual-img {
+    inset: 0.65rem 0.75rem 3rem 0.75rem !important;
+    width: auto !important;
+    height: auto !important;
   }
 
   .rv-tx-media__top {
@@ -6814,20 +6855,6 @@ h1, h2, h3, h4, h5, h6 {
     font-size: clamp(1.55rem, 6.5vw, 1.95rem);
     max-width: 14ch;
     margin-top: 0.75rem;
-  }
-
-  .rv-tx-media__art {
-    min-height: 280px;
-    width: calc(100% + 2.2rem);
-    margin-left: -1.1rem;
-    margin-right: -1.1rem;
-    margin-top: 0.75rem;
-    margin-bottom: -0.25rem;
-  }
-
-  .rv-tx-media__art .rv-dual-img {
-    width: 100% !important;
-    height: 100% !important;
   }
 
   .rv-tx-media__badge {
