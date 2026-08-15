@@ -2724,9 +2724,12 @@ h1, h2, h3, h4, h5, h6 {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1.25rem;
+  align-items: stretch;
 }
 
 .rv-why-card {
+  display: flex;
+  flex-direction: column;
   background: var(--bg);
   border: 1px solid var(--border);
   border-radius: 1.1rem;
@@ -2736,23 +2739,26 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .rv-why-photo {
-  height: 9.5rem;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
+  background: #e8f0ee;
 }
 
-.rv-why-card .rv-why-num,
-.rv-why-card h3,
-.rv-why-card p {
-  padding-left: 1.35rem;
-  padding-right: 1.35rem;
+.rv-why-photo__img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
 }
 
-.rv-why-card .rv-why-num {
-  margin-top: 1.1rem;
-}
-
-.rv-why-card p {
-  padding-bottom: 1.35rem;
+.rv-why-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1.15rem 1.25rem 1.35rem;
 }
 
 .rv-why-card:hover {
@@ -2766,14 +2772,15 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 800;
   color: var(--accent);
   letter-spacing: 0.1em;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.55rem;
 }
 
 .rv-why-card h3 {
   font-size: 1.05rem;
   font-weight: 800;
   color: var(--primary);
-  margin-bottom: 0.5rem;
+  margin: 0 0 0.45rem;
+  line-height: 1.25;
 }
 
 .rv-why-card p {
@@ -3130,6 +3137,7 @@ h1, h2, h3, h4, h5, h6 {
 
   .rv-why-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
   }
 
   .rv-journey-track {
@@ -3915,8 +3923,43 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 640px) {
+  .rv-why {
+    padding: 2.75rem 0 2.5rem;
+  }
+
+  .rv-why-head {
+    margin-bottom: 1.5rem;
+    padding: 0 0.25rem;
+  }
+
+  .rv-why-head h2 {
+    font-size: clamp(1.55rem, 7vw, 1.95rem);
+  }
+
   .rv-why-grid {
     grid-template-columns: 1fr;
+    gap: 0.9rem;
+  }
+
+  .rv-why-photo {
+    aspect-ratio: 1 / 1;
+  }
+
+  .rv-why-photo__img {
+    object-fit: cover;
+    object-position: center center;
+  }
+
+  .rv-why-body {
+    padding: 1rem 1.1rem 1.2rem;
+  }
+
+  .rv-why-card h3 {
+    font-size: 1.02rem;
+  }
+
+  .rv-why-card p {
+    font-size: 0.88rem;
   }
 }
 

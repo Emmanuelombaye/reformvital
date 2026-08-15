@@ -27,15 +27,17 @@ export default function WhyReformVital() {
                   <Image
                     src={pillar.image}
                     alt=""
-                    width={400}
-                    height={280}
-                    style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                    fill
+                    sizes="(max-width: 640px) 92vw, (max-width: 1100px) 45vw, 25vw"
+                    className="rv-why-photo__img"
                   />
                 </div>
               ) : null}
-              <span className="rv-why-num">{String(i + 1).padStart(2, "0")}</span>
-              <h3>{pillar.title}</h3>
-              <p>{pillar.desc}</p>
+              <div className="rv-why-body">
+                <span className="rv-why-num">{String(i + 1).padStart(2, "0")}</span>
+                <h3>{pillar.title}</h3>
+                <p>{pillar.desc}</p>
+              </div>
             </article>
           ))}
         </div>
