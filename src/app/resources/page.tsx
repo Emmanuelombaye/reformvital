@@ -9,30 +9,41 @@ const featured = [
     title: "How GLP-1 Therapies Support Metabolic Reset",
     type: "Guide",
     summary:
-      "A plain-language overview of Semaglutide and Tirzepatide: appetite signaling, first-90-day expectations, and how physician monitoring keeps care safe.",
+      "Semaglutide and Tirzepatide in plain language—appetite signaling, first-90-day expectations, and physician monitoring.",
     href: "/resources/articles/glp1-metabolic-reset",
     image: "/images/resource-glp1.jpg",
-    imageAlt: "GLP-1 therapy education visual",
+    imageAlt: "GLP-1 therapy education",
   },
   {
     title: "Hormone Optimization 101",
     type: "Education",
     summary:
-      "Why labs come first for TRT and women's hormone therapy—and how Reform Vital personalizes protocols around your biomarkers.",
+      "Why labs come first for TRT and women's hormone therapy—and how protocols follow your biomarkers.",
     href: "/resources/articles/hormone-optimization-101",
     image: "/images/resource-hormones.jpg",
-    imageAlt: "Hormone optimization education visual",
+    imageAlt: "Hormone optimization education",
   },
   {
     title: "Using Your AI Health Coach Between Visits",
     type: "How-to",
     summary:
-      "Track protein, hydration, sleep, and adherence between appointments—accountability support that never replaces your physician.",
+      "Track protein, hydration, sleep, and adherence—accountability that never replaces your physician.",
     href: "/resources/articles/ai-health-coach-between-visits",
     image: "/images/resource-ai-coach.jpg",
-    imageAlt: "AI health coach dashboard visual",
+    imageAlt: "AI health coach education",
   },
 ];
+
+const guideCovers: Record<string, string> = {
+  "longevity-blueprint": "/images/academy-supplements.png",
+  "executive-health-guide": "/images/lifestyle-education.png",
+  "weight-optimization-guide": "/images/academy-nutrition.png",
+  "hormone-health-guide": "/images/resource-hormones.jpg",
+  "understanding-your-labs": "/images/why-evidence.png",
+  "healthy-aging-handbook": "/images/about-longevity.png",
+  "sleep-guide": "/images/8.png",
+  "nutrition-playbook": "/images/academy-recipes.png",
+};
 
 const recentArticles = [
   {
@@ -40,46 +51,47 @@ const recentArticles = [
     category: "Weight Optimization",
     date: "August 2026",
     href: "/resources/articles/first-90-days-glp1",
+    image: "/images/resource-glp1.jpg",
   },
   {
     title: "Understanding Your Lab Results: A Patient Guide",
     category: "Advanced Labs",
     date: "August 2026",
     href: "/resources/articles/understanding-labs",
+    image: "/images/why-evidence.png",
   },
   {
     title: "Sleep, Recovery, and Hormone Health",
     category: "Sleep",
     date: "July 2026",
     href: "/resources/articles/sleep-recovery-hormones",
+    image: "/images/8.png",
   },
   {
     title: "Longevity & Cellular Energy: NAD+ Explained",
     category: "Longevity",
     date: "July 2026",
     href: "/resources/articles/nad-longevity-cellular-energy",
+    image: "/images/about-longevity.png",
   },
 ];
 
 const videos = [
   {
     title: "Understanding GLP-1 Medications",
-    blurb:
-      "A clinical overview of how GLP-1 receptor agonists support metabolic health and weight management.",
+    blurb: "How GLP-1 receptor agonists support metabolic health and weight management.",
     youtubeId: "IVn4K-lesQM",
     source: "Educational overview",
   },
   {
     title: "Hormone Health Basics",
-    blurb:
-      "Why hormone balance matters for energy, body composition, and long-term wellness—and when labs help.",
+    blurb: "Why hormone balance matters for energy, composition, and long-term wellness.",
     youtubeId: "ZteQT00cRR0",
     source: "Hormone education",
   },
   {
     title: "Mayo Clinic: Weight Loss Medications",
-    blurb:
-      "Trusted medical perspective on prescription weight-loss therapies and what patients should know.",
+    blurb: "Trusted medical perspective on prescription weight-loss therapies.",
     youtubeId: "EmBRxbwLBrU",
     source: "Mayo Clinic",
   },
@@ -88,182 +100,167 @@ const videos = [
 const externalReads = [
   {
     title: "Semaglutide — StatPearls (NCBI)",
-    summary:
-      "Peer-reviewed clinical summary covering mechanism, indications, and safety considerations.",
+    summary: "Peer-reviewed clinical summary: mechanism, indications, safety.",
     href: "https://www.ncbi.nlm.nih.gov/books/NBK603723/",
     source: "NCBI Bookshelf",
   },
   {
     title: "Mayo Clinic: Prescription Weight-Loss Drugs",
-    summary:
-      "Trusted overview of how prescription weight-loss medications work and what to discuss with a clinician.",
+    summary: "What to discuss with a clinician about prescription weight-loss medicines.",
     href: "https://www.mayoclinic.org/healthy-lifestyle/weight-loss/in-depth/weight-loss-drugs/art-20044832",
     source: "Mayo Clinic",
   },
   {
     title: "FDA: Medicines Containing Semaglutide",
-    summary:
-      "Official safety information for patients and providers on approved semaglutide products.",
+    summary: "Official safety information on approved semaglutide products.",
     href: "https://www.fda.gov/drugs/drug-safety-and-availability/fdas-concerns-unapproved-glp-1-drugs-used-weight-loss",
     source: "U.S. FDA",
   },
   {
     title: "Endocrine Society — Endocrine Library",
-    summary:
-      "Patient education on testosterone, menopause, thyroid, and related endocrine topics.",
+    summary: "Patient education on testosterone, menopause, thyroid, and more.",
     href: "https://www.endocrine.org/patient-engagement/endocrine-library",
     source: "Endocrine Society",
   },
 ];
 
+const clusterThumbs = [
+  "/images/resource-glp1.jpg",
+  "/images/story-nutrition.png",
+  "/images/resource-hormones.jpg",
+  "/images/lifestyle-mindfulness.png",
+  "/images/about-longevity.png",
+  "/images/resource-recovery.jpg",
+];
+
 export default function ResourcesPage() {
   const academy = brandConfig.healthAcademy;
+  const categories = academy.categories.slice(0, 8);
+  const lead = featured[0];
+  const stacked = featured.slice(1);
+  const [featuredStory, ...otherStories] = academy.successStories;
 
   return (
     <>
       <Navbar />
-      <main className="rv-academy">
+      <main className="rv-mag">
         <AcademyStickyNav />
-        <section className="rv-academy-hero">
-          <div className="container">
-            <span className="badge" style={{ marginBottom: "0.85rem" }}>
-              HEALTH ACADEMY
-            </span>
-            <h1>{academy.title}</h1>
-            <p>{academy.subtitle}</p>
-            <div className="rv-academy-hero-links">
-              <a href="#categories">Browse categories</a>
-              <a href="#topics">Featured topics</a>
-              <a href="#guides">Downloadable guides</a>
-              <a href="/resources/tools">Interactive tools</a>
-              <a href="/resources/report">Monthly report</a>
+
+        {/* Asymmetric masthead */}
+        <section className="rv-mag-mast" data-animate="peak-fade">
+          <div className="container rv-mag-mast__grid">
+            <div className="rv-mag-mast__copy">
+              <p className="rv-mag-kicker">Health Academy</p>
+              <h1>{academy.title.replace("Reform Vital ", "")}</h1>
+              <p className="rv-mag-mast__sub">{academy.subtitle}</p>
+              <div className="rv-mag-mast__actions">
+                <a href="#lead" className="btn btn-primary">
+                  Start reading
+                </a>
+                <a href="/resources/tools" className="btn btn-outline">
+                  Interactive tools
+                </a>
+              </div>
+            </div>
+            <div className="rv-mag-mast__media">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/start-wellness.png"
+                alt="Reform Vital Health Academy lifestyle"
+              />
             </div>
           </div>
         </section>
 
-        <section id="categories" className="section rv-academy-categories">
+        {/* Lead magazine block */}
+        <section id="lead" className="rv-mag-lead" data-animate="rise">
           <div className="container">
-            <div className="section-head" style={{ marginBottom: "2rem" }}>
-              <h2 style={{ fontSize: "clamp(1.6rem, 3vw, 2rem)", marginBottom: "0.45rem" }}>
-                Health categories to explore
-              </h2>
-              <p style={{ color: "var(--text-muted)", maxWidth: "42rem" }}>
-                Physician-reviewed guides across every pillar of health optimization.
-              </p>
+            <div className="rv-mag-lead__grid">
+              <a href={lead.href} className="rv-mag-lead__hero">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={lead.image} alt={lead.imageAlt} />
+                <div className="rv-mag-lead__hero-body">
+                  <span>{lead.type}</span>
+                  <h2>{lead.title}</h2>
+                  <p>{lead.summary}</p>
+                </div>
+              </a>
+              <div className="rv-mag-lead__stack">
+                {stacked.map((item) => (
+                  <a key={item.href} href={item.href} className="rv-mag-lead__card">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={item.image} alt={item.imageAlt} />
+                    <div>
+                      <span>{item.type}</span>
+                      <h3>{item.title}</h3>
+                    </div>
+                  </a>
+                ))}
+              </div>
             </div>
+          </div>
+        </section>
 
-            <div className="rv-academy-category-grid">
-              {academy.categories.map((cat) => (
-                <a key={cat.slug} href={cat.href} className="rv-academy-category rv-academy-category--photo" data-animate="rise">
+        {/* Category bento */}
+        <section id="categories" className="rv-mag-bento" data-animate="peak-fade">
+          <div className="container">
+            <div className="rv-mag-section-head">
+              <h2>Explore by category</h2>
+              <p>Physician-reviewed pillars of metabolic and longevity care.</p>
+            </div>
+            <div className="rv-mag-bento__grid">
+              {categories.map((cat, i) => (
+                <a
+                  key={cat.slug}
+                  href={cat.href}
+                  className={`rv-mag-bento__tile${i === 0 || i === 3 ? " rv-mag-bento__tile--wide" : ""}`}
+                >
                   {"image" in cat && cat.image ? (
                     // eslint-disable-next-line @next/next/no-img-element
-                    <img src={cat.image} alt="" className="rv-academy-category-img" />
+                    <img src={cat.image} alt="" />
                   ) : null}
                   <span>{cat.label}</span>
                 </a>
               ))}
             </div>
+            {academy.categories.length > 8 && (
+              <p className="rv-mag-more">
+                <a href="/resources/category/longevity">Browse all categories →</a>
+              </p>
+            )}
           </div>
         </section>
 
-        <section id="topics" className="section rv-academy-clusters">
+        {/* Featured story + covers */}
+        <section id="stories" className="rv-mag-stories" data-animate="rise">
           <div className="container">
-            {academy.topicClusters.map((cluster) => (
-              <div key={cluster.title} className="rv-academy-cluster" data-animate="rise">
-                <h2 className="rv-academy-cluster-title">{cluster.title}</h2>
-                <div className="rv-academy-cluster-grid">
-                  {cluster.articles.map((article) => (
-                    <a key={article.title} href={article.href} className="rv-academy-article">
-                      <h3>{article.title}</h3>
-                      <p>{article.summary}</p>
-                      <span className="rv-resource-cta">Read article →</span>
-                    </a>
-                  ))}
+            <div className="rv-mag-section-head">
+              <h2>Member journeys</h2>
+              <p>Real outcomes with physician-guided protocols.</p>
+            </div>
+            {featuredStory && (
+              <a href={featuredStory.href} className="rv-mag-stories__feature">
+                {"image" in featuredStory && featuredStory.image ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={featuredStory.image} alt="" />
+                ) : null}
+                <div className="rv-mag-stories__quote">
+                  <span>{featuredStory.outcome}</span>
+                  <p>&ldquo;{featuredStory.story}&rdquo;</p>
+                  <em>Read the story →</em>
                 </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section id="guides" className="section rv-academy-guides">
-          <div className="container">
-            <div className="section-head" style={{ marginBottom: "2rem" }}>
-              <h2 style={{ fontSize: "clamp(1.6rem, 3vw, 2rem)", marginBottom: "0.45rem" }}>
-                Downloadable guides
-              </h2>
-              <p style={{ color: "var(--text-muted)", maxWidth: "42rem" }}>
-                Premium PDF resources—physician-aligned playbooks for longevity, hormones, nutrition, and more.
-              </p>
-            </div>
-
-            <div className="rv-academy-guides-grid">
-              {academy.downloadableGuides.map((guide) => {
-                const slug = guide.href.split("/").pop() ?? "";
-                const pdfUrl = slug ? getGuidePdfUrl(slug) : "#";
-                return (
-                  <article key={guide.title} className="rv-academy-guide" data-animate="rise">
-                    <span className="rv-academy-guide-icon" aria-hidden>PDF</span>
-                    <h3>{guide.title}</h3>
-                    <p>{guide.desc}</p>
-                    <div className="rv-academy-guide-links">
-                      <a href={pdfUrl} className="rv-resource-cta" download>
-                        Download PDF →
-                      </a>
-                      <a href={guide.href} className="rv-resource-cta rv-resource-cta--muted">
-                        Read online →
-                      </a>
-                    </div>
-                  </article>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        <section id="tools" className="section rv-academy-tools">
-          <div className="container">
-            <div className="section-head" style={{ marginBottom: "2rem" }}>
-              <h2 style={{ fontSize: "clamp(1.6rem, 3vw, 2rem)", marginBottom: "0.45rem" }}>
-                Interactive tools
-              </h2>
-              <p style={{ color: "var(--text-muted)", maxWidth: "40rem" }}>
-                Quick assessments to help you understand your health baseline.
-              </p>
-            </div>
-
-            <div className="rv-academy-tools-grid">
-              {academy.tools.map((tool) => (
-                <a key={tool.label} href={tool.href} className="rv-academy-tool" data-animate="bounce">
-                  <span>{tool.label}</span>
-                  <span aria-hidden>→</span>
-                </a>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section id="stories" className="section rv-academy-stories">
-          <div className="container">
-            <div className="section-head" style={{ marginBottom: "2rem" }}>
-              <h2 style={{ fontSize: "clamp(1.6rem, 3vw, 2rem)", marginBottom: "0.45rem" }}>
-                Success stories
-              </h2>
-              <p style={{ color: "var(--text-muted)", maxWidth: "42rem" }}>
-                Real outcomes—energy, biomarkers, fitness, and sustainable weight management with physician support.
-              </p>
-            </div>
-
-            <div className="rv-academy-stories-grid">
-              {academy.successStories.map((story) => (
-                <a key={story.outcome} href={story.href} className="rv-academy-story rv-academy-story--photo" data-animate="tilt-right">
+              </a>
+            )}
+            <div className="rv-mag-stories__grid">
+              {otherStories.map((story) => (
+                <a key={story.outcome} href={story.href} className="rv-mag-stories__card">
                   {"image" in story && story.image ? (
                     // eslint-disable-next-line @next/next/no-img-element
-                    <img src={story.image} alt="" className="rv-academy-story-img" />
+                    <img src={story.image} alt="" />
                   ) : null}
-                  <div className="rv-academy-story-body">
-                    <span className="rv-resource-type">{story.outcome}</span>
+                  <div>
+                    <span>{story.outcome}</span>
                     <p>{story.story}</p>
-                    <span className="rv-resource-cta">Read more →</span>
                   </div>
                 </a>
               ))}
@@ -271,17 +268,146 @@ export default function ResourcesPage() {
           </div>
         </section>
 
-        <section className="section rv-academy-monthly">
+        {/* Library: guides + topics + recent */}
+        <section id="library" className="rv-mag-library" data-animate="peak-fade">
           <div className="container">
-            <div className="rv-academy-monthly-card" data-animate="bounce">
-              <span className="rv-resource-type">{academy.monthlyReport.month}</span>
-              <h2>{academy.monthlyReport.title}</h2>
-              <p>{academy.monthlyReport.summary}</p>
-              <ul className="rv-academy-monthly-topics">
-                {academy.monthlyReport.topics.map((topic) => (
-                  <li key={topic}>{topic}</li>
+            <div className="rv-mag-section-head">
+              <h2 id="guides">Guides & reading list</h2>
+              <p>Downloadable playbooks and editorial picks—with imagery, not text-only cards.</p>
+            </div>
+
+            <div className="rv-mag-guides">
+              {academy.downloadableGuides.map((guide) => {
+                const slug = guide.href.split("/").pop() ?? "";
+                const pdfUrl = slug ? getGuidePdfUrl(slug) : "#";
+                const cover = guideCovers[slug] || "/images/academy-recipes.png";
+                return (
+                  <article key={guide.title} className="rv-mag-guide">
+                    <div className="rv-mag-guide__cover">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={cover} alt="" />
+                    </div>
+                    <div className="rv-mag-guide__body">
+                      <h3>{guide.title}</h3>
+                      <p>{guide.desc}</p>
+                      <div className="rv-mag-guide__links">
+                        <a href={pdfUrl} download>
+                          Download PDF
+                        </a>
+                        <a href={guide.href}>Read online →</a>
+                      </div>
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+
+            <div id="topics" className="rv-mag-editorial">
+              {academy.topicClusters.slice(0, 2).map((cluster) => (
+                <div key={cluster.title} className="rv-mag-editorial__block">
+                  <h3>{cluster.title}</h3>
+                  <ul>
+                    {cluster.articles.map((article, i) => (
+                      <li key={article.title}>
+                        <a href={article.href}>
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img
+                            src={clusterThumbs[i % clusterThumbs.length]}
+                            alt=""
+                          />
+                          <span>
+                            <strong>{article.title}</strong>
+                            <em>{article.summary}</em>
+                          </span>
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+
+            <div className="rv-mag-recent">
+              <h3>Recent articles</h3>
+              <div className="rv-mag-recent__grid">
+                {recentArticles.map((article) => (
+                  <a key={article.href} href={article.href} className="rv-mag-recent__card">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={article.image} alt="" />
+                    <div>
+                      <span>
+                        {article.date} · {article.category}
+                      </span>
+                      <h4>{article.title}</h4>
+                    </div>
+                  </a>
                 ))}
-              </ul>
+              </div>
+            </div>
+
+            <div className="rv-mag-library__extra">
+              <div>
+                <h3 id="videos">Watch & learn</h3>
+                <div className="rv-mag-videos">
+                  {videos.map((video) => (
+                    <a
+                      key={video.youtubeId}
+                      href={`https://www.youtube.com/watch?v=${video.youtubeId}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="rv-mag-video"
+                    >
+                      <span className="rv-mag-video__thumb">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={`https://i.ytimg.com/vi/${video.youtubeId}/hqdefault.jpg`}
+                          alt=""
+                        />
+                      </span>
+                      <span>
+                        <strong>{video.title}</strong>
+                        <em>{video.source}</em>
+                      </span>
+                    </a>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <h3 id="external">Trusted sources</h3>
+                <ul className="rv-mag-external">
+                  {externalReads.map((item) => (
+                    <li key={item.href}>
+                      <a href={item.href} target="_blank" rel="noopener noreferrer">
+                        <span>{item.source}</span>
+                        <strong>{item.title}</strong>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Tools strip */}
+        <section id="tools" className="rv-mag-tools" data-animate="rise">
+          <div className="container">
+            <div className="rv-mag-section-head">
+              <h2>Interactive tools</h2>
+              <p>Quick assessments to understand your baseline.</p>
+            </div>
+            <div className="rv-mag-tools__row">
+              {academy.tools.map((tool) => (
+                <a key={tool.label} href={tool.href}>
+                  {tool.label}
+                  <span aria-hidden>→</span>
+                </a>
+              ))}
+            </div>
+            <div className="rv-mag-monthly">
+              <span>{academy.monthlyReport.month}</span>
+              <h3>{academy.monthlyReport.title}</h3>
+              <p>{academy.monthlyReport.summary}</p>
               <a href={academy.monthlyReport.href} className="btn btn-primary">
                 Read this month&apos;s report →
               </a>
@@ -289,157 +415,17 @@ export default function ResourcesPage() {
           </div>
         </section>
 
-        <section className="section rv-resources-featured">
+        <section className="rv-mag-cta" data-animate="bounce">
           <div className="container">
-            <div className="section-head" style={{ marginBottom: "2rem" }}>
-              <h2 style={{ fontSize: "clamp(1.6rem, 3vw, 2rem)", marginBottom: "0.45rem" }}>
-                Start here
-              </h2>
-              <p style={{ color: "var(--text-muted)", maxWidth: "40rem" }}>
-                Core Reform Vital guides with deep links into treatments and programs.
-              </p>
-            </div>
-
-            <div className="rv-resources-feature-grid">
-              {featured.map((item) => (
-                <a
-                  key={item.title}
-                  href={item.href}
-                  className="rv-resource-feature"
-                  data-animate="zoom"
-                >
-                  <div className="rv-resource-feature-media">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={item.image} alt={item.imageAlt} />
-                  </div>
-                  <div className="rv-resource-feature-body">
-                    <span className="rv-resource-type">{item.type}</span>
-                    <h3>{item.title}</h3>
-                    <p>{item.summary}</p>
-                    <span className="rv-resource-cta">Read guide →</span>
-                  </div>
-                </a>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section id="recent" className="section rv-academy-recent">
-          <div className="container">
-            <div className="section-head" style={{ marginBottom: "2rem" }}>
-              <h2 style={{ fontSize: "clamp(1.6rem, 3vw, 2rem)", marginBottom: "0.45rem" }}>
-                Recent articles
-              </h2>
-              <p style={{ color: "var(--text-muted)", maxWidth: "40rem" }}>
-                Physician-reviewed education updated regularly.
-              </p>
-            </div>
-
-            <div className="rv-academy-recent-grid">
-              {recentArticles.map((article) => (
-                <a key={article.title} href={article.href} className="rv-academy-recent-card" data-animate="tilt-left">
-                  <span className="rv-academy-recent-meta">
-                    {article.date} / {article.category}
-                  </span>
-                  <h3>{article.title}</h3>
-                  <span className="rv-resource-cta">Read →</span>
-                </a>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section id="videos" className="section rv-resources-videos">
-          <div className="container">
-            <div className="section-head" style={{ marginBottom: "2rem" }}>
-              <h2 style={{ fontSize: "clamp(1.6rem, 3vw, 2rem)", marginBottom: "0.45rem" }}>
-                Watch & learn
-              </h2>
-              <p style={{ color: "var(--text-muted)", maxWidth: "42rem" }}>
-                Curated education videos on GLP-1 therapies, hormone health, and
-                medically supervised weight care.
-              </p>
-            </div>
-
-            <div className="rv-resources-video-grid">
-              {videos.map((video) => (
-                <article key={video.youtubeId} className="rv-resource-video" data-animate="tilt-left">
-                  <div className="rv-resource-video-frame">
-                    <iframe
-                      src={`https://www.youtube.com/embed/${video.youtubeId}`}
-                      title={video.title}
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                      allowFullScreen
-                      loading="lazy"
-                      referrerPolicy="strict-origin-when-cross-origin"
-                    />
-                  </div>
-                  <div className="rv-resource-video-body">
-                    <span className="rv-resource-type">{video.source}</span>
-                    <h3>{video.title}</h3>
-                    <p>{video.blurb}</p>
-                    <a
-                      href={`https://www.youtube.com/watch?v=${video.youtubeId}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="rv-resource-cta"
-                    >
-                      Open on YouTube →
-                    </a>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section id="external" className="section rv-resources-external">
-          <div className="container">
-            <div className="section-head" style={{ marginBottom: "2rem" }}>
-              <h2 style={{ fontSize: "clamp(1.6rem, 3vw, 2rem)", marginBottom: "0.45rem" }}>
-                Trusted external sources
-              </h2>
-              <p style={{ color: "var(--text-muted)", maxWidth: "44rem" }}>
-                Independent clinical references from NCBI, Mayo Clinic, the FDA, and the
-                Endocrine Society. Opens in a new tab.
-              </p>
-            </div>
-
-            <div className="rv-resources-external-grid">
-              {externalReads.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="rv-resource-external"
-                  data-animate="tilt-right"
-                >
-                  <span className="rv-resource-type">{item.source}</span>
-                  <h3>{item.title}</h3>
-                  <p>{item.summary}</p>
-                  <span className="rv-resource-cta">Read source ↗</span>
-                </a>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="section" style={{ paddingTop: 0, paddingBottom: "4.5rem" }}>
-          <div className="container">
-            <div className="rv-resources-cta" data-animate="bounce">
-              <h3>Ready for physician-guided care?</h3>
-              <p>
-                Start with an online assessment. Prescriptions only after clinical approval.
-              </p>
-              <div className="rv-resources-cta-actions">
-                <a href="/start" className="btn btn-primary">
-                  Schedule a Consultation →
-                </a>
-                <a href="/treatments" className="btn btn-outline">
-                  Browse treatments
-                </a>
-              </div>
+            <h2>Ready for physician-guided care?</h2>
+            <p>Start with an online assessment. Prescriptions only after clinical approval.</p>
+            <div className="rv-mag-cta__actions">
+              <a href="/start" className="btn btn-primary">
+                Schedule a consultation →
+              </a>
+              <a href="/treatments" className="btn btn-outline">
+                Browse treatments
+              </a>
             </div>
           </div>
         </section>

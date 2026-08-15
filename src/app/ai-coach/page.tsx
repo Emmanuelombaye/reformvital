@@ -6,82 +6,95 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import styles from "./page.module.css";
 
-// Static image imports for instant automatic blur placeholders
 import aiCoachDashboard from "../../../public/images/ai_coach_dashboard.png";
 import aiCoachPatient from "../../../public/images/ai_coach_patient.png";
 import aiCoachDoctor from "../../../public/images/ai_coach_doctor.png";
+import lifestyleToast from "../../../public/images/lifestyle-toast.png";
+import lifestyleMindfulness from "../../../public/images/lifestyle-mindfulness.png";
 
 const chatDemoPrompts = [
   {
-    label: "💊 Log Weekly Dose",
-    aiResponse: "Awesome! I have logged your weekly Tirzepatide (5mg) dose for Dr. Wasef's review. Did you experience any nausea or fatigue today?",
+    label: "Log Weekly Dose",
+    aiResponse:
+      "Awesome! I have logged your weekly Tirzepatide (5mg) dose for Dr. Wasef's review. Did you experience any nausea or fatigue today?",
     userText: "Log my weekly Tirzepatide dose completed today at 9:00 AM.",
   },
   {
-    label: "🥗 Check Protein Goal",
-    aiResponse: "Great job! You have logged 142g of protein today out of your 140g target (101% achieved). Keep up the hydration!",
+    label: "Check Protein Goal",
+    aiResponse:
+      "Great job! You have logged 142g of protein today out of your 140g target (101% achieved). Keep up the hydration!",
     userText: "Did I hit my daily protein target today?",
   },
   {
-    label: "📊 Generate Lab Report",
-    aiResponse: "Your 90-day progress summary shows -18.4 lbs total weight reduction and a 1.3% drop in HbA1c. Your report has been dispatched to Dr. Sakla, DO.",
+    label: "Generate Lab Report",
+    aiResponse:
+      "Your 90-day progress summary shows -18.4 lbs total weight reduction and a 1.3% drop in HbA1c. Your report has been dispatched to Dr. Sakla, DO.",
     userText: "Generate my quarterly biomarker progress report for my doctor.",
   },
 ];
 
-const coachPillars = [
+const deliverRows = [
   {
-    badge: "01 • REAL-TIME TRACKER",
-    title: "Automated Macro, Dose, and Hydration Reminders",
+    badge: "01 · Accountability",
+    title: "Daily nudges that keep your protocol on track",
     description:
-      "Your AI coach learns your protocol cadence and sends non-intrusive nudges when it is time to log injections, protein targets, hydration, and movement.",
-    proof: "98.4% adherence lift across active members",
-    image: aiCoachDashboard,
-    alt: "AI coach dashboard with adherence and macro tracking",
-  },
-  {
-    badge: "02 • 24/7 CLINICAL SUPPORT",
-    title: "Instant Doctor-Aligned Answers Between Visits",
-    description:
-      "Members get immediate guidance on injection timing, symptom logs, nutrition tradeoffs, and protocol check-ins without waiting for office hours.",
-    proof: "Evidence-aligned responses tuned to provider plans",
+      "Dose reminders, protein targets, hydration, and movement—timed to your plan so accountability feels natural between visits.",
+    proof: "Non-intrusive cadence matched to your protocol week",
     image: aiCoachPatient,
-    alt: "Patient checking AI coach messages on smartphone",
+    alt: "Member using Reform Vital AI coach on a phone",
+    fit: "cover" as const,
+    reverse: false,
   },
   {
-    badge: "03 • REPORT SYNC",
-    title: "Quarterly Physician Reports Built Automatically",
+    badge: "02 · Clinical sync",
+    title: "Answers aligned with your provider’s plan",
     description:
-      "Weight, blood pressure, dosing consistency, and symptoms are turned into concise provider reports so your medical team can optimize your plan faster.",
-    proof: "Structured reporting synchronized with follow-up care",
+      "Injection timing, symptom logs, and nutrition tradeoffs—guidance tuned to your physician protocol, not generic chatbot advice.",
+    proof: "Evidence-aligned responses reviewed against care plans",
     image: aiCoachDoctor,
-    alt: "Physician reviewing patient biomarker report dashboard",
+    alt: "Physician reviewing patient progress with AI coach insights",
+    fit: "cover" as const,
+    reverse: true,
+  },
+  {
+    badge: "03 · Tracker",
+    title: "A clear dashboard—never cropped, always readable",
+    description:
+      "Macros, dosing consistency, and vitals in one view. Your coach structures the data; your doctor reviews cleaner trends at follow-up.",
+    proof: "UI shown in full—contain frame, not cover crop",
+    image: aiCoachDashboard,
+    alt: "Reform Vital AI coach dashboard interface",
+    fit: "contain" as const,
+    reverse: false,
   },
 ];
 
 const workflow = [
   {
     step: 1,
-    title: "Connect Baseline and Goals",
-    description: "We capture your intake, labs, protocol goals, and preferred check-in rhythm in under two minutes.",
+    title: "Connect baseline and goals",
+    description:
+      "Intake, labs, protocol goals, and check-in rhythm—captured in under two minutes.",
   },
   {
     step: 2,
-    title: "Coach Runs Daily Accountability",
-    description: "You receive smart reminders, daily scorecards, and practical recommendations based on your current phase.",
+    title: "Coach runs daily accountability",
+    description:
+      "Smart reminders, scorecards, and practical recommendations based on your current phase.",
   },
   {
     step: 3,
-    title: "Doctors Review Trends, Not Guesswork",
-    description: "Your provider sees clean summaries and trend deltas before each follow-up for more precise decisions.",
+    title: "Doctors review trends",
+    description:
+      "Clean summaries and deltas before each follow-up—so decisions aren’t guesswork.",
   },
 ];
 
 const trustStats = [
-  { value: "24/7", label: "Member support cadence" },
-  { value: "< 15 sec", label: "Average response speed in demo flow" },
-  { value: "50 states", label: "Telehealth-ready physician network" },
-  { value: "365 days", label: "Continuous accountability coverage" },
+  { value: "24/7", label: "Member support" },
+  { value: "<15s", label: "Demo response speed" },
+  { value: "50 states", label: "Physician network" },
+  { value: "365 days", label: "Accountability" },
 ];
 
 const trackedMetrics = [
@@ -91,11 +104,11 @@ const trackedMetrics = [
     icon: "💊",
     description: "Maintains optimal therapeutic levels while minimizing side effects.",
     details: [
-      "Logs exact injection timestamp and dose strength (e.g., 2.5mg, 5.0mg, 7.5mg) automatically.",
-      "Prompts injection site rotation (left abdomen, right thigh, etc.) to prevent localized fat tissue changes.",
-      "Automatically alerts you if a dose is delayed or missed, with guided recovery instructions approved by your provider.",
-      "Tracks side-effect severity over time to help your doctor decide if you are ready to titrate up or need to hold your current dose."
-    ]
+      "Logs exact injection timestamp and dose strength automatically.",
+      "Prompts injection site rotation to protect tissue health.",
+      "Alerts on delayed or missed doses with provider-approved recovery guidance.",
+      "Tracks side-effect severity to inform titration decisions.",
+    ],
   },
   {
     id: "protein",
@@ -103,23 +116,23 @@ const trackedMetrics = [
     icon: "🥩",
     description: "Ensures weight loss is fat loss, not lean muscle mass.",
     details: [
-      "Calculates daily target protein goals based on your lean body mass index (typically 1.2g to 2.0g per kg).",
-      "Logs food entries in seconds using natural language processing (e.g., 'I had a 6oz chicken breast and a cup of quinoa').",
-      "Provides real-time feedback on amino acid completeness and protein distribution across meals.",
-      "Integrates with resistance training logs to ensure your muscles are receiving the stimulus and fuel they need to thrive."
-    ]
+      "Calculates daily protein goals from lean body mass.",
+      "Logs food entries with natural language in seconds.",
+      "Feedback on protein distribution across meals.",
+      "Pairs with resistance training logs for muscle support.",
+    ],
   },
   {
     id: "hydration",
     title: "Hydration & Electrolytes",
     icon: "💧",
-    description: "Prevents headaches, supports kidney function, and maintains energy.",
+    description: "Supports energy, kidney function, and comfort on GLP-1 protocols.",
     details: [
-      "Calculates dynamic fluid intake goals based on your body weight, activity level, and local weather conditions.",
-      "Sends non-intrusive reminders to consume electrolytes, especially on injection day and the 48 hours following.",
-      "Tracks hydration consistency to prevent common GLP-1 side effects like mild headaches, fatigue, and constipation.",
-      "Helps you monitor fluid retention trends alongside raw weight changes to isolate true body composition progress."
-    ]
+      "Dynamic fluid goals from weight, activity, and climate.",
+      "Electrolyte reminders around injection days.",
+      "Consistency tracking to reduce common mild side effects.",
+      "Separates fluid retention from true body-composition progress.",
+    ],
   },
   {
     id: "biomarkers",
@@ -127,63 +140,68 @@ const trackedMetrics = [
     icon: "📊",
     description: "Aggregates daily vitals and subjective logs for clinical review.",
     details: [
-      "Logs daily weight with a 7-day moving average filter to smooth out daily water weight fluctuations.",
-      "Tracks blood pressure, resting heart rate, sleep duration, and subjective energy levels.",
-      "Monitors digestive health and flags persistent mild symptoms (e.g., acid reflux, nausea) with validated lifestyle remedies.",
-      "Compiles all logged metrics into clean, structured clinical reports synced directly to your patient profile for your doctor's review."
-    ]
-  }
+      "Daily weight with a 7-day moving average.",
+      "Blood pressure, resting HR, sleep, and energy logs.",
+      "Digestive comfort flags with lifestyle remedies when appropriate.",
+      "Structured reports synced to your patient profile.",
+    ],
+  },
 ];
 
 const comparisonData = [
   {
     metric: "Support Cadence",
-    traditional: "Once every 4-12 weeks during brief follow-up appointments.",
-    reform: "24/7/365 continuous accountability with sub-15-second response times."
+    traditional: "Once every 4–12 weeks during brief follow-ups.",
+    reform: "24/7 accountability with fast, plan-aligned responses.",
   },
   {
     metric: "Dose & Adherence",
-    traditional: "Patient relies on memory; missed doses or incorrect titration are common.",
-    reform: "Proactive, calendar-synced dose tracking with automated site rotation prompts."
+    traditional: "Memory-based; missed doses and titration errors are common.",
+    reform: "Calendar-synced dose tracking with site-rotation prompts.",
   },
   {
     metric: "Body Composition",
-    traditional: "Focuses solely on scale weight; high risk of muscle loss (up to 40% of total loss).",
-    reform: "Strict focus on lean mass preservation with automated protein and resistance training tracking."
+    traditional: "Scale weight only—high risk of muscle loss.",
+    reform: "Lean-mass focus with protein and training accountability.",
   },
   {
     metric: "Symptom Management",
-    traditional: "Minor side effects go unmanaged, leading to premature treatment discontinuation.",
-    reform: "Real-time clinical triage and lifestyle guidance to resolve mild symptoms instantly."
+    traditional: "Mild side effects go unmanaged until the next visit.",
+    reform: "Real-time triage and lifestyle guidance between visits.",
   },
   {
     metric: "Provider Visibility",
-    traditional: "Doctors make decisions based on retrospective, often inaccurate patient recall.",
-    reform: "Doctors receive structured, objective quarterly biomarker reports before your visit."
-  }
+    traditional: "Decisions from retrospective patient recall.",
+    reform: "Structured biomarker reports before follow-ups.",
+  },
 ];
 
 const coachFaqs = [
   {
     question: "Is my personal health data secure and HIPAA-compliant?",
-    answer: "Absolutely. Reform Vital employs bank-grade end-to-end encryption for all patient data. Our AI Coach operates within a secure, HIPAA-compliant infrastructure. Your logs and conversations are strictly confidential and are only shared with your assigned U.S. licensed medical team."
+    answer:
+      "Yes. Reform Vital uses bank-grade encryption. The AI Coach runs in a HIPAA-compliant environment. Logs and conversations are confidential and shared only with your assigned U.S. licensed medical team.",
   },
   {
     question: "Does the AI Coach make medical decisions or change my prescription?",
-    answer: "No. The AI Coach is an accountability, education, and tracking assistant. It cannot prescribe medication, diagnose conditions, or alter your treatment plan. All clinical decisions, dose adjustments, and prescription titrations are made exclusively by your licensed Reform Vital physician."
+    answer:
+      "No. The coach is an accountability and tracking assistant. It cannot prescribe, diagnose, or alter your plan. Clinical decisions remain with your licensed Reform Vital physician.",
   },
   {
     question: "What happens if I experience severe side effects or a medical emergency?",
-    answer: "Your safety is our absolute priority. The AI Coach is equipped with real-time clinical triage guardrails. If you report any 'red flag' symptoms (such as severe abdominal pain, high fever, or persistent vomiting), the system will immediately stop the conversation, provide emergency instructions, and prompt you to contact your doctor or seek urgent care."
+    answer:
+      "Red-flag symptoms trigger immediate triage: the coach stops the session, provides emergency guidance, and prompts you to contact your doctor or seek urgent care.",
   },
   {
-    question: "How does the AI Coach communicate with my actual doctor?",
-    answer: "Every piece of data you log—including weight trends, protein intake, dosing consistency, and symptom severity—is structured and compiled into a comprehensive quarterly report. This report is automatically uploaded to your Patient Portal and reviewed by Dr. Wasef or Dr. Sakla prior to your follow-up consultations, enabling highly precise, data-driven care."
+    question: "How does the AI Coach communicate with my doctor?",
+    answer:
+      "Logged weight trends, protein, dosing consistency, and symptoms are compiled into structured reports reviewed by your provider before follow-ups.",
   },
   {
-    question: "Can I use the AI Coach for both weight loss (GLP-1) and hormone optimization (TRT)?",
-    answer: "Yes. The AI Coach is fully multi-protocol. When you complete your health intake, the coach configures itself to match your specific treatment plan. If you are on Tirzepatide, it focuses heavily on protein, hydration, and gastrointestinal comfort. If you are on TRT, it tracks dosing schedules, sleep, energy levels, and cardiovascular vitals."
-  }
+    question: "Can I use the AI Coach for GLP-1 and hormone protocols?",
+    answer:
+      "Yes. The coach configures to your plan—protein and GI comfort for Tirzepatide, dosing and vitals focus for TRT, and more.",
+  },
 ];
 
 interface SmoothImageProps {
@@ -193,9 +211,18 @@ interface SmoothImageProps {
   sizes?: string;
   style?: React.CSSProperties;
   placeholder?: "blur" | "empty";
+  priority?: boolean;
 }
 
-function SmoothImage({ src, alt, fill, sizes, style, placeholder }: SmoothImageProps) {
+function SmoothImage({
+  src,
+  alt,
+  fill,
+  sizes,
+  style,
+  placeholder,
+  priority,
+}: SmoothImageProps) {
   const [isLoaded, setIsLoaded] = useState(false);
 
   return (
@@ -207,6 +234,7 @@ function SmoothImage({ src, alt, fill, sizes, style, placeholder }: SmoothImageP
         sizes={sizes}
         style={style}
         placeholder={placeholder}
+        priority={priority}
         onLoad={() => setIsLoaded(true)}
         onError={() => setIsLoaded(true)}
         className={`${styles.smoothImage} ${isLoaded ? styles.smoothImageLoaded : ""}`}
@@ -221,93 +249,105 @@ export default function AICoachPage() {
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
 
   const activeDemo = chatDemoPrompts[selectedPromptIndex];
-  const activeMetric = trackedMetrics.find((m) => m.id === activeMetricId) || trackedMetrics[0];
+  const activeMetric =
+    trackedMetrics.find((m) => m.id === activeMetricId) || trackedMetrics[0];
 
   return (
     <>
       <Navbar />
       <main className={styles.page}>
-        {/* Hero Section */}
-        <section className={styles.hero}>
-          <div className="container">
-            <div className={styles.heroWrap}>
-              <div className={styles.heroCopy}>
-                <span className={styles.kicker}>24/7 CONTINUOUS CARE ENGINE</span>
-                <h1 className={styles.heroTitle}>Your AI Accountability Coach Between Every Physician Visit</h1>
-                <p className={styles.heroSubtitle}>
-                  Reform Vital AI Coach keeps your protocol on track with personalized reminders, nutrition accountability,
-                  symptom logging, and physician-ready reporting. You get daily guidance while your provider gets cleaner
-                  trend visibility for smarter optimization.
-                </p>
-                <div className={styles.heroCtas}>
-                  <a href="#demo" className="btn btn-primary">
-                    Try Live AI Demo
-                  </a>
-                  <a href="/start" className={`btn ${styles.heroGhost}`}>
-                    Start 2-Min Health Intake
-                  </a>
-                </div>
-              </div>
-
-              <div className={styles.heroPanel}>
-                <div className={styles.heroPanelHeader}>
-                  <span>LIVE COACH PREVIEW</span>
-                  <span className={styles.liveBadge}>ACTIVE</span>
-                </div>
-                <ul className={styles.panelList}>
-                  <li>Dynamic dose reminders matched to your protocol week</li>
-                  <li>Protein, hydration, and sleep accountability scoring</li>
-                  <li>Escalation prompts when symptoms need provider review</li>
-                  <li>Auto-generated quarterly progress snapshots</li>
-                </ul>
-              </div>
+        {/* Full-bleed Yucca-style hero */}
+        <section className={styles.heroBleed} data-animate="peak-fade">
+          <div className={styles.heroBleedMedia} aria-hidden>
+            <SmoothImage
+              src={lifestyleToast}
+              alt=""
+              fill
+              sizes="100vw"
+              style={{ objectFit: "cover", objectPosition: "center 35%" }}
+              placeholder="blur"
+              priority
+            />
+            <div className={styles.heroBleedScrim} />
+          </div>
+          <div className={`container ${styles.heroBleedInner}`}>
+            <p className={styles.kicker}>Reform Vital · AI Coach</p>
+            <h1 className={styles.heroTitle}>
+              Accountability between every <em>physician visit</em>
+            </h1>
+            <p className={styles.heroSubtitle}>
+              Personalized reminders, nutrition logs, and physician-ready trends—so your
+              protocol stays on track without replacing your doctor.
+            </p>
+            <div className={styles.heroCtas}>
+              <a href="#demo" className="btn btn-primary">
+                Try live demo
+              </a>
+              <a href="/start" className={`btn ${styles.heroGhost}`}>
+                Start health intake
+              </a>
             </div>
           </div>
         </section>
 
-        {/* Stats Band */}
-        <section className={styles.statsBand}>
+        {/* Thin trust strip */}
+        <section className={styles.trustStrip} data-animate="rise">
           <div className="container">
-            <div className={styles.statGrid}>
+            <ul className={styles.trustList}>
               {trustStats.map((item) => (
-                <div key={item.label} className={styles.statCard}>
-                  <div className={styles.statValue}>{item.value}</div>
-                  <div className={styles.statLabel}>{item.label}</div>
-                </div>
+                <li key={item.label}>
+                  <strong>{item.value}</strong>
+                  <span>{item.label}</span>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </section>
 
-        {/* How the AI Coach Powers Care Section */}
-        <section className={styles.section}>
+        {/* Alternating deliver rows */}
+        <section className={styles.deliverSection}>
           <div className="container">
-            <div className={styles.sectionHead}>
-              <span className="badge">INTELLIGENT TELEHEALTH PLATFORM</span>
-              <h2 className={styles.sectionTitle}>How the AI Coach Powers Better Outcomes</h2>
+            <div className={styles.sectionHead} data-animate="rise">
+              <span className="badge">HOW IT HELPS</span>
+              <h2 className={styles.sectionTitle}>
+                Built like a care partner—not a cropped card gallery
+              </h2>
               <p className={styles.sectionSubtitle}>
-                More than a chatbot, this is a structured accountability engine designed for physician-guided treatment.
+                Large lifestyle frames for people. Full dashboard UI in a soft stage—never
+                chopped by cover crops.
               </p>
             </div>
 
-            <div className={styles.featureGrid}>
-              {coachPillars.map((pillar) => (
-                <article key={pillar.title} className={styles.featureCard}>
-                  <div className={styles.featureImageWrap}>
+            <div className={styles.deliverStack}>
+              {deliverRows.map((row) => (
+                <article
+                  key={row.badge}
+                  className={`${styles.deliverRow}${row.reverse ? ` ${styles.deliverRowReverse}` : ""}`}
+                  data-animate="peak-fade"
+                >
+                  <div className={styles.deliverCopy}>
+                    <span className={styles.deliverBadge}>{row.badge}</span>
+                    <h3>{row.title}</h3>
+                    <p>{row.description}</p>
+                    <span className={styles.deliverProof}>{row.proof}</span>
+                  </div>
+                  <div
+                    className={`${styles.deliverMedia}${
+                      row.fit === "contain" ? ` ${styles.deliverMediaContain}` : ""
+                    }`}
+                  >
                     <SmoothImage
-                      src={pillar.image}
-                      alt={pillar.alt}
+                      src={row.image}
+                      alt={row.alt}
                       fill
-                      sizes="(max-width: 900px) 100vw, 33vw"
-                      style={{ objectFit: "cover" }}
+                      sizes="(max-width: 900px) 100vw, 50vw"
+                      style={
+                        row.fit === "contain"
+                          ? { objectFit: "contain", objectPosition: "center" }
+                          : { objectFit: "cover", objectPosition: "center 20%" }
+                      }
                       placeholder="blur"
                     />
-                    <span className={styles.featureBadge}>{pillar.badge}</span>
-                  </div>
-                  <div className={styles.featureBody}>
-                    <h3>{pillar.title}</h3>
-                    <p>{pillar.description}</p>
-                    <span className={styles.featureProof}>{pillar.proof}</span>
                   </div>
                 </article>
               ))}
@@ -315,18 +355,19 @@ export default function AICoachPage() {
           </div>
         </section>
 
-        {/* Care Workflow Section */}
-        <section className={styles.workflowSection}>
+        {/* Workflow */}
+        <section className={styles.workflowSection} data-animate="rise">
           <div className="container">
             <div className={styles.sectionHead}>
               <span className="badge">CARE WORKFLOW</span>
-              <h2 className={styles.sectionTitle}>Built for Daily Execution and Smarter Follow-Ups</h2>
+              <h2 className={styles.sectionTitle}>
+                Daily execution. Smarter follow-ups.
+              </h2>
             </div>
-
             <div className={styles.workflowGrid}>
               {workflow.map((item) => (
-                <div key={item.title} className={styles.workflowCard}>
-                  <span className={`rv-step-num ${styles.workflowStep}`} aria-hidden="true">
+                <div key={item.title} className={styles.workflowCard} data-animate="peak-fade">
+                  <span className={`rv-step-num ${styles.workflowStep}`} aria-hidden>
                     {item.step}
                   </span>
                   <h3>{item.title}</h3>
@@ -337,25 +378,26 @@ export default function AICoachPage() {
           </div>
         </section>
 
-        {/* Interactive Metrics Explorer */}
-        <section className={styles.metricsSection}>
+        {/* Metrics */}
+        <section className={styles.metricsSection} data-animate="peak-fade">
           <div className="container">
             <div className={styles.sectionHead}>
               <span className="badge">METRIC TRACKING</span>
-              <h2 className={styles.sectionTitle}>What We Track & Optimize</h2>
+              <h2 className={styles.sectionTitle}>What we track & optimize</h2>
               <p className={styles.sectionSubtitle}>
-                Every entry is structured, analyzed, and synthesized into clinical insights for your medical team.
+                Every entry is structured for your medical team—not lost in chat history.
               </p>
             </div>
-
             <div className={styles.metricsLayout}>
-              {/* Sidebar Tabs */}
               <div className={styles.metricsTabs}>
                 {trackedMetrics.map((metric) => (
                   <button
                     key={metric.id}
+                    type="button"
                     onClick={() => setActiveMetricId(metric.id)}
-                    className={`${styles.metricTabButton} ${activeMetricId === metric.id ? styles.metricTabButtonActive : ""}`}
+                    className={`${styles.metricTabButton} ${
+                      activeMetricId === metric.id ? styles.metricTabButtonActive : ""
+                    }`}
                   >
                     <span className={styles.metricTabIcon}>{metric.icon}</span>
                     <div className={styles.metricTabText}>
@@ -365,8 +407,6 @@ export default function AICoachPage() {
                   </button>
                 ))}
               </div>
-
-              {/* Content Panel */}
               <div className={styles.metricsContent} key={activeMetricId}>
                 <div className={styles.metricsContentHeader}>
                   <span className={styles.metricsContentIcon}>{activeMetric.icon}</span>
@@ -374,8 +414,8 @@ export default function AICoachPage() {
                 </div>
                 <p className={styles.metricsContentSub}>{activeMetric.description}</p>
                 <ul className={styles.metricsDetailsList}>
-                  {activeMetric.details.map((detail, i) => (
-                    <li key={i}>{detail}</li>
+                  {activeMetric.details.map((detail) => (
+                    <li key={detail}>{detail}</li>
                   ))}
                 </ul>
               </div>
@@ -383,29 +423,25 @@ export default function AICoachPage() {
           </div>
         </section>
 
-        {/* Comparison Section */}
-        <section className={styles.comparisonSection}>
+        {/* Comparison */}
+        <section className={styles.comparisonSection} data-animate="rise">
           <div className="container">
             <div className={styles.sectionHead}>
-              <span className="badge">THE TELEHEALTH GAP</span>
-              <h2 className={styles.sectionTitle}>Traditional Telehealth vs. Reform Vital</h2>
-              <p className={styles.sectionSubtitle}>
-                Why standard online clinics fail to maintain long-term results, and how our Continuous Care Engine solves it.
-              </p>
+              <span className="badge">THE CARE GAP</span>
+              <h2 className={styles.sectionTitle}>Traditional telehealth vs Reform Vital</h2>
             </div>
-
             <div className={styles.tableWrapper}>
               <table className={styles.comparisonTable}>
                 <thead>
                   <tr>
-                    <th>Key Care Pillar</th>
-                    <th>Traditional Telehealth</th>
-                    <th>Reform Vital Continuous Care</th>
+                    <th>Pillar</th>
+                    <th>Traditional</th>
+                    <th>Reform Vital</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {comparisonData.map((row, i) => (
-                    <tr key={i}>
+                  {comparisonData.map((row) => (
+                    <tr key={row.metric}>
                       <td className={styles.tablePillar}>{row.metric}</td>
                       <td className={styles.tableTraditional}>{row.traditional}</td>
                       <td className={styles.tableReform}>{row.reform}</td>
@@ -417,30 +453,36 @@ export default function AICoachPage() {
           </div>
         </section>
 
-        {/* Clinical Guardrails & Safety Protocols */}
-        <section className={styles.safetySection}>
+        {/* Safety */}
+        <section className={styles.safetySection} data-animate="peak-fade">
           <div className="container">
             <div className={styles.safetyCard}>
-              <div className={styles.safetyIcon}>🛡️</div>
               <div className={styles.safetyContent}>
-                <span className={styles.safetyBadge}>CLINICAL INTEGRITY & SAFETY</span>
-                <h3>Strict Medical Guardrails & Triage Protocols</h3>
+                <span className={styles.safetyBadge}>CLINICAL INTEGRITY</span>
+                <h3>Medical guardrails & triage protocols</h3>
                 <p>
-                  Our AI Accountability Coach is built to support, not replace, human clinical judgment. It operates under 
-                  strict guardrails established by our Medical Directors, Dr. Wasef and Dr. Sakla:
+                  The coach supports—never replaces—clinical judgment. Guardrails set by our
+                  medical directors keep conversations safe and on-protocol.
                 </p>
                 <div className={styles.safetyGrid}>
                   <div className={styles.safetyFeature}>
-                    <h4>🚨 Red-Flag Triage</h4>
-                    <p>If you report symptoms like severe abdominal pain, persistent vomiting, or heart palpitations, the AI instantly stops the session, provides emergency instructions, and alerts our clinical staff.</p>
+                    <h4>Red-flag triage</h4>
+                    <p>
+                      Severe symptoms stop the session and route you to emergency guidance and
+                      your care team.
+                    </p>
                   </div>
                   <div className={styles.safetyFeature}>
-                    <h4>📚 Locked Knowledge Base</h4>
-                    <p>The AI is strictly bound to peer-reviewed clinical literature, endocrinology standards, and provider-approved guidelines. It never hallucinates or pulls unverified advice from the web.</p>
+                    <h4>Locked knowledge</h4>
+                    <p>
+                      Bound to provider-approved guidelines—not open-web improvisation.
+                    </p>
                   </div>
                   <div className={styles.safetyFeature}>
-                    <h4>🔒 HIPAA-Compliant Sync</h4>
-                    <p>All conversations and logged metrics are encrypted end-to-end. Vitals and symptoms are securely compiled and directly integrated into your Patient Electronic Health Record (EHR).</p>
+                    <h4>HIPAA-aligned sync</h4>
+                    <p>
+                      Encrypted logs compiled into your patient record for follow-up review.
+                    </p>
                   </div>
                 </div>
               </div>
@@ -448,22 +490,21 @@ export default function AICoachPage() {
           </div>
         </section>
 
-        {/* FAQ Section */}
-        <section className={styles.faqSection}>
+        {/* FAQ */}
+        <section className={styles.faqSection} data-animate="rise">
           <div className="container">
             <div className={styles.sectionHead}>
-              <span className="badge">QUESTIONS & ANSWERS</span>
-              <h2 className={styles.sectionTitle}>AI Coach Frequently Asked Questions</h2>
-              <p className={styles.sectionSubtitle}>
-                Everything you need to know about how the accountability engine operates, maintains security, and coordinates with your doctor.
-              </p>
+              <span className="badge">FAQ</span>
+              <h2 className={styles.sectionTitle}>AI Coach questions</h2>
             </div>
-
             <div className={styles.faqList}>
               {coachFaqs.map((faq, i) => {
                 const isOpen = openFaqIndex === i;
                 return (
-                  <div key={i} className={`${styles.faqItem} ${isOpen ? styles.faqItemOpen : ""}`}>
+                  <div
+                    key={faq.question}
+                    className={`${styles.faqItem} ${isOpen ? styles.faqItemOpen : ""}`}
+                  >
                     <button
                       type="button"
                       className={styles.faqQuestion}
@@ -484,51 +525,82 @@ export default function AICoachPage() {
           </div>
         </section>
 
-        {/* Interactive Live Chat Simulation Component */}
-        <section id="demo" className={styles.demoSection}>
+        {/* Demo + lifestyle split */}
+        <section id="demo" className={styles.demoSection} data-animate="peak-fade">
           <div className="container">
-            <div className={styles.sectionHead}>
-              <span className={styles.demoKicker}>INTERACTIVE DEMONSTRATION</span>
-              <h2 className={styles.demoTitle}>Test the AI Accountability Engine</h2>
-              <p className={styles.demoSubtitle}>
-                Tap a sample patient prompt to preview response quality, clarity, and care-plan alignment.
-              </p>
-            </div>
-
-            <div className={styles.promptRow}>
-              {chatDemoPrompts.map((item, idx) => (
-                <button
-                  key={item.label}
-                  onClick={() => setSelectedPromptIndex(idx)}
-                  className={`${styles.promptButton} ${idx === selectedPromptIndex ? styles.promptButtonActive : ""}`}
-                >
-                  {item.label}
-                </button>
-              ))}
-            </div>
-
-            <div className={styles.chatShell}>
-              <div className={styles.chatHeader}>
-                <div className={styles.chatBrand}>
-                  <span className={styles.chatDot} />
-                  <span>REFORM VITAL AI COACH • LIVE DEMO</span>
-                </div>
-                <span className={styles.chatStatus}>24/7 ACTIVE</span>
+            <div className={styles.demoSplit}>
+              <div className={styles.demoLifestyle}>
+                <SmoothImage
+                  src={lifestyleMindfulness}
+                  alt="Member staying accountable between physician visits"
+                  fill
+                  sizes="(max-width: 900px) 100vw, 42vw"
+                  style={{ objectFit: "cover", objectPosition: "center 25%" }}
+                  placeholder="blur"
+                />
               </div>
-              <div className={styles.chatThread} key={selectedPromptIndex}>
-                <div className={styles.userBubble}>
-                  <span>YOU (PATIENT)</span>
-                  <p>{activeDemo.userText}</p>
+              <div className={styles.demoPanel}>
+                <div className={styles.sectionHead} style={{ textAlign: "left", margin: "0 0 1.25rem" }}>
+                  <span className={styles.demoKicker}>LIVE DEMO</span>
+                  <h2 className={styles.demoTitle}>Test the accountability engine</h2>
+                  <p className={styles.demoSubtitle}>
+                    Tap a sample prompt to preview clarity and care-plan alignment.
+                  </p>
                 </div>
-                <div className={styles.aiBubble}>
-                  <span>REFORM VITAL AI COACH</span>
-                  <p>{activeDemo.aiResponse}</p>
+                <div className={styles.promptRow}>
+                  {chatDemoPrompts.map((item, idx) => (
+                    <button
+                      key={item.label}
+                      type="button"
+                      onClick={() => setSelectedPromptIndex(idx)}
+                      className={`${styles.promptButton} ${
+                        idx === selectedPromptIndex ? styles.promptButtonActive : ""
+                      }`}
+                    >
+                      {item.label}
+                    </button>
+                  ))}
+                </div>
+                <div className={styles.chatShell}>
+                  <div className={styles.chatHeader}>
+                    <div className={styles.chatBrand}>
+                      <span className={styles.chatDot} />
+                      <span>REFORM VITAL AI COACH</span>
+                    </div>
+                    <span className={styles.chatStatus}>24/7</span>
+                  </div>
+                  <div className={styles.chatThread} key={selectedPromptIndex}>
+                    <div className={styles.userBubble}>
+                      <span>YOU</span>
+                      <p>{activeDemo.userText}</p>
+                    </div>
+                    <div className={styles.aiBubble}>
+                      <span>AI COACH</span>
+                      <p>{activeDemo.aiResponse}</p>
+                    </div>
+                  </div>
+                  <a href="/portal" className={`btn btn-primary ${styles.demoCta}`}>
+                    Connect portal to AI Coach →
+                  </a>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
 
-              <a href="/portal" className={`btn btn-primary ${styles.demoCta}`}>
-                Connect Your Patient Portal to AI Coach →
-              </a>
+        <section className={styles.closingCta} data-animate="bounce">
+          <div className="container">
+            <div className={styles.closingInner}>
+              <h2>Ready for provider-led care with daily accountability?</h2>
+              <p>Start your assessment. Prescriptions only if clinically appropriate.</p>
+              <div className={styles.heroCtas}>
+                <a href="/start" className="btn btn-primary">
+                  Start assessment
+                </a>
+                <a href="/treatments" className={`btn ${styles.heroGhostDark}`}>
+                  Browse treatments
+                </a>
+              </div>
             </div>
           </div>
         </section>

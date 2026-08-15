@@ -1,11 +1,11 @@
 "use client";
 
 const links = [
+  { label: "Start here", href: "#lead" },
   { label: "Categories", href: "#categories" },
-  { label: "Topics", href: "#topics" },
-  { label: "Guides", href: "#guides" },
-  { label: "Tools", href: "/resources/tools" },
   { label: "Stories", href: "#stories" },
+  { label: "Library", href: "#library" },
+  { label: "Tools", href: "#tools" },
   { label: "Report", href: "/resources/report" },
 ];
 
