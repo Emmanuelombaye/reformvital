@@ -20,17 +20,17 @@ export default function Hero() {
           fill
           sizes="100vw"
           className="rv-hero-visual rv-hero-visual--desktop"
-          style={{ objectFit: "cover", objectPosition: "center center" }}
+          style={{ objectFit: "cover", objectPosition: "center 22%" }}
           priority
         />
-        {/* Mobile: tall stacked composition */}
+        {/* Mobile: tall stacked composition — client art is 2:3 */}
         <Image
           src="/images/hero-commercial-mobile.png"
           alt="Wellness and longevity lifestyle with Reform Vital"
           fill
           sizes="100vw"
           className="rv-hero-visual rv-hero-visual--mobile"
-          style={{ objectFit: "cover", objectPosition: "center top" }}
+          style={{ objectFit: "cover", objectPosition: "center 18%" }}
           priority
         />
 
@@ -81,9 +81,10 @@ export default function Hero() {
           border-radius: 1.5rem;
           border: 2px solid #1f2a37;
           width: 100%;
-          min-height: clamp(520px, 72vh, 720px);
-          aspect-ratio: 16 / 9;
-          max-height: 780px;
+          /* Match client desktop art (1536×1024 → 3:2) — avoid 16:9 crop */
+          aspect-ratio: 3 / 2;
+          min-height: 0;
+          max-height: none;
           background: linear-gradient(180deg, #0d1b2a 0%, #1a3a4a 100%);
           display: flex;
           flex-direction: column;
@@ -95,14 +96,17 @@ export default function Hero() {
         .rv-hero-visual {
           z-index: 0;
           pointer-events: none;
+          object-fit: cover !important;
         }
 
         .rv-hero-visual--desktop {
           display: block !important;
+          object-position: center 22% !important;
         }
 
         .rv-hero-visual--mobile {
           display: none !important;
+          object-position: center 18% !important;
         }
 
         .rv-hero-scrim {
@@ -247,6 +251,14 @@ export default function Hero() {
           line-height: 1.2;
           transition: transform 0.2s ease, box-shadow 0.2s ease;
           width: 100%;
+          white-space: normal;
+          overflow: visible;
+        }
+
+        .rv-hero-btn-label {
+          letter-spacing: -0.01em;
+          flex: 1;
+          text-align: left;
         }
 
         .rv-hero-btn:hover {
@@ -266,10 +278,6 @@ export default function Hero() {
           box-shadow:
             0 14px 34px rgba(0, 168, 150, 0.45),
             inset 0 1px 0 rgba(255, 255, 255, 0.3);
-        }
-
-        .rv-hero-btn-label {
-          letter-spacing: -0.01em;
         }
 
         .rv-hero-btn-price {
@@ -339,11 +347,13 @@ export default function Hero() {
 
         @media (max-width: 900px) {
           .rv-hero-card {
-            aspect-ratio: auto;
+            /* Match client mobile art (1024×1536 → 2:3) */
+            aspect-ratio: 2 / 3;
             max-height: none;
-            min-height: min(78vh, 680px);
+            min-height: 0;
             justify-content: flex-start;
-            padding-top: clamp(2.5rem, 8vh, 4rem);
+            padding-top: clamp(2.25rem, 7vh, 3.5rem);
+            padding-bottom: 11rem;
           }
 
           .rv-hero-visual--desktop {
@@ -352,17 +362,18 @@ export default function Hero() {
 
           .rv-hero-visual--mobile {
             display: block !important;
+            object-position: center 16% !important;
           }
 
           .rv-hero-scrim {
             background:
               linear-gradient(
                 180deg,
-                rgba(13, 27, 42, 0.2) 0%,
-                rgba(13, 27, 42, 0.45) 28%,
-                rgba(13, 27, 42, 0.55) 48%,
-                rgba(13, 27, 42, 0.2) 68%,
-                rgba(13, 27, 42, 0.65) 100%
+                rgba(13, 27, 42, 0.18) 0%,
+                rgba(13, 27, 42, 0.4) 26%,
+                rgba(13, 27, 42, 0.5) 48%,
+                rgba(13, 27, 42, 0.18) 68%,
+                rgba(13, 27, 42, 0.62) 100%
               );
           }
 
@@ -390,14 +401,14 @@ export default function Hero() {
 
         @media (max-width: 640px) {
           .rv-hero-card {
-            min-height: min(88vh, 720px);
+            aspect-ratio: 2 / 3;
             border-radius: 1.15rem;
-            padding-top: clamp(2rem, 7vh, 3.25rem);
-            padding-bottom: 10.5rem;
+            padding-top: clamp(1.85rem, 6vh, 3rem);
+            padding-bottom: 10.75rem;
           }
 
           .rv-hero-visual--mobile {
-            object-position: center 8% !important;
+            object-position: center 14% !important;
           }
 
           .rv-hero-btn {
