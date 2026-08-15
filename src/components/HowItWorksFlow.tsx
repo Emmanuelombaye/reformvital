@@ -99,7 +99,14 @@ function StickySteps() {
             >
               <article className="rv-hiw-step-card" data-animate="peak-fade">
                 <div className="rv-hiw-step-media">
-                  <div className="rv-hiw-step-media__frame">
+                  <div
+                    className="rv-hiw-step-media__frame"
+                    style={
+                      "aspect" in step.image && step.image.aspect
+                        ? { aspectRatio: step.image.aspect }
+                        : undefined
+                    }
+                  >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       className="rv-hiw-step-media__img"
@@ -213,6 +220,11 @@ export default function HowItWorksFlow() {
                           ? " rv-hiw-why-card__media--product"
                           : ""
                       }`}
+                      style={
+                        "aspect" in item.image && item.image.aspect
+                          ? { aspectRatio: item.image.aspect }
+                          : undefined
+                      }
                     >
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img src={item.image.src} alt={item.image.alt} loading="lazy" />

@@ -2982,7 +2982,7 @@ h1, h2, h3, h4, h5, h6 {
 .rv-academy-category-img {
   display: block;
   width: 100%;
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 1 / 1;
   height: auto;
   object-fit: cover;
   object-position: center center;
@@ -3339,7 +3339,7 @@ h1, h2, h3, h4, h5, h6 {
 .rv-member-exp-photo__img {
   width: 100% !important;
   height: 100% !important;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center center;
   display: block;
 }
@@ -3492,7 +3492,7 @@ h1, h2, h3, h4, h5, h6 {
 .rv-academy-story-img {
   display: block;
   width: 100%;
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 1 / 1;
   height: auto;
   object-fit: cover;
   object-position: center center;
@@ -3666,8 +3666,9 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   height: auto;
   display: block;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 3 / 2;
   object-fit: cover;
+  object-position: center center;
 }
 
 .rv-article-block {
@@ -3862,10 +3863,24 @@ h1, h2, h3, h4, h5, h6 {
 /* —— Photo page heroes (about / memberships / portal) —— */
 .rv-page-hero {
   position: relative;
-  min-height: clamp(320px, 48vw, 460px);
+  /* Client page heroes are 3:2 (1536×1024) — avoid short clamp crops */
+  aspect-ratio: 3 / 2;
+  min-height: 0;
   display: flex;
   align-items: flex-end;
   overflow: hidden;
+}
+
+.rv-page-hero > img,
+.rv-page-hero > span img {
+  object-fit: cover !important;
+  object-position: center 20% !important;
+}
+
+@media (max-width: 640px) {
+  .rv-page-hero {
+    aspect-ratio: 3 / 2;
+  }
 }
 
 .rv-page-hero--photo {
@@ -5259,20 +5274,20 @@ h1, h2, h3, h4, h5, h6 {
   border: 2px solid var(--primary);
   box-shadow: 4px 5px 0 0 var(--primary);
   margin-bottom: 2rem;
-  min-height: 320px;
+  min-height: 0;
   animation: rv-yx-card-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 @media (min-width: 768px) {
   .rv-yx-featured {
     grid-template-columns: 1.15fr 1fr;
-    min-height: 380px;
+    min-height: 0;
   }
 }
 
 .rv-yx-featured__media {
   position: relative;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 9;
   min-height: 0;
   overflow: hidden;
 }
@@ -6095,7 +6110,8 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .rv-yx-knowall__media {
-    min-height: 180px;
+    min-height: 0;
+    aspect-ratio: 1 / 1;
   }
 
   .rv-yx-knowall__actions {
@@ -6219,7 +6235,7 @@ h1, h2, h3, h4, h5, h6 {
 .rv-mag-mast__media {
   position: relative;
   aspect-ratio: 4 / 5;
-  max-height: 34rem;
+  max-height: none;
   border-radius: 1.5rem;
   overflow: hidden;
   box-shadow: 0 22px 50px rgba(13, 27, 42, 0.14);
@@ -6256,7 +6272,8 @@ h1, h2, h3, h4, h5, h6 {
   display: block;
   border-radius: 1.35rem;
   overflow: hidden;
-  min-height: 22rem;
+  aspect-ratio: 3 / 2;
+  min-height: 0;
   text-decoration: none;
   color: #fff;
   box-shadow: 0 18px 40px rgba(13, 27, 42, 0.12);
@@ -6332,7 +6349,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .rv-mag-lead__card img {
   width: 7.5rem;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 3 / 2;
   height: auto;
   object-fit: cover;
   object-position: center center;
@@ -6365,7 +6382,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .rv-mag-bento__tile {
   position: relative;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 1 / 1;
   border-radius: 1.15rem;
   overflow: hidden;
   text-decoration: none;
@@ -6384,7 +6401,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 25%;
+  object-position: center center;
   display: block;
   transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -6424,7 +6441,8 @@ h1, h2, h3, h4, h5, h6 {
 .rv-mag-stories__feature {
   position: relative;
   display: block;
-  min-height: 20rem;
+  aspect-ratio: 3 / 2;
+  min-height: 0;
   border-radius: 1.5rem;
   overflow: hidden;
   margin-bottom: 1rem;
@@ -6444,7 +6462,8 @@ h1, h2, h3, h4, h5, h6 {
 .rv-mag-stories__quote {
   position: relative;
   z-index: 1;
-  min-height: 20rem;
+  min-height: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -6549,7 +6568,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .rv-mag-guide__cover {
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 3 / 2;
   background: #e8f0ee;
   overflow: hidden;
 }
@@ -6558,6 +6577,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center center;
   display: block;
 }
 
@@ -6695,9 +6715,12 @@ h1, h2, h3, h4, h5, h6 {
 
 .rv-mag-recent__card img {
   width: 7rem;
-  height: 100%;
-  min-height: 5.5rem;
+  aspect-ratio: 1 / 1;
+  height: auto;
+  min-height: 0;
   object-fit: cover;
+  object-position: center center;
+  flex-shrink: 0;
 }
 
 .rv-mag-recent__card div {
@@ -6748,7 +6771,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .rv-mag-video__thumb {
   display: block;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
 }
 
@@ -6756,6 +6779,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center center;
 }
 
 .rv-mag-video strong {
@@ -6898,8 +6922,8 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .rv-mag-mast__media {
-    max-height: 22rem;
-    aspect-ratio: 3 / 4;
+    max-height: none;
+    aspect-ratio: 4 / 5;
   }
 
   .rv-mag-lead__card {
@@ -6908,7 +6932,7 @@ h1, h2, h3, h4, h5, h6 {
 
   .rv-mag-lead__card img {
     width: 5.5rem;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 3 / 2;
     height: auto;
   }
 

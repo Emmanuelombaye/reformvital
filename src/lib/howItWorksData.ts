@@ -9,6 +9,7 @@ export const HOW_STEPS = [
     image: {
       src: "/images/featured-metabolic.png",
       alt: "Reform Vital personalized treatment pathways",
+      aspect: "16/9",
     },
     chips: ["GLP-1", "Hormones", "Peptides"],
     callout: {
@@ -25,6 +26,7 @@ export const HOW_STEPS = [
     image: {
       src: "/images/start-wellness.png",
       alt: "Secure Reform Vital checkout and identity verification",
+      aspect: "4/5",
     },
     chips: ["Secure checkout", "ID verification", "Cancel anytime"],
   },
@@ -36,6 +38,7 @@ export const HOW_STEPS = [
     image: {
       src: "/images/how-step-physician.png",
       alt: "Licensed provider reviewing Reform Vital patient intake",
+      aspect: "1/1",
     },
     chips: ["Licensed providers", "Review within 24h", "No office visit"],
   },
@@ -47,6 +50,7 @@ export const HOW_STEPS = [
     image: {
       src: "/images/member-rx.png",
       alt: "Reform Vital medication delivered in discreet packaging",
+      aspect: "1/1",
     },
     chips: ["Licensed pharmacy", "Expedited shipping", "Discreet packaging"],
     callout: {
@@ -62,6 +66,7 @@ export const HOW_STEPS = [
     image: {
       src: "/images/member-renew.png",
       alt: "Patient starting treatment with Reform Vital care support",
+      aspect: "3/2",
     },
     chips: ["Patient portal", "AI coach", "Ongoing support"],
   },
@@ -80,6 +85,7 @@ export const HOW_WHY = [
     image: {
       src: "/images/doctor_portrait.png",
       alt: "Licensed Reform Vital medical provider",
+      aspect: "1/1",
     },
     title: "Care Built Around You",
     body: "Protocols tailored to your goals, history, labs, and how your body responds over time.",
@@ -88,6 +94,7 @@ export const HOW_WHY = [
     image: {
       src: "/images/about-longevity.png",
       alt: "Clinically guided healthy aging journey",
+      aspect: "3/2",
     },
     title: "Clinically Guided Care",
     body: "Provider-led memberships with follow-ups, adjustments, and AI coaching between visits.",

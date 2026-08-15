@@ -3,10 +3,11 @@
   min-height: 100vh;
 }
 
-/* Full-bleed Yucca hero */
+/* Full-bleed Yucca hero — lifestyle-toast is ~16:9 */
 .heroBleed {
   position: relative;
-  min-height: min(88vh, 40rem);
+  aspect-ratio: 16 / 9;
+  min-height: 0;
   display: flex;
   align-items: flex-end;
   overflow: hidden;
@@ -199,8 +200,8 @@
 
 .deliverMedia {
   position: relative;
-  aspect-ratio: 4 / 3;
-  min-height: 260px;
+  aspect-ratio: 3 / 2;
+  min-height: 0;
   border-radius: 1.5rem;
   overflow: hidden;
   border: 1.5px solid rgba(13, 27, 42, 0.1);
@@ -729,7 +730,8 @@
 
 .demoLifestyle {
   position: relative;
-  min-height: 280px;
+  aspect-ratio: 3 / 2;
+  min-height: 0;
   border-radius: 1.5rem;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -951,7 +953,8 @@
 
 @media (max-width: 640px) {
   .heroBleed {
-    min-height: min(78vh, 34rem);
+    aspect-ratio: 16 / 9;
+    min-height: 0;
   }
 
   .heroBleedInner {
@@ -964,7 +967,8 @@
   }
 
   .deliverMedia {
-    min-height: 220px;
+    min-height: 0;
+    aspect-ratio: 3 / 2;
   }
 
   .deliverMediaContain {
