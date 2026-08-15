@@ -4,10 +4,11 @@ import { brandConfig } from "@/brand.config";
 
 export default function AICoachTeaser() {
   return (
-    <section className="section" id="ai-coach" style={{ background: "var(--bg)", padding: "5rem 0" }}>
+    <section className="section rv-ai-teaser" id="ai-coach" style={{ background: "var(--bg)", padding: "5rem 0" }}>
       <div className="container">
         {/* Main AI Coach Banner */}
         <div
+          className="rv-ai-teaser__banner"
           style={{
             background: "linear-gradient(135deg, #0D1B2A 0%, #162A45 65%, #00A896 100%)",
             borderRadius: "1.75rem",
@@ -63,7 +64,7 @@ export default function AICoachTeaser() {
             </p>
 
             {/* 4 Feature Cards Grid */}
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "1rem", marginBottom: "2.2rem" }}>
+            <div className="rv-ai-teaser__features" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "1rem", marginBottom: "2.2rem" }}>
               {brandConfig.aiCoach.features.map((feat, i) => (
                 <div
                   key={i}
@@ -84,7 +85,7 @@ export default function AICoachTeaser() {
             </div>
 
             {/* CTA Buttons */}
-            <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+            <div className="rv-ai-teaser__ctas" style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
               <a href="/ai-coach" className="btn btn-primary" style={{ padding: "0.95rem 1.8rem", fontSize: "0.98rem" }}>
                 Explore AI Health Portal →
               </a>

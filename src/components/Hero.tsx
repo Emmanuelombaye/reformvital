@@ -39,13 +39,14 @@ export default function Hero() {
         </div>
 
         <div className="rv-hero-content">
+          <p className="rv-hero-eyebrow">Reform Vital</p>
           <h1 className="rv-hero-title">
             Your Health.
             <br />
             <span className="rv-hero-title-accent">Optimized for Life.</span>
           </h1>
           <p className="rv-hero-sub">
-            Medical Weight Loss · Hormone Optimization · Longevity · Preventive Wellness
+            Physician-guided weight loss, hormones, and longevity—built around you.
           </p>
         </div>
 
@@ -59,7 +60,7 @@ export default function Hero() {
               →
             </span>
           </a>
-          <p className="rv-hero-note">Long-term partnership · Physician-guided · No insurance required</p>
+          <p className="rv-hero-note">Physician-guided · No insurance required</p>
         </div>
       </div>
 
@@ -190,6 +191,16 @@ export default function Hero() {
           max-width: 40rem;
           width: 100%;
           padding: 1.5rem 1.25rem;
+        }
+
+        .rv-hero-eyebrow {
+          display: none;
+          margin: 0 0 0.55rem;
+          font-size: 0.72rem;
+          font-weight: 800;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          color: var(--accent);
         }
 
         .rv-hero-title {
@@ -365,14 +376,16 @@ export default function Hero() {
 
         @media (max-width: 900px) {
           .rv-hero-card {
-            /* Yucca phone: soft stage + full mobile art + CTAs in document flow */
+            /* Yucca phone flow: image → copy → CTAs (no overlay fight) */
             aspect-ratio: auto;
             max-height: none;
             min-height: 0;
             height: auto;
             justify-content: flex-start;
+            align-items: stretch;
             padding: 0;
-            background: linear-gradient(165deg, #eef5f3 0%, #e8f0ee 100%);
+            text-align: left;
+            background: #fff;
             overflow: hidden;
           }
 
@@ -397,29 +410,49 @@ export default function Hero() {
           }
 
           .rv-hero-scrim {
-            background:
-              linear-gradient(
-                180deg,
-                rgba(13, 27, 42, 0.28) 0%,
-                rgba(13, 27, 42, 0.12) 38%,
-                rgba(13, 27, 42, 0.08) 58%,
-                rgba(13, 27, 42, 0.55) 100%
-              );
+            display: none;
           }
 
           .rv-hero-content {
-            position: absolute;
-            left: 0;
-            right: 0;
-            top: 0;
-            z-index: 5;
+            position: relative;
+            left: auto;
+            right: auto;
+            top: auto;
+            z-index: 2;
+            order: 2;
             max-width: none;
             width: 100%;
-            padding: clamp(1.5rem, 5vw, 2.25rem) 1.15rem 1rem;
+            padding: 1.35rem 1.15rem 0.35rem;
+            background: #fff;
+            text-align: left;
+          }
+
+          .rv-hero-eyebrow {
+            display: block;
           }
 
           .rv-hero-title {
-            font-size: clamp(2rem, 8vw, 2.85rem);
+            font-size: clamp(1.95rem, 8vw, 2.55rem);
+            color: var(--primary);
+            text-shadow: none;
+            margin: 0 0 0.55rem;
+          }
+
+          .rv-hero-title-accent {
+            color: var(--accent);
+            -webkit-text-fill-color: var(--accent);
+            background: none;
+          }
+
+          .rv-hero-sub {
+            color: var(--text-muted);
+            text-shadow: none;
+            font-size: 1.02rem;
+            line-height: 1.5;
+            max-width: 28rem;
+            margin: 0;
+            margin-left: 0;
+            margin-right: 0;
           }
 
           .rv-hero-ctas {
@@ -427,30 +460,50 @@ export default function Hero() {
             left: auto;
             right: auto;
             bottom: auto;
-            z-index: 6;
+            order: 3;
+            z-index: 2;
             width: 100%;
             max-width: none;
             align-items: stretch;
-            gap: 0.65rem;
-            padding: 1rem 1.15rem 1.25rem;
-            background: linear-gradient(180deg, rgba(13, 27, 42, 0.92) 0%, #0d1b2a 100%);
+            gap: var(--rv-cta-gap, 0.65rem);
+            padding: 1.1rem 1.15rem 1.35rem;
+            background: #fff;
             border-radius: 0;
             box-sizing: border-box;
           }
 
+          .rv-hero-btn--secondary {
+            background: #fff;
+            color: var(--primary);
+            border: 1.5px solid rgba(13, 27, 42, 0.16);
+            box-shadow: none;
+          }
+
           .rv-hero-note {
-            text-align: center;
+            text-align: left;
             width: 100%;
+            color: var(--text-muted);
+            text-shadow: none;
+            font-size: 0.78rem;
+            margin-top: 0.15rem;
           }
         }
 
         @media (max-width: 640px) {
+          #qualify {
+            padding: 0.85rem 0.85rem 1.75rem !important;
+          }
+
           .rv-hero-card {
             border-radius: 1.15rem;
           }
 
           .rv-hero-media {
             aspect-ratio: 2 / 3;
+          }
+
+          .rv-hero-content {
+            padding: 1.2rem 1rem 0.25rem;
           }
 
           .rv-hero-btn {
@@ -460,17 +513,16 @@ export default function Hero() {
           }
 
           .rv-hero-title {
-            font-size: clamp(1.85rem, 9vw, 2.4rem);
+            font-size: clamp(1.8rem, 8.5vw, 2.25rem);
           }
 
           .rv-hero-sub {
             font-size: 0.98rem;
-            line-height: 1.45;
-            max-width: 22rem;
+            line-height: 1.5;
           }
 
           .rv-hero-ctas {
-            padding: 0.95rem 1rem 1.15rem;
+            padding: 1rem 1rem 1.2rem;
           }
         }
       `}</style>

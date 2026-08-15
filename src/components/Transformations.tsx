@@ -179,6 +179,7 @@ export default function Transformations() {
 
         {/* Aggregate Metrics Bar */}
         <div
+          className="rv-transform-metrics"
           style={{
             background: "linear-gradient(135deg, #0D1B2A 0%, #162A45 100%)",
             borderRadius: "1.25rem",
@@ -226,8 +227,8 @@ export default function Transformations() {
           }}
         >
           {/* Controls Bar */}
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "2rem", flexWrap: "wrap", gap: "1rem" }}>
-            <div style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}>
+          <div className="rv-transform-controls" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "2rem", flexWrap: "wrap", gap: "1rem" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "0.6rem", flexWrap: "wrap" }}>
               <span
                 style={{
                   background: "var(--accent)",
@@ -248,7 +249,7 @@ export default function Transformations() {
 
             {/* Controls & Loop Indicator */}
             <div style={{ display: "flex", alignItems: "center", gap: "0.8rem" }}>
-              <span style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.6)", fontWeight: 700 }}>
+              <span className="rv-transform-autoplay" style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.6)", fontWeight: 700 }}>
                 {isPaused ? "⏸ PAUSED" : "▶ AUTO PLAY"}
               </span>
 
@@ -334,6 +335,7 @@ export default function Transformations() {
               />
 
               <div
+                className="rv-transform-outcome"
                 style={{
                   position: "absolute",
                   bottom: "1rem",
@@ -360,7 +362,7 @@ export default function Transformations() {
               </div>
             </div>
 
-            <div>
+            <div className="rv-transform-copy">
               <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "0.8rem" }}>
                 <span className="badge" style={{ background: "var(--accent-soft)", color: "var(--accent)" }}>
                   ✓ {currentItem.verified}
@@ -380,14 +382,14 @@ export default function Transformations() {
                 "{currentItem.quote}"
               </p>
 
-              <div style={{ background: "rgba(255,255,255,0.08)", padding: "1rem 1.25rem", borderRadius: "0.85rem", border: "1px solid rgba(0, 168, 150, 0.4)", marginBottom: "2rem" }}>
+              <div className="rv-transform-biomarker" style={{ background: "rgba(255,255,255,0.08)", padding: "1rem 1.25rem", borderRadius: "0.85rem", border: "1px solid rgba(0, 168, 150, 0.4)", marginBottom: "2rem" }}>
                 <span style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.7)", fontWeight: 800, display: "block", marginBottom: "0.2rem" }}>
-                  📈 CLINICAL BIOMARKER METRIC:
+                  CLINICAL BIOMARKER
                 </span>
                 <strong style={{ fontSize: "1.1rem", color: "var(--accent-gold)" }}>{currentItem.biomarker}</strong>
               </div>
 
-              <a href="/start" className="btn btn-primary" style={{ padding: "0.95rem 2rem", fontSize: "1rem" }}>
+              <a href="/start" className="btn btn-primary rv-transform-cta" style={{ padding: "0.95rem 2rem", fontSize: "1rem" }}>
                 Start Your Transformation Assessment →
               </a>
             </div>
