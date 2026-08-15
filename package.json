@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "generate:guides": "python scripts/generate_guide_pdfs.py",
-    "replace:images": "python scripts/replace_client_images.py"
+    "replace:images": "python scripts/replace_client_images.py",
+    "apply:regen-images": "python scripts/apply_regen_images.py"
   },
   "dependencies": {
     "next": "16.2.11",

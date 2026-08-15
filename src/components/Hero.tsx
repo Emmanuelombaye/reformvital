@@ -16,7 +16,7 @@ export default function Hero() {
         {/* Desktop: wide split composition */}
         <Image
           src="/images/hero-commercial-wide.png"
-          alt="Personalized Tirzepatide treatment and health tracking with Reform Vital"
+          alt="Physician telehealth consultation with Reform Vital"
           fill
           sizes="100vw"
           className="rv-hero-visual rv-hero-visual--desktop"
@@ -26,7 +26,7 @@ export default function Hero() {
         {/* Mobile: tall stacked composition */}
         <Image
           src="/images/hero-commercial-mobile.png"
-          alt="Personalized Tirzepatide treatment and health tracking with Reform Vital"
+          alt="Wellness and longevity lifestyle with Reform Vital"
           fill
           sizes="100vw"
           className="rv-hero-visual rv-hero-visual--mobile"

@@ -1,4 +1,8 @@
-"""Crop client collage sheets and overwrite site images at exact dimensions."""
+"""Crop client collage sheets and place each shot into the best-matching site slot.
+
+Treatment product heroes that have no thematic client photo are left alone here —
+those are regenerated separately (MensRx-style studio product art).
+"""
 from __future__ import annotations
 
 from pathlib import Path
@@ -67,7 +71,7 @@ def crop_batch1(img: Image.Image) -> dict[str, Image.Image]:
 
 
 def crop_3top_2bot(img: Image.Image, ids: list[str]) -> dict[str, Image.Image]:
-    """1402x1122 — 3 top + 2 bottom."""
+    """Typical sheets — 3 top + 2 bottom."""
     w, h = img.size
     y0 = detect_header_y(img)
     ch = h - y0
@@ -84,7 +88,7 @@ def crop_3top_2bot(img: Image.Image, ids: list[str]) -> dict[str, Image.Image]:
 
 
 def crop_2top_3bot(img: Image.Image, ids: list[str]) -> dict[str, Image.Image]:
-    """1402x1122 — 2 top + 3 bottom (batch 5)."""
+    """Batch 5 — 2 top + 3 bottom."""
     w, h = img.size
     y0 = detect_header_y(img)
     ch = h - y0
@@ -93,6 +97,22 @@ def crop_2top_3bot(img: Image.Image, ids: list[str]) -> dict[str, Image.Image]:
     out[ids[0]] = img.crop((0, y0, w // 2, y0 + th))
     out[ids[1]] = img.crop((w // 2, y0, w, y0 + th))
     for i, cid in enumerate(ids[2:]):
+        x0, x1 = i * w // 3, (i + 1) * w // 3
+        out[cid] = img.crop((x0, y0 + th, x1, h))
+    return out
+
+
+def crop_3top_3bot(img: Image.Image, ids: list[str]) -> dict[str, Image.Image]:
+    """Sheet 8 — six cells (41–46)."""
+    w, h = img.size
+    y0 = detect_header_y(img)
+    ch = h - y0
+    th = ch // 2
+    out: dict[str, Image.Image] = {}
+    for i, cid in enumerate(ids[:3]):
+        x0, x1 = i * w // 3, (i + 1) * w // 3
+        out[cid] = img.crop((x0, y0, x1, y0 + th))
+    for i, cid in enumerate(ids[3:]):
         x0, x1 = i * w // 3, (i + 1) * w // 3
         out[cid] = img.crop((x0, y0 + th, x1, h))
     return out
@@ -110,99 +130,132 @@ def load_all_crops() -> dict[str, Image.Image]:
         ("PNG image 5.png", crop_2top_3bot, ["26", "27", "28", "29", "30"]),
         ("PNG image 6.png", crop_3top_2bot, ["31", "32", "33", "34", "35"]),
         ("PNG image 7.png", crop_3top_2bot, ["36", "37", "38", "39", "40"]),
-        ("PNG image 8.png", crop_3top_2bot, ["41", "42", "43", "44", "46"]),
     ]:
         crops.update(fn(Image.open(CLIENT / fname), ids))
 
-    # Sheet 9 — recovery shots; 41 foam roll overrides sheet 8's 41
+    # Sheet 8 — full 6-cell grid
+    crops.update(
+        crop_3top_3bot(
+            Image.open(CLIENT / "PNG image 8.png"),
+            ["41a", "42a", "43a", "44a", "45a", "46"],
+        )
+    )
+    # Prefer sheet-8 lifestyle/product cells under stable ids where useful
+    crops["42"] = crops["42a"]  # kitchen supplements (sheet 8)
+    crops["43"] = crops["43a"]  # reading Outlive
+    crops["44"] = crops["44a"]  # outdoor meditation / yoga sunset
+    crops["45s8"] = crops["45a"]  # Daily Longevity sachets product
+
+    # Sheet 9 — recovery + evening ritual; foam-roll 41 and bedtime 45 win
     sheet9 = crop_3top_2bot(
         Image.open(CLIENT / "PNG image 9.png"),
-        ["41", "42", "43", "44", "45"],
+        ["41", "42b", "43b", "44b", "45"],
     )
     crops["41"] = sheet9["41"]
     crops["45"] = sheet9["45"]
+    crops["42b"] = sheet9["42b"]  # Omega-3 / Daily Longevity / Magnesium bottles
+    crops["44b"] = sheet9["44b"]  # coastal dinner toast
 
     return crops
 
 
-# client_id -> (output filename, width, height, format, optional trim dict)
+# Thematic client-photo placements only (no mismatched treatment product fills).
 REPLACEMENTS: list[tuple[str, str, int, int, str, dict[str, float] | None]] = [
-    # Heroes — trim bottom-left contact-sheet labels (01, 03, etc.)
+    # ── Heroes (Batch 1) ──
     ("01", "hero-commercial-wide.png", 1536, 1024, "PNG", {"left_pct": 0.08, "bottom_pct": 0.12}),
     ("03", "hero-commercial-mobile.png", 1024, 1536, "PNG", {"left_pct": 0.08, "bottom_pct": 0.12}),
-    # How it works
-    ("01", "how-step-consult.png", 1024, 1024, "PNG", None),
+    # ── How it works ──
+    ("01", "how-step-consult.png", 1024, 1024, "PNG", {"left_pct": 0.08, "bottom_pct": 0.12}),
     ("02", "how-step-physician.png", 1024, 1024, "PNG", None),
-    ("29", "how-step-delivery.png", 1024, 1024, "PNG", None),
+    ("27", "how-step-delivery.png", 1024, 1024, "PNG", None),  # clinic / pharmacy facility
     ("38", "how-step-ongoing.png", 1024, 1024, "PNG", None),
-    # AI coach
+    # Homepage featured metabolic block — client lifestyle (not studio product)
+    ("18", "featured-metabolic.png", 2752, 1536, "PNG", None),
+    # Medical team — client clinical scenes (prefer over AI portraits)
+    ("26", "doctor-wasef.png", 1024, 1024, "PNG", None),
+    ("26", "doctor_portrait.png", 1024, 1024, "PNG", None),
+    ("32", "doctor-sakla.png", 1024, 1024, "PNG", None),
+    # ── AI coach ──
     ("38", "ai_coach_dashboard.png", 1536, 1024, "PNG", None),
     ("39", "ai_coach_patient.png", 1536, 1024, "PNG", None),
     ("26", "ai_coach_doctor.png", 1536, 1024, "PNG", None),
-    # Health academy / resources
-    ("17", "resource-glp1.jpg", 1536, 1024, "JPEG", None),
+    # ── Resources / academy ──
     ("22", "resource-hormones.jpg", 1536, 1024, "JPEG", None),
     ("38", "resource-ai-coach.jpg", 1536, 1024, "JPEG", None),
     ("43", "resource-longevity.jpg", 1536, 1024, "JPEG", None),
     ("41", "resource-recovery.jpg", 1536, 1024, "JPEG", None),
-    # Treatments page category tiles
-    ("17", "weight_loss_glp1.png", 1024, 1024, "PNG", None),
-    ("01", "tirzepatide_hero.png", 1024, 1024, "PNG", {"left_pct": 0.08, "bottom_pct": 0.12}),
+    ("19", "academy-nutrition.png", 1024, 1024, "PNG", None),
+    ("20", "academy-recipes.png", 1024, 1024, "PNG", None),
+    ("42b", "academy-supplements.png", 1024, 1024, "PNG", None),
+    ("17", "resource-nutrition-bowl.jpg", 1536, 1024, "JPEG", None),
+    # ── Facility / recovery lifestyle tiles ──
     ("27", "hero_showcase.png", 1024, 1024, "PNG", None),
-    ("32", "sermorelin_hero.png", 1024, 1024, "PNG", None),
     ("41", "bpc_tissue.png", 1024, 1024, "PNG", None),
-    ("21", "nad_cellular.png", 1024, 1024, "PNG", None),
+    ("41", "recovery_bpc157.png", 1024, 1024, "PNG", None),
+    ("41", "Recovery & Tissue.png", 2752, 1536, "PNG", None),
     ("05", "longevity_nad.png", 1024, 1024, "PNG", None),
-    ("26", "doctor_portrait.png", 1024, 1024, "PNG", None),
-    # Treatments homepage featured block
+    # TRT / hormones — gym strength is on-theme
+    ("22", "TRTTestosterone.png", 2752, 1536, "PNG", None),
+    # ── Treatment heroes — CLIENT photos only (replace prior studio regen) ──
+    # GLP-1 / weight loss → telehealth consult + metabolic lifestyle
     ("01", "Tirzepatide.png", 2752, 1536, "PNG", {"left_pct": 0.08, "bottom_pct": 0.12}),
-    ("26", "doctor-wasef.png", 1024, 1024, "PNG", None),
-    ("32", "doctor-sakla.png", 1024, 1024, "PNG", None),
+    ("01", "tirzepatide_hero.png", 1024, 1024, "PNG", {"left_pct": 0.08, "bottom_pct": 0.12}),
+    ("18", "weight_loss_glp1.png", 1024, 1024, "PNG", None),
+    ("18", "resource-glp1.jpg", 1536, 1024, "JPEG", None),
+    # Growth hormone / Sermorelin → morning vitality lifestyle
+    ("21", "Sermorelin.png", 2752, 1536, "PNG", None),
+    ("21", "sermorelin_hero.png", 1024, 1024, "PNG", None),
+    # NAD+ / longevity therapy → IV clinical renewal (best client match)
+    ("37", "NAD+ Cellular.png", 2752, 1536, "PNG", None),
+    ("28", "nad_cellular.png", 1024, 1024, "PNG", None),
+    # Cognitive peptides → focus / mindfulness
+    ("33", "Neuropeptide.png", 2752, 1536, "PNG", None),
+    # Sexual wellness → couple lifestyle
+    ("46", "Bremelanotide.png", 2752, 1536, "PNG", None),
+    # Hair — no hair-specific shoot; polished lifestyle male is closest client fit
+    ("14", "Minoxidil.png", 2752, 1536, "PNG", None),
+    # ── Transformations (results lifestyle) ──
     ("14", "1.png", 2752, 1536, "PNG", None),
     ("30", "2.png", 2752, 1536, "PNG", None),
     ("39", "3.png", 2752, 1536, "PNG", None),
     ("40", "4.png", 2752, 1536, "PNG", None),
     ("35", "5.png", 2752, 1536, "PNG", None),
     ("24", "6.png", 2752, 1536, "PNG", None),
-    ("44", "7.png", 2752, 1536, "PNG", None),
+    ("44b", "7.png", 2752, 1536, "PNG", None),
     ("45", "8.png", 2752, 1536, "PNG", None),
-    ("22", "TRTTestosterone.png", 2752, 1536, "PNG", None),
-    ("32", "Sermorelin.png", 2752, 1536, "PNG", None),
-    ("41", "Recovery & Tissue.png", 2752, 1536, "PNG", None),
-    ("43", "NAD+ Cellular.png", 2752, 1536, "PNG", None),
-    ("42", "Neuropeptide.png", 2752, 1536, "PNG", None),
-    ("29", "Bremelanotide.png", 2752, 1536, "PNG", None),
-    ("46", "Minoxidil.png", 2752, 1536, "PNG", None),
-    ("41", "recovery_bpc157.png", 1024, 1024, "PNG", None),
-    # Remaining unused client crops → photo-less sections
+    # ── About / membership / why / start / portal ──
     ("04", "about-villa.png", 1536, 1024, "PNG", None),
-    ("11", "why-personalized.png", 1024, 1024, "PNG", None),
-    ("12", "membership-hero.png", 1536, 1024, "PNG", None),
-    ("13", "story-habits.png", 1536, 1024, "PNG", None),
-    ("15", "portal-performance.png", 1536, 1024, "PNG", None),
-    ("16", "member-nutrition.png", 1024, 1024, "PNG", None),
-    ("18", "why-support.png", 1024, 1024, "PNG", None),
-    ("19", "academy-nutrition.png", 1024, 1024, "PNG", None),
-    ("20", "academy-recipes.png", 1024, 1024, "PNG", None),
-    ("23", "why-wellness.png", 1024, 1024, "PNG", None),
     ("25", "about-longevity.png", 1536, 1024, "PNG", None),
-    ("28", "member-clinical.png", 1024, 1024, "PNG", None),
+    ("12", "membership-hero.png", 1536, 1024, "PNG", None),
+    ("15", "portal-performance.png", 1536, 1024, "PNG", None),
     ("31", "start-wellness.png", 1024, 1280, "PNG", None),
-    ("33", "why-evidence.png", 1024, 1024, "PNG", None),
-    ("34", "academy-supplements.png", 1024, 1024, "PNG", None),
+    ("11", "why-personalized.png", 1024, 1024, "PNG", None),
+    ("18", "why-support.png", 1024, 1024, "PNG", None),
+    ("23", "why-wellness.png", 1024, 1024, "PNG", None),
+    ("32", "why-evidence.png", 1024, 1024, "PNG", None),
+    ("13", "story-habits.png", 1536, 1024, "PNG", None),
     ("36", "story-nutrition.png", 1024, 1024, "PNG", None),
+    ("16", "member-nutrition.png", 1024, 1024, "PNG", None),
+    ("28", "member-clinical.png", 1024, 1024, "PNG", None),
     ("37", "member-renew.png", 1536, 1024, "PNG", None),
+    ("29", "member-rx.png", 1024, 1024, "PNG", None),
+    ("21", "lifestyle-morning.png", 1024, 1024, "PNG", None),
+    ("33", "lifestyle-education.png", 1024, 1024, "PNG", None),
+    ("44", "lifestyle-mindfulness.png", 1536, 1024, "PNG", None),
+    ("45s8", "product-sachets.png", 1024, 1024, "PNG", None),
+    ("46", "lifestyle-toast.png", 2752, 1536, "PNG", None),
 ]
 
 
 def save(crop: Image.Image, path: Path, w: int, h: int, fmt: str) -> None:
     out = cover_crop(crop.convert("RGB"), w, h)
     path.parent.mkdir(parents=True, exist_ok=True)
+    # Avoid optimize=True — extremely slow on large PNG exports on Windows.
     if fmt == "JPEG":
-        out.save(path, "JPEG", quality=88, optimize=True)
+        out.save(path, "JPEG", quality=88)
     else:
-        out.save(path, "PNG", optimize=True)
-    print(f"  {path.name} <- {w}x{h} ({fmt})")
+        out.save(path, "PNG", compress_level=1)
+    print(f"  {path.name} <- {w}x{h} ({fmt})", flush=True)
 
 
 def main() -> None:
@@ -210,7 +263,7 @@ def main() -> None:
     crops = load_all_crops()
     print(f"  {len(crops)} crops available: {sorted(crops.keys())}")
 
-    print("\nReplacing site images...")
+    print("\nReplacing site images (thematic client photos only)...")
     for cid, fname, w, h, fmt, trim in REPLACEMENTS:
         if cid not in crops:
             print(f"  SKIP {fname} — missing crop {cid}")

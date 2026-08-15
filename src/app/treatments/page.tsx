@@ -12,7 +12,7 @@ const categoryImageMap: Record<string, { image: string; tag: string; title: stri
     title: "Clinician-Guided Weight Management",
   },
   "hormones": {
-    image: "/images/hero_showcase.png",
+    image: "/images/TRTTestosterone.png",
     tag: "MEN'S & WOMEN'S HORMONE HEALTH",
     title: "Testosterone & Endocrine Care",
   },
@@ -32,19 +32,24 @@ const categoryImageMap: Record<string, { image: string; tag: string; title: stri
     title: "NAD+ Cellular Energy Matrix",
   },
   "cognitive": {
-    image: "/images/longevity_nad.png",
+    image: "/images/Neuropeptide.png",
     tag: "COGNITIVE OPTIMIZATION",
     title: "Neuropeptide Focus & BDNF Care",
   },
   "sexual-wellness": {
-    image: "/images/weight_loss_glp1.png",
+    image: "/images/Bremelanotide.png",
     tag: "SEXUAL WELLNESS & VITALITY",
     title: "PT-141 & Vascular Flow Therapy",
   },
   "hair": {
-    image: "/images/hero_showcase.png",
+    image: "/images/Minoxidil.png",
     tag: "PRESCRIPTION HAIR RESTORATION",
     title: "Custom Topical & Peptide Regrowth",
+  },
+  "preventive": {
+    image: "/images/longevity_nad.png",
+    tag: "PREVENTIVE WELLNESS",
+    title: "Labs, Tracking & Longevity Planning",
   },
 };
 

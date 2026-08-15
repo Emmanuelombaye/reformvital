@@ -104,8 +104,8 @@ export default function Treatments() {
             }}
           >
             <Image
-              src="/images/Tirzepatide.png"
-              alt="Compounded GLP-1 therapy"
+              src="/images/featured-metabolic.png"
+              alt="Physician-guided metabolic health and longevity lifestyle"
               width={720}
               height={540}
               style={{ width: "100%", height: "auto", display: "block", objectFit: "cover" }}

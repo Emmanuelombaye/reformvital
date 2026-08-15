@@ -33,9 +33,9 @@ const slugImageMap: Record<string, string> = {
   "pt-141": "/images/Bremelanotide.png",
   tadalafil: "/images/Bremelanotide.png",
   "hair-restoration": "/images/Minoxidil.png",
-  "metabolic-panel": "/images/NAD+ Cellular.png",
-  "preventive-wellness": "/images/NAD+ Cellular.png",
-  "body-composition": "/images/NAD+ Cellular.png",
+  "metabolic-panel": "/images/why-evidence.png",
+  "preventive-wellness": "/images/longevity_nad.png",
+  "body-composition": "/images/portal-performance.png",
 };
 
 export async function generateStaticParams() {
