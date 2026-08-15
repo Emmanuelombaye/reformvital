@@ -2,12 +2,12 @@
 
 import { useEffect } from "react";
 
-const MAX_REVEAL_DELAY_MS = 400;
-const FAILSAFE_REVEAL_MS = 2500;
+const MAX_REVEAL_DELAY_MS = 320;
+const FAILSAFE_REVEAL_MS = 8000;
 
 /**
- * Site-wide premium motion engine:
- * scroll reveals · 3D tilt · magnetic hover · nav polish · page enter
+ * Site-wide PeakHealth-style scroll motion:
+ * soft fade-up reveals · optional 3D tilt (desktop) · magnetic hover · page enter
  */
 export default function ScrollMotion() {
   useEffect(() => {
@@ -29,22 +29,21 @@ export default function ScrollMotion() {
     const magnetized = new WeakSet<Element>();
     const ioTargets = new Set<Element>();
 
+    // Peak soft fade is the default scroll language
     const variants = [
+      "peak-fade",
       "rise",
       "peak-fade",
-      "tilt-left",
-      "tilt-right",
-      "bounce",
-      "zoom",
       "peak-fade",
-      "slide-left",
-      "slide-right",
+      "tilt-left",
+      "peak-fade",
+      "tilt-right",
+      "peak-fade",
     ];
 
     const skipClosest =
       "#qualify, header, .promo, .nav, .rv-scroll-progress, .rv-float-orb, .rv-cursor-glow, .rv-treatments-dropdown";
 
-    // Never animate whole page sections — tall blocks at opacity:0 look blank.
     const skipRevealTags = new Set(["SECTION", "MAIN"]);
 
     const autoSelectors = [
@@ -55,13 +54,20 @@ export default function ScrollMotion() {
       ".rv-footer-brand",
       ".rv-footer-col",
       ".treatment-card",
+      ".rv-why-head",
+      ".rv-why-card",
       ".rv-yx__head",
+      ".rv-yx__tabs-wrap",
       ".rv-yx__card",
       ".rv-yx-tx-card",
       ".rv-yx-featured",
-      ".rv-yx-explore",
-      ".rv-yx-stage",
-      ".rv-yx-side",
+      ".rv-tx-panel",
+      ".rv-tx-media",
+      ".rv-tx-copy",
+      ".rv-tx-picker",
+      ".rv-tx-includes",
+      ".rv-tx-guarantee",
+      ".rv-tx-cta-row",
       ".rv-yx-protocol",
       ".rv-yx-protocol-card",
       ".rv-yx-expect",
@@ -107,7 +113,8 @@ export default function ScrollMotion() {
       ".treatment-card",
       ".rv-yx__card",
       ".rv-yx-tx-card",
-      ".rv-yx-stage",
+      ".rv-tx-media",
+      ".rv-why-card",
       ".rv-yx-protocol-card",
       ".rv-yx-expect-card",
       ".rv-resource-feature",
@@ -128,12 +135,12 @@ export default function ScrollMotion() {
       ".rv-treatments-trigger",
       ".brand",
       ".rv-footer-cta",
+      ".rv-tx-cta",
     ];
 
     const shouldSkipReveal = (el: Element) => {
       if (el.closest(skipClosest)) return true;
       if ((el as HTMLElement).dataset.rvSkipMotion === "1") return true;
-      // Allow explicit data-animate on sections; skip bare section/main wrappers
       if (skipRevealTags.has(el.tagName) && !el.hasAttribute("data-animate")) return true;
       if (el.classList.contains("section") && !el.hasAttribute("data-animate")) return true;
       return false;
@@ -151,7 +158,7 @@ export default function ScrollMotion() {
           if (shouldSkipReveal(el)) return;
           if (!el.hasAttribute("data-animate")) {
             el.setAttribute("data-animate", variants[i % variants.length]);
-            el.setAttribute("data-delay", String(Math.min((i % 7) * 55, MAX_REVEAL_DELAY_MS)));
+            el.setAttribute("data-delay", String(Math.min((i % 6) * 60, MAX_REVEAL_DELAY_MS)));
           }
           el.classList.add("rv-reveal");
           ioTargets.add(el);
@@ -160,27 +167,32 @@ export default function ScrollMotion() {
 
       document
         .querySelectorAll(
-          ".rv-resources-feature-grid, .rv-resources-library-grid, .rv-resources-video-grid, .rv-resources-external-grid",
+          ".rv-resources-feature-grid, .rv-resources-library-grid, .rv-resources-video-grid, .rv-resources-external-grid, .rv-why-grid, .rv-tx-pickers",
         )
         .forEach((grid) => {
           Array.from(grid.children).forEach((child, i) => {
             if (!(child instanceof HTMLElement)) return;
             if (shouldSkipReveal(child)) return;
-            child.setAttribute("data-delay", String(Math.min(i * 80, MAX_REVEAL_DELAY_MS)));
+            child.setAttribute("data-delay", String(Math.min(i * 70, MAX_REVEAL_DELAY_MS)));
             child.classList.add("rv-reveal");
             if (!child.hasAttribute("data-animate")) {
-              child.setAttribute("data-animate", variants[i % variants.length]);
+              child.setAttribute("data-animate", "peak-fade");
             }
             ioTargets.add(child);
           });
         });
     };
 
-    const revealVisibleNow = () => {
+    const isInRevealZone = (el: Element) => {
+      const rect = el.getBoundingClientRect();
       const vh = window.innerHeight;
+      // Only reveal when the block has entered the mid/lower viewport (Peak/Yucca feel)
+      return rect.top < vh * 0.88 && rect.bottom > vh * 0.12;
+    };
+
+    const revealVisibleNow = () => {
       ioTargets.forEach((el) => {
-        const rect = el.getBoundingClientRect();
-        if (rect.top < vh * 0.98 && rect.bottom > 0) {
+        if (isInRevealZone(el)) {
           el.classList.add("is-inview");
         }
       });
@@ -188,7 +200,7 @@ export default function ScrollMotion() {
 
     const revealStuckElements = () => {
       ioTargets.forEach((el) => {
-        if (!el.classList.contains("is-inview")) {
+        if (!el.classList.contains("is-inview") && isInRevealZone(el)) {
           el.classList.add("is-inview");
         }
       });
@@ -207,7 +219,7 @@ export default function ScrollMotion() {
           }, delay);
         });
       },
-      { threshold: 0, rootMargin: "0px 0px -2% 0px" },
+      { threshold: 0.12, rootMargin: "0px 0px -10% 0px" },
     );
 
     const observeAll = () => {

@@ -1951,64 +1951,63 @@ h1, h2, h3, h4, h5, h6 {
 /* Scroll reveal — only when motion engine is on */
 .rv-motion-on .rv-reveal:not(.is-inview) {
   opacity: 0;
-  transform: translate3d(0, 48px, 0);
-  animation: rvRevealFailsafe 4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-@keyframes rvRevealFailsafe {
-  0%, 80% { opacity: 0; }
-  100% {
-    opacity: 1;
-    transform: perspective(1000px) translate3d(0, 0, 0) rotateX(0) rotateY(0) scale(1);
-  }
+  transform: translate3d(0, 28px, 0);
 }
 
 .rv-reveal {
   opacity: 1;
   transform: none;
   transition:
-    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
     box-shadow 0.35s ease;
   will-change: transform, opacity;
   transform-style: preserve-3d;
 }
 
 .rv-motion-on .rv-reveal[data-animate="rise"]:not(.is-inview) {
-  transform: translate3d(0, 64px, 0) scale(0.98);
+  transform: translate3d(0, 40px, 0);
+  opacity: 0;
 }
 
 .rv-motion-on .rv-reveal[data-animate="tilt-left"]:not(.is-inview) {
-  transform: perspective(900px) translate3d(-40px, 36px, 0) rotateY(14deg) rotateX(6deg);
+  transform: perspective(900px) translate3d(-28px, 28px, 0) rotateY(10deg) rotateX(4deg);
+  opacity: 0;
 }
 
 .rv-motion-on .rv-reveal[data-animate="tilt-right"]:not(.is-inview) {
-  transform: perspective(900px) translate3d(40px, 36px, 0) rotateY(-14deg) rotateX(6deg);
+  transform: perspective(900px) translate3d(28px, 28px, 0) rotateY(-10deg) rotateX(4deg);
+  opacity: 0;
 }
 
 .rv-motion-on .rv-reveal[data-animate="bounce"]:not(.is-inview) {
-  transform: translate3d(0, 70px, 0) scale(0.9);
+  transform: translate3d(0, 48px, 0) scale(0.94);
+  opacity: 0;
 }
 
 .rv-motion-on .rv-reveal[data-animate="zoom"]:not(.is-inview) {
-  transform: translate3d(0, 24px, 0) scale(0.82);
+  transform: translate3d(0, 20px, 0) scale(0.92);
+  opacity: 0;
 }
 
 .rv-motion-on .rv-reveal[data-animate="flip"]:not(.is-inview) {
-  transform: perspective(1000px) rotateX(28deg) translate3d(0, 40px, 0);
+  transform: perspective(1000px) rotateX(18deg) translate3d(0, 28px, 0);
+  opacity: 0;
 }
 
 .rv-motion-on .rv-reveal[data-animate="slide-left"]:not(.is-inview) {
-  transform: translate3d(-56px, 24px, 0);
+  transform: translate3d(-40px, 16px, 0);
+  opacity: 0;
 }
 
 .rv-motion-on .rv-reveal[data-animate="slide-right"]:not(.is-inview) {
-  transform: translate3d(56px, 24px, 0);
+  transform: translate3d(40px, 16px, 0);
+  opacity: 0;
 }
 
-/* PeakHealth-soft: subtle fade-up (product-grid style) */
+/* PeakHealth soft product-grid fade — primary scroll feel */
 .rv-motion-on .rv-reveal[data-animate="peak-fade"]:not(.is-inview) {
-  transform: translate3d(0, 18px, 0);
+  transform: translate3d(0, 32px, 0) scale(0.985);
   opacity: 0;
 }
 
@@ -5829,11 +5828,19 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ── Mobile polish (Yucca-tight + Peak soft motion) ── */
 @media (max-width: 767px) {
+  /* Phone: Peak soft fade everywhere — no heavy 3D that feels broken */
+  .rv-motion-on .rv-reveal:not(.is-inview),
   .rv-motion-on .rv-reveal[data-animate="tilt-left"]:not(.is-inview),
   .rv-motion-on .rv-reveal[data-animate="tilt-right"]:not(.is-inview),
   .rv-motion-on .rv-reveal[data-animate="flip"]:not(.is-inview),
-  .rv-motion-on .rv-reveal[data-animate="zoom"]:not(.is-inview) {
-    transform: translate3d(0, 22px, 0);
+  .rv-motion-on .rv-reveal[data-animate="zoom"]:not(.is-inview),
+  .rv-motion-on .rv-reveal[data-animate="rise"]:not(.is-inview),
+  .rv-motion-on .rv-reveal[data-animate="slide-left"]:not(.is-inview),
+  .rv-motion-on .rv-reveal[data-animate="slide-right"]:not(.is-inview),
+  .rv-motion-on .rv-reveal[data-animate="bounce"]:not(.is-inview),
+  .rv-motion-on .rv-reveal[data-animate="peak-fade"]:not(.is-inview) {
+    transform: translate3d(0, 26px, 0);
+    opacity: 0;
   }
 
   .rv-yx {
@@ -5891,81 +5898,112 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .rv-tx-media {
-    min-height: 420px;
-    padding: 1.1rem;
+    min-height: 0;
+    padding: 1.1rem 1.1rem 1.35rem;
     border-radius: 22px;
     box-shadow: 5px 6px 0 0 var(--primary);
+  }
+
+  .rv-tx-media__top {
+    gap: 0.5rem;
+  }
+
+  .rv-tx-media__pills span {
+    font-size: 0.62rem;
+    padding: 0.28rem 0.5rem;
   }
 
   .rv-tx-media__title {
     font-size: clamp(1.55rem, 6.5vw, 1.95rem);
     max-width: 14ch;
+    margin-top: 0.75rem;
   }
 
   .rv-tx-media__art {
-    min-height: 240px;
-    margin-top: 0.85rem;
+    min-height: 260px;
+    margin-top: 0.65rem;
   }
 
   .rv-tx-media__art .rv-dual-img {
-    width: min(100%, 220px);
-    height: 240px;
+    width: min(100%, 240px);
+    height: 260px;
   }
 
   .rv-tx-media__badge {
-    width: 78px;
-    height: 78px;
+    width: 84px;
+    height: 84px;
+    left: 0.65rem;
+    bottom: 0.65rem;
   }
 
   .rv-tx-media__badge em {
-    font-size: 0.82rem;
+    font-size: 0.88rem;
+  }
+
+  .rv-tx-copy {
+    padding: 0 0.15rem;
   }
 
   .rv-tx-copy__desc {
     font-size: 0.98rem;
+    line-height: 1.6;
   }
 
   .rv-tx-pickers {
     grid-template-columns: 1fr;
     gap: 0.65rem;
+    margin-top: 1rem;
   }
 
   .rv-tx-picker {
-    padding: 0.85rem 0.75rem;
-    min-height: 72px;
+    padding: 0.9rem 0.8rem;
+    min-height: 76px;
+    border-radius: 16px;
+  }
+
+  .rv-tx-picker.is-active {
+    box-shadow: 3px 4px 0 0 var(--primary);
   }
 
   .rv-tx-picker__thumb {
-    width: 48px;
-    height: 48px;
+    width: 52px;
+    height: 52px;
   }
 
   .rv-tx-includes {
     margin-top: 1.15rem;
   }
 
+  .rv-tx-includes li {
+    font-size: 0.92rem;
+  }
+
   .rv-tx-guarantee {
-    padding: 0.9rem;
+    padding: 0.95rem;
+    margin-top: 1rem;
   }
 
   .rv-tx-cta-row {
     align-items: stretch;
     flex-direction: column;
     gap: 0.85rem;
+    margin-top: 1.25rem;
   }
 
   .rv-tx-cta {
     width: 100%;
     min-height: 54px;
     font-size: 1.02rem;
+    box-shadow: 3px 4px 0 rgba(11, 19, 43, 0.22);
   }
 
   .rv-tx-cta-row__price strong {
-    font-size: 1.75rem;
+    font-size: 1.85rem;
   }
 
   .rv-tx-more {
-    margin-top: 0.5rem;
+    margin-top: 0.55rem;
+    font-size: 0.9rem;
   }
 
   .rv-yx-catalog__intro {

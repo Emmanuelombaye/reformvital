@@ -83,7 +83,7 @@ export default function TreatmentsPage() {
     <>
       <Navbar />
       <main className="rv-yx-catalog rv-yx-catalog--explore">
-        <header className="rv-yx-catalog__intro" data-animate="rise">
+        <header className="rv-yx-catalog__intro" data-animate="peak-fade">
           <p className="eyebrow">BROWSE BY TREATMENT</p>
           <h1>
             Explore our treatments below and choose what&apos;s best <em>for you</em>.

@@ -45,7 +45,7 @@ export default function Treatments() {
     <section className="rv-yx" id="services" data-tone={meta.tone}>
       <div className="rv-yx__bg" aria-hidden />
 
-      <div className="rv-yx__head" data-animate="rise">
+      <div className="rv-yx__head" data-animate="peak-fade">
         <p className="rv-yx__eyebrow">Browse by treatment</p>
         <h2>
           Explore our treatments below and choose what&apos;s best <em>for you</em>
@@ -56,7 +56,7 @@ export default function Treatments() {
         </p>
       </div>
 
-      <div className="rv-yx__tabs-wrap" data-animate="rise" data-delay="80">
+      <div className="rv-yx__tabs-wrap" data-animate="peak-fade" data-delay="80">
         <div className="rv-yx__tabs" role="tablist" aria-label="Care categories">
           {services.map((s) => {
             const m = getCategoryMeta(s.id);

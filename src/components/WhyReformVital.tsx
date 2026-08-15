@@ -7,7 +7,7 @@ export default function WhyReformVital() {
   return (
     <section className="rv-why" id="why-reform-vital">
       <div className="container">
-        <div className="rv-why-head section-head" data-animate="rise">
+        <div className="rv-why-head section-head" data-animate="peak-fade">
           <span className="rv-why-eyebrow">CONCIERGE HEALTHCARE</span>
           <h2>{headline}</h2>
           <p>{subtitle}</p>
@@ -18,8 +18,8 @@ export default function WhyReformVital() {
             <article
               key={pillar.title}
               className="rv-why-card"
-              data-animate="tilt-left"
-              data-delay={String(i * 100)}
+              data-animate="peak-fade"
+              data-delay={String(i * 80)}
               data-tilt
             >
               {"image" in pillar && pillar.image ? (
