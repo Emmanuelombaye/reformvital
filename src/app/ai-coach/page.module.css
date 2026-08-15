@@ -1,13 +1,27 @@
 ﻿.page {
   background: var(--surface);
   min-height: 100vh;
+  overflow-x: clip;
 }
 
-/* Full-bleed Yucca hero — lifestyle-toast is ~16:9 */
+.deliverMedia {
+  position: relative;
+  isolation: isolate;
+  aspect-ratio: 3 / 2;
+  min-height: 0;
+  min-width: 0;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  border: 1.5px solid rgba(13, 27, 42, 0.1);
+  box-shadow: 0 20px 48px rgba(13, 27, 42, 0.12);
+  background: #e8f0ee;
+}
 .heroBleed {
   position: relative;
+  isolation: isolate;
   aspect-ratio: 16 / 9;
-  min-height: 0;
+  min-height: clamp(22rem, 58vw, 36rem);
+  max-height: 42rem;
   display: flex;
   align-items: flex-end;
   overflow: hidden;
@@ -18,19 +32,22 @@
 .heroBleedMedia {
   position: absolute;
   inset: 0;
+  z-index: 0;
+  overflow: hidden;
 }
 
 .heroBleedScrim {
   position: absolute;
   inset: 0;
+  z-index: 1;
   background:
     linear-gradient(180deg, rgba(7, 14, 23, 0.35) 0%, rgba(7, 14, 23, 0.55) 45%, rgba(7, 14, 23, 0.92) 100%),
-    linear-gradient(90deg, rgba(7, 14, 23, 0.75) 0%, transparent 55%);
+    linear-gradient(90deg, rgba(7, 14, 23, 0.82) 0%, rgba(7, 14, 23, 0.35) 55%, transparent 78%);
 }
 
 .heroBleedInner {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   padding: 4.5rem 1.25rem 3.25rem;
   max-width: 42rem;
 }
@@ -199,17 +216,6 @@
   color: var(--accent);
 }
 
-.deliverMedia {
-  position: relative;
-  aspect-ratio: 3 / 2;
-  min-height: 0;
-  border-radius: 1.5rem;
-  overflow: hidden;
-  border: 1.5px solid rgba(13, 27, 42, 0.1);
-  box-shadow: 0 20px 48px rgba(13, 27, 42, 0.12);
-  background: #e8f0ee;
-}
-
 .deliverMediaContain {
   background: linear-gradient(165deg, #f7f5f0 0%, #eef2f1 100%);
   padding: 1.25rem;
@@ -240,12 +246,12 @@
 
 .imageWrapper {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   overflow: hidden;
   background: rgba(0, 168, 150, 0.03);
+  border-radius: inherit;
 }
 
 .imageWrapper::before {
@@ -280,18 +286,11 @@
 
 .smoothImage {
   opacity: 0;
-  filter: blur(12px);
-  transform: scale(1.04);
-  transition:
-    opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1),
-    filter 0.8s cubic-bezier(0.25, 1, 0.5, 1),
-    transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: opacity 0.55s ease;
 }
 
 .smoothImageLoaded {
   opacity: 1;
-  filter: blur(0);
-  transform: scale(1);
 }
 
 .workflowSection {
@@ -467,7 +466,7 @@
 }
 
 .metricsDetailsList li::before {
-  content: "âœ¦";
+  content: "•";
   color: var(--accent);
   font-weight: 900;
   position: absolute;
@@ -709,37 +708,62 @@
   margin-top: 0.75rem;
 }
 
-/* Demo Section â€” split with lifestyle */
+/* Demo section — split with lifestyle (never overlap copy) */
 .demoSection {
   background: #070e17;
   color: #fff;
-  padding: 4rem 0;
+  padding: clamp(3rem, 6vw, 4.5rem) 0;
+  overflow: hidden;
 }
 
 .demoSplit {
   display: grid;
-  gap: 1.5rem;
-  align-items: stretch;
+  gap: 1.75rem;
+  align-items: start;
+  grid-template-columns: 1fr;
 }
 
-@media (min-width: 900px) {
+@media (min-width: 960px) {
   .demoSplit {
-    grid-template-columns: 0.9fr 1.1fr;
-    gap: 2rem;
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.15fr);
+    gap: 2.25rem;
+    align-items: stretch;
+  }
+
+  .demoLifestyle {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .demoPanel {
+    grid-column: 2;
+    grid-row: 1;
   }
 }
 
 .demoLifestyle {
   position: relative;
-  aspect-ratio: 3 / 2;
-  min-height: 0;
+  isolation: isolate;
+  aspect-ratio: 4 / 3;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
   border-radius: 1.5rem;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #13253a;
+}
+
+.demoLifestyle .imageWrapper,
+.demoLifestyle .smoothImage {
+  max-width: 100%;
 }
 
 .demoPanel {
   min-width: 0;
+  max-width: 100%;
+  position: relative;
+  z-index: 1;
 }
 
 .demoKicker {
@@ -755,16 +779,17 @@
 }
 
 .demoTitle {
-  color: #fff;
+  color: #fff !important;
   margin-top: 0.65rem;
   font-size: clamp(1.65rem, 3.1vw, 2.2rem);
   font-weight: 900;
   letter-spacing: -0.02em;
+  line-height: 1.15;
 }
 
 .demoSubtitle {
   margin-top: 0.55rem;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.78);
   line-height: 1.55;
 }
 
@@ -954,12 +979,13 @@
 
 @media (max-width: 640px) {
   .heroBleed {
-    aspect-ratio: 16 / 9;
-    min-height: 0;
+    aspect-ratio: auto;
+    min-height: 28rem;
+    max-height: none;
   }
 
   .heroBleedInner {
-    padding: 3.5rem 1rem 2.5rem;
+    padding: 3.25rem 1rem 2.35rem;
   }
 
   .trustList {
@@ -974,6 +1000,10 @@
 
   .deliverMediaContain {
     padding: 0.85rem;
+  }
+
+  .demoLifestyle {
+    aspect-ratio: 4 / 3;
   }
 
   .promptButton,

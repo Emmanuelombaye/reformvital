@@ -264,7 +264,7 @@ export default function AICoachPage() {
               alt=""
               fill
               sizes="100vw"
-              style={{ objectFit: "contain", objectPosition: "center center" }}
+              style={{ objectFit: "cover", objectPosition: "center 40%" }}
               placeholder="blur"
               priority
             />
@@ -525,21 +525,11 @@ export default function AICoachPage() {
           </div>
         </section>
 
-        {/* Demo + lifestyle split */}
-        <section id="demo" className={styles.demoSection} data-animate="peak-fade">
+        {/* Demo — copy first in DOM; lifestyle sits left on desktop via grid */}
+        <section id="demo" className={styles.demoSection}>
           <div className="container">
             <div className={styles.demoSplit}>
-              <div className={styles.demoLifestyle}>
-                <SmoothImage
-                  src={lifestyleMindfulness}
-                  alt="Member staying accountable between physician visits"
-                  fill
-                  sizes="(max-width: 900px) 100vw, 42vw"
-                  style={{ objectFit: "contain", objectPosition: "center center" }}
-                  placeholder="blur"
-                />
-              </div>
-              <div className={styles.demoPanel}>
+              <div className={styles.demoPanel} data-animate="peak-fade">
                 <div className={styles.sectionHead} style={{ textAlign: "left", margin: "0 0 1.25rem" }}>
                   <span className={styles.demoKicker}>LIVE DEMO</span>
                   <h2 className={styles.demoTitle}>Test the accountability engine</h2>
@@ -583,6 +573,16 @@ export default function AICoachPage() {
                     Connect portal to AI Coach →
                   </a>
                 </div>
+              </div>
+              <div className={styles.demoLifestyle} aria-hidden data-animate="peak-fade">
+                <SmoothImage
+                  src={lifestyleMindfulness}
+                  alt=""
+                  fill
+                  sizes="(max-width: 960px) 100vw, 42vw"
+                  style={{ objectFit: "cover", objectPosition: "center center" }}
+                  placeholder="blur"
+                />
               </div>
             </div>
           </div>
