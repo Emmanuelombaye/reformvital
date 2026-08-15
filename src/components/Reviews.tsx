@@ -2,33 +2,43 @@ import { brandConfig } from "@/brand.config";
 
 export default function Reviews() {
   return (
-    <section className="section" id="reviews" style={{ background: "var(--color-bg-mint)" }}>
+    <section className="rv-reviews" id="reviews">
       <div className="container">
-        <div style={{ textAlign: "center" }}>
-          <span className="badge badge-teal" style={{ marginBottom: "12px" }}>
-            Patient & Physician Testimonials
-          </span>
-          <h2 className="section-title">Results That Speak for Themselves</h2>
-          <p className="section-subtitle" style={{ margin: "0 auto" }}>
-            Real patient outcomes from physician-guided metabolic and peptide protocols across all 50 states.
+        <header className="rv-reviews__head" data-animate="peak-fade">
+          <span className="rv-reviews__eyebrow">Patient &amp; Physician Testimonials</span>
+          <h2>Results That Speak for Themselves</h2>
+          <p>
+            Real patient outcomes from physician-guided metabolic and peptide protocols
+            across all 50 states.
           </p>
-        </div>
+        </header>
 
-        <div className="treatments-grid" style={{ marginTop: "40px" }}>
+        <div className="rv-reviews__grid">
           {brandConfig.reviews.map((r, i) => (
-            <div className="treatment-card" key={i} style={{ background: "#FFF" }}>
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "14px" }}>
-                <span style={{ color: "var(--color-gold)", fontSize: "1.1rem" }}>★★★★★</span>
-                <span className="badge badge-teal">{r.weightLost}</span>
+            <article
+              className="rv-review-card"
+              key={r.name}
+              data-animate="peak-fade"
+              data-delay={String(i * 70)}
+            >
+              <div className="rv-review-card__top">
+                <span className="rv-review-card__stars" aria-label={`${r.stars} out of 5 stars`}>
+                  {"★".repeat(r.stars)}
+                </span>
+                <span className="rv-review-card__result">{r.weightLost}</span>
               </div>
-              <p style={{ fontSize: "0.95rem", color: "var(--color-text-muted)", lineHeight: 1.7, marginBottom: "20px" }}>
-                &ldquo;{r.text}&rdquo;
-              </p>
-              <div style={{ marginTop: "auto", fontWeight: 800, fontSize: "0.95rem", display: "flex", alignItems: "center", gap: "6px" }}>
-                <span>{r.name}</span>
-                {r.verified && <span style={{ color: "var(--color-teal)", fontSize: "0.8rem", fontWeight: 700 }}>✓ Verified Reform Vital Patient</span>}
-              </div>
-            </div>
+
+              <blockquote className="rv-review-card__quote">
+                <p>&ldquo;{r.text}&rdquo;</p>
+              </blockquote>
+
+              <footer className="rv-review-card__footer">
+                <strong>{r.name}</strong>
+                {r.verified ? (
+                  <span className="rv-review-card__verified">Verified Reform Vital patient</span>
+                ) : null}
+              </footer>
+            </article>
           ))}
         </div>
       </div>
