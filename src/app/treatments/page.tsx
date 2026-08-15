@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import Image from "next/image";
 import { brandConfig } from "@/brand.config";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -12,17 +13,17 @@ const EXPECT_WEEKS = [
   {
     tag: "Week 1–2",
     text: "Onboarding, first doses, and provider check-ins as your body adjusts.",
-    img: "/images/how-step-consult.png",
+    img: "/images/how-step-consult.webp",
   },
   {
     tag: "Week 4–8",
     text: "Titration and follow-up as appetite, energy, and markers stabilize.",
-    img: "/images/how-step-physician.png",
+    img: "/images/how-step-physician.webp",
   },
   {
     tag: "Month 3+",
     text: "Ongoing optimization with portal access, AI coaching, and refills if prescribed.",
-    img: "/images/how-step-ongoing.png",
+    img: "/images/how-step-ongoing.webp",
   },
 ];
 
@@ -115,8 +116,7 @@ export default function TreatmentsPage() {
               >
                 <span>{m.shortLabel}</span>
                 <span className="rv-yx-catalog__tab-img" aria-hidden>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={cutout} alt="" />
+                  <Image src={cutout} alt="" width={72} height={72} sizes="72px" quality={60} />
                 </span>
               </button>
             );
@@ -183,8 +183,14 @@ export default function TreatmentsPage() {
               {EXPECT_WEEKS.map((w) => (
                 <article key={w.tag} className="rv-yx-expect-card">
                   <div className="rv-yx-expect-card__media">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={w.img} alt="" loading="lazy" />
+                    <Image
+                      src={w.img}
+                      alt=""
+                      fill
+                      sizes="(max-width: 900px) 90vw, 30vw"
+                      quality={70}
+                      style={{ objectFit: "contain" }}
+                    />
                   </div>
                   <h3>{w.tag}</h3>
                   <p>{w.text}</p>

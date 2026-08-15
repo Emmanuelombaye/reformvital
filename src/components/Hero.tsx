@@ -15,25 +15,25 @@ export default function Hero() {
       <div className="rv-hero-card">
         {/* Clip media only — keep CTAs outside overflow so buttons never get cut */}
         <div className="rv-hero-media">
-          {/* Desktop: wide split composition */}
+          {/* Desktop only downloads on large viewports (sizes=0px skips mobile) */}
           <Image
-            src="/images/hero-commercial-wide.png"
+            src="/images/hero-commercial-wide.webp"
             alt="Physician telehealth consultation with Reform Vital"
             fill
-            sizes="100vw"
+            sizes="(max-width: 900px) 0px, 100vw"
             className="rv-hero-visual rv-hero-visual--desktop"
             style={{ objectFit: "contain", objectPosition: "center center" }}
-            priority
+            quality={70}
           />
-          {/* Mobile: tall stacked composition — client art is 2:3 */}
+          {/* Mobile — preloaded via media query in layout; skip on desktop */}
           <Image
-            src="/images/hero-commercial-mobile.png"
+            src="/images/hero-commercial-mobile.webp"
             alt="Wellness and longevity lifestyle with Reform Vital"
             fill
-            sizes="100vw"
+            sizes="(max-width: 900px) 100vw, 0px"
             className="rv-hero-visual rv-hero-visual--mobile"
             style={{ objectFit: "contain", objectPosition: "center center" }}
-            priority
+            quality={70}
           />
           <div className="rv-hero-scrim" aria-hidden />
         </div>

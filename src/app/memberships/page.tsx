@@ -10,7 +10,7 @@ export default function MembershipsPage() {
       <main>
         <section className="rv-page-hero rv-page-hero--photo">
           <Image
-            src="/images/membership-hero.png"
+            src="/images/membership-hero.webp"
             alt="Executive membership lifestyle with Reform Vital"
             fill
             priority

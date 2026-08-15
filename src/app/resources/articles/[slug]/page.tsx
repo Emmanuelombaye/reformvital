@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AcademyStickyNav from "@/components/academy/AcademyStickyNav";
+import FastImg from "@/components/FastImg";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
@@ -42,8 +43,14 @@ export default async function ArticlePage({
             <p className="rv-article-lead">{article.summary}</p>
 
             <div className="rv-article-hero-media">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={article.image} alt="" />
+              <FastImg
+                src={article.image}
+                alt=""
+                width={1200}
+                height={800}
+                sizes="(max-width: 900px) 100vw, 800px"
+                priority
+              />
             </div>
 
             <section className="rv-article-block">

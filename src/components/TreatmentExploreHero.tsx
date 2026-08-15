@@ -1,6 +1,7 @@
 "use client";
 
 import DualProductImage from "@/components/DualProductImage";
+import Image from "next/image";
 import { getTherapyStagePair } from "@/lib/treatmentCatalog";
 
 const PLAN_INCLUDES = [
@@ -41,7 +42,7 @@ export default function TreatmentExploreHero({
   const selected = therapies.find((t) => t.slug === selectedSlug) || therapies[0];
   const stage = selected
     ? getTherapyStagePair(selected.slug)
-    : { primary: "/images/vial-glp1.png", secondary: "/images/packs/glp1-a.png" };
+    : { primary: "/images/vial-glp1.webp", secondary: "/images/packs/glp1-a.webp" };
   const rawPrice = selected?.price || "$149";
   const priceIsMo = /\/mo$/i.test(rawPrice);
   const priceLabel = rawPrice.replace(/\/mo$/i, "");
@@ -107,8 +108,7 @@ export default function TreatmentExploreHero({
                   onClick={() => onSelectTherapy(t.slug)}
                 >
                   <span className="rv-tx-picker__thumb">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={thumb} alt="" />
+                    <Image src={thumb} alt="" width={64} height={64} sizes="64px" quality={60} />
                   </span>
                   <span className="rv-tx-picker__text">
                     <strong>{t.name}</strong>

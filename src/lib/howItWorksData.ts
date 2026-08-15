@@ -7,7 +7,7 @@ export const HOW_STEPS = [
     titleItalic: "treatment plan",
     body: "Browse physician-guided pathways—GLP-1, hormones, peptides, longevity—and pick the plan that matches your goals. Then complete a short medical history so our providers can confirm you're a good fit.",
     image: {
-      src: "/images/featured-metabolic.png",
+      src: "/images/featured-metabolic.webp",
       alt: "Reform Vital personalized treatment pathways",
       aspect: "16/9",
     },
@@ -24,7 +24,7 @@ export const HOW_STEPS = [
     titleItalic: "verify identity",
     body: "Complete your secure intake, then verify your identity with a quick ID step. It's a standard part of telehealth—and it keeps prescriptions issued safely.",
     image: {
-      src: "/images/start-wellness.png",
+      src: "/images/start-wellness.webp",
       alt: "Secure Reform Vital checkout and identity verification",
       aspect: "4/5",
     },
@@ -36,7 +36,7 @@ export const HOW_STEPS = [
     titleItalic: "reviews intake",
     body: "A licensed U.S. provider reviews your medical history—typically within 24 hours. If they need clarification or have recommendations, they'll follow up directly. No office visit required.",
     image: {
-      src: "/images/how-step-physician.png",
+      src: "/images/how-step-physician.webp",
       alt: "Licensed provider reviewing Reform Vital patient intake",
       aspect: "1/1",
     },
@@ -48,7 +48,7 @@ export const HOW_STEPS = [
     titleItalic: "medication",
     body: "Once approved, your prescription is sent to a licensed partner pharmacy and fulfilled to your exact plan. Medication ships via expedited cold-chain delivery—discreetly packaged to your door.",
     image: {
-      src: "/images/member-rx.png",
+      src: "/images/member-rx.webp",
       alt: "Reform Vital medication delivered in discreet packaging",
       aspect: "1/1",
     },
@@ -64,7 +64,7 @@ export const HOW_STEPS = [
     titleItalic: "treatment",
     body: "Care doesn't stop at delivery. From day one you get patient portal access, onboarding guidance, AI coaching between visits, and a care team for questions and adjustments.",
     image: {
-      src: "/images/member-renew.png",
+      src: "/images/member-renew.webp",
       alt: "Patient starting treatment with Reform Vital care support",
       aspect: "3/2",
     },
@@ -75,7 +75,7 @@ export const HOW_STEPS = [
 export const HOW_WHY = [
   {
     image: {
-      src: "/images/packs/glp1-a.png",
+      src: "/images/packs/glp1-a.webp",
       alt: "Reform Vital pharmaceutical-grade treatment packaging",
     },
     title: "Transparent & Trusted",
@@ -83,7 +83,7 @@ export const HOW_WHY = [
   },
   {
     image: {
-      src: "/images/doctor_portrait.png",
+      src: "/images/doctor_portrait.webp",
       alt: "Licensed Reform Vital medical provider",
       aspect: "1/1",
     },
@@ -92,7 +92,7 @@ export const HOW_WHY = [
   },
   {
     image: {
-      src: "/images/about-longevity.png",
+      src: "/images/about-longevity.webp",
       alt: "Clinically guided healthy aging journey",
       aspect: "3/2",
     },
@@ -103,11 +103,11 @@ export const HOW_WHY = [
 
 export const HOW_MEDIA = {
   priority: {
-    src: "/images/portal-performance.png",
+    src: "/images/portal-performance.webp",
     alt: "Reform Vital patient portal and progress tracking",
   },
   cta: {
-    src: "/images/lifestyle-morning.png",
+    src: "/images/lifestyle-morning.webp",
     alt: "Begin Reform Vital provider-led care",
   },
 } as const;

@@ -171,100 +171,101 @@ DEFAULT_TRIM: dict[str, float] = {
 # trim=None → DEFAULT_TRIM; pass {} to skip trimming for a specific asset.
 REPLACEMENTS: list[tuple[str, str, int, int, str, dict[str, float] | None]] = [
     # ── Heroes (Batch 1) ──
-    ("01", "hero-commercial-wide.png", 1536, 1024, "PNG", None),
-    ("03", "hero-commercial-mobile.png", 1024, 1536, "PNG", None),
+    ("01", "hero-commercial-wide.webp", 1536, 1024, "PNG", None),
+    ("03", "hero-commercial-mobile.webp", 1024, 1536, "PNG", None),
     # ── How it works ──
-    ("01", "how-step-consult.png", 1024, 1024, "PNG", None),
-    ("02", "how-step-physician.png", 1024, 1024, "PNG", None),
-    ("27", "how-step-delivery.png", 1024, 1024, "PNG", None),  # clinic / pharmacy facility
-    ("38", "how-step-ongoing.png", 1024, 1024, "PNG", None),
+    ("01", "how-step-consult.webp", 1024, 1024, "PNG", None),
+    ("02", "how-step-physician.webp", 1024, 1024, "PNG", None),
+    ("27", "how-step-delivery.webp", 1024, 1024, "PNG", None),  # clinic / pharmacy facility
+    ("38", "how-step-ongoing.webp", 1024, 1024, "PNG", None),
     # Homepage featured metabolic block — client lifestyle (not studio product)
-    ("18", "featured-metabolic.png", 2752, 1536, "PNG", None),
+    ("18", "featured-metabolic.webp", 2752, 1536, "PNG", None),
     # Medical team — client clinical scenes (prefer over AI portraits)
-    ("26", "doctor-wasef.png", 1024, 1024, "PNG", None),
-    ("26", "doctor_portrait.png", 1024, 1024, "PNG", None),
-    ("32", "doctor-sakla.png", 1024, 1024, "PNG", None),
+    ("26", "doctor-wasef.webp", 1024, 1024, "PNG", None),
+    ("26", "doctor_portrait.webp", 1024, 1024, "PNG", None),
+    ("32", "doctor-sakla.webp", 1024, 1024, "PNG", None),
     # ── AI coach ──
-    ("38", "ai_coach_dashboard.png", 1536, 1024, "PNG", None),
-    ("39", "ai_coach_patient.png", 1536, 1024, "PNG", None),
-    ("26", "ai_coach_doctor.png", 1536, 1024, "PNG", None),
+    ("38", "ai_coach_dashboard.webp", 1536, 1024, "PNG", None),
+    ("39", "ai_coach_patient.webp", 1536, 1024, "PNG", None),
+    ("26", "ai_coach_doctor.webp", 1536, 1024, "PNG", None),
     # ── Resources / academy ──
-    ("22", "resource-hormones.jpg", 1536, 1024, "JPEG", None),
-    ("38", "resource-ai-coach.jpg", 1536, 1024, "JPEG", None),
-    ("43", "resource-longevity.jpg", 1536, 1024, "JPEG", None),
-    ("41", "resource-recovery.jpg", 1536, 1024, "JPEG", None),
-    ("19", "academy-nutrition.png", 1024, 1024, "PNG", None),
-    ("20", "academy-recipes.png", 1024, 1024, "PNG", None),
-    ("42b", "academy-supplements.png", 1024, 1024, "PNG", None),
-    ("17", "resource-nutrition-bowl.jpg", 1536, 1024, "JPEG", None),
+    ("22", "resource-hormones.webp", 1536, 1024, "JPEG", None),
+    ("38", "resource-ai-coach.webp", 1536, 1024, "JPEG", None),
+    ("43", "resource-longevity.webp", 1536, 1024, "JPEG", None),
+    ("41", "resource-recovery.webp", 1536, 1024, "JPEG", None),
+    ("19", "academy-nutrition.webp", 1024, 1024, "PNG", None),
+    ("20", "academy-recipes.webp", 1024, 1024, "PNG", None),
+    ("42b", "academy-supplements.webp", 1024, 1024, "PNG", None),
+    ("17", "resource-nutrition-bowl.webp", 1536, 1024, "JPEG", None),
     # ── Facility / recovery lifestyle tiles ──
-    ("27", "hero_showcase.png", 1024, 1024, "PNG", None),
-    ("41", "bpc_tissue.png", 1024, 1024, "PNG", None),
-    ("41", "recovery_bpc157.png", 1024, 1024, "PNG", None),
-    ("41", "Recovery & Tissue.png", 2752, 1536, "PNG", None),
-    ("05", "longevity_nad.png", 1024, 1024, "PNG", None),
+    ("27", "hero_showcase.webp", 1024, 1024, "PNG", None),
+    ("41", "bpc_tissue.webp", 1024, 1024, "PNG", None),
+    ("41", "recovery_bpc157.webp", 1024, 1024, "PNG", None),
+    ("41", "Recovery & Tissue.webp", 2752, 1536, "PNG", None),
+    ("05", "longevity_nad.webp", 1024, 1024, "PNG", None),
     # TRT / hormones — gym strength is on-theme
-    ("22", "TRTTestosterone.png", 2752, 1536, "PNG", None),
+    ("22", "TRTTestosterone.webp", 2752, 1536, "PNG", None),
     # ── Treatment heroes — CLIENT photos only (replace prior studio regen) ──
     # GLP-1 / weight loss → telehealth consult + metabolic lifestyle
-    ("01", "Tirzepatide.png", 2752, 1536, "PNG", None),
-    ("01", "tirzepatide_hero.png", 1024, 1024, "PNG", None),
-    ("18", "weight_loss_glp1.png", 1024, 1024, "PNG", None),
-    ("18", "resource-glp1.jpg", 1536, 1024, "JPEG", None),
+    ("01", "Tirzepatide.webp", 2752, 1536, "PNG", None),
+    ("01", "tirzepatide_hero.webp", 1024, 1024, "PNG", None),
+    ("18", "weight_loss_glp1.webp", 1024, 1024, "PNG", None),
+    ("18", "resource-glp1.webp", 1536, 1024, "JPEG", None),
     # Growth hormone / Sermorelin → morning vitality lifestyle
-    ("21", "Sermorelin.png", 2752, 1536, "PNG", None),
-    ("21", "sermorelin_hero.png", 1024, 1024, "PNG", None),
+    ("21", "Sermorelin.webp", 2752, 1536, "PNG", None),
+    ("21", "sermorelin_hero.webp", 1024, 1024, "PNG", None),
     # NAD+ / longevity therapy → IV clinical renewal (best client match)
-    ("37", "NAD+ Cellular.png", 2752, 1536, "PNG", None),
-    ("28", "nad_cellular.png", 1024, 1024, "PNG", None),
+    ("37", "NAD+ Cellular.webp", 2752, 1536, "PNG", None),
+    ("28", "nad_cellular.webp", 1024, 1024, "PNG", None),
     # Cognitive peptides → focus / mindfulness
-    ("33", "Neuropeptide.png", 2752, 1536, "PNG", None),
+    ("33", "Neuropeptide.webp", 2752, 1536, "PNG", None),
     # Sexual wellness → couple lifestyle
-    ("46", "Bremelanotide.png", 2752, 1536, "PNG", None),
+    ("46", "Bremelanotide.webp", 2752, 1536, "PNG", None),
     # Hair — no hair-specific shoot; polished lifestyle male is closest client fit
-    ("14", "Minoxidil.png", 2752, 1536, "PNG", None),
+    ("14", "Minoxidil.webp", 2752, 1536, "PNG", None),
     # ── Transformations (results lifestyle) ──
-    ("14", "1.png", 2752, 1536, "PNG", None),
-    ("30", "2.png", 2752, 1536, "PNG", None),
-    ("39", "3.png", 2752, 1536, "PNG", None),
-    ("40", "4.png", 2752, 1536, "PNG", None),
-    ("35", "5.png", 2752, 1536, "PNG", None),
-    ("24", "6.png", 2752, 1536, "PNG", None),
-    ("44b", "7.png", 2752, 1536, "PNG", None),
-    ("45", "8.png", 2752, 1536, "PNG", None),
+    ("14", "1.webp", 2752, 1536, "PNG", None),
+    ("30", "2.webp", 2752, 1536, "PNG", None),
+    ("39", "3.webp", 2752, 1536, "PNG", None),
+    ("40", "4.webp", 2752, 1536, "PNG", None),
+    ("35", "5.webp", 2752, 1536, "PNG", None),
+    ("24", "6.webp", 2752, 1536, "PNG", None),
+    ("44b", "7.webp", 2752, 1536, "PNG", None),
+    ("45", "8.webp", 2752, 1536, "PNG", None),
     # ── About / membership / why / start / portal ──
-    ("04", "about-villa.png", 1536, 1024, "PNG", None),
-    ("25", "about-longevity.png", 1536, 1024, "PNG", None),
-    ("12", "membership-hero.png", 1536, 1024, "PNG", None),
-    ("15", "portal-performance.png", 1536, 1024, "PNG", None),
-    ("31", "start-wellness.png", 1024, 1280, "PNG", None),
-    ("11", "why-personalized.png", 1024, 1024, "PNG", None),
-    ("18", "why-support.png", 1024, 1024, "PNG", None),
-    ("23", "why-wellness.png", 1024, 1024, "PNG", None),
-    ("32", "why-evidence.png", 1024, 1024, "PNG", None),
-    ("13", "story-habits.png", 1536, 1024, "PNG", None),
-    ("36", "story-nutrition.png", 1024, 1024, "PNG", None),
-    ("16", "member-nutrition.png", 1024, 1024, "PNG", None),
-    ("28", "member-clinical.png", 1024, 1024, "PNG", None),
-    ("37", "member-renew.png", 1536, 1024, "PNG", None),
-    ("29", "member-rx.png", 1024, 1024, "PNG", None),
-    ("21", "lifestyle-morning.png", 1024, 1024, "PNG", None),
-    ("33", "lifestyle-education.png", 1024, 1024, "PNG", None),
-    ("44", "lifestyle-mindfulness.png", 1536, 1024, "PNG", None),
-    ("45s8", "product-sachets.png", 1024, 1024, "PNG", None),
-    ("46", "lifestyle-toast.png", 2752, 1536, "PNG", None),
+    ("04", "about-villa.webp", 1536, 1024, "PNG", None),
+    ("25", "about-longevity.webp", 1536, 1024, "PNG", None),
+    ("12", "membership-hero.webp", 1536, 1024, "PNG", None),
+    ("15", "portal-performance.webp", 1536, 1024, "PNG", None),
+    ("31", "start-wellness.webp", 1024, 1280, "PNG", None),
+    ("11", "why-personalized.webp", 1024, 1024, "PNG", None),
+    ("18", "why-support.webp", 1024, 1024, "PNG", None),
+    ("23", "why-wellness.webp", 1024, 1024, "PNG", None),
+    ("32", "why-evidence.webp", 1024, 1024, "PNG", None),
+    ("13", "story-habits.webp", 1536, 1024, "PNG", None),
+    ("36", "story-nutrition.webp", 1024, 1024, "PNG", None),
+    ("16", "member-nutrition.webp", 1024, 1024, "PNG", None),
+    ("28", "member-clinical.webp", 1024, 1024, "PNG", None),
+    ("37", "member-renew.webp", 1536, 1024, "PNG", None),
+    ("29", "member-rx.webp", 1024, 1024, "PNG", None),
+    ("21", "lifestyle-morning.webp", 1024, 1024, "PNG", None),
+    ("33", "lifestyle-education.webp", 1024, 1024, "PNG", None),
+    ("44", "lifestyle-mindfulness.webp", 1536, 1024, "PNG", None),
+    ("45s8", "product-sachets.webp", 1024, 1024, "PNG", None),
+    ("46", "lifestyle-toast.webp", 2752, 1536, "PNG", None),
 ]
 
 
 def save(crop: Image.Image, path: Path, w: int, h: int, fmt: str) -> None:
-    out = cover_crop(crop.convert("RGB"), w, h)
-    path.parent.mkdir(parents=True, exist_ok=True)
-    # Avoid optimize=True — extremely slow on large PNG exports on Windows.
-    if fmt == "JPEG":
-        out.save(path, "JPEG", quality=88)
-    else:
-        out.save(path, "PNG", compress_level=1)
-    print(f"  {path.name} <- {w}x{h} ({fmt})", flush=True)
+    # Cap export size for web delivery (WebP ~80 quality).
+    max_edge = 1920
+    scale = min(1.0, max_edge / max(w, h))
+    tw, th = max(1, int(w * scale)), max(1, int(h * scale))
+    out = cover_crop(crop.convert("RGB"), tw, th)
+    dest = path if path.suffix.lower() == ".webp" else path.with_suffix(".webp")
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    out.save(dest, "WEBP", quality=80, method=4)
+    print(f"  {dest.name} <- {tw}x{th} (WEBP)", flush=True)
 
 
 def main() -> None:

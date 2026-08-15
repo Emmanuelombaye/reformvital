@@ -225,7 +225,7 @@ export const brandConfig = {
       category: "Medical Weight Loss",
       price: "$149/mo",
       tagline: "Weekly GLP-1 subcutaneous injection compounded with Cyanocobalamin (Vitamin B12)",
-      image: "/images/weight_loss_glp1.png",
+      image: "/images/weight_loss_glp1.webp",
       badge: "MOST POPULAR GLP-1",
       description:
         "Compounded Semaglutide is a physician-prescribed weekly injection that mimics the natural GLP-1 hormone. It acts on brain centers to reduce appetite, slow gastric emptying, and promote sustained, clinically significant weight reduction.",
@@ -243,7 +243,7 @@ export const brandConfig = {
       category: "Medical Weight Loss",
       price: "$249/mo",
       tagline: "Dual GLP-1 + GIP receptor agonist weekly injection for maximum appetite control",
-      image: "/images/weight_loss_glp1.png",
+      image: "/images/weight_loss_glp1.webp",
       badge: "MAXIMUM RESULTS",
       description:
         "Compounded Tirzepatide targets both GLP-1 and GIP receptors simultaneously. This dual mechanism provides superior glucose regulation, powerful appetite suppression, and accelerated fat reduction.",
@@ -261,7 +261,7 @@ export const brandConfig = {
       category: "Hormone Optimization",
       price: "$129/mo",
       tagline: "Physician-guided bioidentical testosterone replacement for vitality, libido & muscle growth",
-      image: "/images/weight_loss_glp1.png",
+      image: "/images/weight_loss_glp1.webp",
       badge: "HORMONE BALANCE",
       description:
         "Reform Vital's TRT protocol restores optimal physiological testosterone levels in men experiencing low energy, diminished libido, brain fog, or loss of lean muscle mass.",
@@ -279,7 +279,7 @@ export const brandConfig = {
       category: "Recovery & Repair",
       price: "$159/mo",
       tagline: "Body Protection Compound pentadecapeptide for rapid tendon, gut & tissue healing",
-      image: "/images/recovery_bpc157.png",
+      image: "/images/recovery_bpc157.webp",
       badge: "RECOVERY PEPTIDE",
       description:
         "BPC-157 is a sequence of 15 amino acids derived from human gastric juice. It promotes angiogenesis, accelerates collagen synthesis, and heals damaged tendons, ligaments, joint tissues, and gut mucosal lining.",
@@ -297,7 +297,7 @@ export const brandConfig = {
       category: "Longevity & Healthy Aging",
       price: "$199/mo",
       tagline: "Nicotinamide Adenine Dinucleotide injection for cellular ATP, DNA repair & longevity",
-      image: "/images/longevity_nad.png",
+      image: "/images/longevity_nad.webp",
       badge: "LONGEVITY COENZYME",
       description:
         "NAD+ is a vital coenzyme present in every cell. It powers mitochondrial ATP production, activates sirtuin longevity enzymes, repairs damaged DNA, and reverses cellular aging.",
@@ -315,7 +315,7 @@ export const brandConfig = {
       category: "Growth Hormone Optimization",
       price: "$189/mo",
       tagline: "Growth hormone secretagogue stimulating natural pituitary hGH secretion",
-      image: "/images/Sermorelin.png",
+      image: "/images/Sermorelin.webp",
       badge: "HGH SECRETAGOGUE",
       description:
         "Sermorelin is a GHRH secretagogue that stimulates your pituitary gland to naturally produce and secrete human Growth Hormone (hGH), supporting deep sleep, fat burning, and skin elasticity.",
@@ -333,7 +333,7 @@ export const brandConfig = {
       category: "Medical Weight Loss",
       price: "Custom",
       tagline: "Triple GIP / GLP-1 / Glucagon agonist research protocol for advanced metabolic reset",
-      image: "/images/Tirzepatide.png",
+      image: "/images/Tirzepatide.webp",
       badge: "ADVANCED METABOLIC",
       description:
         "Retatrutide is an investigational-style triple-agonist pathway protocol evaluated by Reform Vital physicians for patients who need intensified metabolic support beyond dual GLP-1/GIP therapy.",
@@ -351,7 +351,7 @@ export const brandConfig = {
       category: "Hormone Optimization",
       price: "$119/mo",
       tagline: "Physician-guided progesterone, estradiol, and low-dose testosterone balancing",
-      image: "/images/TRTTestosterone.png",
+      image: "/images/TRTTestosterone.webp",
       badge: "WOMEN'S HRT",
       description:
         "A clinician-led hormone protocol designed for women navigating perimenopause, menopause, low energy, mood shifts, or libido changes—with labs informing a personalized prescription plan.",
@@ -369,7 +369,7 @@ export const brandConfig = {
       category: "Hormone Optimization",
       price: "$99/mo",
       tagline: "Endogenous LH/FSH stimulation for fertility-minded hormone support",
-      image: "/images/TRTTestosterone.png",
+      image: "/images/TRTTestosterone.webp",
       badge: "FERTILITY SUPPORT",
       description:
         "HCG and Enclomiphene protocols help stimulate natural LH/FSH signaling—often used alongside TRT strategies when preserving endogenous production and fertility goals matter.",
@@ -387,7 +387,7 @@ export const brandConfig = {
       category: "Growth Hormone Optimization",
       price: "$229/mo",
       tagline: "Potent GHRH analog targeting visceral abdominal fat and body composition",
-      image: "/images/Sermorelin.png",
+      image: "/images/Sermorelin.webp",
       badge: "VISCERAL FAT FOCUS",
       description:
         "Tesamorelin is a growth-hormone-releasing hormone analog used in physician-guided protocols aimed at reducing visceral adipose tissue while supporting recovery and metabolic composition.",
@@ -405,7 +405,7 @@ export const brandConfig = {
       category: "Growth Hormone Optimization",
       price: "$199/mo",
       tagline: "Synergistic GHRH + GHRP peptide combination for recovery and sleep",
-      image: "/images/Sermorelin.png",
+      image: "/images/Sermorelin.webp",
       badge: "PEPTIDE BLEND",
       description:
         "This blend pairs a GHRH analog with Ipamorelin to encourage natural growth-hormone pulses—commonly used for recovery, sleep quality, and body-composition support.",
@@ -423,7 +423,7 @@ export const brandConfig = {
       category: "Recovery & Repair",
       price: "$169/mo",
       tagline: "Angiogenesis and muscle-repair peptide for soft-tissue recovery",
-      image: "/images/Recovery & Tissue.png",
+      image: "/images/Recovery & Tissue.webp",
       badge: "RECOVERY PEPTIDE",
       description:
         "TB-500 is a synthetic fragment related to Thymosin Beta-4 used in regenerative protocols focused on mobility, soft-tissue repair, and recovery after strain.",
@@ -441,7 +441,7 @@ export const brandConfig = {
       category: "Recovery & Repair",
       price: "$139/mo",
       tagline: "Anti-inflammatory tripeptide targeting gut comfort and systemic calm",
-      image: "/images/Recovery & Tissue.png",
+      image: "/images/Recovery & Tissue.webp",
       badge: "GUT & INFLAMMATION",
       description:
         "KPV is a short anti-inflammatory peptide used in physician-guided protocols aimed at gut mucosal support and calming inflammatory signaling.",
@@ -459,7 +459,7 @@ export const brandConfig = {
       category: "Longevity & Healthy Aging",
       price: "$189/mo",
       tagline: "Mitochondrial-derived peptide for metabolic endurance and cellular efficiency",
-      image: "/images/NAD+ Cellular.png",
+      image: "/images/NAD+ Cellular.webp",
       badge: "MITOCHONDRIAL",
       description:
         "MOTS-c is a mitochondrial-encoded peptide protocol used to support metabolic flexibility, exercise endurance signaling, and cellular energy efficiency under medical guidance.",
@@ -477,7 +477,7 @@ export const brandConfig = {
       category: "Longevity & Healthy Aging",
       price: "$149/mo",
       tagline: "Copper peptide for cellular remodeling, skin vitality, and recovery support",
-      image: "/images/NAD+ Cellular.png",
+      image: "/images/NAD+ Cellular.webp",
       badge: "CELLULAR REMODELING",
       description:
         "GHK-Cu is a copper-binding tripeptide used in longevity and restorative protocols for cellular remodeling, skin quality, and tissue support.",
@@ -495,7 +495,7 @@ export const brandConfig = {
       category: "Cognitive Optimization",
       price: "$149/mo",
       tagline: "ACTH-derived neuropeptide supporting BDNF pathways, focus, and mental clarity",
-      image: "/images/Neuropeptide.png",
+      image: "/images/Neuropeptide.webp",
       badge: "FOCUS & BDNF",
       description:
         "Semax is a neuropeptide protocol used under physician guidance to support focus, cognitive resilience, and neurotrophic signaling.",
@@ -513,7 +513,7 @@ export const brandConfig = {
       category: "Cognitive Optimization",
       price: "$149/mo",
       tagline: "Calm-focus peptide supporting stress resilience without heavy sedation",
-      image: "/images/Neuropeptide.png",
+      image: "/images/Neuropeptide.webp",
       badge: "CALM FOCUS",
       description:
         "Selank is used in physician-guided cognitive protocols to promote calm focus and stress mitigation while supporting everyday mental performance.",
@@ -531,7 +531,7 @@ export const brandConfig = {
       category: "Sexual Wellness",
       price: "$139/mo",
       tagline: "Central nervous system peptide for desire and arousal pathway support",
-      image: "/images/Bremelanotide.png",
+      image: "/images/Bremelanotide.webp",
       badge: "LIBIDO SUPPORT",
       description:
         "PT-141 (bremelanotide) acts on melanocortin pathways in the central nervous system and is prescribed for patients seeking physician-guided sexual desire and arousal support.",
@@ -549,7 +549,7 @@ export const brandConfig = {
       category: "Sexual Wellness",
       price: "$69/mo",
       tagline: "Daily or PRN vascular flow optimization for sexual performance",
-      image: "/images/Bremelanotide.png",
+      image: "/images/Bremelanotide.webp",
       badge: "VASCULAR SUPPORT",
       description:
         "PDE5 inhibitor protocols (tadalafil or sildenafil) improve blood-flow signaling for sexual performance and may be prescribed daily or as-needed after clinical screening.",
@@ -567,7 +567,7 @@ export const brandConfig = {
       category: "Hair Restoration",
       price: "$79/mo",
       tagline: "Custom Minoxidil + Finasteride + GHK-Cu protocols for denser, healthier hair",
-      image: "/images/Minoxidil.png",
+      image: "/images/Minoxidil.webp",
       badge: "HAIR PROTOCOL",
       description:
         "A compounded hair-restoration plan combining proven actives and peptide support, tailored after an online physician evaluation of pattern loss and scalp goals.",
@@ -585,7 +585,7 @@ export const brandConfig = {
       category: "Metabolic Health & Preventive Wellness",
       price: "$199",
       tagline: "Physician-reviewed biomarker testing for metabolic, hormone, and longevity baselines",
-      image: "/images/why-evidence.png",
+      image: "/images/why-evidence.webp",
       badge: "LAB FOUNDATION",
       description:
         "A comprehensive metabolic lab panel designed to establish your baseline—glucose markers, lipids, key hormones, and inflammation signals—reviewed by a Reform Vital physician before any protocol begins.",
@@ -603,7 +603,7 @@ export const brandConfig = {
       category: "Metabolic Health & Preventive Wellness",
       price: "$149/mo",
       tagline: "Personalized metabolic optimization with nutrition, lifestyle, and ongoing provider monitoring",
-      image: "/images/longevity_nad.png",
+      image: "/images/longevity_nad.webp",
       badge: "PREVENTIVE CARE",
       description:
         "A physician-guided preventive program combining metabolic assessments, nutrition and lifestyle guidance, and continuous monitoring—so you optimize health before problems escalate.",
@@ -621,7 +621,7 @@ export const brandConfig = {
       category: "Metabolic Health & Preventive Wellness",
       price: "$79/mo",
       tagline: "Measurements, progress photos, and metabolic trend coaching between visits",
-      image: "/images/portal-performance.png",
+      image: "/images/portal-performance.webp",
       badge: "TRACK & THRIVE",
       description:
         "Stay accountable with structured body-composition tracking—measurements, progress photos, and trend insights—reviewed alongside your physician plan and AI coach.",
@@ -794,22 +794,22 @@ export const brandConfig = {
       {
         title: "Personalized Care",
         desc: "Every protocol is tailored to your biomarkers, goals, and lifestyle—not a one-size-fits-all approach.",
-        image: "/images/why-personalized.png",
+        image: "/images/why-personalized.webp",
       },
       {
         title: "Ongoing Provider Support",
         desc: "Licensed physicians stay involved with follow-ups, lab reviews, and treatment adjustments.",
-        image: "/images/why-support.png",
+        image: "/images/why-support.webp",
       },
       {
         title: "Whole-Person Wellness",
         desc: "We address metabolic health, hormones, recovery, longevity, and prevention together.",
-        image: "/images/why-wellness.png",
+        image: "/images/why-wellness.webp",
       },
       {
         title: "Evidence-Based Medicine",
         desc: "Physician-reviewed protocols grounded in clinical science and transparent about what works.",
-        image: "/images/why-evidence.png",
+        image: "/images/why-evidence.webp",
       },
     ],
   },
@@ -832,22 +832,22 @@ export const brandConfig = {
     subtitle:
       "The most trusted destination for health optimization—physician-reviewed guides, actionable tips, and evidence-based education.",
     categories: [
-      { slug: "longevity", label: "Longevity", href: "/resources/category/longevity", image: "/images/about-longevity.png" },
-      { slug: "weight", label: "Weight Optimization", href: "/resources/category/weight", image: "/images/story-nutrition.png" },
-      { slug: "hormones", label: "Hormone Optimization", href: "/resources/category/hormones", image: "/images/resource-hormones.jpg" },
-      { slug: "nutrition", label: "Nutrition", href: "/resources/category/nutrition", image: "/images/academy-nutrition.png" },
-      { slug: "labs", label: "Advanced Labs", href: "/resources/category/labs", image: "/images/why-evidence.png" },
-      { slug: "sleep", label: "Sleep", href: "/resources/category/sleep", image: "/images/8.png" },
-      { slug: "performance", label: "Performance", href: "/resources/category/performance", image: "/images/portal-performance.png" },
-      { slug: "heart", label: "Heart Health", href: "/resources/category/heart", image: "/images/why-support.png" },
-      { slug: "mens", label: "Men's Health", href: "/resources/category/mens", image: "/images/why-personalized.png" },
-      { slug: "womens", label: "Women's Health", href: "/resources/category/womens", image: "/images/why-wellness.png" },
-      { slug: "peptides", label: "Peptide Education", href: "/resources/category/peptides", image: "/images/member-clinical.png" },
-      { slug: "gut", label: "Gut Health", href: "/resources/category/gut", image: "/images/academy-recipes.png" },
-      { slug: "mental", label: "Mental Wellness", href: "/resources/category/mental", image: "/images/lifestyle-mindfulness.png" },
-      { slug: "supplements", label: "Supplements", href: "/resources/category/supplements", image: "/images/academy-supplements.png" },
-      { slug: "recipes", label: "Healthy Recipes", href: "/resources/category/recipes", image: "/images/academy-recipes.png" },
-      { slug: "insights", label: "Physician Insights", href: "/resources/category/insights", image: "/images/story-habits.png" },
+      { slug: "longevity", label: "Longevity", href: "/resources/category/longevity", image: "/images/about-longevity.webp" },
+      { slug: "weight", label: "Weight Optimization", href: "/resources/category/weight", image: "/images/story-nutrition.webp" },
+      { slug: "hormones", label: "Hormone Optimization", href: "/resources/category/hormones", image: "/images/resource-hormones.webp" },
+      { slug: "nutrition", label: "Nutrition", href: "/resources/category/nutrition", image: "/images/academy-nutrition.webp" },
+      { slug: "labs", label: "Advanced Labs", href: "/resources/category/labs", image: "/images/why-evidence.webp" },
+      { slug: "sleep", label: "Sleep", href: "/resources/category/sleep", image: "/images/8.webp" },
+      { slug: "performance", label: "Performance", href: "/resources/category/performance", image: "/images/portal-performance.webp" },
+      { slug: "heart", label: "Heart Health", href: "/resources/category/heart", image: "/images/why-support.webp" },
+      { slug: "mens", label: "Men's Health", href: "/resources/category/mens", image: "/images/why-personalized.webp" },
+      { slug: "womens", label: "Women's Health", href: "/resources/category/womens", image: "/images/why-wellness.webp" },
+      { slug: "peptides", label: "Peptide Education", href: "/resources/category/peptides", image: "/images/member-clinical.webp" },
+      { slug: "gut", label: "Gut Health", href: "/resources/category/gut", image: "/images/academy-recipes.webp" },
+      { slug: "mental", label: "Mental Wellness", href: "/resources/category/mental", image: "/images/lifestyle-mindfulness.webp" },
+      { slug: "supplements", label: "Supplements", href: "/resources/category/supplements", image: "/images/academy-supplements.webp" },
+      { slug: "recipes", label: "Healthy Recipes", href: "/resources/category/recipes", image: "/images/academy-recipes.webp" },
+      { slug: "insights", label: "Physician Insights", href: "/resources/category/insights", image: "/images/story-habits.webp" },
     ],
     topicClusters: [
       {
@@ -932,12 +932,12 @@ export const brandConfig = {
       { title: "Nutrition Playbook", desc: "Protein, macros, and meal planning for protocol success.", href: "/resources/guides/nutrition-playbook" },
     ],
     successStories: [
-      { outcome: "Increased Energy", story: "TRT + Sermorelin stack restored daily vitality and deep REM sleep within 90 days.", href: "/resources/articles/mens-health-vitality", image: "/images/story-habits.png" },
-      { outcome: "Improved Biomarkers", story: "HbA1c dropped from 6.4% to 5.1% with physician-guided Tirzepatide+ and quarterly labs.", href: "/resources/articles/understanding-labs", image: "/images/why-evidence.png" },
-      { outcome: "Sustainable Weight Management", story: "54 lbs lost over 5 months with ongoing provider titration—not a quick fix.", href: "/resources/articles/first-90-days-glp1", image: "/images/story-nutrition.png" },
-      { outcome: "Better Fitness", story: "Recovery peptide protocol plus structured training returned to marathon training pain-free.", href: "/resources/articles/recovery-peptides-overview", image: "/images/why-wellness.png" },
-      { outcome: "Healthy Aging", story: "NAD+ and preventive wellness protocols supporting long-term metabolic health.", href: "/resources/articles/nad-longevity-cellular-energy", image: "/images/about-longevity.png" },
-      { outcome: "Confidence & Lifestyle", story: "Nutrition coaching and GLP-1 support rebuilt sustainable habits—not yo-yo dieting.", href: "/resources/articles/nutrition-weight-management", image: "/images/academy-recipes.png" },
+      { outcome: "Increased Energy", story: "TRT + Sermorelin stack restored daily vitality and deep REM sleep within 90 days.", href: "/resources/articles/mens-health-vitality", image: "/images/story-habits.webp" },
+      { outcome: "Improved Biomarkers", story: "HbA1c dropped from 6.4% to 5.1% with physician-guided Tirzepatide+ and quarterly labs.", href: "/resources/articles/understanding-labs", image: "/images/why-evidence.webp" },
+      { outcome: "Sustainable Weight Management", story: "54 lbs lost over 5 months with ongoing provider titration—not a quick fix.", href: "/resources/articles/first-90-days-glp1", image: "/images/story-nutrition.webp" },
+      { outcome: "Better Fitness", story: "Recovery peptide protocol plus structured training returned to marathon training pain-free.", href: "/resources/articles/recovery-peptides-overview", image: "/images/why-wellness.webp" },
+      { outcome: "Healthy Aging", story: "NAD+ and preventive wellness protocols supporting long-term metabolic health.", href: "/resources/articles/nad-longevity-cellular-energy", image: "/images/about-longevity.webp" },
+      { outcome: "Confidence & Lifestyle", story: "Nutrition coaching and GLP-1 support rebuilt sustainable habits—not yo-yo dieting.", href: "/resources/articles/nutrition-weight-management", image: "/images/academy-recipes.webp" },
     ],
     monthlyReport: {
       title: "Reform Vital Health Report",
@@ -955,7 +955,7 @@ export const brandConfig = {
       specialty: "Metabolic Health · GLP-1 Protocols · Preventive Endocrinology",
       bio: "Licensed nationwide specializing in metabolic health, GLP-1 weight loss protocols, and preventive endocrinology.",
       credentials: "Board-Certified · U.S. Licensed",
-      image: "/images/doctor-wasef.png",
+      image: "/images/doctor-wasef.webp",
     },
     {
       name: "Dr. Andrew Sakla, DO",
@@ -963,7 +963,7 @@ export const brandConfig = {
       specialty: "Peptide Therapy · TRT · Cellular Longevity",
       bio: "Pioneering evidence-based peptide therapy, TRT optimization, and cellular longevity treatments.",
       credentials: "Board-Certified · U.S. Licensed",
-      image: "/images/doctor-sakla.png",
+      image: "/images/doctor-sakla.webp",
     },
   ],
 
@@ -971,12 +971,12 @@ export const brandConfig = {
     headline: "Everything Included With Membership",
     subtitle: "Concierge care beyond the prescription—secure messaging, follow-ups, and progress tracking included.",
     inclusions: [
-      { label: "Secure Provider Messaging", desc: "Direct messaging with your licensed medical team between visits.", image: "/images/why-personalized.png" },
-      { label: "Scheduled Follow-Ups", desc: "Regular check-ins to review progress and adjust your protocol.", image: "/images/member-clinical.png" },
-      { label: "Lab Reviews", desc: "Physician interpretation of metabolic, hormone, and wellness panels.", image: "/images/why-evidence.png" },
-      { label: "Treatment Adjustments", desc: "Protocol changes based on your response, labs, and clinical judgment.", image: "/images/member-renew.png" },
-      { label: "Prescription Management", desc: "Refills, dosage titration, and pharmacy coordination handled for you.", image: "/images/member-rx.png" },
-      { label: "Progress Tracking", desc: "AI coach metrics, portal dashboards, and quarterly provider reports.", image: "/images/portal-performance.png" },
+      { label: "Secure Provider Messaging", desc: "Direct messaging with your licensed medical team between visits.", image: "/images/why-personalized.webp" },
+      { label: "Scheduled Follow-Ups", desc: "Regular check-ins to review progress and adjust your protocol.", image: "/images/member-clinical.webp" },
+      { label: "Lab Reviews", desc: "Physician interpretation of metabolic, hormone, and wellness panels.", image: "/images/why-evidence.webp" },
+      { label: "Treatment Adjustments", desc: "Protocol changes based on your response, labs, and clinical judgment.", image: "/images/member-renew.webp" },
+      { label: "Prescription Management", desc: "Refills, dosage titration, and pharmacy coordination handled for you.", image: "/images/member-rx.webp" },
+      { label: "Progress Tracking", desc: "AI coach metrics, portal dashboards, and quarterly provider reports.", image: "/images/portal-performance.webp" },
     ],
   },
 

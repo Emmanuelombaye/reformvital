@@ -6,11 +6,11 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import styles from "./page.module.css";
 
-import aiCoachDashboard from "../../../public/images/ai_coach_dashboard.png";
-import aiCoachPatient from "../../../public/images/ai_coach_patient.png";
-import aiCoachDoctor from "../../../public/images/ai_coach_doctor.png";
-import lifestyleToast from "../../../public/images/lifestyle-toast.png";
-import lifestyleMindfulness from "../../../public/images/lifestyle-mindfulness.png";
+import aiCoachDashboard from "../../../public/images/ai_coach_dashboard.webp";
+import aiCoachPatient from "../../../public/images/ai_coach_patient.webp";
+import aiCoachDoctor from "../../../public/images/ai_coach_doctor.webp";
+import lifestyleToast from "../../../public/images/lifestyle-toast.webp";
+import lifestyleMindfulness from "../../../public/images/lifestyle-mindfulness.webp";
 
 const chatDemoPrompts = [
   {

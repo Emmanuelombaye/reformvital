@@ -4051,11 +4051,12 @@ h1, h2, h3, h4, h5, h6 {
 
 .rv-dual-img__primary,
 .rv-dual-img__secondary {
-  position: absolute;
+  position: absolute !important;
   inset: 0;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: contain;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  object-position: center center !important;
   transition: opacity 0.35s ease, transform 0.45s ease;
 }
 
@@ -4398,8 +4399,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .rv-tx-media__art .rv-dual-img__primary,
 .rv-tx-media__art .rv-dual-img__secondary {
-  background-size: contain;
-  background-position: center bottom;
+  object-fit: contain !important;
+  object-position: center bottom !important;
   filter: drop-shadow(0 18px 24px rgba(11, 19, 43, 0.22));
 }
 
@@ -5817,6 +5818,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .rv-yx-expect-card__media {
+  position: relative;
   aspect-ratio: 4 / 3;
   background: linear-gradient(165deg, #eef5f3 0%, #e2ece9 100%);
   overflow: hidden;
@@ -5911,11 +5913,10 @@ h1, h2, h3, h4, h5, h6 {
 .rv-yx-knowall__media .rv-dual-img__secondary,
 .rv-yx-protocol__vials .rv-dual-img__primary,
 .rv-yx-protocol__vials .rv-dual-img__secondary {
-  background-size: contain;
-  background-position: center center;
+  object-fit: contain !important;
+  object-position: center center !important;
   padding: 8%;
-  background-origin: content-box;
-  background-clip: content-box;
+  box-sizing: border-box;
 }
 
 /* ── Mobile polish (Yucca-tight + Peak soft motion) ── */

@@ -1,6 +1,8 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AcademyStickyNav from "@/components/academy/AcademyStickyNav";
+import Image from "next/image";
+import FastImg from "@/components/FastImg";
 import { brandConfig } from "@/brand.config";
 import { getGuidePdfUrl } from "@/content/academy";
 
@@ -11,7 +13,7 @@ const featured = [
     summary:
       "Semaglutide and Tirzepatide in plain language—appetite signaling, first-90-day expectations, and physician monitoring.",
     href: "/resources/articles/glp1-metabolic-reset",
-    image: "/images/resource-glp1.jpg",
+    image: "/images/resource-glp1.webp",
     imageAlt: "GLP-1 therapy education",
   },
   {
@@ -20,7 +22,7 @@ const featured = [
     summary:
       "Why labs come first for TRT and women's hormone therapy—and how protocols follow your biomarkers.",
     href: "/resources/articles/hormone-optimization-101",
-    image: "/images/resource-hormones.jpg",
+    image: "/images/resource-hormones.webp",
     imageAlt: "Hormone optimization education",
   },
   {
@@ -29,20 +31,20 @@ const featured = [
     summary:
       "Track protein, hydration, sleep, and adherence—accountability that never replaces your physician.",
     href: "/resources/articles/ai-health-coach-between-visits",
-    image: "/images/resource-ai-coach.jpg",
+    image: "/images/resource-ai-coach.webp",
     imageAlt: "AI health coach education",
   },
 ];
 
 const guideCovers: Record<string, string> = {
-  "longevity-blueprint": "/images/academy-supplements.png",
-  "executive-health-guide": "/images/lifestyle-education.png",
-  "weight-optimization-guide": "/images/academy-nutrition.png",
-  "hormone-health-guide": "/images/resource-hormones.jpg",
-  "understanding-your-labs": "/images/why-evidence.png",
-  "healthy-aging-handbook": "/images/about-longevity.png",
-  "sleep-guide": "/images/8.png",
-  "nutrition-playbook": "/images/academy-recipes.png",
+  "longevity-blueprint": "/images/academy-supplements.webp",
+  "executive-health-guide": "/images/lifestyle-education.webp",
+  "weight-optimization-guide": "/images/academy-nutrition.webp",
+  "hormone-health-guide": "/images/resource-hormones.webp",
+  "understanding-your-labs": "/images/why-evidence.webp",
+  "healthy-aging-handbook": "/images/about-longevity.webp",
+  "sleep-guide": "/images/8.webp",
+  "nutrition-playbook": "/images/academy-recipes.webp",
 };
 
 const recentArticles = [
@@ -51,28 +53,28 @@ const recentArticles = [
     category: "Weight Optimization",
     date: "August 2026",
     href: "/resources/articles/first-90-days-glp1",
-    image: "/images/resource-glp1.jpg",
+    image: "/images/resource-glp1.webp",
   },
   {
     title: "Understanding Your Lab Results: A Patient Guide",
     category: "Advanced Labs",
     date: "August 2026",
     href: "/resources/articles/understanding-labs",
-    image: "/images/why-evidence.png",
+    image: "/images/why-evidence.webp",
   },
   {
     title: "Sleep, Recovery, and Hormone Health",
     category: "Sleep",
     date: "July 2026",
     href: "/resources/articles/sleep-recovery-hormones",
-    image: "/images/8.png",
+    image: "/images/8.webp",
   },
   {
     title: "Longevity & Cellular Energy: NAD+ Explained",
     category: "Longevity",
     date: "July 2026",
     href: "/resources/articles/nad-longevity-cellular-energy",
-    image: "/images/about-longevity.png",
+    image: "/images/about-longevity.webp",
   },
 ];
 
@@ -125,12 +127,12 @@ const externalReads = [
 ];
 
 const clusterThumbs = [
-  "/images/resource-glp1.jpg",
-  "/images/story-nutrition.png",
-  "/images/resource-hormones.jpg",
-  "/images/lifestyle-mindfulness.png",
-  "/images/about-longevity.png",
-  "/images/resource-recovery.jpg",
+  "/images/resource-glp1.webp",
+  "/images/story-nutrition.webp",
+  "/images/resource-hormones.webp",
+  "/images/lifestyle-mindfulness.webp",
+  "/images/about-longevity.webp",
+  "/images/resource-recovery.webp",
 ];
 
 export default function ResourcesPage() {
@@ -163,10 +165,14 @@ export default function ResourcesPage() {
               </div>
             </div>
             <div className="rv-mag-mast__media">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/images/start-wellness.png"
+              <Image
+                src="/images/start-wellness.webp"
                 alt="Reform Vital Health Academy lifestyle"
+                fill
+                sizes="(max-width: 900px) 92vw, 42vw"
+                quality={65}
+                priority
+                style={{ objectFit: "contain" }}
               />
             </div>
           </div>
@@ -177,8 +183,7 @@ export default function ResourcesPage() {
           <div className="container">
             <div className="rv-mag-lead__grid">
               <a href={lead.href} className="rv-mag-lead__hero">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={lead.image} alt={lead.imageAlt} />
+                <FastImg src={lead.image} alt={lead.imageAlt} sizes="(max-width: 900px) 100vw, 60vw" />
                 <div className="rv-mag-lead__hero-body">
                   <span>{lead.type}</span>
                   <h2>{lead.title}</h2>
@@ -188,8 +193,13 @@ export default function ResourcesPage() {
               <div className="rv-mag-lead__stack">
                 {stacked.map((item) => (
                   <a key={item.href} href={item.href} className="rv-mag-lead__card">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={item.image} alt={item.imageAlt} />
+                    <FastImg
+                      src={item.image}
+                      alt={item.imageAlt}
+                      width={400}
+                      height={280}
+                      sizes="180px"
+                    />
                     <div>
                       <span>{item.type}</span>
                       <h3>{item.title}</h3>
@@ -216,8 +226,7 @@ export default function ResourcesPage() {
                   className={`rv-mag-bento__tile${i === 0 || i === 3 ? " rv-mag-bento__tile--wide" : ""}`}
                 >
                   {"image" in cat && cat.image ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img src={cat.image} alt="" />
+                    <FastImg src={cat.image} alt="" width={800} height={600} sizes="(max-width: 900px) 90vw, 30vw" />
                   ) : null}
                   <span>{cat.label}</span>
                 </a>
@@ -241,8 +250,13 @@ export default function ResourcesPage() {
             {featuredStory && (
               <a href={featuredStory.href} className="rv-mag-stories__feature">
                 {"image" in featuredStory && featuredStory.image ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img src={featuredStory.image} alt="" />
+                  <FastImg
+                    src={featuredStory.image}
+                    alt=""
+                    width={1200}
+                    height={800}
+                    sizes="(max-width: 900px) 100vw, 70vw"
+                  />
                 ) : null}
                 <div className="rv-mag-stories__quote">
                   <span>{featuredStory.outcome}</span>
@@ -255,8 +269,7 @@ export default function ResourcesPage() {
               {otherStories.map((story) => (
                 <a key={story.outcome} href={story.href} className="rv-mag-stories__card">
                   {"image" in story && story.image ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img src={story.image} alt="" />
+                    <FastImg src={story.image} alt="" width={600} height={400} sizes="(max-width: 900px) 90vw, 30vw" />
                   ) : null}
                   <div>
                     <span>{story.outcome}</span>
@@ -280,12 +293,11 @@ export default function ResourcesPage() {
               {academy.downloadableGuides.map((guide) => {
                 const slug = guide.href.split("/").pop() ?? "";
                 const pdfUrl = slug ? getGuidePdfUrl(slug) : "#";
-                const cover = guideCovers[slug] || "/images/academy-recipes.png";
+                const cover = guideCovers[slug] || "/images/academy-recipes.webp";
                 return (
                   <article key={guide.title} className="rv-mag-guide">
                     <div className="rv-mag-guide__cover">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={cover} alt="" />
+                      <FastImg src={cover} alt="" width={600} height={400} sizes="(max-width: 900px) 90vw, 280px" />
                     </div>
                     <div className="rv-mag-guide__body">
                       <h3>{guide.title}</h3>
@@ -310,10 +322,12 @@ export default function ResourcesPage() {
                     {cluster.articles.map((article, i) => (
                       <li key={article.title}>
                         <a href={article.href}>
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img
+                          <FastImg
                             src={clusterThumbs[i % clusterThumbs.length]}
                             alt=""
+                            width={160}
+                            height={120}
+                            sizes="72px"
                           />
                           <span>
                             <strong>{article.title}</strong>
@@ -332,8 +346,7 @@ export default function ResourcesPage() {
               <div className="rv-mag-recent__grid">
                 {recentArticles.map((article) => (
                   <a key={article.href} href={article.href} className="rv-mag-recent__card">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={article.image} alt="" />
+                    <FastImg src={article.image} alt="" width={600} height={400} sizes="(max-width: 900px) 90vw, 30vw" />
                     <div>
                       <span>
                         {article.date} · {article.category}
@@ -362,6 +375,8 @@ export default function ResourcesPage() {
                         <img
                           src={`https://i.ytimg.com/vi/${video.youtubeId}/hqdefault.jpg`}
                           alt=""
+                          loading="lazy"
+                          decoding="async"
                         />
                       </span>
                       <span>

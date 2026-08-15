@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import {
   HOW_FAQS,
   HOW_MEDIA,
@@ -107,13 +108,15 @@ function StickySteps() {
                         : undefined
                     }
                   >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
+                    <Image
                       className="rv-hiw-step-media__img"
                       src={step.image.src}
                       alt={step.image.alt}
-                      loading={i === 0 ? "eager" : "lazy"}
-                      decoding="async"
+                      fill
+                      sizes="(max-width: 991px) 92vw, 48vw"
+                      quality={75}
+                      priority={i === 0}
+                      style={{ objectFit: "contain" }}
                     />
                     <div className="rv-hiw-step-media__shine" aria-hidden />
                   </div>
@@ -226,8 +229,14 @@ export default function HowItWorksFlow() {
                           : undefined
                       }
                     >
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={item.image.src} alt={item.image.alt} loading="lazy" />
+                      <Image
+                        src={item.image.src}
+                        alt={item.image.alt}
+                        fill
+                        sizes="(max-width: 900px) 90vw, 30vw"
+                        quality={70}
+                        style={{ objectFit: "contain" }}
+                      />
                     </div>
                     <div className="rv-hiw-why-card__body">
                       <h3>{item.title}</h3>
@@ -246,11 +255,13 @@ export default function HowItWorksFlow() {
             <section className="rv-hiw-priority" data-animate="rise">
               <div className="rv-hiw-priority__card">
                 <div className="rv-hiw-priority__media">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
+                  <Image
                     src={HOW_MEDIA.priority.src}
                     alt={HOW_MEDIA.priority.alt}
-                    loading="lazy"
+                    fill
+                    sizes="(max-width: 900px) 92vw, 50vw"
+                    quality={75}
+                    style={{ objectFit: "contain" }}
                   />
                 </div>
                 <div className="rv-hiw-priority__copy">
@@ -290,8 +301,14 @@ export default function HowItWorksFlow() {
             <section className="rv-hiw-cta" data-animate="bounce">
               <div className="rv-hiw-cta__grid">
                 <div className="rv-hiw-cta__media">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={HOW_MEDIA.cta.src} alt={HOW_MEDIA.cta.alt} loading="lazy" />
+                  <Image
+                    src={HOW_MEDIA.cta.src}
+                    alt={HOW_MEDIA.cta.alt}
+                    fill
+                    sizes="(max-width: 900px) 92vw, 40vw"
+                    quality={75}
+                    style={{ objectFit: "contain" }}
+                  />
                 </div>
                 <div className="rv-hiw-cta__copy">
                   <p className="rv-hiw-cta__eyebrow">Begin care</p>

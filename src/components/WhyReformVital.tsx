@@ -30,6 +30,8 @@ export default function WhyReformVital() {
                     fill
                     sizes="(max-width: 640px) 92vw, (max-width: 1100px) 45vw, 25vw"
                     className="rv-why-photo__img"
+                    quality={65}
+                    loading="lazy"
                   />
                 </div>
               ) : null}

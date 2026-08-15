@@ -12,7 +12,7 @@ export default function PortalPage() {
       <main>
         <section className="rv-page-hero rv-page-hero--photo rv-page-hero--dark">
           <Image
-            src="/images/portal-performance.png"
+            src="/images/portal-performance.webp"
             alt="Reform Vital patient performance dashboard lifestyle"
             fill
             priority

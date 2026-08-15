@@ -1,29 +1,30 @@
+import Image from "next/image";
 import { brandConfig } from "@/brand.config";
 
 const stepVisuals = [
   {
-    image: "/images/how-step-consult.png",
+    image: "/images/how-step-consult.webp",
     alt: "Patient completing online health assessment",
     shape: "rv-shape-blob",
     accent: "#00A896",
     time: "5 MIN",
   },
   {
-    image: "/images/how-step-physician.png",
+    image: "/images/how-step-physician.webp",
     alt: "Physician reviewing personalized treatment plan",
     shape: "rv-shape-hex",
     accent: "#00B4D8",
     time: "UNDER 24H",
   },
   {
-    image: "/images/how-step-delivery.png",
+    image: "/images/how-step-delivery.webp",
     alt: "Personalized treatment plan and pharmacy fulfillment",
     shape: "rv-shape-arch",
     accent: "#5EEAD4",
     time: "PRESCRIBED",
   },
   {
-    image: "/images/how-step-ongoing.png",
+    image: "/images/how-step-ongoing.webp",
     alt: "Ongoing care, follow-ups, and AI coaching support",
     shape: "rv-shape-blob",
     accent: "#C4B5FD",
@@ -60,13 +61,14 @@ export default function HowItWorks() {
                 style={{ ["--step-accent" as string]: visual.accent }}
               >
                 <div className={`rv-how-visual ${visual.shape}`}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
+                  <Image
                     src={visual.image}
                     alt={visual.alt}
                     className="rv-how-img"
                     width={360}
                     height={360}
+                    sizes="(max-width: 640px) 56vw, 200px"
+                    quality={65}
                   />
                   <span className="rv-how-num">{step.step}</span>
                 </div>

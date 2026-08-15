@@ -30,6 +30,9 @@ export default function MedicalTeam() {
                   alt={doctor.name}
                   width={400}
                   height={480}
+                  sizes="(max-width: 640px) 92vw, 280px"
+                  quality={65}
+                  loading="lazy"
                   style={{ width: "100%", height: "auto", objectFit: "contain", borderRadius: "0.85rem" }}
                 />
               </div>

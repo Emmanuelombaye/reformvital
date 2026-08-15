@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 type DualProductImageProps = {
   primary: string;
   secondary?: string;
@@ -12,6 +14,7 @@ type DualProductImageProps = {
 /**
  * PeakHealth / Cosma product-thumb pattern:
  * stacked primary + secondary images; secondary fades in on hover.
+ * Uses next/image so packs get responsive WebP/AVIF delivery.
  */
 export default function DualProductImage({
   primary,
@@ -33,16 +36,23 @@ export default function DualProductImage({
         .filter(Boolean)
         .join(" ")}
     >
-      <div
+      <Image
+        src={primary}
+        alt={alt}
+        fill
+        sizes="(max-width: 640px) 45vw, (max-width: 1100px) 30vw, 220px"
         className="rv-dual-img__primary"
-        style={{ backgroundImage: `url(${primary})` }}
-        role="img"
-        aria-label={alt}
+        quality={60}
       />
       {hasSecondary && (
-        <div
+        <Image
+          src={secondary!}
+          alt=""
+          fill
+          sizes="(max-width: 640px) 45vw, (max-width: 1100px) 30vw, 220px"
           className="rv-dual-img__secondary"
-          style={{ backgroundImage: `url(${secondary})` }}
+          quality={60}
+          loading="lazy"
           aria-hidden
         />
       )}

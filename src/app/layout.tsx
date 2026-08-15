@@ -45,6 +45,23 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* Art-directed hero preload — only the viewport-matched file */}
+        <link
+          rel="preload"
+          as="image"
+          type="image/webp"
+          href="/images/hero-commercial-wide.webp"
+          media="(min-width: 901px)"
+          fetchPriority="high"
+        />
+        <link
+          rel="preload"
+          as="image"
+          type="image/webp"
+          href="/images/hero-commercial-mobile.webp"
+          media="(max-width: 900px)"
+          fetchPriority="high"
+        />
       </head>
       <body>
         <ScrollMotion />

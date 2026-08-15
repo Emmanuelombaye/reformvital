@@ -18,7 +18,7 @@ export default function StartAssessmentPage() {
           <div className="container rv-start-layout">
             <div className="rv-start-photo" data-animate="rise">
               <Image
-                src="/images/start-wellness.png"
+                src="/images/start-wellness.webp"
                 alt="Begin your Reform Vital wellness journey"
                 fill
                 sizes="(max-width: 900px) 92vw, 40vw"

@@ -10,7 +10,7 @@ export default function AboutPage() {
       <main>
         <section className="rv-page-hero rv-page-hero--photo">
           <Image
-            src="/images/about-villa.png"
+            src="/images/about-villa.webp"
             alt="Reform Vital lifestyle of personalized wellness"
             fill
             priority
@@ -43,7 +43,7 @@ export default function AboutPage() {
 
               <div className="rv-about-side-photo">
                 <Image
-                  src="/images/about-longevity.png"
+                  src="/images/about-longevity.webp"
                   alt="Longevity lifestyle with Reform Vital"
                   width={720}
                   height={480}
@@ -65,7 +65,7 @@ export default function AboutPage() {
               </div>
               <div className="rv-about-side-photo">
                 <Image
-                  src="/images/member-renew.png"
+                  src="/images/member-renew.webp"
                   alt="Clinical renewal suite"
                   width={720}
                   height={480}

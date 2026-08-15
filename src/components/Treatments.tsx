@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import Image from "next/image";
 import { brandConfig } from "@/brand.config";
 import TreatmentExploreHero from "@/components/TreatmentExploreHero";
 import { getCategoryMeta, THERAPY_VIAL_MAP } from "@/lib/treatmentCatalog";
@@ -75,8 +76,7 @@ export default function Treatments() {
               >
                 <span>{m.shortLabel}</span>
                 <span className="rv-yx__tab-img" aria-hidden>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={cutout} alt="" />
+                  <Image src={cutout} alt="" width={72} height={72} sizes="72px" quality={60} />
                 </span>
               </button>
             );

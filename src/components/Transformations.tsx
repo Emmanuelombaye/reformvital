@@ -6,7 +6,7 @@ import Image from "next/image";
 const transformationsData = [
   {
     id: 1,
-    image: "/images/1.png",
+    image: "/images/1.webp",
     name: "Sarah M.",
     age: 38,
     verified: "Verified Patient",
@@ -20,7 +20,7 @@ const transformationsData = [
   },
   {
     id: 2,
-    image: "/images/2.png",
+    image: "/images/2.webp",
     name: "Marcus T.",
     age: 44,
     verified: "Verified Patient",
@@ -34,7 +34,7 @@ const transformationsData = [
   },
   {
     id: 3,
-    image: "/images/3.png",
+    image: "/images/3.webp",
     name: "David K.",
     age: 51,
     verified: "Verified Patient",
@@ -48,7 +48,7 @@ const transformationsData = [
   },
   {
     id: 4,
-    image: "/images/4.png",
+    image: "/images/4.webp",
     name: "Elena R.",
     age: 42,
     verified: "Verified Patient",
@@ -62,7 +62,7 @@ const transformationsData = [
   },
   {
     id: 5,
-    image: "/images/5.png",
+    image: "/images/5.webp",
     name: "Michael S.",
     age: 39,
     verified: "Verified Patient",
@@ -76,7 +76,7 @@ const transformationsData = [
   },
   {
     id: 6,
-    image: "/images/6.png",
+    image: "/images/6.webp",
     name: "James P.",
     age: 41,
     verified: "Verified Patient",
@@ -90,7 +90,7 @@ const transformationsData = [
   },
   {
     id: 7,
-    image: "/images/7.png",
+    image: "/images/7.webp",
     name: "Amanda L.",
     age: 35,
     verified: "Verified Patient",
@@ -104,7 +104,7 @@ const transformationsData = [
   },
   {
     id: 8,
-    image: "/images/8.png",
+    image: "/images/8.webp",
     name: "Robert B.",
     age: 48,
     verified: "Verified Patient",
@@ -321,9 +321,8 @@ export default function Transformations() {
                 fill
                 sizes="(max-width: 768px) 92vw, 50vw"
                 style={{ objectFit: "contain", objectPosition: "center center" }}
-                loading="eager"
-                priority={true}
-                quality={85}
+                loading="lazy"
+                quality={65}
               />
 
               <div
