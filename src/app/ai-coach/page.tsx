@@ -429,22 +429,39 @@ export default function AICoachPage() {
             <div className={styles.sectionHead}>
               <span className="badge">THE CARE GAP</span>
               <h2 className={styles.sectionTitle}>Traditional telehealth vs Reform Vital</h2>
+              <p className={styles.sectionSubtitle}>
+                Same medications exist elsewhere. Continuous accountability and provider-ready data do not.
+              </p>
             </div>
             <div className={styles.tableWrapper}>
               <table className={styles.comparisonTable}>
+                <colgroup>
+                  <col className={styles.colPillar} />
+                  <col className={styles.colTraditional} />
+                  <col className={styles.colReform} />
+                </colgroup>
                 <thead>
                   <tr>
-                    <th>Pillar</th>
-                    <th>Traditional</th>
-                    <th>Reform Vital</th>
+                    <th scope="col">Pillar</th>
+                    <th scope="col">Traditional</th>
+                    <th scope="col" className={styles.thReform}>
+                      Reform Vital
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
                   {comparisonData.map((row) => (
                     <tr key={row.metric}>
-                      <td className={styles.tablePillar}>{row.metric}</td>
+                      <th scope="row" className={styles.tablePillar}>
+                        {row.metric}
+                      </th>
                       <td className={styles.tableTraditional}>{row.traditional}</td>
-                      <td className={styles.tableReform}>{row.reform}</td>
+                      <td className={styles.tableReform}>
+                        <span className={styles.reformCheck} aria-hidden>
+                          ✓
+                        </span>
+                        {row.reform}
+                      </td>
                     </tr>
                   ))}
                 </tbody>
