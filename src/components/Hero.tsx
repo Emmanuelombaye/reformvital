@@ -365,13 +365,25 @@ export default function Hero() {
 
         @media (max-width: 900px) {
           .rv-hero-card {
-            /* Match client mobile art (1024×1536 → 2:3) */
-            aspect-ratio: 2 / 3;
-            max-height: min(92vh, 52rem);
-            min-height: 34rem;
+            /* Yucca phone: soft stage + full mobile art + CTAs in document flow */
+            aspect-ratio: auto;
+            max-height: none;
+            min-height: 0;
+            height: auto;
             justify-content: flex-start;
-            padding-top: clamp(2.25rem, 7vh, 3.5rem);
-            padding-bottom: 12rem;
+            padding: 0;
+            background: linear-gradient(165deg, #eef5f3 0%, #e8f0ee 100%);
+            overflow: hidden;
+          }
+
+          .rv-hero-media {
+            position: relative;
+            inset: auto;
+            width: 100%;
+            aspect-ratio: 2 / 3;
+            flex: 0 0 auto;
+            border-radius: 0;
+            background: linear-gradient(165deg, #eef5f3 0%, #e8f0ee 100%);
           }
 
           .rv-hero-visual--desktop {
@@ -380,6 +392,7 @@ export default function Hero() {
 
           .rv-hero-visual--mobile {
             display: block !important;
+            object-fit: contain !important;
             object-position: center center !important;
           }
 
@@ -387,17 +400,22 @@ export default function Hero() {
             background:
               linear-gradient(
                 180deg,
-                rgba(13, 27, 42, 0.22) 0%,
-                rgba(13, 27, 42, 0.38) 24%,
-                rgba(13, 27, 42, 0.2) 48%,
-                rgba(13, 27, 42, 0.15) 66%,
-                rgba(13, 27, 42, 0.72) 100%
+                rgba(13, 27, 42, 0.28) 0%,
+                rgba(13, 27, 42, 0.12) 38%,
+                rgba(13, 27, 42, 0.08) 58%,
+                rgba(13, 27, 42, 0.55) 100%
               );
           }
 
           .rv-hero-content {
-            max-width: 34rem;
-            padding: 0.5rem 1rem 2rem;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            z-index: 5;
+            max-width: none;
+            width: 100%;
+            padding: clamp(1.5rem, 5vw, 2.25rem) 1.15rem 1rem;
           }
 
           .rv-hero-title {
@@ -405,36 +423,40 @@ export default function Hero() {
           }
 
           .rv-hero-ctas {
-            left: 1rem;
-            right: 1rem;
-            bottom: 1.25rem;
+            position: relative;
+            left: auto;
+            right: auto;
+            bottom: auto;
+            z-index: 6;
+            width: 100%;
             max-width: none;
             align-items: stretch;
+            gap: 0.65rem;
+            padding: 1rem 1.15rem 1.25rem;
+            background: linear-gradient(180deg, rgba(13, 27, 42, 0.92) 0%, #0d1b2a 100%);
+            border-radius: 0;
+            box-sizing: border-box;
           }
 
           .rv-hero-note {
             text-align: center;
+            width: 100%;
           }
         }
 
         @media (max-width: 640px) {
           .rv-hero-card {
-            aspect-ratio: 2 / 3;
             border-radius: 1.15rem;
-            max-height: min(90vh, 48rem);
-            min-height: 32rem;
-            padding-top: clamp(1.85rem, 6vh, 3rem);
-            padding-bottom: 11.5rem;
           }
 
-          .rv-hero-visual--mobile {
-            object-position: center center !important;
+          .rv-hero-media {
+            aspect-ratio: 2 / 3;
           }
 
           .rv-hero-btn {
-            font-size: 0.92rem;
-            padding: 0.9rem 0.9rem 0.9rem 1.05rem;
-            min-height: 3.1rem;
+            font-size: 0.95rem;
+            padding: 0.95rem 1rem;
+            min-height: 3.15rem;
           }
 
           .rv-hero-title {
@@ -442,8 +464,13 @@ export default function Hero() {
           }
 
           .rv-hero-sub {
-            font-size: 1.02rem;
+            font-size: 0.98rem;
             line-height: 1.45;
+            max-width: 22rem;
+          }
+
+          .rv-hero-ctas {
+            padding: 0.95rem 1rem 1.15rem;
           }
         }
       `}</style>

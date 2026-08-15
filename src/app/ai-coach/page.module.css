@@ -1066,13 +1066,25 @@
 
 @media (max-width: 640px) {
   .heroBleed {
-    aspect-ratio: auto;
-    min-height: 28rem;
-    max-height: none;
+    aspect-ratio: 3 / 4;
+    min-height: 0;
+    max-height: min(92vh, 42rem);
+    background: linear-gradient(165deg, #eef5f3 0%, #e8f0ee 40%, #0d1b2a 100%);
+  }
+
+  .heroBleedMedia {
+    background: linear-gradient(165deg, #eef5f3 0%, #e8f0ee 100%);
+  }
+
+  .heroBleedMedia img,
+  .heroBleedMedia :global(img) {
+    object-fit: contain !important;
+    object-position: center center !important;
+    transform: none !important;
   }
 
   .heroBleedInner {
-    padding: 3.25rem 1rem 2.35rem;
+    padding: 3rem 1rem 2.15rem;
   }
 
   .trustList {
@@ -1082,21 +1094,34 @@
 
   .deliverMedia {
     min-height: 0;
-    aspect-ratio: 3 / 2;
+    aspect-ratio: 4 / 5;
+    padding: 0.65rem;
+    box-sizing: border-box;
+    background: linear-gradient(165deg, #eef5f3 0%, #e8f0ee 100%);
   }
 
   .deliverMediaContain {
-    padding: 0.85rem;
+    padding: 0.75rem;
+  }
+
+  .deliverMedia img,
+  .deliverMedia :global(img),
+  .demoLifestyle img,
+  .demoLifestyle :global(img) {
+    object-fit: contain !important;
+    object-position: center center !important;
   }
 
   .demoLifestyle {
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 4 / 5;
+    background: linear-gradient(165deg, #eef5f3 0%, #e8f0ee 100%);
   }
 
   .promptButton,
   .demoCta,
   .heroCtas .btn {
     width: 100%;
+    min-height: 3.1rem;
   }
 
   .promptRow {

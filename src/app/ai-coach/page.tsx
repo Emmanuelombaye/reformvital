@@ -256,7 +256,7 @@ export default function AICoachPage() {
     <>
       <Navbar />
       <main className={styles.page}>
-        {/* Full-bleed Yucca-style hero */}
+        {/* Lifestyle hero — contain on phone (Yucca soft stage), cover on desktop bleed */}
         <section className={styles.heroBleed} data-animate="peak-fade">
           <div className={styles.heroBleedMedia} aria-hidden>
             <SmoothImage
@@ -596,7 +596,7 @@ export default function AICoachPage() {
                   alt=""
                   fill
                   sizes="(max-width: 960px) 100vw, 42vw"
-                  style={{ objectFit: "cover", objectPosition: "center center" }}
+                  style={{ objectFit: "contain", objectPosition: "center center" }}
                   placeholder="blur"
                 />
               </div>

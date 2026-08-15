@@ -256,9 +256,12 @@ export default function Transformations() {
                 <button
                   onClick={handlePrev}
                   aria-label="Previous Transformation"
+                  className="rv-touch"
                   style={{
-                    width: "42px",
-                    height: "42px",
+                    width: "48px",
+                    height: "48px",
+                    minWidth: "48px",
+                    minHeight: "48px",
                     borderRadius: "50%",
                     background: "rgba(255,255,255,0.12)",
                     color: "#FFF",
@@ -274,9 +277,12 @@ export default function Transformations() {
                 <button
                   onClick={handleNext}
                   aria-label="Next Transformation"
+                  className="rv-touch"
                   style={{
-                    width: "42px",
-                    height: "42px",
+                    width: "48px",
+                    height: "48px",
+                    minWidth: "48px",
+                    minHeight: "48px",
                     borderRadius: "50%",
                     background: "var(--accent)",
                     color: "#FFF",
@@ -311,8 +317,10 @@ export default function Transformations() {
                 overflow: "hidden",
                 border: "2px solid rgba(0, 168, 150, 0.5)",
                 boxShadow: "0 20px 40px rgba(0,0,0,0.5)",
-                aspectRatio: "16 / 9",
-                background: "linear-gradient(165deg, #0d1b2a 0%, #13253a 100%)",
+                aspectRatio: "4 / 5",
+                background: "linear-gradient(165deg, #eef5f3 0%, #e8f0ee 55%, #0d1b2a 100%)",
+                padding: "0.55rem",
+                boxSizing: "border-box",
               }}
             >
               <Image
@@ -456,11 +464,13 @@ export default function Transformations() {
                     className="rv-transform-thumb"
                     style={{
                       position: "relative",
-                      aspectRatio: "16 / 9",
-                      borderRadius: "0.85rem",
+                      aspectRatio: "4 / 5",
+                      borderRadius: "0.95rem",
                       overflow: "hidden",
                       marginBottom: "0.85rem",
-                      background: "#e8f0ee",
+                      background: "linear-gradient(165deg, #eef5f3 0%, #e8f0ee 100%)",
+                      padding: "0.45rem",
+                      boxSizing: "border-box",
                     }}
                   >
                     <Image
