@@ -6,7 +6,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import TreatmentExploreHero from "@/components/TreatmentExploreHero";
 import DualProductImage from "@/components/DualProductImage";
-import { getCategoryMeta, getTherapyStagePair } from "@/lib/treatmentCatalog";
+import { getCategoryMeta, getTherapyStagePair, THERAPY_VIAL_MAP } from "@/lib/treatmentCatalog";
 
 const EXPECT_WEEKS = [
   {
@@ -86,7 +86,7 @@ export default function TreatmentsPage() {
         <header className="rv-yx-catalog__intro" data-animate="rise">
           <p className="eyebrow">BROWSE BY TREATMENT</p>
           <h1>
-            Personalized treatments <em>built around your goals</em>
+            Explore our treatments below and choose what&apos;s best <em>for you</em>.
           </h1>
           <p>
             Private online assessment · Flat-rate memberships · Discreet pharmacy delivery if
@@ -102,6 +102,8 @@ export default function TreatmentsPage() {
           {services.map((s) => {
             const m = getCategoryMeta(s.id);
             const active = s.id === category.id;
+            const cutout =
+              (s.therapies[0] && THERAPY_VIAL_MAP[s.therapies[0].slug]) || m.image;
             return (
               <button
                 key={s.id}
@@ -111,7 +113,11 @@ export default function TreatmentsPage() {
                 className={`rv-yx-catalog__tab${active ? " is-active" : ""}`}
                 onClick={() => selectCategory(s.id)}
               >
-                {m.shortLabel}
+                <span>{m.shortLabel}</span>
+                <span className="rv-yx-catalog__tab-img" aria-hidden>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={cutout} alt="" />
+                </span>
               </button>
             );
           })}

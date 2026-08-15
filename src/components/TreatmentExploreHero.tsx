@@ -42,15 +42,26 @@ export default function TreatmentExploreHero({
   const stage = selected
     ? getTherapyStagePair(selected.slug)
     : { primary: "/images/vial-glp1.png", secondary: "/images/packs/glp1-a.png" };
-  const priceLabel = selected?.price?.replace(/\/mo$/, "") || "$149";
-  const priceIsMo = Boolean(selected?.price?.includes("/mo"));
+  const rawPrice = selected?.price || "$149";
+  const priceIsMo = /\/mo$/i.test(rawPrice);
+  const priceLabel = rawPrice.replace(/\/mo$/i, "");
+  const isCustom = /custom/i.test(rawPrice);
 
   return (
-    <div key={String(animKey)} className="rv-yx-explore" data-animate="peak-fade">
-      <article className="rv-yx-stage" data-tone={tone}>
-        <h3 className="rv-yx-stage__title">{stageTitle}</h3>
+    <div key={String(animKey)} className="rv-tx-panel" data-animate="peak-fade">
+      {/* Yucca media card */}
+      <article className="rv-tx-media" data-tone={tone}>
+        <div className="rv-tx-media__top">
+          <p className="rv-tx-media__eyebrow">Licensed U.S. provider review</p>
+          <div className="rv-tx-media__pills">
+            <span>{tag.replace(/_/g, " ")}</span>
+            <span className="is-stock">Available</span>
+          </div>
+        </div>
 
-        <div className="rv-yx-stage__product">
+        <h3 className="rv-tx-media__title">{stageTitle}</h3>
+
+        <div className="rv-tx-media__art">
           <DualProductImage
             primary={stage.primary}
             secondary={stage.secondary}
@@ -59,33 +70,30 @@ export default function TreatmentExploreHero({
         </div>
 
         <div
-          className="rv-yx-stage__burst"
-          aria-label={`From ${priceLabel}${priceIsMo ? " per month" : ""}`}
+          className="rv-tx-media__badge"
+          aria-label={isCustom ? "Custom pricing" : `From ${priceLabel}${priceIsMo ? " per month" : ""}`}
         >
-          <span className="rv-yx-stage__burst-inner">
-            <strong>FROM</strong>
-            <em>{priceLabel}</em>
-            {priceIsMo && <span>/mo</span>}
-          </span>
-        </div>
-
-        <div className="rv-yx-stage__meta">
-          <p className="rv-yx-stage__proof">Licensed U.S. provider review required</p>
-          <div className="rv-yx-stage__chips">
-            <span className="rv-yx-stage__chip">{tag}</span>
-            <span className="rv-yx-stage__stock">
-              <i className="rv-yx-stage__dot" aria-hidden />
-              Available
-            </span>
-          </div>
+          {isCustom ? (
+            <>
+              <strong>ASK</strong>
+              <em>Us</em>
+            </>
+          ) : (
+            <>
+              <strong>FROM</strong>
+              <em>{priceLabel}</em>
+              {priceIsMo && <span>/mo</span>}
+            </>
+          )}
         </div>
       </article>
 
-      <div className="rv-yx-side">
-        <p className="rv-yx-side__blurb">{blurb}</p>
+      {/* Yucca copy column */}
+      <div className="rv-tx-copy">
+        <p className="rv-tx-copy__desc">{blurb}</p>
 
         {therapies.length > 0 && (
-          <div className="rv-yx-side__products" role="radiogroup" aria-label="Choose protocol">
+          <div className="rv-tx-pickers" role="radiogroup" aria-label="Choose protocol">
             {therapies.map((t) => {
               const active = selected?.slug === t.slug;
               const thumb = getTherapyStagePair(t.slug).primary;
@@ -95,17 +103,16 @@ export default function TreatmentExploreHero({
                   type="button"
                   role="radio"
                   aria-checked={active}
-                  className={`rv-yx-side__product${active ? " is-active" : ""}`}
+                  className={`rv-tx-picker${active ? " is-active" : ""}`}
                   onClick={() => onSelectTherapy(t.slug)}
                 >
-                  <span
-                    className="rv-yx-side__thumb"
-                    style={{ backgroundImage: `url(${thumb})` }}
-                    aria-hidden
-                  />
-                  <span className="rv-yx-side__product-copy">
+                  <span className="rv-tx-picker__thumb">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={thumb} alt="" />
+                  </span>
+                  <span className="rv-tx-picker__text">
                     <strong>{t.name}</strong>
-                    <span>{t.desc}</span>
+                    <em>{t.desc}</em>
                   </span>
                 </button>
               );
@@ -113,51 +120,46 @@ export default function TreatmentExploreHero({
           </div>
         )}
 
-        <div className="rv-yx-side__includes">
-          <div className="rv-yx-side__plans">
-            <p className="rv-yx-side__plans-label">All Plans Include:</p>
-            <ul className="rv-yx-side__plan-list">
-              {PLAN_INCLUDES.map((item) => (
-                <li key={item}>
-                  <span className="rv-yx-side__check" aria-hidden>
-                    ✓
-                  </span>
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="rv-yx-side__guarantee">
-            <div className="rv-yx-side__guarantee-head">
-              <span className="rv-yx-side__brand">Reform Vital</span>
-              <span className="rv-yx-side__rule" aria-hidden />
-              <span className="rv-yx-side__guarantee-word">Commitment</span>
-            </div>
-            <p>
-              Provider-guided care, medications from U.S. licensed pharmacies, and only charged
-              if treatment is prescribed — with flexibility to change or cancel anytime.
-            </p>
-          </div>
+        <div className="rv-tx-includes">
+          <p>All Plans Include:</p>
+          <ul>
+            {PLAN_INCLUDES.map((item) => (
+              <li key={item}>
+                <span aria-hidden>✓</span>
+                {item}
+              </li>
+            ))}
+          </ul>
         </div>
 
-        <div className="rv-yx-side__pricing">
-          <div className="rv-yx-side__price-row">
-            <span>Starting as low as:</span>
+        <div className="rv-tx-guarantee">
+          <div className="rv-tx-guarantee__mark" aria-hidden>
+            RV
+          </div>
+          <p>
+            Provider-guided care, medications from U.S. licensed pharmacies, and only charged if
+            treatment is prescribed — with flexibility to change or cancel anytime.
+          </p>
+        </div>
+
+        <div className="rv-tx-cta-row">
+          <div className="rv-tx-cta-row__price">
+            <span>{isCustom ? "Pricing:" : "Starting as low as:"}</span>
             <strong>
-              {priceLabel}
-              {priceIsMo && <em>/mo</em>}
+              {isCustom ? "Custom" : priceLabel}
+              {!isCustom && priceIsMo && <em>/mo</em>}
             </strong>
           </div>
-          <a href="/start" className="rv-yx-side__cta">
-            See if I qualify
+          <a href="/start" className="rv-tx-cta">
+            See if I qualify →
           </a>
-          {selected && (
-            <a href={`/treatments/${selected.slug}`} className="rv-yx-side__link">
-              Learn more about {selected.name} →
-            </a>
-          )}
         </div>
+
+        {selected && (
+          <a href={`/treatments/${selected.slug}`} className="rv-tx-more">
+            Learn more about {selected.name} →
+          </a>
+        )}
       </div>
     </div>
   );

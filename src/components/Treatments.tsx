@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { brandConfig } from "@/brand.config";
 import TreatmentExploreHero from "@/components/TreatmentExploreHero";
-import { getCategoryMeta } from "@/lib/treatmentCatalog";
+import { getCategoryMeta, THERAPY_VIAL_MAP } from "@/lib/treatmentCatalog";
 
 export default function Treatments() {
   const services = brandConfig.services;
@@ -48,7 +48,7 @@ export default function Treatments() {
       <div className="rv-yx__head" data-animate="rise">
         <p className="rv-yx__eyebrow">Browse by treatment</p>
         <h2>
-          Personalized care to help you <em>feel like yourself again</em>
+          Explore our treatments below and choose what&apos;s best <em>for you</em>
         </h2>
         <p>
           US-licensed provider review · Flat-rate memberships · Discreet cold-chain delivery
@@ -61,17 +61,23 @@ export default function Treatments() {
           {services.map((s) => {
             const m = getCategoryMeta(s.id);
             const active = s.id === category.id;
+            const cutout =
+              (s.therapies[0] && THERAPY_VIAL_MAP[s.therapies[0].slug]) || m.image;
             return (
               <button
                 key={s.id}
                 type="button"
                 role="tab"
                 aria-selected={active}
-                className={`rv-yx__tab${active ? " is-active" : ""}`}
+                className={`rv-yx__tab rv-yx__tab--cutout${active ? " is-active" : ""}`}
                 data-tone={m.tone}
                 onClick={() => selectCategory(s.id)}
               >
-                {m.shortLabel}
+                <span>{m.shortLabel}</span>
+                <span className="rv-yx__tab-img" aria-hidden>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={cutout} alt="" />
+                </span>
               </button>
             );
           })}
