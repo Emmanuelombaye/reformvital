@@ -1,4 +1,5 @@
 import { brandConfig } from "@/brand.config";
+import { FooterTrustBadges } from "./FooterTrustBadges";
 import ReformVitalLogo from "./ReformVitalLogo";
 
 const careLinks = [
@@ -92,6 +93,10 @@ export default function Footer() {
             <p className="rv-footer-domain">{brandConfig.domain}</p>
           </div>
         </nav>
+      </div>
+
+      <div className="container">
+        <FooterTrustBadges />
       </div>
 
       <div className="rv-footer-bottom">
