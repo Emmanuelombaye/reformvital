@@ -1,6 +1,5 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import AcademyStickyNav from "@/components/academy/AcademyStickyNav";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { brandConfig } from "@/brand.config";
@@ -27,7 +26,6 @@ export default async function CategoryPage({
     <>
       <Navbar />
       <main className="rv-academy">
-        <AcademyStickyNav />
         <section className="rv-academy-hero">
           <div className="container">
             <span className="badge">HEALTH ACADEMY · {category.label.toUpperCase()}</span>

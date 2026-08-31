@@ -112,9 +112,6 @@ export default function Footer() {
           <p className="rv-footer-disclaimer">{brandConfig.footer.disclaimer}</p>
           <div className="rv-footer-meta">
             <span>{brandConfig.footer.copyright}</span>
-            <span>
-              {brandConfig.footer.company} · {brandConfig.footer.legalOwner}
-            </span>
           </div>
         </div>
       </div>

@@ -1,6 +1,5 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import AcademyStickyNav from "@/components/academy/AcademyStickyNav";
 import FastImg from "@/components/FastImg";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -30,7 +29,6 @@ export default async function ArticlePage({
     <>
       <Navbar />
       <main className="rv-academy rv-article-page">
-        <AcademyStickyNav />
         <article className="rv-article">
           <div className="container rv-article-inner">
             <Link href={`/resources/category/${article.categorySlug}`} className="rv-article-category">

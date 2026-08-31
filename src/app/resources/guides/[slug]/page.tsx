@@ -1,6 +1,5 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import AcademyStickyNav from "@/components/academy/AcademyStickyNav";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getAllGuideSlugs, getGuideBySlug, getGuidePdfUrl } from "@/content/academy";
@@ -23,7 +22,6 @@ export default async function GuidePage({
     <>
       <Navbar />
       <main className="rv-academy rv-guide-page">
-        <AcademyStickyNav />
         <article className="rv-guide-printable">
           <div className="container rv-guide-inner">
             <span className="badge">DOWNLOADABLE GUIDE</span>

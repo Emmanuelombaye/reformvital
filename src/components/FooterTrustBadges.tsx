@@ -87,19 +87,41 @@ const TRUST_BADGE_CSS = `
 }
 @media (max-width: 720px) {
   .brand-footer-trust {
-    flex-direction: column;
-    align-items: stretch;
-    text-align: left;
-    gap: 1rem;
-    padding: 1.25rem 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.65rem 0.5rem;
+    align-items: start;
+    text-align: center;
+    padding: 1rem 0;
   }
   .brand-footer-trust__item {
-    width: 100%;
-    max-width: 20rem;
+    width: auto;
+    max-width: none;
+    margin-inline: 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    text-align: center;
+  }
+  .brand-footer-trust__icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
     margin-inline: auto;
   }
+  .brand-footer-trust__copy {
+    align-items: center;
+  }
+  .brand-footer-trust__kicker {
+    font-size: 8px;
+    letter-spacing: 0.08em;
+  }
   .brand-footer-trust__title {
-    font-size: 13px;
+    font-size: 10px;
+    line-height: 1.25;
+  }
+  .brand-footer-trust__sub {
+    font-size: 10px;
   }
 }
 `;

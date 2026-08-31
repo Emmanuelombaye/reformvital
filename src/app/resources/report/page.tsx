@@ -1,6 +1,5 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import AcademyStickyNav from "@/components/academy/AcademyStickyNav";
 import Link from "next/link";
 import { brandConfig } from "@/brand.config";
 
@@ -11,7 +10,6 @@ export default function MonthlyReportPage() {
     <>
       <Navbar />
       <main className="rv-academy rv-article-page">
-        <AcademyStickyNav />
         <article className="rv-article">
           <div className="container rv-article-inner">
             <span className="rv-article-category">{report.month}</span>

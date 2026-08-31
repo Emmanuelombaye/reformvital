@@ -1,6 +1,5 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import AcademyStickyNav from "@/components/academy/AcademyStickyNav";
 import HealthCalculators from "@/components/academy/HealthCalculators";
 import Link from "next/link";
 
@@ -9,7 +8,6 @@ export default function AcademyToolsPage() {
     <>
       <Navbar />
       <main className="rv-academy">
-        <AcademyStickyNav />
         <section className="rv-academy-hero">
           <div className="container">
             <span className="badge">HEALTH ACADEMY · TOOLS</span>
