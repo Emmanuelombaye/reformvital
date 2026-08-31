@@ -52,7 +52,16 @@ export default function RootLayout({
           rel="preload"
           as="image"
           type="image/webp"
+          href="/images/hero-commercial-mobile.webp"
+          media="(max-width: 900px)"
+          fetchPriority="high"
+        />
+        <link
+          rel="preload"
+          as="image"
+          type="image/webp"
           href="/images/hero-commercial-wide.webp"
+          media="(min-width: 901px)"
           fetchPriority="high"
         />
       </head>
