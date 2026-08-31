@@ -69,10 +69,12 @@ export default function HomeExtras() {
                     <Image
                       src={getTherapyVialImage(program.slug, "thumb")}
                       alt=""
-                      fill
-                      sizes="48px"
+                      width={28}
+                      height={28}
+                      sizes="28px"
                       quality={60}
                       loading="lazy"
+                      className="rv-script-extras__cat-img"
                     />
                   </span>
                   {program.name} · {program.price}

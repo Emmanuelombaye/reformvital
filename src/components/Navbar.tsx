@@ -122,7 +122,14 @@ export default function Navbar() {
         </div>
 
         {mobileMenuOpen && (
-          <div className="rv-mobile-drawer" id="rv-mobile-nav">
+          <>
+            <button
+              type="button"
+              className="rv-mobile-backdrop"
+              aria-label="Close navigation menu"
+              onClick={closeMobile}
+            />
+            <div className="rv-mobile-drawer" id="rv-mobile-nav">
             <ul className="rv-mobile-list">
               <li>
                 <a href="/treatments" className="rv-mobile-link" onClick={closeMobile}>
@@ -164,6 +171,7 @@ export default function Navbar() {
               </li>
             </ul>
           </div>
+          </>
         )}
       </nav>
     </header>

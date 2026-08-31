@@ -31,9 +31,9 @@ export default function Hero() {
             alt="Reform Vital telehealth consultation"
             width={1536}
             height={1024}
-            priority
-            sizes="(max-width: 900px) 100vw, 50vw"
+            sizes="(min-width: 901px) 50vw, 1px"
             quality={75}
+            loading="lazy"
             className="rv-script-hero__img rv-script-hero__img--desktop"
           />
           <Image
@@ -41,9 +41,9 @@ export default function Hero() {
             alt="Reform Vital wellness lifestyle"
             width={900}
             height={1350}
-            sizes="(max-width: 900px) 100vw, 0px"
-            quality={70}
-            loading="lazy"
+            sizes="(max-width: 900px) 100vw, 1px"
+            quality={72}
+            fetchPriority="high"
             className="rv-script-hero__img rv-script-hero__img--mobile"
           />
         </div>

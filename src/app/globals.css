@@ -9160,6 +9160,71 @@ img[data-nimg="fill"] {
   .rv-script-hero__img--mobile {
     display: block;
   }
+
+  .rv-script-hero__grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .rv-script-hero {
+    padding: 2rem 0 2.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .rv-script-hero__copy h1 {
+    font-size: clamp(1.75rem, 8vw, 2.25rem);
+  }
+
+  .rv-script-hero__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .rv-script-hero__actions .rv-script-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .rv-script-section {
+    padding: 2.5rem 0;
+  }
+
+  .rv-script-extras {
+    grid-template-columns: 1fr;
+  }
+
+  .rv-script-cta-band__inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .rv-script-cta-band__actions {
+    width: 100%;
+  }
+
+  .rv-script-cta-band__actions .rv-script-btn {
+    flex: 1;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 980px) {
+  .rv-mobile-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 2990;
+    border: none;
+    padding: 0;
+    margin: 0;
+    background: rgba(7, 14, 23, 0.48);
+    cursor: pointer;
+  }
+
+  .rv-mobile-drawer {
+    position: relative;
+    z-index: 3001;
+  }
 }
 
 /* ── Scriptful shared sections ── */
@@ -9616,6 +9681,17 @@ img[data-nimg="fill"] {
   aspect-ratio: 4 / 3;
   background: #fff;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rv-script-academy__img {
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center center;
 }
 
 .rv-script-academy__media img,
@@ -9956,9 +10032,15 @@ img[data-nimg="fill"] {
   border-radius: 999px;
   overflow: hidden;
   flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.rv-script-extras__cat-media img {
+.rv-script-extras__cat-media img,
+.rv-script-extras__cat-img {
+  width: 100%;
+  height: 100%;
   object-fit: contain;
 }
 

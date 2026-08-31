@@ -26,8 +26,12 @@ export default function HealthAcademyTeaser() {
                 <Image
                   src={getTherapyVialImage(program.slug, "thumb")}
                   alt=""
-                  fill
-                  sizes="(max-width: 640px) 90vw, 30vw"
+                  width={320}
+                  height={240}
+                  sizes="(max-width: 640px) 90vw, 320px"
+                  quality={65}
+                  loading="lazy"
+                  className="rv-script-academy__img"
                 />
               </div>
               <span>
