@@ -25,11 +25,10 @@ export default function FastImg({
       width={width}
       height={height}
       sizes={sizes}
-      className={className}
+      className={className ? `${className} rv-fast-img` : "rv-fast-img"}
       quality={65}
       priority={priority}
       loading={priority ? undefined : "lazy"}
-      style={{ width: "100%", height: "auto" }}
     />
   );
 }

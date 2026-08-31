@@ -42,7 +42,7 @@ const TRUST_BADGE_CSS = `
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 .brand-footer-trust__copy {
   display: flex;

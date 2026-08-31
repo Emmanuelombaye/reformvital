@@ -7125,6 +7125,261 @@ h1, h2, h3, h4, h5, h6 {
   background: linear-gradient(180deg, #fff 0%, #f4f8f7 35%, #eef5f3 100%);
 }
 
+.rv-fast-img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
+
+/* Clip-safe card media — full image visible sitewide */
+.rv-card-media {
+  position: relative;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  isolation: isolate;
+  contain: paint;
+  background: linear-gradient(165deg, #eef5f3 0%, #e2ece9 100%);
+  padding: 0.65rem;
+  box-sizing: border-box;
+}
+
+.rv-card-media--1x1 {
+  aspect-ratio: 1 / 1;
+}
+
+.rv-card-media--3x2 {
+  aspect-ratio: 3 / 2;
+}
+
+.rv-card-media--4x3 {
+  aspect-ratio: 4 / 3;
+}
+
+.rv-card-media--16x9 {
+  aspect-ratio: 16 / 9;
+}
+
+.rv-card-media__img {
+  object-fit: contain !important;
+  object-position: center center !important;
+}
+
+.rv-card-media__img--static {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Resources hub — treatment-focused layout */
+.rv-res-treatments {
+  padding: 0.5rem 0 2rem;
+}
+
+.rv-res-treatments__grid {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .rv-res-treatments__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.15rem;
+  }
+}
+
+.rv-res-treatment-card {
+  display: grid;
+  gap: 0;
+  text-decoration: none;
+  color: var(--primary);
+  background: #fff;
+  border: 1.5px solid rgba(13, 27, 42, 0.1);
+  border-radius: 1.2rem;
+  overflow: hidden;
+  box-shadow: 0 12px 28px rgba(13, 27, 42, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.rv-res-treatment-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px rgba(13, 27, 42, 0.1);
+}
+
+.rv-res-treatment-card__body {
+  padding: 1rem 1.1rem 1.15rem;
+}
+
+.rv-res-treatment-card__body span {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.rv-res-treatment-card__body h3 {
+  margin: 0.35rem 0 0.45rem;
+  font-size: 1.25rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+.rv-res-treatment-card__body p {
+  margin: 0 0 0.65rem;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.rv-res-treatment-card__body em {
+  font-style: normal;
+  font-size: 0.85rem;
+  font-weight: 750;
+  color: var(--accent);
+}
+
+.rv-res-feature {
+  display: grid;
+  gap: 0;
+  text-decoration: none;
+  color: #fff;
+  border-radius: 1.35rem;
+  overflow: hidden;
+  background: #0d1b2a;
+  box-shadow: 0 18px 40px rgba(13, 27, 42, 0.12);
+}
+
+.rv-res-feature__body {
+  padding: 1.35rem 1.25rem 1.5rem;
+  background: linear-gradient(180deg, rgba(7, 14, 23, 0.35) 0%, rgba(7, 14, 23, 0.92) 100%);
+}
+
+.rv-res-feature__body span {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #5eead4;
+}
+
+.rv-res-feature__body h2 {
+  margin: 0.45rem 0 0.55rem;
+  font-size: clamp(1.35rem, 2.5vw, 1.85rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.rv-res-feature__body p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.84);
+  line-height: 1.55;
+  max-width: 42rem;
+}
+
+.rv-res-library {
+  padding: 0.5rem 0 2.5rem;
+}
+
+.rv-res-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr));
+}
+
+.rv-res-grid--guides {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+}
+
+.rv-res-card {
+  display: grid;
+  gap: 0;
+  text-decoration: none;
+  color: var(--primary);
+  background: #fff;
+  border: 1.5px solid rgba(13, 27, 42, 0.1);
+  border-radius: 1.1rem;
+  overflow: hidden;
+  box-shadow: 0 8px 22px rgba(13, 27, 42, 0.05);
+  transition: transform 0.2s ease;
+}
+
+.rv-res-card:hover {
+  transform: translateY(-2px);
+}
+
+.rv-res-card--guide {
+  height: 100%;
+}
+
+.rv-res-card__body {
+  padding: 0.95rem 1rem 1.1rem;
+}
+
+.rv-res-card__body span {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.rv-res-card__body h3 {
+  margin: 0.35rem 0 0.45rem;
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.rv-res-card__body p {
+  margin: 0;
+  font-size: 0.86rem;
+  line-height: 1.45;
+  color: var(--text-muted);
+}
+
+.rv-res-card__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.85rem;
+}
+
+.rv-res-card__links a {
+  font-size: 0.82rem;
+  font-weight: 750;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.rv-res-extra {
+  padding: 0 0 3rem;
+}
+
+.rv-res-extra__grid {
+  display: grid;
+  gap: 2rem;
+}
+
+@media (min-width: 900px) {
+  .rv-res-extra__grid {
+    grid-template-columns: 1.2fr 0.8fr;
+  }
+}
+
+.rv-script-academy__card-media {
+  border-radius: 0;
+}
+
+.rv-script-academy__card .rv-card-media {
+  border-radius: 0;
+  padding: 0.5rem;
+}
+
+
 .rv-mag-kicker {
   margin: 0 0 0.75rem;
   font-size: 0.72rem;
@@ -8403,15 +8658,15 @@ img[data-nimg="fill"] {
   max-height: 440px;
   margin: 0;
   display: block;
-  object-fit: cover;
-  object-position: center 42%;
+  object-fit: contain;
+  object-position: center center;
 }
 
 .rv-tx-vial-thumb {
   width: 100%;
   height: 100%;
   display: block;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center center;
 }
 
@@ -8597,7 +8852,7 @@ img[data-nimg="fill"] {
 .rv-tx-picker__thumb img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center center;
   padding: 0;
   box-sizing: border-box;
@@ -9346,10 +9601,13 @@ img[data-nimg="fill"] {
   position: relative;
   aspect-ratio: 4 / 3;
   background: #fff;
+  overflow: hidden;
 }
 
-.rv-script-academy__media img {
-  object-fit: cover;
+.rv-script-academy__media img,
+.rv-script-academy__card .rv-card-media__img {
+  object-fit: contain !important;
+  object-position: center center !important;
 }
 
 .rv-script-academy__card span {
@@ -9687,7 +9945,7 @@ img[data-nimg="fill"] {
 }
 
 .rv-script-extras__cat-media img {
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .rv-script-academy__grid--two {

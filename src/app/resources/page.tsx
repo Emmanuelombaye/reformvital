@@ -1,81 +1,35 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AcademyStickyNav from "@/components/academy/AcademyStickyNav";
-import FastImg from "@/components/FastImg";
+import CardMedia from "@/components/CardMedia";
 import { brandConfig } from "@/brand.config";
+import { academyArticles } from "@/content/academy";
 import { getGuidePdfUrl } from "@/content/academy";
 
-const featured = [
-  {
-    title: "How Semaglutide and Tirzepatide Support Metabolic Reset",
-    type: "Guide",
-    summary:
-      "Semaglutide and Tirzepatide in plain language—appetite signaling, first-90-day expectations, and physician monitoring.",
-    href: "/resources/articles/semaglutide-tirzepatide-metabolic-reset",
-    image: "/images/vials/semaglutide.png",
-    imageAlt: "Semaglutide and Tirzepatide education",
-  },
-  {
-    title: "What to Expect in Your First 90 Days on Semaglutide or Tirzepatide",
-    type: "Education",
-    summary:
-      "Realistic timelines, side-effect management, and how your provider adjusts your Semaglutide or Tirzepatide protocol.",
-    href: "/resources/articles/first-90-days-semaglutide-tirzepatide",
-    image: "/images/vials/semaglutide.png",
-    imageAlt: "First 90 days on Semaglutide or Tirzepatide",
-  },
-  {
-    title: "Using Your AI Health Coach Between Visits",
-    type: "How-to",
-    summary:
-      "Track protein, hydration, sleep, and adherence—accountability that never replaces your physician.",
-    href: "/resources/articles/ai-health-coach-between-visits",
-    image: "/images/resource-ai-coach.webp",
-    imageAlt: "AI health coach education",
-  },
-];
+const TREATMENT_SLUGS = ["semaglutide", "tirzepatide"] as const;
+
+const treatmentArticles = academyArticles.filter(
+  (article) =>
+    article.categorySlug === "weight" ||
+    article.categorySlug === "nutrition" ||
+    article.categorySlug === "performance" ||
+    /semaglutide|tirzepatide/i.test(article.title),
+);
+
+const treatmentGuides = brandConfig.healthAcademy.downloadableGuides.filter((guide) =>
+  /weight|nutrition|sleep|labs/i.test(`${guide.title} ${guide.desc}`),
+);
 
 const guideCovers: Record<string, string> = {
-  "longevity-blueprint": "/images/academy-supplements.webp",
-  "executive-health-guide": "/images/lifestyle-education.webp",
   "weight-optimization-guide": "/images/academy-nutrition.webp",
-  "hormone-health-guide": "/images/resource-hormones.webp",
-  "understanding-your-labs": "/images/why-evidence.webp",
-  "healthy-aging-handbook": "/images/about-longevity.webp",
-  "sleep-guide": "/images/8.webp",
   "nutrition-playbook": "/images/academy-recipes.webp",
+  "sleep-guide": "/images/8.webp",
+  "understanding-your-labs": "/images/why-evidence.webp",
 };
 
-const recentArticles = [
-  {
-    title: "What to Expect in Your First 90 Days on Semaglutide or Tirzepatide",
-    category: "Weight Optimization",
-    date: "August 2026",
-    href: "/resources/articles/first-90-days-semaglutide-tirzepatide",
-    image: "/images/vials/semaglutide.png",
-  },
-  {
-    title: "Medical Weight Loss vs. Product-Only Sellers",
-    category: "Weight Optimization",
-    date: "August 2026",
-    href: "/resources/articles/medical-weight-loss-vs-sellers",
-    image: "/images/story-nutrition.webp",
-  },
-  {
-    title: "Nutrition for Sustainable Weight Management",
-    category: "Nutrition",
-    date: "July 2026",
-    href: "/resources/articles/nutrition-weight-management",
-    image: "/images/academy-nutrition.webp",
-  },
-  {
-    title: "Using Your AI Health Coach Between Visits",
-    category: "Member Support",
-    date: "July 2026",
-    href: "/resources/articles/ai-health-coach-between-visits",
-    image: "/images/resource-ai-coach.webp",
-  },
-];
+const browseCategories = brandConfig.healthAcademy.categories.filter((cat) =>
+  ["weight", "nutrition", "sleep", "recipes", "performance", "insights"].includes(cat.slug),
+);
 
 const videos = [
   {
@@ -100,6 +54,12 @@ const externalReads = [
     source: "NCBI Bookshelf",
   },
   {
+    title: "Tirzepatide — StatPearls (NCBI)",
+    summary: "Clinical overview of tirzepatide for weight and metabolic care.",
+    href: "https://www.ncbi.nlm.nih.gov/books/NBK589936/",
+    source: "NCBI Bookshelf",
+  },
+  {
     title: "Mayo Clinic: Prescription Weight-Loss Drugs",
     summary: "What to discuss with a clinician about prescription weight-loss medicines.",
     href: "https://www.mayoclinic.org/healthy-lifestyle/weight-loss/in-depth/weight-loss-drugs/art-20044832",
@@ -111,28 +71,11 @@ const externalReads = [
     href: "https://www.fda.gov/drugs/postmarket-drug-safety-information-patients-and-providers/semaglutide-marketed-ozempic-wegovy-rybelsus-information",
     source: "U.S. FDA",
   },
-  {
-    title: "Endocrine Society — Endocrine Library",
-    summary: "Patient education on testosterone, menopause, thyroid, and more.",
-    href: "https://www.endocrine.org/patient-engagement/endocrine-library",
-    source: "Endocrine Society",
-  },
-];
-
-const clusterThumbs = [
-  "/images/vials/semaglutide.png",
-  "/images/story-nutrition.webp",
-  "/images/resource-hormones.webp",
-  "/images/lifestyle-mindfulness.webp",
-  "/images/about-longevity.webp",
-  "/images/resource-recovery.webp",
 ];
 
 export default function ResourcesPage() {
   const academy = brandConfig.healthAcademy;
-  const categories = academy.categories.slice(0, 8);
-  const lead = featured[0];
-  const stacked = featured.slice(1);
+  const lead = treatmentArticles[0];
 
   return (
     <>
@@ -143,11 +86,17 @@ export default function ResourcesPage() {
         <section className="rv-script-page-hero">
           <div className="container">
             <p className="rv-script-eyebrow">Health Academy</p>
-            <h1>{academy.title.replace("Reform Vital ", "")}</h1>
-            <p>{academy.subtitle}</p>
-            <div className="rv-script-section__foot rv-script-section__foot--left" style={{ marginTop: "1.25rem" }}>
-              <a href="#lead" className="rv-script-btn rv-script-btn--primary">
-                Start reading
+            <h1>Semaglutide &amp; Tirzepatide resources</h1>
+            <p>
+              Physician-reviewed guides, articles, and tools for our two weight-management programs —
+              everything you need between visits.
+            </p>
+            <div
+              className="rv-script-section__foot rv-script-section__foot--left"
+              style={{ marginTop: "1.25rem" }}
+            >
+              <a href="#library" className="rv-script-btn rv-script-btn--primary">
+                Browse library
               </a>
               <a href="/resources/tools" className="rv-script-btn rv-script-btn--secondary">
                 Interactive tools
@@ -156,91 +105,115 @@ export default function ResourcesPage() {
           </div>
         </section>
 
-        {/* Lead magazine block */}
-        <section id="lead" className="rv-mag-lead" data-animate="rise">
+        <section id="treatments" className="rv-res-treatments" data-animate="rise">
           <div className="container">
-            <div className="rv-mag-lead__grid">
-              <a href={lead.href} className="rv-mag-lead__hero">
-                <FastImg src={lead.image} alt={lead.imageAlt} sizes="(max-width: 900px) 100vw, 60vw" />
-                <div className="rv-mag-lead__hero-body">
-                  <span>{lead.type}</span>
+            <div className="rv-mag-section-head">
+              <h2>Our programs</h2>
+              <p>Two clinician-guided options — each with transparent monthly pricing.</p>
+            </div>
+            <div className="rv-res-treatments__grid">
+              {TREATMENT_SLUGS.map((slug) => {
+                const detail = brandConfig.treatmentDetails[slug];
+                const image = `/images/vials/${slug}.png`;
+                return (
+                  <a key={slug} href={`/treatments/${slug}`} className="rv-res-treatment-card">
+                    <CardMedia
+                      src={image}
+                      alt={detail.name}
+                      aspect="3/2"
+                      sizes="(max-width: 768px) 90vw, 420px"
+                    />
+                    <div className="rv-res-treatment-card__body">
+                      <span>Weight management</span>
+                      <h3>{detail.name}</h3>
+                      <p>{detail.tagline}</p>
+                      <em>From {detail.price} · View program →</em>
+                    </div>
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {lead ? (
+          <section id="lead" className="rv-mag-lead" data-animate="rise">
+            <div className="container">
+              <a href={`/resources/articles/${lead.slug}`} className="rv-res-feature">
+                <CardMedia
+                  src={lead.image}
+                  alt={lead.title}
+                  aspect="16/9"
+                  sizes="(max-width: 900px) 100vw, 960px"
+                  priority
+                />
+                <div className="rv-res-feature__body">
+                  <span>{lead.category} · {lead.readTime}</span>
                   <h2>{lead.title}</h2>
                   <p>{lead.summary}</p>
                 </div>
               </a>
-              <div className="rv-mag-lead__stack">
-                {stacked.map((item) => (
-                  <a key={item.href} href={item.href} className="rv-mag-lead__card">
-                    <FastImg
-                      src={item.image}
-                      alt={item.imageAlt}
-                      width={400}
-                      height={280}
-                      sizes="180px"
-                    />
-                    <div>
-                      <span>{item.type}</span>
-                      <h3>{item.title}</h3>
-                    </div>
-                  </a>
-                ))}
-              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        ) : null}
 
-        {/* Category grid — Scriptful-style */}
-        <section id="categories" className="rv-script-section rv-script-section--sand" data-animate="peak-fade">
+        <section id="library" className="rv-res-library" data-animate="peak-fade">
           <div className="container">
-            <div className="rv-script-section__head">
-              <p className="rv-script-eyebrow">Browse topics</p>
-              <h2>Explore by category</h2>
-              <p>Physician-reviewed pillars of metabolic and longevity care.</p>
+            <div className="rv-mag-section-head">
+              <h2>Article library</h2>
+              <p>Evidence-based reading for Semaglutide and Tirzepatide members.</p>
             </div>
-            <div className="rv-script-academy__grid">
-              {categories.map((cat) => (
-                <a key={cat.slug} href={cat.href} className="rv-script-academy__card">
-                  {"image" in cat && cat.image ? (
-                    <div className="rv-script-academy__media">
-                      <FastImg src={cat.image} alt="" width={400} height={300} sizes="(max-width: 640px) 45vw, 15vw" />
-                    </div>
-                  ) : null}
-                  <span>{cat.label}</span>
+            <div className="rv-res-grid">
+              {treatmentArticles.map((article) => (
+                <a
+                  key={article.slug}
+                  href={`/resources/articles/${article.slug}`}
+                  className="rv-res-card"
+                >
+                  <CardMedia
+                    src={article.image}
+                    alt={article.title}
+                    aspect="4/3"
+                    sizes="(max-width: 768px) 90vw, 280px"
+                  />
+                  <div className="rv-res-card__body">
+                    <span>
+                      {article.published} · {article.category}
+                    </span>
+                    <h3>{article.title}</h3>
+                    <p>{article.summary}</p>
+                  </div>
                 </a>
               ))}
             </div>
-            {academy.categories.length > 8 && (
-              <div className="rv-script-section__foot">
-                <a href="/resources/category/longevity" className="rv-script-btn rv-script-btn--secondary">
-                  Browse all categories →
-                </a>
-              </div>
-            )}
           </div>
         </section>
 
-        {/* Library: guides + topics + recent */}
-        <section id="library" className="rv-mag-library" data-animate="peak-fade">
+        <section id="guides" className="rv-script-section rv-script-section--sand" data-animate="peak-fade">
           <div className="container">
-            <div className="rv-mag-section-head">
-              <h2 id="guides">Guides & reading list</h2>
-              <p>Downloadable playbooks and editorial picks—with imagery, not text-only cards.</p>
+            <div className="rv-script-section__head">
+              <p className="rv-script-eyebrow">Downloadable guides</p>
+              <h2>Playbooks for your protocol</h2>
+              <p>PDF guides aligned with Semaglutide and Tirzepatide care.</p>
             </div>
-
-            <div className="rv-mag-guides">
-              {academy.downloadableGuides.map((guide) => {
+            <div className="rv-res-grid rv-res-grid--guides">
+              {treatmentGuides.map((guide) => {
                 const slug = guide.href.split("/").pop() ?? "";
                 const pdfUrl = slug ? getGuidePdfUrl(slug) : "#";
                 const cover = guideCovers[slug] || "/images/academy-recipes.webp";
                 return (
-                  <article key={guide.title} className="rv-mag-guide">
-                    <div className="rv-mag-guide__cover">
-                      <FastImg src={cover} alt="" width={600} height={400} sizes="(max-width: 900px) 90vw, 280px" />
-                    </div>
-                    <div className="rv-mag-guide__body">
+                  <article key={guide.title} className="rv-res-card rv-res-card--guide">
+                    <CardMedia
+                      src={cover}
+                      alt={guide.title}
+                      aspect="4/3"
+                      sizes="(max-width: 768px) 90vw, 280px"
+                    />
+                    <div className="rv-res-card__body">
+                      <span>PDF guide</span>
                       <h3>{guide.title}</h3>
                       <p>{guide.desc}</p>
-                      <div className="rv-mag-guide__links">
+                      <div className="rv-res-card__links">
                         <a href={pdfUrl} download>
                           Download PDF
                         </a>
@@ -251,106 +224,43 @@ export default function ResourcesPage() {
                 );
               })}
             </div>
+          </div>
+        </section>
 
-            <div id="topics" className="rv-mag-editorial">
-              {academy.topicClusters.slice(0, 2).map((cluster) => (
-                <div key={cluster.title} className="rv-mag-editorial__block">
-                  <h3>{cluster.title}</h3>
-                  <ul>
-                    {cluster.articles.map((article, i) => (
-                      <li key={article.title}>
-                        <a href={article.href}>
-                          <FastImg
-                            src={clusterThumbs[i % clusterThumbs.length]}
-                            alt=""
-                            width={160}
-                            height={120}
-                            sizes="72px"
-                          />
-                          <span>
-                            <strong>{article.title}</strong>
-                            <em>{article.summary}</em>
-                          </span>
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+        <section id="categories" className="rv-script-section" data-animate="peak-fade">
+          <div className="container">
+            <div className="rv-script-section__head">
+              <p className="rv-script-eyebrow">Browse topics</p>
+              <h2>Supporting topics</h2>
+              <p>Nutrition, sleep, and habits that complement your treatment plan.</p>
+            </div>
+            <div className="rv-script-academy__grid">
+              {browseCategories.map((cat) => (
+                <a key={cat.slug} href={cat.href} className="rv-script-academy__card">
+                  {"image" in cat && cat.image ? (
+                    <CardMedia
+                      src={cat.image}
+                      alt={cat.label}
+                      aspect="4/3"
+                      sizes="(max-width: 640px) 45vw, 180px"
+                      className="rv-script-academy__card-media"
+                    />
+                  ) : null}
+                  <span>{cat.label}</span>
+                </a>
               ))}
-            </div>
-
-            <div className="rv-mag-recent">
-              <h3>Recent articles</h3>
-              <div className="rv-mag-recent__grid">
-                {recentArticles.map((article) => (
-                  <a key={article.href} href={article.href} className="rv-mag-recent__card">
-                    <FastImg src={article.image} alt="" width={600} height={400} sizes="(max-width: 900px) 90vw, 30vw" />
-                    <div>
-                      <span>
-                        {article.date} · {article.category}
-                      </span>
-                      <h4>{article.title}</h4>
-                    </div>
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            <div className="rv-mag-library__extra">
-              <div>
-                <h3 id="videos">Watch & learn</h3>
-                <div className="rv-mag-videos">
-                  {videos.map((video) => (
-                    <a
-                      key={video.youtubeId}
-                      href={`https://www.youtube.com/watch?v=${video.youtubeId}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="rv-mag-video"
-                    >
-                      <span className="rv-mag-video__thumb">
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
-                          src={`https://i.ytimg.com/vi/${video.youtubeId}/hqdefault.jpg`}
-                          alt=""
-                          loading="lazy"
-                          decoding="async"
-                        />
-                      </span>
-                      <span>
-                        <strong>{video.title}</strong>
-                        <em>{video.source}</em>
-                      </span>
-                    </a>
-                  ))}
-                </div>
-              </div>
-              <div>
-                <h3 id="external">Trusted sources</h3>
-                <ul className="rv-mag-external">
-                  {externalReads.map((item) => (
-                    <li key={item.href}>
-                      <a href={item.href} target="_blank" rel="noopener noreferrer">
-                        <span>{item.source}</span>
-                        <strong>{item.title}</strong>
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
             </div>
           </div>
         </section>
 
-        {/* Tools strip */}
         <section id="tools" className="rv-mag-tools" data-animate="rise">
           <div className="container">
             <div className="rv-mag-section-head">
               <h2>Interactive tools</h2>
-              <p>Quick assessments to understand your baseline.</p>
+              <p>Quick assessments to understand your baseline during treatment.</p>
             </div>
             <div className="rv-mag-tools__row">
-              {academy.tools.map((tool) => (
+              {academy.tools.slice(0, 6).map((tool) => (
                 <a key={tool.label} href={tool.href}>
                   {tool.label}
                   <span aria-hidden>→</span>
@@ -364,6 +274,52 @@ export default function ResourcesPage() {
               <a href={academy.monthlyReport.href} className="btn btn-primary">
                 Read this month&apos;s report →
               </a>
+            </div>
+          </div>
+        </section>
+
+        <section className="rv-res-extra" data-animate="peak-fade">
+          <div className="container rv-res-extra__grid">
+            <div id="videos">
+              <h3>Watch &amp; learn</h3>
+              <div className="rv-mag-videos">
+                {videos.map((video) => (
+                  <a
+                    key={video.youtubeId}
+                    href={`https://www.youtube.com/watch?v=${video.youtubeId}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="rv-mag-video"
+                  >
+                    <span className="rv-mag-video__thumb">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={`https://i.ytimg.com/vi/${video.youtubeId}/hqdefault.jpg`}
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </span>
+                    <span>
+                      <strong>{video.title}</strong>
+                      <em>{video.source}</em>
+                    </span>
+                  </a>
+                ))}
+              </div>
+            </div>
+            <div id="external">
+              <h3>Trusted sources</h3>
+              <ul className="rv-mag-external">
+                {externalReads.map((item) => (
+                  <li key={item.href}>
+                    <a href={item.href} target="_blank" rel="noopener noreferrer">
+                      <span>{item.source}</span>
+                      <strong>{item.title}</strong>
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </section>
