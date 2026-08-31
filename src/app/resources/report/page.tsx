@@ -29,9 +29,9 @@ export default function MonthlyReportPage() {
             </div>
 
             <section className="rv-article-block">
-              <h2>GLP-1 research updates</h2>
+              <h2>Semaglutide &amp; Tirzepatide research updates</h2>
               <p>
-                Continued evidence supports physician-supervised GLP-1 therapy for metabolic health—with
+                Continued evidence supports physician-supervised Semaglutide and Tirzepatide programs for metabolic health—with
                 emphasis on protein intake, gradual titration, and quarterly lab monitoring.
               </p>
             </section>
@@ -47,7 +47,7 @@ export default function MonthlyReportPage() {
             <section className="rv-article-block">
               <h2>Seasonal wellness</h2>
               <p>
-                Summer heat increases hydration needs, especially on GLP-1 and TRT protocols. Adjust
+                Summer heat increases hydration needs, especially on Semaglutide and Tirzepatide protocols. Adjust
                 water intake and electrolytes per your provider&apos;s guidance.
               </p>
             </section>

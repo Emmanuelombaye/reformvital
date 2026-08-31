@@ -1,34 +1,45 @@
-import Image from "next/image";
 import Link from "next/link";
-import { brandConfig } from "@/brand.config";
+import Image from "next/image";
+import { WEIGHT_TREATMENTS, getTherapyVialImage } from "@/lib/treatmentCatalog";
 
 export default function HealthAcademyTeaser() {
-  const academy = brandConfig.healthAcademy;
-  const categories = academy.categories.slice(0, 6);
-
   return (
     <section className="rv-script-section rv-script-academy" id="health-academy">
       <div className="container">
         <div className="rv-script-section__head">
-          <p className="rv-script-eyebrow">Health Academy</p>
-          <h2>{academy.title.replace("Reform Vital ", "")}</h2>
-          <p>{academy.subtitle}</p>
+          <p className="rv-script-eyebrow">Programs</p>
+          <h2>Semaglutide &amp; Tirzepatide</h2>
+          <p>
+            Two clinician-guided weight-management programs—select the option that fits your
+            goals and budget.
+          </p>
         </div>
 
-        <div className="rv-script-academy__grid">
-          {categories.map((cat) => (
-            <Link key={cat.slug} href={cat.href} className="rv-script-academy__card">
+        <div className="rv-script-academy__grid rv-script-academy__grid--two">
+          {WEIGHT_TREATMENTS.map((program) => (
+            <Link
+              key={program.slug}
+              href={`/treatments/${program.slug}`}
+              className="rv-script-academy__card"
+            >
               <div className="rv-script-academy__media">
-                <Image src={cat.image} alt="" fill sizes="(max-width: 640px) 90vw, 30vw" />
+                <Image
+                  src={getTherapyVialImage(program.slug, "thumb")}
+                  alt=""
+                  fill
+                  sizes="(max-width: 640px) 90vw, 30vw"
+                />
               </div>
-              <span>{cat.label}</span>
+              <span>
+                {program.name} · {program.price}
+              </span>
             </Link>
           ))}
         </div>
 
         <div className="rv-script-section__foot">
-          <Link href="/resources" className="rv-script-btn rv-script-btn--secondary">
-            Browse Health Academy →
+          <Link href="/treatments" className="rv-script-btn rv-script-btn--secondary">
+            Compare both programs →
           </Link>
         </div>
       </div>

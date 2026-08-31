@@ -7,22 +7,22 @@ import { getGuidePdfUrl } from "@/content/academy";
 
 const featured = [
   {
-    title: "How GLP-1 Therapies Support Metabolic Reset",
+    title: "How Semaglutide and Tirzepatide Support Metabolic Reset",
     type: "Guide",
     summary:
       "Semaglutide and Tirzepatide in plain language—appetite signaling, first-90-day expectations, and physician monitoring.",
-    href: "/resources/articles/glp1-metabolic-reset",
+    href: "/resources/articles/semaglutide-tirzepatide-metabolic-reset",
     image: "/images/resource-glp1.webp",
-    imageAlt: "GLP-1 therapy education",
+    imageAlt: "Semaglutide and Tirzepatide education",
   },
   {
-    title: "Hormone Optimization 101",
+    title: "What to Expect in Your First 90 Days on Semaglutide or Tirzepatide",
     type: "Education",
     summary:
-      "Why labs come first for TRT and women's hormone therapy—and how protocols follow your biomarkers.",
-    href: "/resources/articles/hormone-optimization-101",
-    image: "/images/resource-hormones.webp",
-    imageAlt: "Hormone optimization education",
+      "Realistic timelines, side-effect management, and how your provider adjusts your Semaglutide or Tirzepatide protocol.",
+    href: "/resources/articles/first-90-days-semaglutide-tirzepatide",
+    image: "/images/resource-glp1.webp",
+    imageAlt: "First 90 days on Semaglutide or Tirzepatide",
   },
   {
     title: "Using Your AI Health Coach Between Visits",
@@ -48,47 +48,41 @@ const guideCovers: Record<string, string> = {
 
 const recentArticles = [
   {
-    title: "What to Expect in Your First 90 Days on GLP-1 Therapy",
+    title: "What to Expect in Your First 90 Days on Semaglutide or Tirzepatide",
     category: "Weight Optimization",
     date: "August 2026",
-    href: "/resources/articles/first-90-days-glp1",
+    href: "/resources/articles/first-90-days-semaglutide-tirzepatide",
     image: "/images/resource-glp1.webp",
   },
   {
-    title: "Understanding Your Lab Results: A Patient Guide",
-    category: "Advanced Labs",
+    title: "Medical Weight Loss vs. Product-Only Sellers",
+    category: "Weight Optimization",
     date: "August 2026",
-    href: "/resources/articles/understanding-labs",
-    image: "/images/why-evidence.webp",
+    href: "/resources/articles/medical-weight-loss-vs-sellers",
+    image: "/images/story-nutrition.webp",
   },
   {
-    title: "Sleep, Recovery, and Hormone Health",
-    category: "Sleep",
+    title: "Nutrition for Sustainable Weight Management",
+    category: "Nutrition",
     date: "July 2026",
-    href: "/resources/articles/sleep-recovery-hormones",
-    image: "/images/8.webp",
+    href: "/resources/articles/nutrition-weight-management",
+    image: "/images/academy-nutrition.webp",
   },
   {
-    title: "Longevity & Cellular Energy: NAD+ Explained",
-    category: "Longevity",
+    title: "Using Your AI Health Coach Between Visits",
+    category: "Member Support",
     date: "July 2026",
-    href: "/resources/articles/nad-longevity-cellular-energy",
-    image: "/images/about-longevity.webp",
+    href: "/resources/articles/ai-health-coach-between-visits",
+    image: "/images/resource-ai-coach.webp",
   },
 ];
 
 const videos = [
   {
-    title: "Understanding GLP-1 Medications",
-    blurb: "How GLP-1 receptor agonists support metabolic health and weight management.",
+    title: "Understanding Semaglutide and Tirzepatide",
+    blurb: "How physician-guided injectable weight-management programs support metabolic health.",
     youtubeId: "IVn4K-lesQM",
     source: "Educational overview",
-  },
-  {
-    title: "Hormone Health Basics",
-    blurb: "Why hormone balance matters for energy, composition, and long-term wellness.",
-    youtubeId: "ZteQT00cRR0",
-    source: "Hormone education",
   },
   {
     title: "Mayo Clinic: Weight Loss Medications",

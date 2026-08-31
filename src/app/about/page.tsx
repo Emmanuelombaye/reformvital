@@ -31,8 +31,8 @@ export default function AboutPage() {
                 outcomes rather than product-only sales.
               </p>
               <p>
-                We address metabolic health, hormones, recovery, and longevity with transparent
-                pricing and compliance-first communication.
+                We focus on clinician-guided weight management with transparent pricing and
+                compliance-first communication.
               </p>
             </div>
 

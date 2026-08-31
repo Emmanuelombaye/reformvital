@@ -5,16 +5,16 @@ export const HOW_STEPS = [
     n: "01",
     title: "Choose a",
     titleItalic: "treatment plan",
-    body: "Browse physician-guided pathways—GLP-1, hormones, peptides, longevity—and pick the plan that matches your goals. Then complete a short medical history so our providers can confirm you're a good fit.",
+    body: "Choose Semaglutide or Tirzepatide, review the all-inclusive monthly program price, and complete a short medical history so our providers can confirm you're a good fit.",
     image: {
       src: "/images/featured-metabolic.webp",
       alt: "Reform Vital personalized treatment pathways",
       aspect: "16/9",
     },
-    chips: ["GLP-1", "Hormones", "Peptides"],
+    chips: ["Semaglutide", "Tirzepatide", "Weight management"],
     callout: {
-      value: "9 care categories",
-      label: "Personalized protocols reviewed by U.S. licensed providers",
+      value: "2 programs",
+      label: "Clinician-guided weight management with transparent monthly pricing",
     },
     link: { href: "/treatments", label: "Explore treatments →" },
   },
@@ -123,7 +123,7 @@ export const HOW_FAQS = [
   },
   {
     q: "What treatments do you offer?",
-    a: "Medical weight loss (GLP-1), hormone optimization, growth hormone peptides, recovery, longevity, cognitive support, sexual wellness, hair restoration, and preventive labs—prescribed only when clinically appropriate.",
+    a: "Reform Vital offers two weight-management programs: Semaglutide ($149/mo) and Tirzepatide ($249/mo). Both require licensed provider review and are prescribed only when clinically appropriate.",
   },
   {
     q: "How fast is shipping?",

@@ -2,22 +2,18 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-
-const GOALS = [
-  "Weight Loss (GLP-1 / Tirzepatide)",
-  "Hormone Optimization / TRT",
-  "Growth Hormone Peptides (Sermorelin)",
-  "Longevity & NAD+ Cellular Therapy",
-  "Recovery & Tissue Repair (BPC-157)",
-  "Cognitive & Mood Optimization (Semax)",
-];
+import { WEIGHT_TREATMENTS } from "@/lib/treatmentCatalog";
 
 export default function StartAssessmentPage() {
   const [step, setStep] = useState(1);
-  const [selectedGoal, setSelectedGoal] = useState(GOALS[0]);
+  const [selectedSlug, setSelectedSlug] = useState(WEIGHT_TREATMENTS[0].slug);
   const [stateName, setStateName] = useState("Florida");
+
+  const selectedProgram =
+    WEIGHT_TREATMENTS.find((t) => t.slug === selectedSlug) || WEIGHT_TREATMENTS[0];
 
   return (
     <>
@@ -54,28 +50,31 @@ export default function StartAssessmentPage() {
 
               {step === 1 && (
                 <div className="rv-start-body">
-                  <h1>What is your primary health optimization goal?</h1>
+                  <h1>Which weight-management program are you interested in?</h1>
                   <p>
-                    Select your main focus area to match with a specialized U.S.
-                    board-certified medical director.
+                    Reform Vital offers two clinician-guided programs: Semaglutide and Tirzepatide. Select one to
+                    begin your secure intake.
                   </p>
 
-                  <div className="rv-start-options" role="radiogroup" aria-label="Health goal">
-                    {GOALS.map((goal) => {
-                      const active = selectedGoal === goal;
+                  <div className="rv-start-options" role="radiogroup" aria-label="Treatment program">
+                    {WEIGHT_TREATMENTS.map((program) => {
+                      const active = selectedSlug === program.slug;
                       return (
                         <button
-                          key={goal}
+                          key={program.slug}
                           type="button"
                           role="radio"
                           aria-checked={active}
                           className={`rv-start-option${active ? " is-active" : ""}`}
-                          onClick={() => setSelectedGoal(goal)}
+                          onClick={() => setSelectedSlug(program.slug)}
                         >
                           <span className="rv-start-option__mark" aria-hidden>
                             {active ? "✓" : ""}
                           </span>
-                          <span>{goal}</span>
+                          <span>
+                            <strong>{program.name}</strong>
+                            <em>{program.price}</em>
+                          </span>
                         </button>
                       );
                     })}
@@ -115,11 +114,11 @@ export default function StartAssessmentPage() {
                     </label>
 
                     <label className="rv-start-field">
-                      <span>Previous GLP-1 or peptide therapies?</span>
+                      <span>Previous Semaglutide or Tirzepatide use?</span>
                       <select defaultValue="no">
                         <option value="no">First-time patient</option>
-                        <option value="yes">Currently on Semaglutide / Tirzepatide</option>
-                        <option value="trt">Currently on TRT / Peptide protocols</option>
+                        <option value="semaglutide">Currently on Semaglutide</option>
+                        <option value="tirzepatide">Currently on Tirzepatide</option>
                       </select>
                     </label>
                   </div>
@@ -146,17 +145,16 @@ export default function StartAssessmentPage() {
                   </div>
                   <h1>Assessment complete</h1>
                   <p>
-                    You qualify for physician-guided <strong>{selectedGoal}</strong> in{" "}
-                    {stateName}. A licensed U.S. medical director will review your file
-                    within 24 hours.
+                    You selected the <strong>{selectedProgram.name}</strong> program ({selectedProgram.price}) in{" "}
+                    {stateName}. A licensed U.S. clinician will review your file within 24 hours.
                   </p>
                   <div className="rv-start-plan">
-                    Recommended: Essentials / Performance membership ($149/mo includes
-                    doctor consult &amp; compounded pharmacy shipping)
+                    Recommended program: {selectedProgram.name} at {selectedProgram.price} — includes
+                    provider review &amp; standard pharmacy shipping when prescribed.
                   </div>
-                  <a href="/treatments" className="btn btn-primary rv-start-cta">
-                    Explore prescribed formulations →
-                  </a>
+                  <Link href={`/treatments/${selectedProgram.slug}`} className="btn btn-primary rv-start-cta">
+                    Review {selectedProgram.name} program →
+                  </Link>
                 </div>
               )}
             </div>

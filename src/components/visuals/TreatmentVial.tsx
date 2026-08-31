@@ -11,7 +11,7 @@ type TreatmentVialProps = {
   priority?: boolean;
 };
 
-/** Photorealistic Scriptful-style product vial — drug name + concentration, no site or GLP branding */
+/** Photorealistic Scriptful-style product vial — drug name + concentration only */
 export default function TreatmentVial({
   slug,
   name,

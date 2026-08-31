@@ -24,16 +24,16 @@ export type AcademyGuide = {
 
 export const academyArticles: AcademyArticle[] = [
   {
-    slug: "glp1-metabolic-reset",
-    title: "How GLP-1 Therapies Support Metabolic Reset",
+    slug: "semaglutide-tirzepatide-metabolic-reset",
+    title: "How Semaglutide and Tirzepatide Support Metabolic Reset",
     category: "Weight Optimization",
     categorySlug: "weight",
     summary: "A plain-language overview of Semaglutide and Tirzepatide—appetite signaling, expectations, and physician monitoring.",
     readTime: "6 min",
     published: "August 2026",
     image: "/images/resource-glp1.webp",
-    what: "GLP-1 receptor agonists are physician-prescribed medications that mimic a natural gut hormone involved in appetite, blood sugar, and metabolic signaling.",
-    why: "For many adults, willpower alone is not enough—biology drives cravings and plateaus. GLP-1 therapies, when medically supervised, can support sustainable weight loss and metabolic health.",
+    what: "Semaglutide and Tirzepatide are physician-prescribed injectable weight-management medications reviewed for appetite, metabolic health, and clinical follow-up.",
+    why: "For many adults, willpower alone is not enough—biology drives cravings and plateaus. Semaglutide and Tirzepatide programs, when medically supervised, can support sustainable weight loss and metabolic health.",
     whatToDo: [
       "Complete a full health assessment before starting any protocol.",
       "Track protein, hydration, and weekly weight trends.",
@@ -41,19 +41,19 @@ export const academyArticles: AcademyArticle[] = [
       "Pair medication with movement and nutrition—not either/or.",
     ],
     whenPhysician: "Speak with a licensed provider before starting, if you are pregnant, have a history of pancreatitis, thyroid cancer (MTC/MEN2), or take insulin or sulfonylureas.",
-    tips: ["Eat slowly and prioritize protein at each meal.", "Stay hydrated—GLP-1 therapies can reduce thirst cues.", "Schedule follow-ups every 4–8 weeks during titration."],
-    relatedSlugs: ["first-90-days-glp1", "nutrition-weight-management"],
+    tips: ["Eat slowly and prioritize protein at each meal.", "Stay hydrated—these programs can reduce thirst cues.", "Schedule follow-ups every 4–8 weeks during titration."],
+    relatedSlugs: ["first-90-days-semaglutide-tirzepatide", "nutrition-weight-management"],
   },
   {
-    slug: "first-90-days-glp1",
-    title: "What to Expect in Your First 90 Days on GLP-1 Therapy",
+    slug: "first-90-days-semaglutide-tirzepatide",
+    title: "What to Expect in Your First 90 Days on Semaglutide or Tirzepatide",
     category: "Weight Optimization",
     categorySlug: "weight",
     summary: "Realistic timelines, side-effect management, and how your provider adjusts your protocol.",
     readTime: "5 min",
     published: "August 2026",
     image: "/images/weight_loss_glp1.webp",
-    what: "The first 90 days on GLP-1 therapy typically include dose titration, appetite changes, and measurable weight trend shifts.",
+    what: "The first 90 days on Semaglutide or Tirzepatide typically include dose titration, appetite changes, and measurable weight trend shifts.",
     why: "Knowing what is normal reduces anxiety and helps you stay adherent—the biggest predictor of long-term success.",
     whatToDo: [
       "Weeks 1–4: Focus on tolerance and hydration; weight loss may be gradual.",
@@ -62,7 +62,7 @@ export const academyArticles: AcademyArticle[] = [
     ],
     whenPhysician: "Contact your provider immediately for severe abdominal pain, persistent vomiting, or signs of allergic reaction.",
     tips: ["Small, frequent meals can ease nausea.", "Use your AI coach to log doses and symptoms.", "Don't compare your timeline to others—biology varies."],
-    relatedSlugs: ["glp1-metabolic-reset", "medical-weight-loss-vs-sellers"],
+    relatedSlugs: ["semaglutide-tirzepatide-metabolic-reset", "medical-weight-loss-vs-sellers"],
   },
   {
     slug: "medical-weight-loss-vs-sellers",
@@ -74,7 +74,7 @@ export const academyArticles: AcademyArticle[] = [
     published: "July 2026",
     image: "/images/tirzepatide_hero.webp",
     what: "Medical weight loss programs pair prescription therapies with licensed provider oversight, labs, and ongoing follow-up—not just medication shipped to your door.",
-    why: "GLP-1 therapies affect metabolism, appetite, and GI function. Without clinical supervision, risks go unmanaged and results are often short-lived.",
+    why: "Semaglutide and Tirzepatide affect metabolism, appetite, and GI function. Without clinical supervision, risks go unmanaged and results are often short-lived.",
     whatToDo: [
       "Verify the program uses licensed U.S. physicians—not questionnaire-only approvals.",
       "Confirm pharmacy sourcing (503A licensed compounding or approved products).",
@@ -82,7 +82,7 @@ export const academyArticles: AcademyArticle[] = [
     ],
     whenPhysician: "Always choose physician-guided care if you have diabetes, cardiovascular disease, or take multiple medications.",
     tips: ["Transparent pricing beats hidden refill fees.", "Long-term partnership beats one-time prescriptions."],
-    relatedSlugs: ["glp1-metabolic-reset", "first-90-days-glp1"],
+    relatedSlugs: ["semaglutide-tirzepatide-metabolic-reset", "first-90-days-semaglutide-tirzepatide"],
   },
   {
     slug: "hormone-optimization-101",
@@ -173,7 +173,7 @@ export const academyArticles: AcademyArticle[] = [
     readTime: "5 min",
     published: "August 2026",
     image: "/images/academy-nutrition.webp",
-    what: "Sustainable nutrition prioritizes adequate protein, fiber, hydration, and meal structure—especially while appetite changes on GLP-1 therapies.",
+    what: "Sustainable nutrition prioritizes adequate protein, fiber, hydration, and meal structure—especially while appetite changes on Semaglutide or Tirzepatide.",
     why: "Without enough protein, weight loss can include muscle loss. Nutrition habits determine whether results last after titration.",
     whatToDo: [
       "Target 0.7–1.0g protein per pound of goal body weight (provider-guided).",
@@ -181,8 +181,8 @@ export const academyArticles: AcademyArticle[] = [
       "Meal prep 2–3 days ahead to reduce decision fatigue.",
     ],
     whenPhysician: "Ask your provider for personalized macro targets if you have kidney disease, eating disorders, or diabetes.",
-    tips: ["Use the Protein Calculator in Health Academy tools.", "Don't skip meals—it can worsen GLP-1 side effects."],
-    relatedSlugs: ["glp1-metabolic-reset", "ai-health-coach-between-visits"],
+    tips: ["Use the Protein Calculator in Health Academy tools.", "Don't skip meals—it can worsen medication side effects."],
+    relatedSlugs: ["semaglutide-tirzepatide-metabolic-reset", "ai-health-coach-between-visits"],
   },
   {
     slug: "recovery-peptides-overview",
@@ -214,7 +214,7 @@ export const academyArticles: AcademyArticle[] = [
     published: "August 2026",
     image: "/images/start-wellness.webp",
     what: "Sleep regulates cortisol, growth hormone, appetite hormones, and recovery—making it foundational to every optimization protocol.",
-    why: "Poor sleep undermines GLP-1 results, TRT outcomes, and recovery peptides. Fixing sleep is often the highest-ROI lifestyle change.",
+    why: "Poor sleep undermines Semaglutide and Tirzepatide results. Fixing sleep is often the highest-ROI lifestyle change.",
     whatToDo: [
       "Keep a consistent bedtime within 30 minutes nightly.",
       "Limit screens 60 minutes before bed.",
@@ -234,11 +234,11 @@ export const academyArticles: AcademyArticle[] = [
     published: "August 2026",
     image: "/images/nad_cellular.webp",
     what: "Heart health is closely tied to blood pressure, lipids, blood sugar, body composition, and inflammation—all measurable with labs.",
-    why: "GLP-1 and preventive wellness protocols often improve cardiometabolic markers when supervised by a physician.",
+    why: "Semaglutide, Tirzepatide, and preventive wellness protocols often improve cardiometabolic markers when supervised by a physician.",
     whatToDo: ["Know your blood pressure and lipids.", "Prioritize movement and protein-forward nutrition.", "Review trends with your provider quarterly."],
     whenPhysician: "Seek urgent care for chest pain, shortness of breath, or syncope.",
     tips: ["Walking 30 minutes daily supports lipids and mood.", "Don't stop prescribed meds without physician guidance."],
-    relatedSlugs: ["understanding-labs", "glp1-metabolic-reset"],
+    relatedSlugs: ["understanding-labs", "semaglutide-tirzepatide-metabolic-reset"],
   },
   {
     slug: "mens-health-vitality",
@@ -277,16 +277,16 @@ export const academyArticles: AcademyArticle[] = [
     title: "Gut Health & Metabolic Health",
     category: "Gut Health",
     categorySlug: "gut",
-    summary: "How digestion, inflammation, and GLP-1 therapies interact.",
+    summary: "How digestion, inflammation, and Semaglutide or Tirzepatide programs interact.",
     readTime: "4 min",
     published: "July 2026",
     image: "/images/resource-glp1.webp",
-    what: "Gut health influences inflammation, nutrient absorption, and GI side effects on GLP-1 therapies.",
+    what: "Gut health influences inflammation, nutrient absorption, and GI side effects on Semaglutide or Tirzepatide.",
     why: "Managing nausea, constipation, and microbiome-friendly nutrition improves adherence and comfort.",
     whatToDo: ["Eat slowly and prioritize fiber gradually.", "Stay hydrated.", "Report persistent GI symptoms to your provider."],
     whenPhysician: "Severe abdominal pain or vomiting requires prompt medical evaluation.",
-    tips: ["Small meals reduce GLP-1 GI side effects.", "Consider probiotic foods if tolerated."],
-    relatedSlugs: ["first-90-days-glp1", "nutrition-weight-management"],
+    tips: ["Small meals can reduce GI side effects.", "Consider probiotic foods if tolerated."],
+    relatedSlugs: ["first-90-days-semaglutide-tirzepatide", "nutrition-weight-management"],
   },
   {
     slug: "mental-wellness-optimization",
@@ -316,7 +316,7 @@ export const academyArticles: AcademyArticle[] = [
     what: "Supplements like omega-3, vitamin D, magnesium, and protein can support wellness—but aren't substitutes for prescribed care.",
     why: "Quality and interactions matter. Your provider reviews everything you take alongside prescriptions.",
     whatToDo: ["Share a full supplement list at intake.", "Choose third-party tested products when possible.", "Avoid stacking unproven 'longevity' stacks without guidance."],
-    whenPhysician: "Ask before adding supplements if you take blood thinners, GLP-1s, or hormone therapies.",
+    whenPhysician: "Ask before adding supplements if you take blood thinners, Semaglutide, Tirzepatide, or other prescription therapies.",
     tips: ["Food first, supplement second.", "More is not better—dose matters."],
     relatedSlugs: ["nad-longevity-cellular-energy", "nutrition-weight-management"],
   },
@@ -325,7 +325,7 @@ export const academyArticles: AcademyArticle[] = [
     title: "Healthy Recipes for Your Protocol",
     category: "Healthy Recipes",
     categorySlug: "recipes",
-    summary: "High-protein, GLP-1-friendly meal ideas that support adherence.",
+    summary: "High-protein meal ideas that support Semaglutide and Tirzepatide adherence.",
     readTime: "4 min",
     published: "August 2026",
     image: "/images/academy-recipes.webp",
@@ -334,7 +334,7 @@ export const academyArticles: AcademyArticle[] = [
     whatToDo: ["Prep grilled chicken, quinoa, and roasted vegetables in batches.", "Keep Greek yogurt, eggs, and shakes available.", "Use the Macro Calculator for targets."],
     whenPhysician: "Ask for renal-safe protein targets if you have kidney disease.",
     tips: ["Sheet-pan meals minimize cleanup.", "Flavor with herbs—not just sauce calories."],
-    relatedSlugs: ["nutrition-weight-management", "glp1-metabolic-reset"],
+    relatedSlugs: ["nutrition-weight-management", "semaglutide-tirzepatide-metabolic-reset"],
   },
   {
     slug: "physician-insights-concierge-care",
@@ -375,7 +375,7 @@ export const categoryMeta: CategoryMeta[] = [
     slug: "weight",
     guideSlug: "weight-optimization-guide",
     faqs: [
-      { q: "Is GLP-1 therapy right for everyone?", a: "No. A licensed physician reviews your history, labs, and goals before any prescription." },
+      { q: "Is Semaglutide or Tirzepatide right for everyone?", a: "No. A licensed physician reviews your history, labs, and goals before any prescription." },
       { q: "How fast will I lose weight?", a: "Most patients see gradual progress over 12–24 weeks with ongoing titration and lifestyle support." },
     ],
     tips: ["Track protein daily.", "Report side effects early to your provider."],
@@ -394,7 +394,7 @@ export const categoryMeta: CategoryMeta[] = [
     guideSlug: "nutrition-playbook",
     faqs: [
       { q: "How much protein do I need?", a: "Use our Protein Calculator as a starting point—your provider personalizes targets." },
-      { q: "Can I follow any diet on GLP-1?", a: "Focus on adequate protein and hydration; your physician may adjust for medical conditions." },
+      { q: "Can I follow any diet on Semaglutide or Tirzepatide?", a: "Focus on adequate protein and hydration; your physician may adjust for medical conditions." },
     ],
     tips: ["Batch-prep proteins twice weekly.", "Eat slowly when appetite is reduced."],
   },
@@ -411,7 +411,7 @@ export const categoryMeta: CategoryMeta[] = [
     slug: "sleep",
     guideSlug: "sleep-guide",
     faqs: [
-      { q: "Does sleep affect hormone therapy?", a: "Yes—poor sleep can mimic low testosterone and undermine GLP-1 outcomes." },
+      { q: "Does sleep affect weight-management outcomes?", a: "Yes—poor sleep can disrupt appetite hormones and undermine Semaglutide or Tirzepatide results." },
       { q: "When should I worry about snoring?", a: "Snoring with daytime sleepiness warrants a physician evaluation for sleep apnea." },
     ],
     tips: ["Keep a consistent wake time.", "Limit screens 60 minutes before bed."],
@@ -428,7 +428,7 @@ export const categoryMeta: CategoryMeta[] = [
   {
     slug: "heart",
     faqs: [
-      { q: "Do GLP-1s help heart health?", a: "Many patients see improved cardiometabolic markers when therapy is physician-supervised." },
+      { q: "Do Semaglutide and Tirzepatide support heart health?", a: "Many patients see improved cardiometabolic markers when therapy is physician-supervised." },
       { q: "What should I monitor at home?", a: "Blood pressure when advised, weight trends, and symptoms like chest pain or shortness of breath." },
     ],
     tips: ["Daily walking supports lipids and mood.", "Don't stop cardiac meds without your doctor."],
@@ -462,7 +462,7 @@ export const categoryMeta: CategoryMeta[] = [
   {
     slug: "gut",
     faqs: [
-      { q: "Why do GLP-1s cause GI side effects?", a: "Slower gastric emptying can cause nausea—often improves with dose titration and meal timing." },
+      { q: "Why can Semaglutide or Tirzepatide cause GI side effects?", a: "Slower gastric emptying can cause nausea—often improves with dose titration and meal timing." },
       { q: "Should I take probiotics?", a: "Ask your provider—needs vary and interactions with therapy matter." },
     ],
     tips: ["Small, frequent meals help nausea.", "Increase fiber gradually with hydration."],
@@ -478,7 +478,7 @@ export const categoryMeta: CategoryMeta[] = [
   {
     slug: "supplements",
     faqs: [
-      { q: "Do I need supplements on TRT or GLP-1?", a: "Some patients benefit from vitamin D, magnesium, or omega-3—your provider reviews your full list." },
+      { q: "Do I need supplements on Semaglutide or Tirzepatide?", a: "Some patients benefit from vitamin D, magnesium, or omega-3—your provider reviews your full list." },
       { q: "Can supplements interact with prescriptions?", a: "Yes. Share everything you take at intake and before adding new products." },
     ],
     tips: ["Choose third-party tested brands.", "Food first, supplement second."],
@@ -487,7 +487,7 @@ export const categoryMeta: CategoryMeta[] = [
     slug: "recipes",
     guideSlug: "nutrition-playbook",
     faqs: [
-      { q: "What makes a meal GLP-1-friendly?", a: "High protein, vegetables, and moderate portions—easy to digest when appetite is low." },
+      { q: "What makes a meal program-friendly?", a: "High protein, vegetables, and moderate portions—easy to digest when appetite is low." },
       { q: "How do I hit protein targets?", a: "Prep lean proteins in batches and keep Greek yogurt, eggs, and shakes on hand." },
     ],
     tips: ["Sheet-pan dinners save time.", "Herbs and spices add flavor without excess calories."],
@@ -531,11 +531,11 @@ export const academyGuides: AcademyGuide[] = [
   {
     slug: "weight-optimization-guide",
     title: "Weight Optimization Guide",
-    desc: "GLP-1 therapy expectations, nutrition, and sustainable habits.",
+    desc: "Semaglutide and Tirzepatide expectations, nutrition, and sustainable habits.",
     sections: [
       { heading: "Setting Expectations", body: "Medical weight loss is a partnership. Typical progress is gradual over 12–24 weeks with provider titration." },
       { heading: "Nutrition Essentials", body: "Prioritize protein, hydration, and structured meals. Use Health Academy calculators for personalized targets." },
-      { heading: "Your Next Step", body: "Begin your health assessment to see if physician-guided GLP-1 therapy is appropriate for you." },
+      { heading: "Your Next Step", body: "Begin your health assessment to see if physician-guided Semaglutide or Tirzepatide is appropriate for you." },
     ],
   },
   {
@@ -574,7 +574,7 @@ export const academyGuides: AcademyGuide[] = [
     desc: "Recovery, circadian rhythm, and hormone connection.",
     sections: [
       { heading: "Circadian Basics", body: "Consistent wake times anchor your hormone cycle. Morning light exposure helps." },
-      { heading: "Sleep & Hormones", body: "Poor sleep elevates cortisol and disrupts appetite hormones—undermining GLP-1 and TRT outcomes." },
+      { heading: "Sleep & Hormones", body: "Poor sleep elevates cortisol and disrupts appetite hormones—undermining Semaglutide and Tirzepatide outcomes." },
       { heading: "Your Next Step", body: "Take the Sleep Assessment in Health Academy tools and share results with your provider." },
     ],
   },

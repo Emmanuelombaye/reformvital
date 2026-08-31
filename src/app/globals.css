@@ -9587,9 +9587,17 @@ img[data-nimg="fill"] {
   object-fit: cover;
 }
 
-.rv-script-extras__card .rv-script-btn {
-  margin-top: auto;
-  width: fit-content;
+.rv-script-academy__grid--two {
+  grid-template-columns: repeat(2, minmax(140px, 1fr));
+  max-width: 32rem;
+  margin: 0 auto;
+}
+
+@media (max-width: 520px) {
+  .rv-script-academy__grid--two {
+    grid-template-columns: 1fr;
+    max-width: none;
+  }
 }
 
 /* Trust signals — Scriptful strip under hero */

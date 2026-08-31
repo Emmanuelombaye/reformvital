@@ -30,7 +30,7 @@ export default function SemaglutideHeroVisual() {
             letterSpacing: '0.06em',
           }}
         >
-          SELECTIVE GLP-1 RECEPTOR AGONIST
+          SELECTIVE WEIGHT-MANAGEMENT FORMULATION
         </span>
         <span style={{ fontSize: '0.8rem', color: '#FFF', fontWeight: 800 }}>VITAL WEIGHT LOSS</span>
       </div>
@@ -43,7 +43,7 @@ export default function SemaglutideHeroVisual() {
           Semaglutide + Cyanocobalamin (B12)
         </h3>
         <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: "0.95rem", marginTop: '8px', maxWidth: '360px' }}>
-          Gold-standard weekly subcutaneous GLP-1 injection for appetite regulation and metabolic re-calibration.
+          Physician-guided weekly Semaglutide injection for appetite regulation and metabolic support.
         </p>
       </div>
 

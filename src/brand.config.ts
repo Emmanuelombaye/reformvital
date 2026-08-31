@@ -4,17 +4,17 @@ export const brandConfig = {
   fullName: "Reform Vital Health LLC",
   legalOwner: "Javier Alexis Solano",
   tagline: "MODERN MEDICINE. PERSONALIZED HEALTH. REAL RESULTS.",
-  slogan: "Physician-Guided Metabolic Health & Telehealth Optimization",
+  slogan: "Physician-Guided Semaglutide & Tirzepatide Telehealth",
   domain: "REFORMVITAL.COM",
   logo: "/reform-vital-logo.svg",
   favicon: "/favicon.ico",
 
   // ──── Core Pillars ────
   pillars: [
-    { title: "Physician Guided", desc: "Licensed medical providers & medical directors supervising your care" },
-    { title: "Personalized Treatment", desc: "Tailored peptide stacks, GLP-1 plans, and hormone protocols" },
+    { title: "Physician Guided", desc: "Licensed medical providers supervising your weight-management program" },
+    { title: "Two Programs", desc: "Semaglutide and Tirzepatide—one clear monthly price each" },
     { title: "AI Powered Health Coach", desc: "24/7 accountability, habit coaching, and daily tracking" },
-    { title: "Track. Improve. Thrive.", desc: "Measurable biomarker improvements and progress reports" },
+    { title: "Track. Improve. Thrive.", desc: "Measurable progress with provider follow-up and portal tools" },
   ],
 
   // ──── Color Palette (Reform Vital Navy & Teal Aesthetics) ────
@@ -46,7 +46,7 @@ export const brandConfig = {
     price: "$149",
     period: "/mo",
     stamp: "Doctor Included",
-    subtext: "Physician consultation, custom GLP-1 prescription & overnight pharmacy delivery.",
+    subtext: "Physician consultation, custom prescription & overnight pharmacy delivery.",
     ctaText: "Claim Consultation",
     ctaLink: "/start",
   },
@@ -93,28 +93,25 @@ export const brandConfig = {
       label: "Physician-Guided Telehealth",
     },
     dynamicWords: [
-      { text: "Metabolic Reset", color: "#5EEAD4" },
-      { text: "Hormone Vitality", color: "#38BDF8" },
-      { text: "Peptide Therapy", color: "#FBBF24" },
-      { text: "Cellular Edge", color: "#A3E635" },
-      { text: "Vital Rebuild", color: "#C4B5FD" },
+      { text: "Semaglutide", color: "#5EEAD4" },
+      { text: "Tirzepatide", color: "#38BDF8" },
     ],
     headline: "Personalized care. One clear monthly price.",
-    subheadline: "Weight-management programs · Memberships · Health Academy",
+    subheadline: "Two clinician-guided weight-management programs",
     description:
-      "Simple, clinician-guided telehealth with transparent program pricing. Purchase first, then complete secure medical intake for licensed-provider review.",
+      "Choose Semaglutide or Tirzepatide, review transparent program pricing, then complete secure medical intake for licensed-provider review.",
     primaryCtaText: "Explore Treatments",
     primaryCtaNote: "Licensed provider review · RX only if prescribed",
     secondaryCtaText: "How It Works",
     ctaLink: "/start",
     cardHighlight: {
       category: "PHYSICIAN-GUIDED METABOLIC PROGRAM",
-      title: "Compounded Semaglutide / Tirzepatide+",
+      title: "Compounded Semaglutide / Tirzepatide",
       price: "$149",
       unit: "/mo",
       bullets: [
         "100% Online Physician Evaluation & Ongoing Follow-up",
-        "Targeted Metabolic Health & GLP-1 Formulations",
+        "Targeted Metabolic Health Formulations",
         "Includes Vitamin B12 Support & Syringes",
         "Free Expedited Cold-Chain Pharmacy Delivery",
       ],
@@ -208,13 +205,13 @@ export const brandConfig = {
     {
       id: "essentials",
       name: "Essentials",
-      focus: "Medical Weight Loss",
+      focus: "Semaglutide program",
       badge: "CORE CARE",
       price: "$149",
       period: "/month",
       monthlyPrice: 149,
       quarterlyPrice: 119,
-      desc: "Ideal for patients beginning a single physician-guided therapy—GLP-1 weight loss or foundational care.",
+      desc: "Physician-guided Semaglutide weight-management program with provider review and pharmacy fulfillment.",
       features: [
         "Licensed U.S. Physician Consultation",
         "Prescription Management & Refills",
@@ -228,18 +225,18 @@ export const brandConfig = {
     {
       id: "performance",
       name: "Performance",
-      focus: "TRT & Metabolic Stacking",
+      focus: "Tirzepatide program",
       badge: "MOST POPULAR",
       price: "$249",
       period: "/month",
       monthlyPrice: 249,
       quarterlyPrice: 199,
-      desc: "Comprehensive metabolic health, hormone optimization, peptide stacking & monthly provider guidance.",
+      desc: "Physician-guided Tirzepatide weight-management program with monthly provider guidance and portal tracking.",
       features: [
         "Everything in Essentials",
-        "Comprehensive Blood Panel & Lab Review",
+        "Tirzepatide program pricing & provider review",
         "Monthly 1-on-1 Physician Coaching",
-        "Custom Peptide Stacking Protocols",
+        "Comprehensive Blood Panel & Lab Review",
         "Priority Expedited Cold-Chain Shipping",
         "Full Patient Dashboard Metrics Tracking",
       ],
@@ -249,18 +246,18 @@ export const brandConfig = {
     {
       id: "elite",
       name: "Elite Concierge",
-      focus: "Longevity & Executive Care",
+      focus: "Concierge weight care",
       badge: "EXECUTIVE",
       price: "$399",
       period: "/month",
       monthlyPrice: 399,
       quarterlyPrice: 319,
-      desc: "White-glove longevity optimization, advanced labs, multi-peptide protocols & direct medical director access.",
+      desc: "White-glove weight-management support with advanced labs, priority messaging, and medical director oversight.",
       features: [
         "Everything in Performance",
-        "Advanced Genetic & Hormone Lab Panels",
+        "Advanced metabolic & wellness lab panels",
         "Direct Concierge Medical Team Messaging",
-        "Personalized Metabolic & Longevity Roadmap",
+        "Personalized weight-management roadmap",
         "Dedicated Medical Director Oversight",
         "Free Quarterly Lab Panels Included",
       ],
@@ -277,7 +274,7 @@ export const brandConfig = {
       { title: "Daily Habit Coaching", desc: "Customized reminders for injections, hydration, and protein goals." },
       { title: "Progress Summaries", desc: "Automated weekly reports on body measurements, HRV, and weight trends." },
       { title: "Goal Reminders", desc: "Interactive milestone tracking to keep you motivated throughout your journey." },
-      { title: "Educational Guidance", desc: "Instant answers regarding diet, lifestyle adaptation, and peptide research." },
+      { title: "Educational Guidance", desc: "Instant answers regarding diet, lifestyle adaptation, and Semaglutide or Tirzepatide program support." },
     ],
     dashboardMetrics: [
       "Starting, Current & Goal Weight",
@@ -348,7 +345,7 @@ export const brandConfig = {
       },
       {
         title: "Whole-Person Wellness",
-        desc: "We address metabolic health, hormones, recovery, longevity, and prevention together.",
+        desc: "We address weight management, nutrition, recovery, and long-term metabolic health together.",
         image: "/images/why-wellness.webp",
       },
       {
@@ -399,14 +396,14 @@ export const brandConfig = {
         title: "Metabolic & Weight Care",
         articles: [
           {
-            title: "How GLP-1 Therapies Support Metabolic Reset",
+            title: "How Semaglutide and Tirzepatide Support Metabolic Reset",
             summary: "A plain-language overview of Semaglutide and Tirzepatide—appetite signaling, expectations, and physician monitoring.",
-            href: "/resources/articles/glp1-metabolic-reset",
+            href: "/resources/articles/semaglutide-tirzepatide-metabolic-reset",
           },
           {
             title: "What to Expect in Your First 90 Days",
             summary: "Realistic timelines, side-effect management, and how your provider adjusts your protocol.",
-            href: "/resources/articles/first-90-days-glp1",
+            href: "/resources/articles/first-90-days-semaglutide-tirzepatide",
           },
           {
             title: "Medical Weight Loss vs. Product-Only Sellers",
@@ -469,7 +466,7 @@ export const brandConfig = {
     downloadableGuides: [
       { title: "Longevity Blueprint", desc: "A physician-aligned roadmap for cellular health and healthy aging.", href: "/resources/guides/longevity-blueprint" },
       { title: "Executive Health Guide", desc: "Performance-focused wellness for busy professionals.", href: "/resources/guides/executive-health-guide" },
-      { title: "Weight Optimization Guide", desc: "GLP-1 therapy expectations, nutrition, and sustainable habits.", href: "/resources/guides/weight-optimization-guide" },
+      { title: "Weight Optimization Guide", desc: "Semaglutide and Tirzepatide expectations, nutrition, and sustainable habits.", href: "/resources/guides/weight-optimization-guide" },
       { title: "Hormone Health Guide", desc: "TRT, women's hormones, and when labs matter.", href: "/resources/guides/hormone-health-guide" },
       { title: "Understanding Your Labs", desc: "Decode metabolic panels, hormones, and inflammation markers.", href: "/resources/guides/understanding-your-labs" },
       { title: "Healthy Aging Handbook", desc: "Preventive strategies for energy, mobility, and cognition.", href: "/resources/guides/healthy-aging-handbook" },
@@ -479,7 +476,7 @@ export const brandConfig = {
     monthlyReport: {
       title: "Reform Vital Health Report",
       month: "August 2026",
-      topics: ["GLP-1 research updates", "Longevity nutrition", "Seasonal wellness", "Physician Q&A"],
+      topics: ["Semaglutide & Tirzepatide updates", "Longevity nutrition", "Seasonal wellness", "Physician Q&A"],
       summary: "Monthly insights on research, longevity, nutrition, exercise, and physician commentary—so you stay informed between visits.",
       href: "/resources/report",
     },
@@ -504,7 +501,7 @@ export const brandConfig = {
       category: "getting-started",
       question: "What makes Reform Vital different from standard telehealth providers?",
       answer:
-        "Reform Vital combines licensed medical doctor oversight, personalized peptide/GLP-1 treatment plans, 24/7 AI accountability coaching, and full health metric tracking—rather than simply selling products online.",
+        "Reform Vital combines licensed medical doctor oversight, Semaglutide and Tirzepatide weight-management programs, 24/7 AI accountability coaching, and full health metric tracking—rather than simply selling products online.",
     },
     {
       category: "getting-started",
@@ -552,19 +549,19 @@ export const brandConfig = {
       category: "pharmacy",
       question: "What if I experience side effects?",
       answer:
-        "Contact your Reform Vital care team promptly through secure messaging or by phone. Mild GI symptoms can be common when starting GLP-1 therapies; severe abdominal pain, persistent vomiting, allergic reaction, or other urgent symptoms require immediate medical attention—call 911 or go to the ER if needed.",
+        "Contact your Reform Vital care team promptly through secure messaging or by phone. Mild GI symptoms can be common when starting Semaglutide or Tirzepatide; severe abdominal pain, persistent vomiting, allergic reaction, or other urgent symptoms require immediate medical attention—call 911 or go to the ER if needed.",
     },
     {
       category: "treatments",
-      question: "Can I transition between GLP-1 or peptide therapies?",
+      question: "Can I switch between Semaglutide and Tirzepatide?",
       answer:
-        "Yes. Your licensed provider can adjust your protocol—such as moving from Semaglutide to Tirzepatide or adding recovery peptides—based on your progress, labs, and clinical judgment.",
+        "Yes. Your licensed provider can adjust your protocol—such as moving from Semaglutide to Tirzepatide—based on your progress, tolerance, and clinical judgment.",
     },
     {
       category: "treatments",
       question: "Do I need lab work before starting treatment?",
       answer:
-        "Many protocols—especially hormone optimization and metabolic programs—begin with labs so your provider can personalize dosing safely. Your physician will order panels as clinically appropriate during onboarding.",
+        "Your physician may order labs when clinically appropriate for Semaglutide or Tirzepatide programs so dosing and follow-up stay safe and personalized.",
     },
     {
       category: "treatments",

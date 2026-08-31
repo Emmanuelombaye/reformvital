@@ -5,7 +5,7 @@ const pathways = [
     n: 1,
     accent: "var(--accent)",
     title: "Hypothalamic Appetite Suppression",
-    body: "Active GLP-1 peptides bind to appetite receptors in the hypothalamus, significantly dampening hunger signals.",
+    body: "Semaglutide and Tirzepatide support appetite signaling pathways involved in hunger and satiety.",
   },
   {
     n: 2,
@@ -17,7 +17,7 @@ const pathways = [
     n: 3,
     accent: "var(--accent-gold)",
     title: "Adipose Fat Oxidation & Energy",
-    body: "GIP co-activation enhances insulin sensitivity, channeling fatty acids into mitochondrial breakdown.",
+    body: "Tirzepatide's dual-action profile may enhance insulin sensitivity and support metabolic energy use.",
   },
 ];
 
@@ -65,7 +65,7 @@ export default function MechanismVisual() {
           fontWeight: 900,
         }}
       >
-        GLP-1 & GIP Metabolic Pathways
+        Semaglutide & Tirzepatide Program Pathways
       </h3>
 
       <div

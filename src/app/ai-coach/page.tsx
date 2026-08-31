@@ -125,7 +125,7 @@ const trackedMetrics = [
     id: "hydration",
     title: "Hydration & Electrolytes",
     icon: "💧",
-    description: "Supports energy, kidney function, and comfort on GLP-1 protocols.",
+    description: "Supports energy, kidney function, and comfort on Semaglutide or Tirzepatide protocols.",
     details: [
       "Dynamic fluid goals from weight, activity, and climate.",
       "Electrolyte reminders around injection days.",
@@ -197,9 +197,9 @@ const coachFaqs = [
       "Logged weight trends, protein, dosing consistency, and symptoms are compiled into structured reports reviewed by your provider before follow-ups.",
   },
   {
-    question: "Can I use the AI Coach for GLP-1 and hormone protocols?",
+    question: "Can I use the AI Coach with Semaglutide or Tirzepatide?",
     answer:
-      "Yes. The coach configures to your plan—protein and GI comfort for Tirzepatide, dosing and vitals focus for TRT, and more.",
+      "Yes. The coach configures to your program—protein and hydration for Semaglutide, dose tracking and GI comfort for Tirzepatide, and structured logs for provider review.",
   },
 ];
 

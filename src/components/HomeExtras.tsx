@@ -1,10 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import { brandConfig } from "@/brand.config";
+import { WEIGHT_TREATMENTS, getTherapyVialImage } from "@/lib/treatmentCatalog";
 
 export default function HomeExtras() {
   const { memberships, aiCoach, healthAcademy, memberExperience } = brandConfig;
-  const categories = healthAcademy.categories.slice(0, 4);
 
   return (
     <section className="rv-script-section" id="member-resources">
@@ -55,21 +55,30 @@ export default function HomeExtras() {
           </article>
 
           <article className="rv-script-extras__card">
-            <p className="rv-script-eyebrow">Health Academy</p>
-            <h3>{healthAcademy.title.replace("Reform Vital ", "")}</h3>
+            <p className="rv-script-eyebrow">Programs</p>
+            <h3>Two weight-management options</h3>
             <p className="rv-script-extras__desc">{healthAcademy.subtitle}</p>
             <div className="rv-script-extras__cats">
-              {categories.map((cat) => (
-                <Link key={cat.slug} href={cat.href} className="rv-script-extras__cat">
+              {WEIGHT_TREATMENTS.map((program) => (
+                <Link
+                  key={program.slug}
+                  href={`/treatments/${program.slug}`}
+                  className="rv-script-extras__cat"
+                >
                   <span className="rv-script-extras__cat-media">
-                    <Image src={cat.image} alt="" fill sizes="48px" />
+                    <Image
+                      src={getTherapyVialImage(program.slug, "thumb")}
+                      alt=""
+                      fill
+                      sizes="48px"
+                    />
                   </span>
-                  {cat.label}
+                  {program.name} · {program.price}
                 </Link>
               ))}
             </div>
-            <Link href="/resources" className="rv-script-btn rv-script-btn--secondary">
-              Browse Health Academy →
+            <Link href="/treatments" className="rv-script-btn rv-script-btn--secondary">
+              Compare both programs →
             </Link>
           </article>
         </div>

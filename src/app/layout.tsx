@@ -5,20 +5,16 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: `${brandConfig.name} — Modern Medicine. Personalized Health. Real Results.`,
-  description: `${brandConfig.name} combines licensed medical oversight, GLP-1 weight loss, peptide optimization, 24/7 AI accountability coaching, and compounding pharmacy delivery.`,
+  description: `${brandConfig.name} offers Semaglutide and Tirzepatide weight-management programs with licensed medical oversight, 24/7 AI accountability coaching, and compounding pharmacy delivery.`,
   keywords: [
     "Reform Vital",
     "semaglutide",
     "tirzepatide",
-    "retatrutide",
-    "TRT",
-    "hormone optimization",
-    "BPC-157",
-    "NAD+ therapy",
-    "peptides",
+    "weight management",
+    "weight management",
+    "medical weight loss",
     "AI health coach",
     "telehealth platform",
-    "longevity medicine",
   ],
   icons: {
     icon: [

@@ -35,7 +35,7 @@ export default function MembershipTiers() {
           <p className="rv-script-eyebrow">Membership plans</p>
           <h2>Essentials · Performance · Elite</h2>
           <p>
-            Flat-rate tiers for weight management, metabolic stacking, and longevity care—physician
+            Flat-rate tiers for Semaglutide and Tirzepatide weight-management programs—physician
             review and program support included where stated.
           </p>
 

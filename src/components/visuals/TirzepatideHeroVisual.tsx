@@ -51,7 +51,7 @@ export default function TirzepatideHeroVisual() {
             letterSpacing: '0.06em',
           }}
         >
-          DUAL GLP-1 + GIP RECEPTOR AGONIST
+          DUAL-ACTION WEIGHT-MANAGEMENT FORMULATION
         </span>
         <span style={{ fontSize: '0.8rem', color: '#00B4D8', fontWeight: 800 }}>503A PHARMACY COMPOUNDED</span>
       </div>
