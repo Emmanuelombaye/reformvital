@@ -1,4 +1,6 @@
-/** Reform Vital — Yucca sticky How It Works, Reform imagery + copy */
+/** Reform Vital — Scriptful sticky How It Works */
+
+import { SCRIPTFUL_VIAL_IMAGES } from "@/lib/treatmentCatalog";
 
 export const HOW_STEPS = [
   {
@@ -7,8 +9,8 @@ export const HOW_STEPS = [
     titleItalic: "treatment plan",
     body: "Choose Semaglutide or Tirzepatide, review the all-inclusive monthly program price, and complete a short medical history so our providers can confirm you're a good fit.",
     image: {
-      src: "/images/featured-metabolic.webp",
-      alt: "Reform Vital personalized treatment pathways",
+      src: SCRIPTFUL_VIAL_IMAGES.semaglutide.hero,
+      alt: "Semaglutide weight-management program vial",
       aspect: "16/9",
     },
     chips: ["Semaglutide", "Tirzepatide", "Weight management"],
@@ -48,8 +50,8 @@ export const HOW_STEPS = [
     titleItalic: "medication",
     body: "Once approved, your prescription is sent to a licensed partner pharmacy and fulfilled to your exact plan. Medication ships via expedited cold-chain delivery—discreetly packaged to your door.",
     image: {
-      src: "/images/member-rx.webp",
-      alt: "Reform Vital medication delivered in discreet packaging",
+      src: SCRIPTFUL_VIAL_IMAGES.tirzepatide.hero,
+      alt: "Tirzepatide medication prepared for discreet pharmacy shipping",
       aspect: "1/1",
     },
     chips: ["Licensed pharmacy", "Expedited shipping", "Discreet packaging"],
@@ -75,8 +77,8 @@ export const HOW_STEPS = [
 export const HOW_WHY = [
   {
     image: {
-      src: "/images/packs/glp1-a.webp",
-      alt: "Reform Vital pharmaceutical-grade treatment packaging",
+      src: SCRIPTFUL_VIAL_IMAGES.semaglutide.hero,
+      alt: "Semaglutide program vial — drug name and concentration only",
     },
     title: "Transparent & Trusted",
     body: "From compounding partners to doorstep delivery—pharmaceutical-grade quality with clear clinical oversight.",

@@ -100,8 +100,10 @@ function StickySteps() {
             >
               <article className="rv-hiw-step-card" data-animate="peak-fade">
                 <div className="rv-hiw-step-media">
-                  <div
-                    className="rv-hiw-step-media__frame"
+                    <div
+                      className={`rv-hiw-step-media__frame${
+                        step.image.src.includes("/vials/") ? " rv-hiw-step-media__frame--product" : ""
+                      }`}
                     style={
                       "aspect" in step.image && step.image.aspect
                         ? { aspectRatio: step.image.aspect }
@@ -219,7 +221,9 @@ export default function HowItWorksFlow() {
                   <article key={item.title} className="rv-hiw-why-card" data-animate="peak-fade">
                     <div
                       className={`rv-hiw-why-card__media${
-                        item.image.src.includes("/packs/") || item.image.src.includes("vial-")
+                        item.image.src.includes("/vials/") ||
+                        item.image.src.includes("/packs/") ||
+                        item.image.src.includes("vial-")
                           ? " rv-hiw-why-card__media--product"
                           : ""
                       }`}

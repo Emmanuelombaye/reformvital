@@ -54,6 +54,18 @@ export function getTherapyVialImage(slug: string, variant: "hero" | "thumb" = "h
   return `/images/vials/${slug}${suffix}.png`;
 }
 
+/** Scriptful product art — drug name on label, no site logo */
+export const SCRIPTFUL_VIAL_IMAGES = {
+  semaglutide: {
+    hero: getTherapyVialImage("semaglutide"),
+    thumb: getTherapyVialImage("semaglutide", "thumb"),
+  },
+  tirzepatide: {
+    hero: getTherapyVialImage("tirzepatide"),
+    thumb: getTherapyVialImage("tirzepatide", "thumb"),
+  },
+} as const;
+
 /** @deprecated — only weight treatments remain */
 export const THERAPY_VIAL_MAP: Record<string, string> = Object.fromEntries(
   WEIGHT_TREATMENTS.map((t) => [t.slug, getTherapyVialImage(t.slug)]),
@@ -62,7 +74,7 @@ export const THERAPY_VIAL_MAP: Record<string, string> = Object.fromEntries(
 export function getCategoryMeta(id: string) {
   if (id === "weight-management" || id === "weight-loss") {
     return {
-      image: "/images/featured-metabolic.webp",
+      image: SCRIPTFUL_VIAL_IMAGES.semaglutide.hero,
       shortLabel: WEIGHT_CATEGORY.title,
       tag: WEIGHT_CATEGORY.tag,
       tone: WEIGHT_CATEGORY.tone,
@@ -70,7 +82,7 @@ export function getCategoryMeta(id: string) {
     };
   }
   return {
-    image: "/images/featured-metabolic.webp",
+    image: SCRIPTFUL_VIAL_IMAGES.tirzepatide.hero,
     shortLabel: "Weight Management",
     tag: "WEIGHT MANAGEMENT",
     tone: "wl",

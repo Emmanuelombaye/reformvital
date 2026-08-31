@@ -12,7 +12,7 @@ const featured = [
     summary:
       "Semaglutide and Tirzepatide in plain language—appetite signaling, first-90-day expectations, and physician monitoring.",
     href: "/resources/articles/semaglutide-tirzepatide-metabolic-reset",
-    image: "/images/resource-glp1.webp",
+    image: "/images/vials/semaglutide.png",
     imageAlt: "Semaglutide and Tirzepatide education",
   },
   {
@@ -21,7 +21,7 @@ const featured = [
     summary:
       "Realistic timelines, side-effect management, and how your provider adjusts your Semaglutide or Tirzepatide protocol.",
     href: "/resources/articles/first-90-days-semaglutide-tirzepatide",
-    image: "/images/resource-glp1.webp",
+    image: "/images/vials/semaglutide.png",
     imageAlt: "First 90 days on Semaglutide or Tirzepatide",
   },
   {
@@ -52,7 +52,7 @@ const recentArticles = [
     category: "Weight Optimization",
     date: "August 2026",
     href: "/resources/articles/first-90-days-semaglutide-tirzepatide",
-    image: "/images/resource-glp1.webp",
+    image: "/images/vials/semaglutide.png",
   },
   {
     title: "Medical Weight Loss vs. Product-Only Sellers",
@@ -120,7 +120,7 @@ const externalReads = [
 ];
 
 const clusterThumbs = [
-  "/images/resource-glp1.webp",
+  "/images/vials/semaglutide.png",
   "/images/story-nutrition.webp",
   "/images/resource-hormones.webp",
   "/images/lifestyle-mindfulness.webp",

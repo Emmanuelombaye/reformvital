@@ -31,7 +31,7 @@ export const academyArticles: AcademyArticle[] = [
     summary: "A plain-language overview of Semaglutide and Tirzepatide—appetite signaling, expectations, and physician monitoring.",
     readTime: "6 min",
     published: "August 2026",
-    image: "/images/resource-glp1.webp",
+    image: "/images/vials/semaglutide.png",
     what: "Semaglutide and Tirzepatide are physician-prescribed injectable weight-management medications reviewed for appetite, metabolic health, and clinical follow-up.",
     why: "For many adults, willpower alone is not enough—biology drives cravings and plateaus. Semaglutide and Tirzepatide programs, when medically supervised, can support sustainable weight loss and metabolic health.",
     whatToDo: [
@@ -52,7 +52,7 @@ export const academyArticles: AcademyArticle[] = [
     summary: "Realistic timelines, side-effect management, and how your provider adjusts your protocol.",
     readTime: "5 min",
     published: "August 2026",
-    image: "/images/weight_loss_glp1.webp",
+    image: "/images/vials/semaglutide.png",
     what: "The first 90 days on Semaglutide or Tirzepatide typically include dose titration, appetite changes, and measurable weight trend shifts.",
     why: "Knowing what is normal reduces anxiety and helps you stay adherent—the biggest predictor of long-term success.",
     whatToDo: [
@@ -72,7 +72,7 @@ export const academyArticles: AcademyArticle[] = [
     summary: "Why physician oversight, labs, and follow-up care matter for safe, sustainable results.",
     readTime: "4 min",
     published: "July 2026",
-    image: "/images/tirzepatide_hero.webp",
+    image: "/images/vials/tirzepatide.png",
     what: "Medical weight loss programs pair prescription therapies with licensed provider oversight, labs, and ongoing follow-up—not just medication shipped to your door.",
     why: "Semaglutide and Tirzepatide affect metabolism, appetite, and GI function. Without clinical supervision, risks go unmanaged and results are often short-lived.",
     whatToDo: [
@@ -280,7 +280,7 @@ export const academyArticles: AcademyArticle[] = [
     summary: "How digestion, inflammation, and Semaglutide or Tirzepatide programs interact.",
     readTime: "4 min",
     published: "July 2026",
-    image: "/images/resource-glp1.webp",
+    image: "/images/vials/semaglutide.png",
     what: "Gut health influences inflammation, nutrient absorption, and GI side effects on Semaglutide or Tirzepatide.",
     why: "Managing nausea, constipation, and microbiome-friendly nutrition improves adherence and comfort.",
     whatToDo: ["Eat slowly and prioritize fiber gradually.", "Stay hydrated.", "Report persistent GI symptoms to your provider."],

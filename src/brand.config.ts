@@ -490,7 +490,7 @@ export const brandConfig = {
       { label: "Scheduled Follow-Ups", desc: "Regular check-ins to review progress and adjust your protocol.", image: "/images/member-clinical.webp" },
       { label: "Lab Reviews", desc: "Physician interpretation of metabolic, hormone, and wellness panels.", image: "/images/why-evidence.webp" },
       { label: "Treatment Adjustments", desc: "Protocol changes based on your response, labs, and clinical judgment.", image: "/images/member-renew.webp" },
-      { label: "Prescription Management", desc: "Refills, dosage titration, and pharmacy coordination handled for you.", image: "/images/member-rx.webp" },
+      { label: "Prescription Management", desc: "Refills, dosage titration, and pharmacy coordination handled for you.", image: "/images/vials/tirzepatide.png" },
       { label: "Progress Tracking", desc: "AI coach metrics, portal dashboards, and quarterly provider reports.", image: "/images/portal-performance.webp" },
     ],
   },

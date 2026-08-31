@@ -9459,6 +9459,19 @@ img[data-nimg="fill"] {
   border: 0;
 }
 
+.rv-hiw-step-media__frame--product,
+.rv-hiw-why-card__media--product {
+  background: var(--sand, #f4f8f7);
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+}
+
+.rv-hiw-step-media__frame--product img,
+.rv-hiw-why-card__media--product img {
+  object-fit: contain !important;
+  padding: 1rem;
+}
+
 @media (max-width: 768px) {
   .rv-script-faq__layout {
     grid-template-columns: 1fr;
