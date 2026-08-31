@@ -30,16 +30,23 @@ export default function Hero() {
           </div>
 
           <div className="rv-script-hero__media" data-animate="rise" data-delay="80">
-            <Image
-              src="/images/hero-commercial-wide.webp"
-              alt="Reform Vital telehealth consultation with a licensed provider"
-              width={1536}
-              height={1024}
-              priority
-              sizes="(max-width: 900px) 100vw, 50vw"
-              quality={75}
-              className="rv-script-hero__img"
-            />
+            <picture>
+              <source
+                media="(max-width: 900px)"
+                srcSet="/images/hero-commercial-mobile.webp"
+                type="image/webp"
+              />
+              <Image
+                src="/images/hero-commercial-wide.webp"
+                alt="Reform Vital telehealth consultation with a licensed provider"
+                width={1536}
+                height={1024}
+                priority
+                sizes="(max-width: 900px) 100vw, 50vw"
+                quality={75}
+                className="rv-script-hero__img"
+              />
+            </picture>
           </div>
         </div>
       </div>

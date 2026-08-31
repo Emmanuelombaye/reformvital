@@ -4945,7 +4945,7 @@ h1, h2, h3, h4, h5, h6 {
     grid-row: auto;
     min-height: 0;
     max-height: none;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: auto;
     width: 100%;
     padding: 0.55rem;
   }
@@ -4953,8 +4953,9 @@ h1, h2, h3, h4, h5, h6 {
   .rv-start-photo__img,
   .rv-start-photo img {
     min-height: 0;
-    height: 100% !important;
-    object-fit: cover !important;
+    height: auto !important;
+    max-height: 18rem;
+    object-fit: contain !important;
     border-radius: 0.95rem !important;
   }
 
@@ -9393,6 +9394,8 @@ img[data-nimg="fill"] {
     margin: 0;
     border-radius: 1.35rem;
     box-shadow: 0 16px 36px rgba(13, 27, 42, 0.1);
+    background: linear-gradient(165deg, #eef4f2 0%, #f8fbfb 100%);
+    padding: 0.35rem;
   }
 
   .rv-script-hero__copy h1 {
@@ -9408,10 +9411,13 @@ img[data-nimg="fill"] {
   }
 
   .rv-script-hero__img {
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
-    object-position: center 20%;
-    border-radius: 0;
+    aspect-ratio: auto;
+    width: 100%;
+    height: auto;
+    max-height: none;
+    object-fit: contain;
+    object-position: center center;
+    border-radius: 1rem;
   }
 }
 
