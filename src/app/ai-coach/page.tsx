@@ -9,27 +9,26 @@ import styles from "./page.module.css";
 import aiCoachDashboard from "../../../public/images/ai_coach_dashboard.webp";
 import aiCoachPatient from "../../../public/images/ai_coach_patient.webp";
 import aiCoachDoctor from "../../../public/images/ai_coach_doctor.webp";
-import lifestyleToast from "../../../public/images/lifestyle-toast.webp";
 import lifestyleMindfulness from "../../../public/images/lifestyle-mindfulness.webp";
 
 const chatDemoPrompts = [
   {
-    label: "Log Weekly Dose",
+    label: "Log weekly check-in",
     aiResponse:
-      "Awesome! I have logged your weekly Tirzepatide (5mg) dose for Dr. Wasef's review. Did you experience any nausea or fatigue today?",
-    userText: "Log my weekly Tirzepatide dose completed today at 9:00 AM.",
+      "Logged. Your dose schedule and symptoms are saved for your licensed provider to review at follow-up.",
+    userText: "Log my weekly medication check-in completed today.",
   },
   {
-    label: "Check Protein Goal",
+    label: "Track nutrition",
     aiResponse:
-      "Great job! You have logged 142g of protein today out of your 140g target (101% achieved). Keep up the hydration!",
-    userText: "Did I hit my daily protein target today?",
+      "Your protein and hydration entries are recorded. The AI coach organizes trends—it does not diagnose or prescribe.",
+    userText: "Did I log my nutrition targets today?",
   },
   {
-    label: "Generate Lab Report",
+    label: "Prepare for follow-up",
     aiResponse:
-      "Your 90-day progress summary shows -18.4 lbs total weight reduction and a 1.3% drop in HbA1c. Your report has been dispatched to Dr. Sakla, DO.",
-    userText: "Generate my quarterly biomarker progress report for my doctor.",
+      "Your portal summary is ready for your next licensed provider visit. Share any new symptoms through secure messaging.",
+    userText: "Help me prepare for my provider follow-up.",
   },
 ];
 
@@ -256,34 +255,19 @@ export default function AICoachPage() {
     <>
       <Navbar />
       <main className={styles.page}>
-        {/* Lifestyle hero — contain on phone (Yucca soft stage), cover on desktop bleed */}
-        <section className={styles.heroBleed} data-animate="peak-fade">
-          <div className={styles.heroBleedMedia} aria-hidden>
-            <SmoothImage
-              src={lifestyleToast}
-              alt=""
-              fill
-              sizes="100vw"
-              style={{ objectFit: "cover", objectPosition: "center 40%" }}
-              placeholder="blur"
-              priority
-            />
-            <div className={styles.heroBleedScrim} />
-          </div>
-          <div className={`container ${styles.heroBleedInner}`}>
-            <p className={styles.kicker}>Reform Vital · AI Coach</p>
-            <h1 className={styles.heroTitle}>
-              Accountability between every <em>physician visit</em>
-            </h1>
-            <p className={styles.heroSubtitle}>
-              Personalized reminders, nutrition logs, and physician-ready trends—so your
-              protocol stays on track without replacing your doctor.
+        <section className="rv-script-page-hero">
+          <div className="container">
+            <p className="rv-script-eyebrow">AI Health Coach</p>
+            <h1>Accountability between every physician visit</h1>
+            <p>
+              Personalized reminders, nutrition logs, and physician-ready trends—so your protocol
+              stays on track without replacing your doctor.
             </p>
-            <div className={styles.heroCtas}>
-              <a href="#demo" className="btn btn-primary">
+            <div className="rv-script-section__foot rv-script-section__foot--left" style={{ marginTop: "1.25rem" }}>
+              <a href="#demo" className="rv-script-btn rv-script-btn--primary">
                 Try live demo
               </a>
-              <a href="/start" className={`btn ${styles.heroGhost}`}>
+              <a href="/start" className="rv-script-btn rv-script-btn--secondary">
                 Start health intake
               </a>
             </div>
@@ -604,19 +588,19 @@ export default function AICoachPage() {
           </div>
         </section>
 
-        <section className={styles.closingCta} data-animate="bounce">
-          <div className="container">
-            <div className={styles.closingInner}>
+        <section className="rv-script-cta-band" data-animate="bounce">
+          <div className="container rv-script-cta-band__inner">
+            <div>
               <h2>Ready for provider-led care with daily accountability?</h2>
               <p>Start your assessment. Prescriptions only if clinically appropriate.</p>
-              <div className={styles.heroCtas}>
-                <a href="/start" className="btn btn-primary">
-                  Start assessment
-                </a>
-                <a href="/treatments" className={`btn ${styles.heroGhostDark}`}>
-                  Browse treatments
-                </a>
-              </div>
+            </div>
+            <div className="rv-script-cta-band__actions">
+              <a href="/start" className="rv-script-btn rv-script-btn--light">
+                Start assessment
+              </a>
+              <a href="/treatments" className="rv-script-btn rv-script-btn--outline-light">
+                Browse treatments
+              </a>
             </div>
           </div>
         </section>

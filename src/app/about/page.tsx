@@ -1,104 +1,84 @@
-import Image from "next/image";
 import { brandConfig } from "@/brand.config";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Link from "next/link";
 
 export default function AboutPage() {
   return (
     <>
       <Navbar />
       <main>
-        <section className="rv-page-hero rv-page-hero--photo">
-          <Image
-            src="/images/about-villa.webp"
-            alt="Reform Vital lifestyle of personalized wellness"
-            fill
-            priority
-            sizes="100vw"
-            style={{ objectFit: "contain", objectPosition: "center" }}
-          />
-          <div className="rv-page-hero-scrim" aria-hidden />
-          <div className="container rv-page-hero-content">
-            <span className="badge" style={{ marginBottom: "0.8rem" }}>ABOUT REFORM VITAL</span>
-            <h1>Modern Medicine. Personalized Health. Real Results.</h1>
+        <section className="rv-script-page-hero">
+          <div className="container">
+            <p className="rv-script-eyebrow">About Reform Vital</p>
+            <h1>Modern medicine. Personalized health.</h1>
             <p>
-              Reform Vital Health LLC bridges clinical medical research, board-certified physician oversight, and cutting-edge peptide optimization.
+              Reform Vital Health LLC connects patients with licensed U.S. clinicians, secure
+              telehealth intake, and pharmacy fulfillment—plus memberships, AI coaching, and
+              physician-reviewed education between visits.
             </p>
           </div>
         </section>
 
-        <section className="section" style={{ background: "var(--surface)" }}>
-          <div className="container">
-            <div className="card-grid two" style={{ gap: "3rem", marginBottom: "4rem", alignItems: "center" }}>
-              <div>
-                <span className="badge" style={{ marginBottom: "0.8rem" }}>OUR MISSION</span>
-                <h2 style={{ fontSize: "2.2rem", marginBottom: "1rem" }}>Elevating Patient Telehealth</h2>
-                <p style={{ color: "var(--text-muted)", fontSize: "1.05rem", lineHeight: 1.7, marginBottom: "1.2rem" }}>
-                  Reform Vital differentiates itself from standard telehealth providers by pairing licensed medical oversight with continuous 24/7 AI accountability coaching, health metrics tracking, and white-glove compounding delivery.
-                </p>
-                <p style={{ color: "var(--text-muted)", fontSize: "1.05rem", lineHeight: 1.7 }}>
-                  We focus strictly on measurable health outcomes rather than quick product sales, ensuring long-term metabolic health, tissue repair, and longevity.
-                </p>
-              </div>
-
-              <div className="rv-about-side-photo">
-                <Image
-                  src="/images/about-longevity.webp"
-                  alt="Longevity lifestyle with Reform Vital"
-                  width={720}
-                  height={480}
-                  style={{ width: "100%", height: "auto", objectFit: "contain", borderRadius: "1.25rem" }}
-                />
-              </div>
-            </div>
-
-            <div className="card-grid two" style={{ gap: "2rem", marginBottom: "4rem" }}>
-              <div style={{ background: "var(--sand)", padding: "2.5rem", borderRadius: "1.25rem", border: "1px solid var(--border)" }}>
-                <h3 style={{ fontSize: "1.5rem", marginBottom: "1rem" }}>Entity & Business References</h3>
-                <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "0.8rem", fontSize: "0.95rem" }}>
-                  <li><strong>Legal Entity:</strong> {brandConfig.fullName}</li>
-                  <li><strong>Legal Name:</strong> {brandConfig.legalOwner}</li>
-                  <li><strong>Official Email:</strong> {brandConfig.nav.email}</li>
-                  <li><strong>Business Phone:</strong> {brandConfig.nav.phone}</li>
-                  <li><strong>Compounding Quality:</strong> 50-State Certified U.S. Compounding Pharmacies</li>
-                </ul>
-              </div>
-              <div className="rv-about-side-photo">
-                <Image
-                  src="/images/member-renew.webp"
-                  alt="Clinical renewal suite"
-                  width={720}
-                  height={480}
-                  style={{ width: "100%", height: "auto", objectFit: "contain", borderRadius: "1.25rem" }}
-                />
-              </div>
-            </div>
-
+        <section className="rv-script-section">
+          <div className="container rv-script-about__grid">
             <div>
-              <span className="badge" style={{ marginBottom: "0.8rem" }}>BOARD-CERTIFIED PHYSICIANS</span>
-              <h2 style={{ fontSize: "2.2rem", marginBottom: "2rem" }}>Medical Advisory Team</h2>
+              <p className="rv-script-eyebrow">Our mission</p>
+              <h2>Elevating patient telehealth</h2>
+              <p>
+                Reform Vital pairs licensed medical oversight with secure messaging, follow-up
+                care, and optional AI accountability coaching—focused on measurable health
+                outcomes rather than product-only sales.
+              </p>
+              <p>
+                We address metabolic health, hormones, recovery, and longevity with transparent
+                pricing and compliance-first communication.
+              </p>
+            </div>
 
-              <div className="card-grid two" style={{ gap: "2rem" }}>
-                {brandConfig.medicalTeam.map((doctor) => (
-                  <div className="testimonial-card" key={doctor.name}>
-                    <div style={{ borderRadius: "0.85rem", overflow: "hidden", marginBottom: "1rem" }}>
-                      <Image
-                        src={doctor.image}
-                        alt={doctor.name}
-                        width={480}
-                        height={360}
-                        style={{ width: "100%", height: "auto", objectFit: "contain" }}
-                      />
-                    </div>
-                    <span className="badge" style={{ marginBottom: "0.8rem" }}>Board-Certified</span>
-                    <h3>{doctor.name}</h3>
-                    <p style={{ color: "var(--accent)", fontWeight: 700, fontSize: "0.9rem", marginBottom: "0.8rem" }}>
-                      {doctor.title}
-                    </p>
-                    <p>{doctor.bio}</p>
-                  </div>
-                ))}
-              </div>
+            <div className="rv-script-about__card">
+              <h3>Entity & business references</h3>
+              <ul>
+                <li>
+                  <strong>Legal entity:</strong> {brandConfig.fullName}
+                </li>
+                <li>
+                  <strong>Legal name:</strong> {brandConfig.legalOwner}
+                </li>
+                <li>
+                  <strong>Email:</strong> {brandConfig.nav.email}
+                </li>
+                <li>
+                  <strong>Phone:</strong> {brandConfig.nav.phone}
+                </li>
+                <li>
+                  <strong>Pharmacy partners:</strong> Licensed U.S. compounding pharmacies
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section className="rv-script-section rv-script-section--sand">
+          <div className="container">
+            <div className="rv-script-section__head rv-script-section__head--left">
+              <p className="rv-script-eyebrow">Clinical oversight</p>
+              <h2>Licensed provider review</h2>
+              <p>
+                Reform Vital connects patients with licensed U.S. clinicians who review medical
+                intake, determine eligibility, and issue prescriptions only when clinically
+                appropriate. We do not display individual physician profiles on this site until
+                provider partnerships are formally verified and authorized for publication.
+              </p>
+            </div>
+
+            <div className="rv-script-section__foot rv-script-section__foot--left">
+              <Link href="/start" className="rv-script-btn rv-script-btn--primary">
+                Start assessment →
+              </Link>
+              <Link href="/faq" className="rv-script-btn rv-script-btn--secondary">
+                Read FAQs
+              </Link>
             </div>
           </div>
         </section>

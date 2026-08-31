@@ -1,7 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AcademyStickyNav from "@/components/academy/AcademyStickyNav";
-import Image from "next/image";
 import FastImg from "@/components/FastImg";
 import { brandConfig } from "@/brand.config";
 import { getGuidePdfUrl } from "@/content/academy";
@@ -140,7 +139,6 @@ export default function ResourcesPage() {
   const categories = academy.categories.slice(0, 8);
   const lead = featured[0];
   const stacked = featured.slice(1);
-  const [featuredStory, ...otherStories] = academy.successStories;
 
   return (
     <>
@@ -148,33 +146,18 @@ export default function ResourcesPage() {
       <main className="rv-mag">
         <AcademyStickyNav />
 
-        {/* Asymmetric masthead */}
-        <section className="rv-mag-mast" data-animate="peak-fade">
-          <div className="container rv-mag-mast__grid">
-            <div className="rv-mag-mast__copy">
-              <p className="rv-mag-kicker">Health Academy</p>
-              <h1>{academy.title.replace("Reform Vital ", "")}</h1>
-              <p className="rv-mag-mast__sub">{academy.subtitle}</p>
-              <div className="rv-mag-mast__actions">
-                <a href="#lead" className="btn btn-primary">
-                  Start reading
-                </a>
-                <a href="/resources/tools" className="btn btn-outline">
-                  Interactive tools
-                </a>
-              </div>
-            </div>
-            <div className="rv-mag-mast__media" data-rv-skip-motion="1">
-              <Image
-                src="/images/start-wellness.webp"
-                alt="Reform Vital Health Academy lifestyle"
-                width={900}
-                height={1125}
-                sizes="(max-width: 900px) 92vw, 42vw"
-                quality={65}
-                priority
-                style={{ objectFit: "contain", width: "100%", height: "100%" }}
-              />
+        <section className="rv-script-page-hero">
+          <div className="container">
+            <p className="rv-script-eyebrow">Health Academy</p>
+            <h1>{academy.title.replace("Reform Vital ", "")}</h1>
+            <p>{academy.subtitle}</p>
+            <div className="rv-script-section__foot rv-script-section__foot--left" style={{ marginTop: "1.25rem" }}>
+              <a href="#lead" className="rv-script-btn rv-script-btn--primary">
+                Start reading
+              </a>
+              <a href="/resources/tools" className="rv-script-btn rv-script-btn--secondary">
+                Interactive tools
+              </a>
             </div>
           </div>
         </section>
@@ -212,73 +195,33 @@ export default function ResourcesPage() {
           </div>
         </section>
 
-        {/* Category bento */}
-        <section id="categories" className="rv-mag-bento" data-animate="peak-fade">
+        {/* Category grid — Scriptful-style */}
+        <section id="categories" className="rv-script-section rv-script-section--sand" data-animate="peak-fade">
           <div className="container">
-            <div className="rv-mag-section-head">
+            <div className="rv-script-section__head">
+              <p className="rv-script-eyebrow">Browse topics</p>
               <h2>Explore by category</h2>
               <p>Physician-reviewed pillars of metabolic and longevity care.</p>
             </div>
-            <div className="rv-mag-bento__grid">
-              {categories.map((cat, i) => (
-                <a
-                  key={cat.slug}
-                  href={cat.href}
-                  className={`rv-mag-bento__tile${i === 0 || i === 3 ? " rv-mag-bento__tile--wide" : ""}`}
-                >
+            <div className="rv-script-academy__grid">
+              {categories.map((cat) => (
+                <a key={cat.slug} href={cat.href} className="rv-script-academy__card">
                   {"image" in cat && cat.image ? (
-                    <FastImg src={cat.image} alt="" width={800} height={600} sizes="(max-width: 900px) 90vw, 30vw" />
+                    <div className="rv-script-academy__media">
+                      <FastImg src={cat.image} alt="" width={400} height={300} sizes="(max-width: 640px) 45vw, 15vw" />
+                    </div>
                   ) : null}
                   <span>{cat.label}</span>
                 </a>
               ))}
             </div>
             {academy.categories.length > 8 && (
-              <p className="rv-mag-more">
-                <a href="/resources/category/longevity">Browse all categories →</a>
-              </p>
-            )}
-          </div>
-        </section>
-
-        {/* Featured story + covers */}
-        <section id="stories" className="rv-mag-stories" data-animate="rise">
-          <div className="container">
-            <div className="rv-mag-section-head">
-              <h2>Member journeys</h2>
-              <p>Real outcomes with physician-guided protocols.</p>
-            </div>
-            {featuredStory && (
-              <a href={featuredStory.href} className="rv-mag-stories__feature">
-                {"image" in featuredStory && featuredStory.image ? (
-                  <FastImg
-                    src={featuredStory.image}
-                    alt=""
-                    width={1200}
-                    height={800}
-                    sizes="(max-width: 900px) 100vw, 70vw"
-                  />
-                ) : null}
-                <div className="rv-mag-stories__quote">
-                  <span>{featuredStory.outcome}</span>
-                  <p>&ldquo;{featuredStory.story}&rdquo;</p>
-                  <em>Read the story →</em>
-                </div>
-              </a>
-            )}
-            <div className="rv-mag-stories__grid">
-              {otherStories.map((story) => (
-                <a key={story.outcome} href={story.href} className="rv-mag-stories__card">
-                  {"image" in story && story.image ? (
-                    <FastImg src={story.image} alt="" width={600} height={400} sizes="(max-width: 900px) 90vw, 30vw" />
-                  ) : null}
-                  <div>
-                    <span>{story.outcome}</span>
-                    <p>{story.story}</p>
-                  </div>
+              <div className="rv-script-section__foot">
+                <a href="/resources/category/longevity" className="rv-script-btn rv-script-btn--secondary">
+                  Browse all categories →
                 </a>
-              ))}
-            </div>
+              </div>
+            )}
           </div>
         </section>
 
@@ -431,15 +374,17 @@ export default function ResourcesPage() {
           </div>
         </section>
 
-        <section className="rv-mag-cta" data-animate="bounce">
-          <div className="container">
-            <h2>Ready for physician-guided care?</h2>
-            <p>Start with an online assessment. Prescriptions only after clinical approval.</p>
-            <div className="rv-mag-cta__actions">
-              <a href="/start" className="btn btn-primary">
+        <section className="rv-script-cta-band" data-animate="bounce">
+          <div className="container rv-script-cta-band__inner">
+            <div>
+              <h2>Ready for physician-guided care?</h2>
+              <p>Start with an online assessment. Prescriptions only after clinical approval.</p>
+            </div>
+            <div className="rv-script-cta-band__actions">
+              <a href="/start" className="rv-script-btn rv-script-btn--light">
                 Schedule a consultation →
               </a>
-              <a href="/treatments" className="btn btn-outline">
+              <a href="/treatments" className="rv-script-btn rv-script-btn--outline-light">
                 Browse treatments
               </a>
             </div>

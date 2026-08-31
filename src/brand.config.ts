@@ -99,14 +99,13 @@ export const brandConfig = {
       { text: "Cellular Edge", color: "#A3E635" },
       { text: "Vital Rebuild", color: "#C4B5FD" },
     ],
-    headline: "Your Health. Optimized for Life.",
-    subheadline:
-      "Medical Weight Loss · Hormone Optimization · Longevity · Preventive Wellness",
+    headline: "Personalized care. One clear monthly price.",
+    subheadline: "Weight-management programs · Memberships · Health Academy",
     description:
-      "Personalized healthcare designed around you—licensed providers, science-backed treatments, fully online.",
-    primaryCtaText: "Start My Health Assessment",
-    primaryCtaNote: "Physician consult included · No insurance required",
-    secondaryCtaText: "Learn How It Works",
+      "Simple, clinician-guided telehealth with transparent program pricing. Purchase first, then complete secure medical intake for licensed-provider review.",
+    primaryCtaText: "Explore Treatments",
+    primaryCtaNote: "Licensed provider review · RX only if prescribed",
+    secondaryCtaText: "How It Works",
     ctaLink: "/start",
     cardHighlight: {
       category: "PHYSICIAN-GUIDED METABOLIC PROGRAM",
@@ -290,61 +289,39 @@ export const brandConfig = {
     ],
   },
 
-  // ──── Patient Transformation Showcase ────
-  transformations: [
-    {
-      name: "Marcus V.",
-      lbsLost: "48",
-      timeframe: "in 5 Months",
-      verified: "Verified Semaglutide Patient",
-      badge: "Lost 48 lbs",
-      avatarColor: "#00A896",
-    },
-    {
-      name: "Sarah T.",
-      lbsLost: "35",
-      timeframe: "in 4 Months",
-      verified: "Verified Tirzepatide Patient",
-      badge: "Lost 35 lbs",
-      avatarColor: "#00B4D8",
-    },
-    {
-      name: "David K.",
-      lbsLost: "60",
-      timeframe: "in 7 Months",
-      verified: "Verified TRT & GLP-1 Patient",
-      badge: "Lost 60 lbs",
-      avatarColor: "#D4AF37",
-    },
-  ],
-
   // ──── How It Works Steps ────
   howItWorks: {
-    headline: "How Reform Vital Works",
-    subtitle: "Physician-guided healthcare in four simple steps—from assessment to ongoing optimization.",
+    headline: "Getting care should be simple.",
+    subtitle: "Purchase first, then complete the secure medical intake for licensed-provider review.",
     steps: [
-      {
-        step: "1",
-        title: "Complete Your Health Assessment",
-        description: "Share your health history, goals, and lifestyle in a secure online assessment—takes under 5 minutes.",
-      },
-      {
-        step: "2",
-        title: "Meet Your Provider",
-        description: "A licensed U.S. physician reviews your profile, orders labs if needed, and consults with you on your plan.",
-      },
-      {
-        step: "3",
-        title: "Receive Your Personalized Treatment Plan",
-        description: "Your custom protocol—GLP-1, hormones, peptides, or wellness—is prescribed and fulfilled by licensed pharmacies.",
-      },
-      {
-        step: "4",
-        title: "Ongoing Care & Optimization",
-        description: "Follow-ups, treatment adjustments, secure messaging, and AI coaching keep you progressing long-term.",
-      },
+      { step: "1", title: "Select a program", description: "Choose Semaglutide or Tirzepatide and review the all-inclusive monthly program price." },
+      { step: "2", title: "Complete secure intake", description: "After checkout, complete your confidential medical history and goals in the patient portal." },
+      { step: "3", title: "Licensed provider review", description: "A licensed U.S. clinician reviews your intake and determines whether treatment is appropriate." },
+      { step: "4", title: "Fulfillment & follow-up", description: "If prescribed, medication ships from licensed pharmacies. Ongoing follow-up is included in your program." },
     ],
   },
+
+  pricingPromise: {
+    headline: "The price you see is the price you pay.",
+    body: "Program pricing includes licensed provider review, secure intake, standard shipping, and ongoing program support—unless specifically noted otherwise.",
+    exclusions: [
+      "Laboratory testing beyond what your clinician orders",
+      "Expedited shipping upgrades",
+      "Replacement products outside program terms",
+      "Third-party services not included in your plan",
+    ],
+  },
+
+  safetyStatements: [
+    "Treatment is never guaranteed — a licensed clinician determines eligibility after review.",
+    "Purchasing a program does not guarantee that a prescription will be issued.",
+    "Compounded products may be offered where clinically appropriate and legally permitted.",
+    "Not for use during pregnancy or while breastfeeding unless explicitly approved.",
+    "Report severe abdominal pain, persistent vomiting, or allergic reactions immediately — call 911 for emergencies.",
+    "Reform Vital does not provide emergency medical care.",
+    "Availability varies by state, medical history, and clinician judgment.",
+    "This site is for informational purposes; individual results vary.",
+  ],
 
   trustSignals: [
     { label: "HIPAA Secure", icon: "shield" },
@@ -499,14 +476,6 @@ export const brandConfig = {
       { title: "Sleep Guide", desc: "Recovery, circadian rhythm, and hormone connection.", href: "/resources/guides/sleep-guide" },
       { title: "Nutrition Playbook", desc: "Protein, macros, and meal planning for protocol success.", href: "/resources/guides/nutrition-playbook" },
     ],
-    successStories: [
-      { outcome: "Increased Energy", story: "TRT + Sermorelin stack restored daily vitality and deep REM sleep within 90 days.", href: "/resources/articles/mens-health-vitality", image: "/images/story-habits.webp" },
-      { outcome: "Improved Biomarkers", story: "HbA1c dropped from 6.4% to 5.1% with physician-guided Tirzepatide+ and quarterly labs.", href: "/resources/articles/understanding-labs", image: "/images/why-evidence.webp" },
-      { outcome: "Sustainable Weight Management", story: "54 lbs lost over 5 months with ongoing provider titration—not a quick fix.", href: "/resources/articles/first-90-days-glp1", image: "/images/story-nutrition.webp" },
-      { outcome: "Better Fitness", story: "Recovery peptide protocol plus structured training returned to marathon training pain-free.", href: "/resources/articles/recovery-peptides-overview", image: "/images/why-wellness.webp" },
-      { outcome: "Healthy Aging", story: "NAD+ and preventive wellness protocols supporting long-term metabolic health.", href: "/resources/articles/nad-longevity-cellular-energy", image: "/images/about-longevity.webp" },
-      { outcome: "Confidence & Lifestyle", story: "Nutrition coaching and GLP-1 support rebuilt sustainable habits—not yo-yo dieting.", href: "/resources/articles/nutrition-weight-management", image: "/images/academy-recipes.webp" },
-    ],
     monthlyReport: {
       title: "Reform Vital Health Report",
       month: "August 2026",
@@ -515,25 +484,6 @@ export const brandConfig = {
       href: "/resources/report",
     },
   },
-
-  medicalTeam: [
-    {
-      name: "Dr. Michael Wasef, MD",
-      title: "Internal Medicine Physician & Telemedicine Advisory",
-      specialty: "Metabolic Health · GLP-1 Protocols · Preventive Endocrinology",
-      bio: "Licensed nationwide specializing in metabolic health, GLP-1 weight loss protocols, and preventive endocrinology.",
-      credentials: "Board-Certified · U.S. Licensed",
-      image: "/images/doctor-wasef.webp",
-    },
-    {
-      name: "Dr. Andrew Sakla, DO",
-      title: "Internal Medicine & Regenerative Medicine Director",
-      specialty: "Peptide Therapy · TRT · Cellular Longevity",
-      bio: "Pioneering evidence-based peptide therapy, TRT optimization, and cellular longevity treatments.",
-      credentials: "Board-Certified · U.S. Licensed",
-      image: "/images/doctor-sakla.webp",
-    },
-  ],
 
   memberExperience: {
     headline: "Everything Included With Membership",
@@ -624,9 +574,9 @@ export const brandConfig = {
     },
     {
       category: "treatments",
-      question: "Who are the physicians overseeing my care?",
+      question: "Who reviews my care?",
       answer:
-        "Reform Vital care is supervised by board-certified U.S. physicians including Dr. Michael Wasef, MD (Internal Medicine) and Dr. Andrew Sakla, DO (Regenerative Medicine). Every prescription is issued only after individual clinical review.",
+        "Licensed U.S. clinicians review every intake and determine whether treatment is appropriate. Prescriptions are issued only after individual clinical review—not automatically at purchase."
     },
     {
       category: "ai-portal",
@@ -648,37 +598,12 @@ export const brandConfig = {
     },
   ],
 
-  // ──── Patient & Physician Reviews ────
-  reviews: [
-    {
-      name: "Jessica M.",
-      verified: true,
-      text: "Down 34 lbs in 3 months on Semaglutide+! Reform Vital made the process so easy, no doctor waiting rooms, and shipping was super fast.",
-      stars: 5,
-      weightLost: "-34 lbs",
-    },
-    {
-      name: "Carlos T.",
-      verified: true,
-      text: "Tirzepatide+ completely eliminated my late-night cravings. The physician coaching and AI tracking kept me accountable every week.",
-      stars: 5,
-      weightLost: "-42 lbs",
-    },
-    {
-      name: "Dr. Marcus V., MD",
-      verified: true,
-      text: "Reform Vital's approach combining physician oversight with personalized peptide stacks and AI tracking is the future of preventative telehealth.",
-      stars: 5,
-      weightLost: "Physician Advisory",
-    },
-  ],
-
   // ──── Footer & Contact ────
   footer: {
     company: "Reform Vital Health LLC",
     legalOwner: "Javier Alexis Solano",
     disclaimer:
-      "DISCLAIMER: Reform Vital Health LLC provides telehealth platform access connecting patients with licensed U.S. healthcare providers. Prescriptions are issued strictly upon physician clinical evaluation and approval. Compounded medications are prepared by state-licensed compounding pharmacies. Statements on this site have not been evaluated by the FDA.",
+      "DISCLAIMER: Reform Vital Health LLC provides telehealth platform access connecting patients with licensed U.S. healthcare providers. Prescriptions are issued strictly upon physician clinical evaluation and approval. Compounded medications are prepared by state-licensed compounding pharmacies. Statements on this site have not been evaluated by the FDA. Purchasing a program does not guarantee that a prescription will be issued. Reform Vital does not provide emergency medical care—call 911 for emergencies.",
     copyright: "© 2026 Reform Vital Health LLC. All rights reserved.",
   },
 };

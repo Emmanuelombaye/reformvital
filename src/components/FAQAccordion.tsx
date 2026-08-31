@@ -1,10 +1,11 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Link from "next/link";
 import { brandConfig } from "@/brand.config";
 
 const FILTERS = [
-  { id: "all", label: "All Questions" },
+  { id: "all", label: "All" },
   { id: "getting-started", label: "Getting started" },
   { id: "treatments", label: "Treatments" },
   { id: "pharmacy", label: "Pharmacy & shipping" },
@@ -35,77 +36,66 @@ export default function FAQAccordion({ showPageHero = false }: { showPageHero?: 
   }, [faqs, filter, query]);
 
   return (
-    <section className="rv-faq" id="faq">
-      <div className="rv-faq-atmosphere" aria-hidden data-parallax="0.1" />
-
+    <section className="rv-script-section rv-script-faq" id="faq">
       {showPageHero && (
-        <div className="rv-faq-page-hero">
-          <span className="rv-faq-eyebrow">WE&apos;VE GOT YOU</span>
-          <h1>Frequently Asked Questions</h1>
-          <p>
-            Clear answers on physician care, compounding, memberships, AI coaching, and how
-            Reform Vital works—before you start your assessment.
-          </p>
+        <div className="rv-script-page-hero">
+          <div className="container">
+            <p className="rv-script-eyebrow">Support</p>
+            <h1>Frequently asked questions</h1>
+            <p>
+              Clear answers on physician care, compounding, memberships, AI coaching, and how
+              Reform Vital works—before you start your assessment.
+            </p>
+          </div>
         </div>
       )}
 
-      <div className="container rv-faq-layout">
-        <div className="rv-faq-intro" data-animate="tilt-left" data-delay="0">
+      <div className="container rv-script-faq__layout">
+        <aside className="rv-script-faq__sidebar">
           {!showPageHero && (
-            <>
-              <span className="rv-faq-eyebrow">WE&apos;VE GOT YOU</span>
-              <h2>Frequently Asked Questions</h2>
+            <div className="rv-script-section__head rv-script-section__head--left">
+              <p className="rv-script-eyebrow">Support</p>
+              <h2>Frequently asked questions</h2>
               <p>
-                Clear answers on physician care, compounding, memberships, AI coaching, and
-                how Reform Vital works—before you start your assessment.
+                Clear answers on physician care, compounding, memberships, AI coaching, and how
+                Reform Vital works—before you start your assessment.
               </p>
-            </>
+            </div>
           )}
 
-          <div className="rv-faq-support">
-            <p className="rv-faq-support-label">Still need help?</p>
+          <div className="rv-script-faq__support">
+            <p>Still need help?</p>
             <a href={`mailto:${brandConfig.nav.email}`}>{brandConfig.nav.email}</a>
             <a href={`tel:${brandConfig.nav.phone}`}>{brandConfig.nav.phone}</a>
-            <a href="/start" className="btn btn-primary rv-faq-cta">
-              Start My Health Assessment →
-            </a>
+            <Link href="/start" className="rv-script-btn rv-script-btn--primary">
+              Start assessment →
+            </Link>
           </div>
-        </div>
+        </aside>
 
-        <div>
-          <div className="rv-faq-toolbar">
-            <div className="rv-faq-search">
-              <svg
-                className="rv-faq-search-icon"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.25"
-                aria-hidden
-              >
-                <circle cx="11" cy="11" r="7" />
-                <path d="M20 20l-3.5-3.5" />
-              </svg>
+        <div className="rv-script-faq__main">
+          <div className="rv-script-faq__toolbar">
+            <label className="rv-script-faq__search">
+              <span className="sr-only">Search FAQs</span>
               <input
                 type="search"
-                placeholder="Search questions (shipping, labs, GLP-1, membership…)"
+                placeholder="Search questions…"
                 value={query}
                 onChange={(e) => {
                   setQuery(e.target.value);
                   setOpenIndex(0);
                 }}
-                aria-label="Search FAQs"
               />
-            </div>
+            </label>
 
-            <div className="rv-faq-filters" role="tablist" aria-label="FAQ categories">
+            <div className="rv-script-faq__filters" role="tablist" aria-label="FAQ categories">
               {FILTERS.map((f) => (
                 <button
                   key={f.id}
                   type="button"
                   role="tab"
                   aria-selected={filter === f.id}
-                  className={`rv-faq-filter${filter === f.id ? " is-active" : ""}`}
+                  className={filter === f.id ? "is-active" : undefined}
                   onClick={() => {
                     setFilter(f.id);
                     setOpenIndex(0);
@@ -117,47 +107,32 @@ export default function FAQAccordion({ showPageHero = false }: { showPageHero?: 
             </div>
           </div>
 
-          <div className="rv-faq-list" role="list">
+          <div className="rv-script-faq__list">
             {filtered.length === 0 ? (
-              <div className="rv-faq-empty">
+              <p className="rv-script-faq__empty">
                 No questions matching &quot;{query}&quot;. Try another search or{" "}
                 <a href={`mailto:${brandConfig.nav.email}`}>email our care team</a>.
-              </div>
+              </p>
             ) : (
               filtered.map((faq, i) => {
                 const isOpen = openIndex === i;
                 return (
-                  <div
-                    className={`rv-faq-item${isOpen ? " is-open" : ""}`}
-                    key={faq.question}
-                    role="listitem"
-                    data-animate="rise"
-                    data-delay={String(Math.min(i, 8) * 60)}
-                  >
+                  <div key={faq.question} className={`rv-script-faq__item${isOpen ? " is-open" : ""}`}>
                     <button
                       type="button"
-                      className="rv-faq-question"
                       aria-expanded={isOpen}
-                      aria-controls={`faq-panel-${i}`}
-                      id={`faq-trigger-${i}`}
                       onClick={() => setOpenIndex(isOpen ? -1 : i)}
                     >
-                      <span className="rv-faq-index">{String(i + 1).padStart(2, "0")}</span>
-                      <span className="rv-faq-q-text">{faq.question}</span>
-                      <span className="rv-faq-toggle" aria-hidden>
-                        <span className="rv-faq-toggle-bar" />
-                        <span className="rv-faq-toggle-bar rv-faq-toggle-bar--vert" />
+                      <span>{faq.question}</span>
+                      <span className="rv-script-faq__icon" aria-hidden>
+                        {isOpen ? "−" : "+"}
                       </span>
                     </button>
-
-                    <div
-                      id={`faq-panel-${i}`}
-                      role="region"
-                      aria-labelledby={`faq-trigger-${i}`}
-                      className="rv-faq-answer"
-                    >
-                      <p>{faq.answer}</p>
-                    </div>
+                    {isOpen && (
+                      <div className="rv-script-faq__answer">
+                        <p>{faq.answer}</p>
+                      </div>
+                    )}
                   </div>
                 );
               })

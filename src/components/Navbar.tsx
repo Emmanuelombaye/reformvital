@@ -4,13 +4,20 @@ import { useState, useRef, useEffect } from "react";
 import { brandConfig } from "@/brand.config";
 import { WEIGHT_TREATMENTS } from "@/lib/treatmentCatalog";
 import OfferBanner from "./OfferBanner";
-import TrustBar from "./TrustBar";
 import ReformVitalLogo from "./ReformVitalLogo";
 
 const TREATMENT_LINKS = WEIGHT_TREATMENTS.map((t) => ({
   label: t.name,
   href: `/treatments/${t.slug}`,
 }));
+
+const PRIMARY_LINKS = [
+  { label: "How It Works", href: "/how-it-works" },
+  { label: "Memberships", href: "/memberships" },
+  { label: "Health Academy", href: "/resources" },
+  { label: "FAQ", href: "/faq" },
+  { label: "About", href: "/about" },
+];
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -40,11 +47,10 @@ export default function Navbar() {
   const closeMobile = () => setMobileMenuOpen(false);
 
   return (
-    <header className="rv-site-header">
+    <header className="rv-site-header rv-site-header--scriptful">
       <OfferBanner />
-      <TrustBar />
 
-      <nav className={`nav${mobileMenuOpen ? " is-mobile-open" : ""}`} id="navbar" aria-label="Primary">
+      <nav className={`nav nav--scriptful${mobileMenuOpen ? " is-mobile-open" : ""}`} id="navbar" aria-label="Primary">
         <div className="container nav-shell">
           <a href="/" className="brand" aria-label="Reform Vital home" onClick={closeMobile}>
             <ReformVitalLogo height={30} showText showTagline={false} />
@@ -74,17 +80,19 @@ export default function Navbar() {
                   All Treatments
                 </a>
                 {TREATMENT_LINKS.map((link) => (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    className="nav-more-link"
-                    onClick={() => setTreatmentsOpen(false)}
-                  >
+                  <a key={link.href} href={link.href} className="nav-more-link" onClick={() => setTreatmentsOpen(false)}>
                     {link.label}
                   </a>
                 ))}
               </div>
             </li>
+            {PRIMARY_LINKS.map((link) => (
+              <li key={link.href} className="nav-item">
+                <a href={link.href} className="nav-item-link">
+                  {link.label}
+                </a>
+              </li>
+            ))}
           </ul>
 
           <div className="nav-end">
@@ -97,8 +105,8 @@ export default function Navbar() {
               </svg>
               <span className="nav-phone-text">{brandConfig.nav.phone}</span>
             </a>
-            <a href={brandConfig.nav.ctaLink} className="btn btn-primary nav-cta nav-cta--desktop">
-              Start Assessment
+            <a href={brandConfig.nav.ctaLink} className="btn btn-primary nav-cta nav-cta--desktop rv-script-nav-cta">
+              Explore Treatments
             </a>
             <button
               type="button"
@@ -134,6 +142,13 @@ export default function Navbar() {
                   </a>
                 </li>
               ))}
+              {PRIMARY_LINKS.map((link) => (
+                <li key={link.href}>
+                  <a href={link.href} className="rv-mobile-link" onClick={closeMobile}>
+                    {link.label}
+                  </a>
+                </li>
+              ))}
               <li className="rv-mobile-meta">
                 <a href={brandConfig.nav.loginLink} className="rv-mobile-link" onClick={closeMobile}>
                   Log in to patient portal
@@ -146,11 +161,11 @@ export default function Navbar() {
                   Call {brandConfig.nav.phone}
                 </a>
                 <a
-                  href={brandConfig.nav.ctaLink}
+                  href="/treatments"
                   className="btn btn-primary rv-mobile-cta"
                   onClick={closeMobile}
                 >
-                  Start Assessment
+                  Explore Treatments
                 </a>
               </li>
             </ul>

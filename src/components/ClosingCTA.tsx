@@ -1,21 +1,22 @@
 export default function ClosingCTA() {
   return (
-    <section className="rv-closing-cta">
-      <div className="container">
-        <div className="rv-closing-cta-inner" data-animate="bounce">
-          <h2>Ready to Take the Next Step?</h2>
+    <section className="rv-script-cta-band">
+      <div className="container rv-script-cta-band__inner" data-animate="peak-fade">
+        <div>
+          <p className="rv-script-eyebrow rv-script-eyebrow--light">Ready to begin</p>
+          <h2>Select a weight-management program</h2>
           <p>
-            Your long-term health partner—not just a prescription. Start with a secure assessment
-            and build a personalized care plan with licensed physicians.
+            Review program pricing, complete secure intake after checkout, and receive licensed
+            provider review — RX only if prescribed.
           </p>
-          <div className="rv-closing-cta-actions">
-            <a href="/start" className="btn btn-primary">
-              Start My Health Assessment →
-            </a>
-            <a href="/start" className="btn btn-outline">
-              Schedule a Consultation
-            </a>
-          </div>
+        </div>
+        <div className="rv-script-cta-band__actions">
+          <a href="/treatments" className="rv-script-btn rv-script-btn--light">
+            Explore Treatments →
+          </a>
+          <a href="/how-it-works" className="rv-script-btn rv-script-btn--outline-light">
+            How It Works
+          </a>
         </div>
       </div>
     </section>
