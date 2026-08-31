@@ -26,7 +26,7 @@ const supportLinks = [
 
 export default function Footer() {
   return (
-    <footer className="rv-footer" id="site-footer">
+    <footer className="rv-footer rv-footer--hims" id="site-footer">
       <div className="rv-footer-glow" aria-hidden />
 
       <div className="container rv-footer-main">

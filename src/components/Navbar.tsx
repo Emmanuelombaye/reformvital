@@ -130,7 +130,7 @@ export default function Navbar() {
               onClick={closeMobile}
             />
             <div className="rv-mobile-drawer" id="rv-mobile-nav">
-            <ul className="rv-mobile-list">
+              <ul className="rv-mobile-list">
               <li>
                 <a href="/treatments" className="rv-mobile-link" onClick={closeMobile}>
                   All Treatments
@@ -169,8 +169,8 @@ export default function Navbar() {
                   Explore Treatments
                 </a>
               </li>
-            </ul>
-          </div>
+              </ul>
+            </div>
           </>
         )}
       </nav>

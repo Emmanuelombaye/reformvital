@@ -88,12 +88,15 @@ const TRUST_BADGE_CSS = `
 @media (max-width: 720px) {
   .brand-footer-trust {
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
     text-align: left;
-    gap: 1.35rem;
+    gap: 1rem;
+    padding: 1.25rem 0;
   }
   .brand-footer-trust__item {
-    width: min(100%, 20rem);
+    width: 100%;
+    max-width: 20rem;
+    margin-inline: auto;
   }
   .brand-footer-trust__title {
     font-size: 13px;

@@ -1,7 +1,14 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { brandConfig } from "@/brand.config";
 import ScrollMotion from "@/components/motion/ScrollMotion";
 import "./globals.css";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: "#0D1B2A",
+};
 
 export const metadata: Metadata = {
   title: `${brandConfig.name} — Modern Medicine. Personalized Health. Real Results.`,
@@ -41,21 +48,11 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        {/* Art-directed hero preload — only the viewport-matched file */}
         <link
           rel="preload"
           as="image"
           type="image/webp"
           href="/images/hero-commercial-wide.webp"
-          media="(min-width: 901px)"
-          fetchPriority="high"
-        />
-        <link
-          rel="preload"
-          as="image"
-          type="image/webp"
-          href="/images/hero-commercial-mobile.webp"
-          media="(max-width: 900px)"
           fetchPriority="high"
         />
       </head>

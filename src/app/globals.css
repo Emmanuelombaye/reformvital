@@ -285,6 +285,14 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 3000;
   width: 100%;
   background: #fff;
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+.rv-site-header--scriptful .nav {
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 1px 0 rgba(13, 27, 42, 0.06);
 }
 
 .rv-promo {
@@ -2043,6 +2051,103 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 0.8rem;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.78);
+}
+
+/* Hims-style footer — centered trust band, legal row, and fine print */
+.rv-footer--hims .rv-footer-bottom-inner {
+  text-align: center;
+}
+
+.rv-footer--hims .rv-footer-disclaimer {
+  margin-inline: auto;
+  text-align: center;
+  max-width: 52rem;
+  font-size: 0.72rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.rv-footer--hims .rv-footer-meta {
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.68);
+}
+
+.rv-footer--hims .rv-footer-legal {
+  gap: 0.5rem 1.25rem;
+}
+
+.rv-footer--hims .rv-footer-legal a {
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.rv-footer--hims .rv-footer-trust-band {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.rv-footer--hims .rv-footer-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+@media (max-width: 900px) {
+  .rv-footer--hims .rv-footer-main {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding-top: 2.75rem;
+    padding-bottom: 2rem;
+  }
+
+  .rv-footer--hims .rv-footer-brand {
+    max-width: none;
+    text-align: center;
+    margin-inline: auto;
+  }
+
+  .rv-footer--hims .rv-footer-logo,
+  .rv-footer--hims .rv-footer-cta {
+    margin-inline: auto;
+  }
+
+  .rv-footer--hims .rv-footer-contact {
+    align-items: center;
+  }
+
+  .rv-footer--hims .rv-footer-contact-link {
+    align-items: center;
+    text-align: center;
+  }
+
+  .rv-footer--hims .rv-footer-cols {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+    text-align: center;
+  }
+
+  .rv-footer--hims .rv-footer-col ul {
+    align-items: center;
+  }
+
+  .rv-footer--hims .rv-footer-domain {
+    margin-top: 1rem;
+  }
+
+  .rv-footer--hims .rv-footer-legal {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.55rem;
+    padding-bottom: 1rem;
+  }
+}
+
+@media (min-width: 901px) {
+  .rv-footer--hims .rv-footer-legal {
+    max-width: 56rem;
+    margin-inline: auto;
+  }
 }
 
 @media (max-width: 900px) {
@@ -8906,7 +9011,8 @@ img[data-nimg="fill"] {
   justify-content: space-between;
   gap: 1rem;
   flex-wrap: wrap;
-  padding: 0.55rem 0;
+  padding: 0.55rem max(0px, env(safe-area-inset-right, 0px)) 0.55rem
+    max(0px, env(safe-area-inset-left, 0px));
 }
 
 .rv-script-notice__link {
@@ -8957,6 +9063,8 @@ img[data-nimg="fill"] {
 }
 
 .rv-script-hero__media {
+  position: relative;
+  aspect-ratio: 16 / 11;
   border-radius: 1.5rem;
   overflow: hidden;
   background: #fff;
@@ -8965,13 +9073,8 @@ img[data-nimg="fill"] {
 }
 
 .rv-script-hero__img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.rv-script-hero__img--mobile {
-  display: none;
+  object-fit: cover;
+  object-position: center 22%;
 }
 
 .rv-script-btn {
@@ -9153,27 +9256,37 @@ img[data-nimg="fill"] {
 }
 
 @media (max-width: 900px) {
-  .rv-script-hero__img--desktop {
-    display: none;
-  }
-
-  .rv-script-hero__img--mobile {
-    display: block;
-  }
-
   .rv-script-hero__grid {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 1.35rem;
   }
 
   .rv-script-hero {
-    padding: 2rem 0 2.5rem;
+    padding: 1.35rem 0 2.25rem;
+  }
+
+  .rv-script-hero__media {
+    aspect-ratio: 4 / 5;
+    order: 2;
+  }
+
+  .rv-script-hero__copy {
+    order: 1;
+  }
+
+  .rv-script-hero__img {
+    object-position: center 18%;
   }
 }
 
 @media (max-width: 640px) {
   .rv-script-hero__copy h1 {
     font-size: clamp(1.75rem, 8vw, 2.25rem);
+  }
+
+  .rv-script-hero__sub {
+    font-size: 0.98rem;
+    line-height: 1.6;
   }
 
   .rv-script-hero__actions {
@@ -9184,6 +9297,35 @@ img[data-nimg="fill"] {
   .rv-script-hero__actions .rv-script-btn {
     width: 100%;
     justify-content: center;
+  }
+
+  .rv-script-notice__inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.35rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .rv-script-notice__inner p {
+    margin: 0;
+    font-size: 0.76rem;
+    line-height: 1.45;
+  }
+
+  .nav-shell {
+    min-height: 3.5rem;
+    height: auto;
+    padding-top: 0.15rem;
+    padding-bottom: 0.15rem;
+  }
+
+  .container {
+    width: min(
+      100% - 1.5rem - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px),
+      var(--max)
+    );
   }
 
   .rv-script-section {
