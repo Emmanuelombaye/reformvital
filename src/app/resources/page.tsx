@@ -21,10 +21,10 @@ const treatmentGuides = brandConfig.healthAcademy.downloadableGuides.filter((gui
 );
 
 const guideCovers: Record<string, string> = {
-  "weight-optimization-guide": "/images/academy-nutrition.webp",
-  "nutrition-playbook": "/images/academy-recipes.webp",
-  "sleep-guide": "/images/8.webp",
-  "understanding-your-labs": "/images/why-evidence.webp",
+  "weight-optimization-guide": "/images/resources/guides/weight-optimization-guide.svg",
+  "nutrition-playbook": "/images/resources/guides/nutrition-playbook.svg",
+  "sleep-guide": "/images/resources/guides/sleep-guide.svg",
+  "understanding-your-labs": "/images/resources/guides/understanding-your-labs.svg",
 };
 
 const browseCategories = brandConfig.healthAcademy.categories.filter((cat) =>
@@ -200,7 +200,8 @@ export default function ResourcesPage() {
               {treatmentGuides.map((guide) => {
                 const slug = guide.href.split("/").pop() ?? "";
                 const pdfUrl = slug ? getGuidePdfUrl(slug) : "#";
-                const cover = guideCovers[slug] || "/images/academy-recipes.webp";
+                const cover =
+                  guideCovers[slug] ?? `/images/resources/guides/${slug}.svg`;
                 return (
                   <article key={guide.title} className="rv-res-card rv-res-card--guide">
                     <CardMedia
