@@ -111,7 +111,7 @@ type FooterTrustBadgesProps = {
 function TrustBadgeIcon({ src, alt }: { src: string; alt: string }) {
   return (
     <span className="brand-footer-trust__icon" aria-hidden="true">
-      <Image src={src} alt={alt} width={104} height={104} sizes="52px" />
+      <Image src={src} alt={alt} width={104} height={104} sizes="52px" quality={60} loading="lazy" />
     </span>
   );
 }

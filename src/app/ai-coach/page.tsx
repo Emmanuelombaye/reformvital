@@ -233,7 +233,9 @@ function SmoothImage({
         sizes={sizes}
         style={style}
         placeholder={placeholder}
+        quality={65}
         priority={priority}
+        loading={priority ? undefined : "lazy"}
         onLoad={() => setIsLoaded(true)}
         onError={() => setIsLoaded(true)}
         className={`${styles.smoothImage} ${isLoaded ? styles.smoothImageLoaded : ""}`}

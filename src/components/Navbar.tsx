@@ -11,13 +11,7 @@ const TREATMENT_LINKS = WEIGHT_TREATMENTS.map((t) => ({
   href: `/treatments/${t.slug}`,
 }));
 
-const PRIMARY_LINKS = [
-  { label: "How It Works", href: "/how-it-works" },
-  { label: "Memberships", href: "/memberships" },
-  { label: "Health Academy", href: "/resources" },
-  { label: "FAQ", href: "/faq" },
-  { label: "About", href: "/about" },
-];
+const PRIMARY_LINKS = brandConfig.nav.links.filter((link) => link.href !== "/treatments");
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);

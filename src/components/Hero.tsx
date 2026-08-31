@@ -41,9 +41,9 @@ export default function Hero() {
             alt="Reform Vital wellness lifestyle"
             width={900}
             height={1350}
-            priority
             sizes="(max-width: 900px) 100vw, 0px"
-            quality={75}
+            quality={70}
+            loading="lazy"
             className="rv-script-hero__img rv-script-hero__img--mobile"
           />
         </div>

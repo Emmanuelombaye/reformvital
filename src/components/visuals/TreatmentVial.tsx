@@ -31,8 +31,9 @@ export default function TreatmentVial({
       width={square ? 256 : 640}
       height={square ? 256 : 853}
       sizes={square ? "64px" : "(max-width: 768px) 90vw, 640px"}
-      quality={75}
+      quality={70}
       priority={priority}
+      loading={priority ? undefined : "lazy"}
       className={className}
     />
   );

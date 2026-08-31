@@ -32,7 +32,9 @@ export default function CardMedia({
         alt={alt}
         fill
         sizes={sizes}
+        quality={60}
         priority={priority}
+        loading={priority ? undefined : "lazy"}
         className="rv-card-media__img"
         style={{ objectFit: "contain", objectPosition: "center" }}
       />

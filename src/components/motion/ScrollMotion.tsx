@@ -355,7 +355,7 @@ export default function ScrollMotion() {
         observeAll();
         bindTilts();
         bindMagnets();
-      }, 60);
+      }, 200);
     });
     mo.observe(document.body, { childList: true, subtree: true });
 

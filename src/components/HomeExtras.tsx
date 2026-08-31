@@ -71,6 +71,8 @@ export default function HomeExtras() {
                       alt=""
                       fill
                       sizes="48px"
+                      quality={60}
+                      loading="lazy"
                     />
                   </span>
                   {program.name} · {program.price}

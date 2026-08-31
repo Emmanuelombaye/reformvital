@@ -118,6 +118,7 @@ function StickySteps() {
                       sizes="(max-width: 991px) 92vw, 48vw"
                       quality={75}
                       priority={i === 0}
+                      loading={i === 0 ? undefined : "lazy"}
                       style={{ objectFit: "contain" }}
                     />
                     <div className="rv-hiw-step-media__shine" aria-hidden />
@@ -236,6 +237,7 @@ export default function HowItWorksFlow() {
                           fill
                           sizes="(max-width: 900px) 90vw, 30vw"
                           quality={70}
+                          loading="lazy"
                           style={{ objectFit: "contain" }}
                         />
                       ) : (
@@ -246,6 +248,7 @@ export default function HowItWorksFlow() {
                           height={1200}
                           sizes="(max-width: 900px) 90vw, 30vw"
                           quality={70}
+                          loading="lazy"
                         />
                       )}
                     </div>
@@ -273,6 +276,7 @@ export default function HowItWorksFlow() {
                     fill
                     sizes="(max-width: 900px) 92vw, 50vw"
                     quality={75}
+                    loading="lazy"
                     style={{ objectFit: "contain" }}
                   />
                 </div>
@@ -319,6 +323,7 @@ export default function HowItWorksFlow() {
                     fill
                     sizes="(max-width: 900px) 92vw, 40vw"
                     quality={75}
+                    loading="lazy"
                     style={{ objectFit: "contain" }}
                   />
                 </div>

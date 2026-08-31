@@ -2632,6 +2632,13 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+@media (pointer: coarse) {
+  .rv-float-orb,
+  .rv-cursor-glow {
+    display: none;
+  }
+}
+
 /* —— Resources library —— */
 .rv-resources-hero {
   background:
