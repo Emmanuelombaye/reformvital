@@ -1927,6 +1927,14 @@ h1, h2, h3, h4, h5, h6 {
   color: rgba(0, 168, 150, 0.95);
 }
 
+.rv-footer-trust-band {
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.14);
+}
+
 .rv-footer-bottom {
   position: relative;
   z-index: 1;
@@ -1936,6 +1944,81 @@ h1, h2, h3, h4, h5, h6 {
 
 .rv-footer-bottom-inner {
   padding: 1.35rem 0 1.75rem;
+}
+
+.rv-footer-legal {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.45rem 1.35rem;
+  margin: 0 0 1.15rem;
+  padding-bottom: 1.15rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.rv-footer-legal a {
+  color: rgba(255, 255, 255, 0.82);
+  text-decoration: none;
+  font-size: 0.82rem;
+  font-weight: 650;
+  letter-spacing: 0.01em;
+  transition: color 0.2s ease;
+}
+
+.rv-footer-legal a:hover {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.rv-legal-page {
+  padding-top: 0;
+}
+
+.rv-legal-doc {
+  max-width: 46rem;
+  margin: 0 auto;
+  color: var(--text, #0f172a);
+}
+
+.rv-legal-doc__updated {
+  margin: 0 0 1.5rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.rv-legal-doc__section + .rv-legal-doc__section {
+  margin-top: 1.75rem;
+}
+
+.rv-legal-doc__section h2 {
+  margin: 0 0 0.85rem;
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+  color: var(--primary, #0a1f3d);
+}
+
+.rv-legal-doc__section p {
+  margin: 0 0 0.85rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+.rv-legal-doc__section ul {
+  margin: 0 0 0.85rem;
+  padding-left: 1.25rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+.rv-legal-doc__section li + li {
+  margin-top: 0.35rem;
+}
+
+.rv-legal-doc__section a {
+  color: var(--primary, #0a1f3d);
+  font-weight: 650;
 }
 
 .rv-footer-disclaimer {
@@ -1980,6 +2063,13 @@ h1, h2, h3, h4, h5, h6 {
   .rv-footer-cta {
     width: 100%;
     justify-content: center;
+  }
+
+  .rv-footer-legal {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.65rem;
+    text-align: center;
   }
 }
 

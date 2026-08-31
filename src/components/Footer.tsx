@@ -1,4 +1,5 @@
 import { brandConfig } from "@/brand.config";
+import { LEGAL_LINKS } from "@/lib/legalLinks";
 import { FooterTrustBadges } from "./FooterTrustBadges";
 import ReformVitalLogo from "./ReformVitalLogo";
 
@@ -92,12 +93,22 @@ export default function Footer() {
         </nav>
       </div>
 
-      <div className="container">
-        <FooterTrustBadges />
+      <div className="rv-footer-trust-band">
+        <div className="container">
+          <FooterTrustBadges />
+        </div>
       </div>
 
       <div className="rv-footer-bottom">
         <div className="container rv-footer-bottom-inner">
+          <nav className="rv-footer-legal" aria-label="Legal">
+            {LEGAL_LINKS.map((link) => (
+              <a key={link.slug} href={`/${link.slug}`}>
+                {link.label}
+              </a>
+            ))}
+          </nav>
+
           <p className="rv-footer-disclaimer">{brandConfig.footer.disclaimer}</p>
           <div className="rv-footer-meta">
             <span>{brandConfig.footer.copyright}</span>

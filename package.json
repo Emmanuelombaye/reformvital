@@ -10,7 +10,7 @@
     "replace:images": "python scripts/replace_client_images.py",
     "optimize:images": "python scripts/optimize_public_images.py",
     "speed:images": "python scripts/speed_encode_images.py",
-    "apply:scriptful-vials": "python scripts/apply_scriptful_vials.py",
+    "apply:scriptful-vials": "python scripts/apply_scriptful_vials.py"
   },
   "dependencies": {
     "next": "16.2.11",

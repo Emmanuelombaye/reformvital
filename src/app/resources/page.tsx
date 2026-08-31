@@ -106,9 +106,9 @@ const externalReads = [
     source: "Mayo Clinic",
   },
   {
-    title: "FDA: Medicines Containing Semaglutide",
-    summary: "Official safety information on approved semaglutide products.",
-    href: "https://www.fda.gov/drugs/drug-safety-and-availability/fdas-concerns-unapproved-glp-1-drugs-used-weight-loss",
+    title: "FDA: Semaglutide Drug Safety Information",
+    summary: "Official FDA safety information on approved semaglutide products.",
+    href: "https://www.fda.gov/drugs/postmarket-drug-safety-information-patients-and-providers/semaglutide-marketed-ozempic-wegovy-rybelsus-information",
     source: "U.S. FDA",
   },
   {

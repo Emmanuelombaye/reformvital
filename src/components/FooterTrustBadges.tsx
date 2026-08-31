@@ -1,76 +1,20 @@
-function UsaFlagIcon() {
-  return (
-    <span className="brand-footer-trust__flag" aria-hidden="true">
-      <svg viewBox="0 0 48 32" xmlns="http://www.w3.org/2000/svg">
-        <rect width="48" height="32" fill="#bf0a30" />
-        <rect y="2.46" width="48" height="2.46" fill="#fff" />
-        <rect y="7.38" width="48" height="2.46" fill="#fff" />
-        <rect y="12.31" width="48" height="2.46" fill="#fff" />
-        <rect y="17.23" width="48" height="2.46" fill="#fff" />
-        <rect y="22.15" width="48" height="2.46" fill="#fff" />
-        <rect y="27.08" width="48" height="2.46" fill="#fff" />
-        <rect width="19.2" height="17.23" fill="#002868" />
-        {[
-          [3.2, 2.8],
-          [7.2, 2.8],
-          [11.2, 2.8],
-          [15.2, 2.8],
-          [5.2, 5.6],
-          [9.2, 5.6],
-          [13.2, 5.6],
-          [3.2, 8.4],
-          [7.2, 8.4],
-          [11.2, 8.4],
-          [15.2, 8.4],
-          [5.2, 11.2],
-          [9.2, 11.2],
-          [13.2, 11.2],
-          [3.2, 14],
-          [7.2, 14],
-          [11.2, 14],
-          [15.2, 14],
-        ].map(([x, y], i) => (
-          <circle key={i} cx={x} cy={y} r="0.7" fill="#fff" />
-        ))}
-      </svg>
-    </span>
-  );
-}
+import Image from "next/image";
 
-function CaduceusIcon() {
-  return (
-    <span className="brand-footer-trust__caduceus" aria-hidden="true">
-      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M24 6v36" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
-        <path
-          d="M24 11c-7.5-1.8-13 2.2-14.5 8.2 2.2 1.6 6.4.4 9.2-2.4 3.4-3.4 7.2-4.2 11.3-1.2 3.4 2.5 5.2 7.2 2.4 11.2-2.6 3.7-7.6 4.4-11.6 1.8-3.6-2.4-5.4-6.8-3.2-10.6"
-          stroke="currentColor"
-          strokeWidth="1.7"
-          strokeLinecap="round"
-        />
-        <path
-          d="M24 11c7.5-1.8 13 2.2 14.5 8.2-2.2 1.6-6.4.4-9.2-2.4-3.4-3.4-7.2-4.2-11.3-1.2-3.4 2.5-5.2 7.2-2.4 11.2 2.6 3.7 7.6 4.4 11.6 1.8 3.6-2.4 5.4-6.8 3.2-10.6"
-          stroke="currentColor"
-          strokeWidth="1.7"
-          strokeLinecap="round"
-        />
-        <path d="M16 10c-5 1.2-8.5 4.8-8.8 9.2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-        <path d="M32 10c5 1.2 8.5 4.8 8.8 9.2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-        <circle cx="24" cy="6" r="1.6" fill="currentColor" />
-      </svg>
-    </span>
-  );
-}
+const BADGE_IMAGES = {
+  usaPharmacy: "/images/footer-badges/usa-pharmacy.png",
+  hipaa: "/images/footer-badges/hipaa.png",
+  providerNetwork: "/images/footer-badges/provider-network.png",
+} as const;
 
 const TRUST_BADGE_CSS = `
 .brand-footer-trust {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 1.75rem 2.75rem;
-  margin: 1.75rem 0 0;
-  padding-top: 1.35rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  justify-content: center;
+  gap: clamp(1.25rem, 3vw, 2.5rem) clamp(1.75rem, 4vw, 3.25rem);
+  margin: 0;
+  padding: clamp(1.5rem, 3vw, 2rem) 0;
 }
 .brand-footer-trust--light {
   border-top-color: rgba(10, 31, 61, 0.12);
@@ -78,44 +22,27 @@ const TRUST_BADGE_CSS = `
 .brand-footer-trust__item {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   min-width: 0;
   color: inherit;
   text-decoration: none;
 }
-.brand-footer-trust__flag {
+.brand-footer-trust__icon {
   display: block;
-  width: 42px;
-  height: 28px;
   flex: none;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
   overflow: hidden;
-  border-radius: 6px;
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.22);
+  box-shadow:
+    0 10px 24px rgba(0, 0, 0, 0.28),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.12);
 }
-.brand-footer-trust--light .brand-footer-trust__flag,
-.brand-footer-trust__item--light .brand-footer-trust__flag {
-  box-shadow: 0 0 0 1px rgba(10, 31, 61, 0.18);
-}
-.brand-footer-trust__flag svg {
+.brand-footer-trust__icon img {
   display: block;
   width: 100%;
   height: 100%;
-}
-.brand-footer-trust__caduceus {
-  display: grid;
-  place-items: center;
-  width: 42px;
-  height: 42px;
-  flex: none;
-  color: rgba(255, 255, 255, 0.92);
-}
-.brand-footer-trust--light .brand-footer-trust__caduceus,
-.brand-footer-trust__item--light .brand-footer-trust__caduceus {
-  color: #0a1f3d;
-}
-.brand-footer-trust__caduceus svg {
-  width: 36px;
-  height: 36px;
+  object-fit: cover;
 }
 .brand-footer-trust__copy {
   display: flex;
@@ -137,7 +64,7 @@ const TRUST_BADGE_CSS = `
 .brand-footer-trust__title {
   font-size: 14px;
   font-weight: 650;
-  line-height: 1.2;
+  line-height: 1.25;
   color: #fff;
 }
 .brand-footer-trust--light .brand-footer-trust__title,
@@ -158,10 +85,15 @@ const TRUST_BADGE_CSS = `
   text-decoration: underline;
   text-underline-offset: 3px;
 }
-@media (max-width: 640px) {
+@media (max-width: 720px) {
   .brand-footer-trust {
-    margin-top: 1.5rem;
-    gap: 1.15rem 1.5rem;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+    gap: 1.35rem;
+  }
+  .brand-footer-trust__item {
+    width: min(100%, 20rem);
   }
   .brand-footer-trust__title {
     font-size: 13px;
@@ -171,15 +103,33 @@ const TRUST_BADGE_CSS = `
 
 type FooterTrustBadgesProps = {
   hipaaHref?: string;
-  tone?: 'dark' | 'light';
-  layout?: 'row' | 'items';
+  providerHref?: string;
+  tone?: "dark" | "light";
+  layout?: "row" | "items";
 };
 
-function TrustItems({ hipaaHref, tone }: { hipaaHref?: string; tone: 'dark' | 'light' }) {
-  const itemClass = `brand-footer-trust__item${tone === 'light' ? ' brand-footer-trust__item--light' : ''}`;
+function TrustBadgeIcon({ src, alt }: { src: string; alt: string }) {
+  return (
+    <span className="brand-footer-trust__icon" aria-hidden="true">
+      <Image src={src} alt={alt} width={104} height={104} sizes="52px" />
+    </span>
+  );
+}
+
+function TrustItems({
+  hipaaHref,
+  providerHref,
+  tone,
+}: {
+  hipaaHref?: string;
+  providerHref?: string;
+  tone: "dark" | "light";
+}) {
+  const itemClass = `brand-footer-trust__item${tone === "light" ? " brand-footer-trust__item--light" : ""}`;
+
   const hipaaBody = (
     <>
-      <CaduceusIcon />
+      <TrustBadgeIcon src={BADGE_IMAGES.hipaa} alt="" />
       <span className="brand-footer-trust__copy">
         <span className="brand-footer-trust__kicker">Data protected</span>
         <span className="brand-footer-trust__title">
@@ -189,15 +139,28 @@ function TrustItems({ hipaaHref, tone }: { hipaaHref?: string; tone: 'dark' | 'l
     </>
   );
 
+  const providerBody = (
+    <>
+      <TrustBadgeIcon src={BADGE_IMAGES.providerNetwork} alt="" />
+      <span className="brand-footer-trust__copy">
+        <span className="brand-footer-trust__kicker">Care delivered by</span>
+        <span className="brand-footer-trust__title">
+          Licensed <span className="brand-footer-trust__sub">Provider Network</span>
+        </span>
+      </span>
+    </>
+  );
+
   return (
     <>
       <div className={itemClass}>
-        <UsaFlagIcon />
+        <TrustBadgeIcon src={BADGE_IMAGES.usaPharmacy} alt="" />
         <span className="brand-footer-trust__copy">
           <span className="brand-footer-trust__kicker">Compounded by</span>
           <span className="brand-footer-trust__title">Licensed Pharmacies in the USA</span>
         </span>
       </div>
+
       {hipaaHref ? (
         <a href={hipaaHref} className={`${itemClass} brand-footer-trust__item--link`}>
           {hipaaBody}
@@ -205,22 +168,33 @@ function TrustItems({ hipaaHref, tone }: { hipaaHref?: string; tone: 'dark' | 'l
       ) : (
         <div className={itemClass}>{hipaaBody}</div>
       )}
+
+      {providerHref ? (
+        <a href={providerHref} className={`${itemClass} brand-footer-trust__item--link`}>
+          {providerBody}
+        </a>
+      ) : (
+        <div className={itemClass}>{providerBody}</div>
+      )}
     </>
   );
 }
 
-/** Unique footer compliance marks: US-compounded pharmacies + HIPAA. */
+/** Footer compliance marks: US pharmacies, HIPAA, and provider network. */
 export function FooterTrustBadges({
-  hipaaHref,
-  tone = 'dark',
-  layout = 'row',
+  hipaaHref = "/hipaa-notice",
+  providerHref = "/provider-network",
+  tone = "dark",
+  layout = "row",
 }: FooterTrustBadgesProps) {
-  const items = <TrustItems hipaaHref={hipaaHref} tone={tone} />;
+  const items = (
+    <TrustItems hipaaHref={hipaaHref} providerHref={providerHref} tone={tone} />
+  );
 
   return (
     <>
       <style>{TRUST_BADGE_CSS}</style>
-      {layout === 'items' ? (
+      {layout === "items" ? (
         items
       ) : (
         <div className={`brand-footer-trust brand-footer-trust--${tone}`} aria-label="Compliance">
