@@ -2,33 +2,26 @@
 
 import { useState, useRef, useEffect } from "react";
 import { brandConfig } from "@/brand.config";
+import { WEIGHT_TREATMENTS } from "@/lib/treatmentCatalog";
 import OfferBanner from "./OfferBanner";
 import TrustBar from "./TrustBar";
 import ReformVitalLogo from "./ReformVitalLogo";
 
-const PRIMARY_LINKS = [
-  { label: "Treatments", href: "/treatments" },
-  { label: "Memberships", href: "/memberships" },
-  { label: "How It Works", href: "/how-it-works" },
-  { label: "AI Coach", href: "/ai-coach" },
-  { label: "Health Academy", href: "/resources" },
-];
-
-const MORE_LINKS = [
-  { label: "About", href: "/about" },
-  { label: "FAQ", href: "/faq" },
-];
+const TREATMENT_LINKS = WEIGHT_TREATMENTS.map((t) => ({
+  label: t.name,
+  href: `/treatments/${t.slug}`,
+}));
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [moreOpen, setMoreOpen] = useState(false);
-  const moreRef = useRef<HTMLLIElement>(null);
+  const [treatmentsOpen, setTreatmentsOpen] = useState(false);
+  const treatmentsRef = useRef<HTMLLIElement>(null);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       const target = event.target as Node;
-      if (moreRef.current && !moreRef.current.contains(target)) {
-        setMoreOpen(false);
+      if (treatmentsRef.current && !treatmentsRef.current.contains(target)) {
+        setTreatmentsOpen(false);
       }
     }
     document.addEventListener("mousedown", handleClickOutside);
@@ -58,39 +51,34 @@ export default function Navbar() {
           </a>
 
           <ul className="nav-menu">
-            {PRIMARY_LINKS.map((link) => (
-              <li key={link.href} className="nav-item">
-                <a href={link.href} className="nav-item-link">
-                  {link.label}
-                </a>
-              </li>
-            ))}
-
             <li
-              ref={moreRef}
-              className={`nav-item nav-item--more${moreOpen ? " is-open" : ""}`}
-              onMouseEnter={() => setMoreOpen(true)}
-              onMouseLeave={() => setMoreOpen(false)}
+              ref={treatmentsRef}
+              className={`nav-item nav-item--more${treatmentsOpen ? " is-open" : ""}`}
+              onMouseEnter={() => setTreatmentsOpen(true)}
+              onMouseLeave={() => setTreatmentsOpen(false)}
             >
               <button
                 type="button"
                 className="nav-item-link nav-item-link--btn"
-                aria-expanded={moreOpen}
+                aria-expanded={treatmentsOpen}
                 aria-haspopup="true"
-                onClick={() => setMoreOpen((v) => !v)}
+                onClick={() => setTreatmentsOpen((v) => !v)}
               >
-                More
+                Treatments
                 <svg className="nav-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden>
                   <polyline points="6 9 12 15 18 9" />
                 </svg>
               </button>
               <div className="nav-more-panel">
-                {MORE_LINKS.map((link) => (
+                <a href="/treatments" className="nav-more-link" onClick={() => setTreatmentsOpen(false)}>
+                  All Treatments
+                </a>
+                {TREATMENT_LINKS.map((link) => (
                   <a
                     key={link.href}
                     href={link.href}
                     className="nav-more-link"
-                    onClick={() => setMoreOpen(false)}
+                    onClick={() => setTreatmentsOpen(false)}
                   >
                     {link.label}
                   </a>
@@ -134,7 +122,12 @@ export default function Navbar() {
         {mobileMenuOpen && (
           <div className="rv-mobile-drawer" id="rv-mobile-nav">
             <ul className="rv-mobile-list">
-              {[...PRIMARY_LINKS, ...MORE_LINKS].map((link) => (
+              <li>
+                <a href="/treatments" className="rv-mobile-link" onClick={closeMobile}>
+                  All Treatments
+                </a>
+              </li>
+              {TREATMENT_LINKS.map((link) => (
                 <li key={link.href}>
                   <a href={link.href} className="rv-mobile-link" onClick={closeMobile}>
                     {link.label}

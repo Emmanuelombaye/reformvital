@@ -1,127 +1,88 @@
 "use client";
 
-import DualProductImage from "@/components/DualProductImage";
-import Image from "next/image";
-import { getTherapyStagePair } from "@/lib/treatmentCatalog";
+import TreatmentVial from "@/components/visuals/TreatmentVial";
+import { brandConfig } from "@/brand.config";
+import { WEIGHT_TREATMENTS, type TherapyProduct } from "@/lib/treatmentCatalog";
 
 const PLAN_INCLUDES = [
-  "Free Medical Consultation",
-  "Free Expedited Shipping",
-  "24/7 Dedicated Support",
-  "Access to Patient Portal",
+  "Online licensed-provider review",
+  "Secure medical intake after checkout",
+  "Standard shipping included",
+  "Ongoing program support by secure message",
 ];
 
-type Therapy = {
-  slug: string;
-  name: string;
-  desc: string;
-  price: string;
-};
-
 type Props = {
-  tone: string;
-  stageTitle: string;
-  tag: string;
-  blurb: string;
-  therapies: Therapy[];
   selectedSlug: string;
   onSelectTherapy: (slug: string) => void;
   animKey?: string | number;
 };
 
 export default function TreatmentExploreHero({
-  tone,
-  stageTitle,
-  tag,
-  blurb,
-  therapies,
   selectedSlug,
   onSelectTherapy,
   animKey = 0,
 }: Props) {
-  const selected = therapies.find((t) => t.slug === selectedSlug) || therapies[0];
-  const stage = selected
-    ? getTherapyStagePair(selected.slug)
-    : { primary: "/images/vial-glp1.webp", secondary: "/images/packs/glp1-a.webp" };
-  const rawPrice = selected?.price || "$149";
+  const selected =
+    WEIGHT_TREATMENTS.find((t) => t.slug === selectedSlug) || WEIGHT_TREATMENTS[0];
+  const detail =
+    brandConfig.treatmentDetails[
+      selected.slug as keyof typeof brandConfig.treatmentDetails
+    ];
+
+  const rawPrice = selected.price;
   const priceIsMo = /\/mo$/i.test(rawPrice);
   const priceLabel = rawPrice.replace(/\/mo$/i, "");
-  const isCustom = /custom/i.test(rawPrice);
 
   return (
-    <div key={String(animKey)} className="rv-tx-panel" data-animate="peak-fade">
-      {/* Yucca media card */}
-      <article className="rv-tx-media" data-tone={tone}>
+    <div key={String(animKey)} className="rv-tx-panel rv-tx-panel--scriptful" data-animate="peak-fade">
+      <article className="rv-tx-media rv-tx-media--scriptful" data-tone="wl">
         <div className="rv-tx-media__top">
-          <p className="rv-tx-media__eyebrow">Licensed U.S. provider review</p>
+          <p className="rv-tx-media__eyebrow">{selected.concentration}</p>
           <div className="rv-tx-media__pills">
-            <span>{tag.replace(/_/g, " ")}</span>
-            <span className="is-stock">Available</span>
+            <span>{selected.form}</span>
+            <span className="is-stock">RX ONLY</span>
           </div>
         </div>
 
-        <h3 className="rv-tx-media__title">{stageTitle}</h3>
+        <h3 className="rv-tx-media__title">{selected.name} Program</h3>
 
-        <div className="rv-tx-media__art">
-          <DualProductImage
-            primary={stage.primary}
-            secondary={stage.secondary}
-            alt={selected?.name || stageTitle}
+        <div className="rv-tx-media__art rv-tx-media__art--vial">
+          <TreatmentVial
+            slug={selected.slug}
+            name={selected.name}
+            concentration={selected.concentration}
+            form={selected.form}
+            className="rv-tx-vial-hero"
+            priority
           />
         </div>
 
         <div
           className="rv-tx-media__badge"
-          aria-label={isCustom ? "Custom pricing" : `From ${priceLabel}${priceIsMo ? " per month" : ""}`}
+          aria-label={`${priceLabel}${priceIsMo ? " per month" : ""}`}
         >
-          {isCustom ? (
-            <>
-              <strong>ASK</strong>
-              <em>Us</em>
-            </>
-          ) : (
-            <>
-              <strong>FROM</strong>
-              <em>{priceLabel}</em>
-              {priceIsMo && <span>/mo</span>}
-            </>
-          )}
+          <strong>FROM</strong>
+          <em>{priceLabel}</em>
+          {priceIsMo && <span>/mo</span>}
         </div>
       </article>
 
-      {/* Yucca copy column */}
       <div className="rv-tx-copy">
-        <p className="rv-tx-copy__desc">{blurb}</p>
+        <p className="rv-tx-copy__desc">{detail?.description || selected.desc}</p>
 
-        {therapies.length > 0 && (
-          <div className="rv-tx-pickers" role="radiogroup" aria-label="Choose protocol">
-            {therapies.map((t) => {
-              const active = selected?.slug === t.slug;
-              const thumb = getTherapyStagePair(t.slug).primary;
-              return (
-                <button
-                  key={t.slug}
-                  type="button"
-                  role="radio"
-                  aria-checked={active}
-                  className={`rv-tx-picker${active ? " is-active" : ""}`}
-                  onClick={() => onSelectTherapy(t.slug)}
-                >
-                  <span className="rv-tx-picker__thumb">
-                    <Image src={thumb} alt="" width={64} height={64} sizes="64px" quality={60} />
-                  </span>
-                  <span className="rv-tx-picker__text">
-                    <strong>{t.name}</strong>
-                    <em>{t.desc}</em>
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-        )}
+        <div className="rv-tx-pickers" role="radiogroup" aria-label="Choose treatment">
+          {WEIGHT_TREATMENTS.map((t) => (
+            <TreatmentPickerCard
+              key={t.slug}
+              therapy={t}
+              active={selected.slug === t.slug}
+              onSelect={() => onSelectTherapy(t.slug)}
+            />
+          ))}
+        </div>
 
         <div className="rv-tx-includes">
-          <p>All Plans Include:</p>
+          <p>All programs include:</p>
           <ul>
             {PLAN_INCLUDES.map((item) => (
               <li key={item}>
@@ -132,35 +93,65 @@ export default function TreatmentExploreHero({
           </ul>
         </div>
 
-        <div className="rv-tx-guarantee">
-          <div className="rv-tx-guarantee__mark" aria-hidden>
-            RV
-          </div>
-          <p>
-            Provider-guided care, medications from U.S. licensed pharmacies, and only charged if
-            treatment is prescribed — with flexibility to change or cancel anytime.
-          </p>
-        </div>
+        <p className="rv-tx-disclaimer">
+          Purchasing a program does not guarantee that a prescription will be issued. A licensed
+          clinician reviews your intake and may decline treatment. May be compounded — not
+          FDA-approved.
+        </p>
 
         <div className="rv-tx-cta-row">
           <div className="rv-tx-cta-row__price">
-            <span>{isCustom ? "Pricing:" : "Starting as low as:"}</span>
+            <span>All-inclusive program price:</span>
             <strong>
-              {isCustom ? "Custom" : priceLabel}
-              {!isCustom && priceIsMo && <em>/mo</em>}
+              {priceLabel}
+              {priceIsMo && <em>/mo</em>}
             </strong>
           </div>
           <a href="/start" className="rv-tx-cta">
-            See if I qualify →
+            Select Program →
           </a>
         </div>
 
-        {selected && (
-          <a href={`/treatments/${selected.slug}`} className="rv-tx-more">
-            Learn more about {selected.name} →
-          </a>
-        )}
+        <a href={`/treatments/${selected.slug}`} className="rv-tx-more">
+          View {selected.name} program details →
+        </a>
       </div>
     </div>
+  );
+}
+
+function TreatmentPickerCard({
+  therapy,
+  active,
+  onSelect,
+}: {
+  therapy: TherapyProduct;
+  active: boolean;
+  onSelect: () => void;
+}) {
+  const meta = WEIGHT_TREATMENTS.find((t) => t.slug === therapy.slug);
+
+  return (
+    <button
+      type="button"
+      role="radio"
+      aria-checked={active}
+      className={`rv-tx-picker${active ? " is-active" : ""}`}
+      onClick={onSelect}
+    >
+      <span className="rv-tx-picker__thumb">
+        <TreatmentVial
+          slug={therapy.slug}
+          name={therapy.name}
+          concentration={therapy.concentration}
+          showSyringe
+          className="rv-tx-vial-thumb"
+        />
+      </span>
+      <span className="rv-tx-picker__text">
+        <strong>{therapy.name}</strong>
+        <em>{meta?.desc || therapy.desc}</em>
+      </span>
+    </button>
   );
 }

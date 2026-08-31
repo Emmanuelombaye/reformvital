@@ -4,11 +4,8 @@ import ReformVitalLogo from "./ReformVitalLogo";
 
 const careLinks = [
   { label: "All Treatments", href: "/treatments" },
-  { label: "Weight Loss (GLP-1)", href: "/treatments/semaglutide" },
-  { label: "Hormone / TRT", href: "/treatments/trt" },
-  { label: "Longevity & NAD+", href: "/treatments/nad-plus" },
-  { label: "Preventive Wellness", href: "/treatments/preventive-wellness" },
-  { label: "Memberships", href: "/memberships" },
+  { label: "Semaglutide", href: "/treatments/semaglutide" },
+  { label: "Tirzepatide", href: "/treatments/tirzepatide" },
 ];
 
 const companyLinks = [
@@ -38,8 +35,8 @@ export default function Footer() {
           </a>
           <p className="rv-footer-tagline">{brandConfig.tagline}</p>
           <p className="rv-footer-blurb">
-            Physician-guided telehealth for GLP-1 weight loss, hormone
-            optimization, peptides, longevity, and preventive metabolic wellness.
+            Clinician-guided weight-management programs with licensed provider review and one
+            clear monthly price per program.
           </p>
 
           <div className="rv-footer-contact">
