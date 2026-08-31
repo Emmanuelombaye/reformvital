@@ -4,7 +4,7 @@ import re
 from pathlib import Path
 from urllib.request import Request, urlopen
 
-ROOT = Path(r"I:\ceo\finalversionreform")
+ROOT = Path(__file__).resolve().parents[1]
 BASE = "https://reformvital.vercel.app"
 brand = (ROOT / "src" / "brand.config.ts").read_text(encoding="utf-8")
 

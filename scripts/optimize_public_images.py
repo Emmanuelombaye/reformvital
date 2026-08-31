@@ -10,7 +10,7 @@ from pathlib import Path
 
 from PIL import Image
 
-ROOT = Path(r"I:\ceo\finalversionreform")
+ROOT = Path(__file__).resolve().parents[1]
 IMG_ROOT = ROOT / "public" / "images"
 MAX_EDGE = 1920
 WEBP_QUALITY = 80

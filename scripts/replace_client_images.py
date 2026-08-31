@@ -9,7 +9,7 @@ from pathlib import Path
 
 from PIL import Image
 
-ROOT = Path(r"I:\ceo\finalversionreform")
+ROOT = Path(__file__).resolve().parents[1]
 CLIENT = ROOT / "public" / "clients changes"
 OUT = ROOT / "public" / "images"
 
