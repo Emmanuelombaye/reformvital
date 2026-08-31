@@ -217,37 +217,45 @@ export default function HowItWorksFlow() {
                 Why <em>Reform Vital</em>?
               </h2>
               <div className="rv-hiw-why__grid">
-                {HOW_WHY.map((item) => (
+                {HOW_WHY.map((item) => {
+                  const isProduct =
+                    item.image.src.includes("/vials/") ||
+                    item.image.src.includes("/packs/") ||
+                    item.image.src.includes("vial-");
+                  return (
                   <article key={item.title} className="rv-hiw-why-card" data-animate="peak-fade">
                     <div
                       className={`rv-hiw-why-card__media${
-                        item.image.src.includes("/vials/") ||
-                        item.image.src.includes("/packs/") ||
-                        item.image.src.includes("vial-")
-                          ? " rv-hiw-why-card__media--product"
-                          : ""
+                        isProduct ? " rv-hiw-why-card__media--product" : ""
                       }`}
-                      style={
-                        "aspect" in item.image && item.image.aspect
-                          ? { aspectRatio: item.image.aspect }
-                          : undefined
-                      }
                     >
-                      <Image
-                        src={item.image.src}
-                        alt={item.image.alt}
-                        fill
-                        sizes="(max-width: 900px) 90vw, 30vw"
-                        quality={70}
-                        style={{ objectFit: "contain" }}
-                      />
+                      {isProduct ? (
+                        <Image
+                          src={item.image.src}
+                          alt={item.image.alt}
+                          fill
+                          sizes="(max-width: 900px) 90vw, 30vw"
+                          quality={70}
+                          style={{ objectFit: "contain" }}
+                        />
+                      ) : (
+                        <Image
+                          src={item.image.src}
+                          alt={item.image.alt}
+                          width={1600}
+                          height={1200}
+                          sizes="(max-width: 900px) 90vw, 30vw"
+                          quality={70}
+                        />
+                      )}
                     </div>
                     <div className="rv-hiw-why-card__body">
                       <h3>{item.title}</h3>
                       <p>{item.body}</p>
                     </div>
                   </article>
-                ))}
+                  );
+                })}
               </div>
               <div className="rv-hiw-why__cta-wrap">
                 <a href="/treatments" className="rv-hiw-btn-primary">

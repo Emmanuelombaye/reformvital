@@ -16,15 +16,23 @@ const treatmentArticles = academyArticles.filter(
     /semaglutide|tirzepatide/i.test(article.title),
 );
 
-const treatmentGuides = brandConfig.healthAcademy.downloadableGuides.filter((guide) =>
-  /weight|nutrition|sleep|labs/i.test(`${guide.title} ${guide.desc}`),
-);
+const GUIDE_SLUGS = [
+  "weight-optimization-guide",
+  "nutrition-playbook",
+  "sleep-guide",
+  "understanding-your-labs",
+] as const;
+
+const treatmentGuides = brandConfig.healthAcademy.downloadableGuides.filter((guide) => {
+  const slug = guide.href.split("/").pop() ?? "";
+  return (GUIDE_SLUGS as readonly string[]).includes(slug);
+});
 
 const guideCovers: Record<string, string> = {
-  "weight-optimization-guide": "/images/resources/guides/weight-optimization-guide.svg",
-  "nutrition-playbook": "/images/resources/guides/nutrition-playbook.svg",
-  "sleep-guide": "/images/resources/guides/sleep-guide.svg",
-  "understanding-your-labs": "/images/resources/guides/understanding-your-labs.svg",
+  "weight-optimization-guide": "/images/resources/guides/weight-optimization-guide.png",
+  "nutrition-playbook": "/images/resources/guides/nutrition-playbook.png",
+  "sleep-guide": "/images/resources/guides/sleep-guide.png",
+  "understanding-your-labs": "/images/resources/guides/understanding-your-labs.png",
 };
 
 const browseCategories = brandConfig.healthAcademy.categories.filter((cat) =>
@@ -120,7 +128,7 @@ export default function ResourcesPage() {
                     <CardMedia
                       src={image}
                       alt={detail.name}
-                      aspect="3/2"
+                      aspect="1/1"
                       sizes="(max-width: 768px) 90vw, 420px"
                     />
                     <div className="rv-res-treatment-card__body">
@@ -242,7 +250,7 @@ export default function ResourcesPage() {
                     <CardMedia
                       src={cat.image}
                       alt={cat.label}
-                      aspect="4/3"
+                      aspect="3/2"
                       sizes="(max-width: 640px) 45vw, 180px"
                       className="rv-script-academy__card-media"
                     />

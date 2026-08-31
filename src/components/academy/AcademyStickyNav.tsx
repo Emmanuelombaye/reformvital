@@ -2,9 +2,10 @@
 
 const links = [
   { label: "Start here", href: "#lead" },
-  { label: "Categories", href: "#categories" },
-  { label: "Stories", href: "#stories" },
+  { label: "Programs", href: "#treatments" },
   { label: "Library", href: "#library" },
+  { label: "Guides", href: "#guides" },
+  { label: "Topics", href: "#categories" },
   { label: "Tools", href: "#tools" },
   { label: "Report", href: "/resources/report" },
 ];

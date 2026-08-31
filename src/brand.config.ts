@@ -375,12 +375,12 @@ export const brandConfig = {
       "The most trusted destination for health optimization—physician-reviewed guides, actionable tips, and evidence-based education.",
     categories: [
       { slug: "longevity", label: "Longevity", href: "/resources/category/longevity", image: "/images/about-longevity.webp" },
-      { slug: "weight", label: "Weight Optimization", href: "/resources/category/weight", image: "/images/story-nutrition.webp" },
+      { slug: "weight", label: "Weight Optimization", href: "/resources/category/weight", image: "/images/topics/weight-optimization.png" },
       { slug: "hormones", label: "Hormone Optimization", href: "/resources/category/hormones", image: "/images/resource-hormones.webp" },
-      { slug: "nutrition", label: "Nutrition", href: "/resources/category/nutrition", image: "/images/academy-nutrition.webp" },
+      { slug: "nutrition", label: "Nutrition", href: "/resources/category/nutrition", image: "/images/topics/nutrition.png" },
       { slug: "labs", label: "Advanced Labs", href: "/resources/category/labs", image: "/images/why-evidence.webp" },
-      { slug: "sleep", label: "Sleep", href: "/resources/category/sleep", image: "/images/8.webp" },
-      { slug: "performance", label: "Performance", href: "/resources/category/performance", image: "/images/portal-performance.webp" },
+      { slug: "sleep", label: "Sleep", href: "/resources/category/sleep", image: "/images/topics/sleep.png" },
+      { slug: "performance", label: "Performance", href: "/resources/category/performance", image: "/images/topics/performance.png" },
       { slug: "heart", label: "Heart Health", href: "/resources/category/heart", image: "/images/why-support.webp" },
       { slug: "mens", label: "Men's Health", href: "/resources/category/mens", image: "/images/why-personalized.webp" },
       { slug: "womens", label: "Women's Health", href: "/resources/category/womens", image: "/images/why-wellness.webp" },
@@ -388,8 +388,8 @@ export const brandConfig = {
       { slug: "gut", label: "Gut Health", href: "/resources/category/gut", image: "/images/academy-recipes.webp" },
       { slug: "mental", label: "Mental Wellness", href: "/resources/category/mental", image: "/images/lifestyle-mindfulness.webp" },
       { slug: "supplements", label: "Supplements", href: "/resources/category/supplements", image: "/images/academy-supplements.webp" },
-      { slug: "recipes", label: "Healthy Recipes", href: "/resources/category/recipes", image: "/images/academy-recipes.webp" },
-      { slug: "insights", label: "Physician Insights", href: "/resources/category/insights", image: "/images/story-habits.webp" },
+      { slug: "recipes", label: "Healthy Recipes", href: "/resources/category/recipes", image: "/images/topics/healthy-recipes.png" },
+      { slug: "insights", label: "Daily Habits", href: "/resources/category/insights", image: "/images/topics/daily-habits.png" },
     ],
     topicClusters: [
       {

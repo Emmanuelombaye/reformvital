@@ -85,9 +85,9 @@ export const HOW_WHY = [
   },
   {
     image: {
-      src: "/images/doctor_portrait.webp",
-      alt: "Licensed Reform Vital medical provider",
-      aspect: "1/1",
+      src: "/images/topics/care-built-around-you.png",
+      alt: "Member reviewing a personal wellness plan at home",
+      aspect: "4/3",
     },
     title: "Care Built Around You",
     body: "Protocols tailored to your goals, history, labs, and how your body responds over time.",

@@ -16,11 +16,11 @@ const aspectClass: Record<NonNullable<CardMediaProps["aspect"]>, string> = {
   "16/9": "rv-card-media--16x9",
 };
 
-/** Clip-safe image frame — full image visible, never cropped. */
+/** Fixed card frame — full photo visible, never cropped. */
 export default function CardMedia({
   src,
   alt,
-  aspect = "4/3",
+  aspect = "3/2",
   sizes = "(max-width: 768px) 90vw, 320px",
   priority = false,
   className = "",
@@ -34,6 +34,7 @@ export default function CardMedia({
         sizes={sizes}
         priority={priority}
         className="rv-card-media__img"
+        style={{ objectFit: "contain", objectPosition: "center" }}
       />
     </div>
   );
