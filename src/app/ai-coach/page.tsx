@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 import styles from "./page.module.css";
 
 import aiCoachDashboard from "../../../public/images/ai_coach_dashboard.webp";
-import aiCoachPatient from "../../../public/images/ai_coach_patient.webp";
+import aiCoachPatient from "../../../public/images/ai_coach_walk.webp";
 import aiCoachDoctor from "../../../public/images/ai_coach_doctor.webp";
 import lifestyleMindfulness from "../../../public/images/lifestyle-mindfulness.webp";
 
@@ -37,22 +37,22 @@ const deliverRows = [
     badge: "01 · Accountability",
     title: "Daily nudges that keep your protocol on track",
     description:
-      "Dose reminders, protein targets, hydration, and movement—timed to your plan so accountability feels natural between visits.",
+      "Dose reminders, protein targets, hydration, and movement timed to your plan so accountability feels natural between visits.",
     proof: "Non-intrusive cadence matched to your protocol week",
     image: aiCoachPatient,
     alt: "Member using Reform Vital AI coach on a phone",
-    fit: "cover" as const,
+    fit: "contain" as const,
     reverse: false,
   },
   {
     badge: "02 · Clinical sync",
     title: "Answers aligned with your provider’s plan",
     description:
-      "Injection timing, symptom logs, and nutrition tradeoffs—guidance tuned to your physician protocol, not generic chatbot advice.",
+      "Injection timing, symptom logs, and nutrition tradeoffs—guidance tuned to your physician protocol, not a generic chatbot.",
     proof: "Evidence-aligned responses reviewed against care plans",
     image: aiCoachDoctor,
     alt: "Physician reviewing patient progress with AI coach insights",
-    fit: "cover" as const,
+    fit: "contain" as const,
     reverse: true,
   },
   {
@@ -60,7 +60,7 @@ const deliverRows = [
     title: "A clear dashboard—never cropped, always readable",
     description:
       "Macros, dosing consistency, and vitals in one view. Your coach structures the data; your doctor reviews cleaner trends at follow-up.",
-    proof: "UI shown in full—contain frame, not cover crop",
+    proof: "Every metric stays on screen—nothing cropped at the edges",
     image: aiCoachDashboard,
     alt: "Reform Vital AI coach dashboard interface",
     fit: "contain" as const,
@@ -299,8 +299,8 @@ export default function AICoachPage() {
                 Built like a care partner—not a cropped card gallery
               </h2>
               <p className={styles.sectionSubtitle}>
-                Large lifestyle frames for people. Full dashboard UI in a soft stage—never
-                chopped by cover crops.
+                Lifestyle photos fill the frame. The dashboard stays fully visible so
+                every metric is readable.
               </p>
             </div>
 
@@ -326,11 +326,7 @@ export default function AICoachPage() {
                       alt={row.alt}
                       fill
                       sizes="(max-width: 900px) 100vw, 50vw"
-                      style={
-                        row.fit === "contain"
-                          ? { objectFit: "contain", objectPosition: "center" }
-                          : { objectFit: "contain", objectPosition: "center center" }
-                      }
+                      style={{ objectFit: "contain", objectPosition: "center" }}
                       placeholder="blur"
                     />
                   </div>
@@ -582,7 +578,7 @@ export default function AICoachPage() {
                   alt=""
                   fill
                   sizes="(max-width: 960px) 100vw, 42vw"
-                  style={{ objectFit: "contain", objectPosition: "center center" }}
+                  style={{ objectFit: "cover", objectPosition: "center center" }}
                   placeholder="blur"
                 />
               </div>

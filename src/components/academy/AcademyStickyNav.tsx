@@ -1,12 +1,12 @@
 "use client";
 
 const links = [
-  { label: "Start here", href: "#lead" },
-  { label: "Programs", href: "#treatments" },
-  { label: "Library", href: "#library" },
-  { label: "Guides", href: "#guides" },
-  { label: "Topics", href: "#categories" },
-  { label: "Tools", href: "#tools" },
+  { label: "Start here", href: "/resources#lead" },
+  { label: "Programs", href: "/resources#treatments" },
+  { label: "Library", href: "/resources#library" },
+  { label: "Guides", href: "/resources#guides" },
+  { label: "Topics", href: "/resources#categories" },
+  { label: "Tools", href: "/resources/tools" },
   { label: "Report", href: "/resources/report" },
 ];
 

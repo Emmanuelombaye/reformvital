@@ -25,11 +25,11 @@ export default function StartAssessmentPage() {
               <Image
                 src="/images/start-wellness.webp"
                 alt=""
-                width={900}
-                height={1125}
+                fill
                 className="rv-start-photo__img"
                 sizes="(max-width: 900px) 100vw, 38vw"
                 priority
+                style={{ objectFit: "cover", objectPosition: "center 30%" }}
               />
             </aside>
 

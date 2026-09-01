@@ -4322,6 +4322,12 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--accent);
 }
 
+@media (max-width: 900px) {
+  .rv-academy-sticky {
+    display: none;
+  }
+}
+
 /* —— Article & guide pages —— */
 .rv-article-inner {
   max-width: 44rem;
@@ -4682,43 +4688,40 @@ h1, h2, h3, h4, h5, h6 {
   grid-column: 1;
   grid-row: 1;
   align-self: stretch;
-  display: flex;
+  display: block;
   border-radius: 1.35rem;
   overflow: hidden;
   border: 1.5px solid rgba(13, 27, 42, 0.1);
   min-height: 100%;
-  background: linear-gradient(165deg, var(--rv-soft-stage-2) 0%, var(--rv-soft-stage) 100%);
-  /* Kill motion/3D so overflow actually clips and never paints over the form */
+  background: #13253a;
   transform: none !important;
   transform-style: flat !important;
   filter: none !important;
   contain: paint;
-  padding: 0.75rem;
+  padding: 0;
   box-sizing: border-box;
 }
 
 .rv-start-photo > span {
-  display: block !important;
-  position: static !important;
+  position: absolute !important;
+  inset: 0 !important;
   width: 100% !important;
   height: 100% !important;
-  flex: 1 1 auto;
 }
 
 .rv-start-photo__img,
 .rv-start-photo img {
-  position: static !important;
-  inset: auto !important;
+  position: absolute !important;
+  inset: 0 !important;
   display: block !important;
   width: 100% !important;
   height: 100% !important;
-  min-height: 28rem;
+  min-height: 0;
   max-width: none !important;
-  flex: 1 1 auto;
-  object-fit: contain !important;
-  object-position: center center !important;
+  object-fit: cover !important;
+  object-position: center 30% !important;
   transform: none !important;
-  border-radius: 1rem !important;
+  border-radius: 0 !important;
 }
 
 .rv-start-card {
@@ -4945,18 +4948,29 @@ h1, h2, h3, h4, h5, h6 {
     grid-row: auto;
     min-height: 0;
     max-height: none;
-    aspect-ratio: auto;
+    aspect-ratio: 4 / 5;
     width: 100%;
-    padding: 0.55rem;
+    padding: 0 !important;
+    overflow: hidden;
+    background: #13253a;
+  }
+
+  .rv-start-photo > span {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
   }
 
   .rv-start-photo__img,
   .rv-start-photo img {
-    min-height: 0;
-    height: auto !important;
-    max-height: 18rem;
-    object-fit: contain !important;
-    border-radius: 0.95rem !important;
+    min-height: 0 !important;
+    height: 100% !important;
+    max-height: none !important;
+    width: 100% !important;
+    object-fit: cover !important;
+    object-position: center 30% !important;
+    border-radius: 0 !important;
   }
 
   .rv-start-card {
@@ -6974,7 +6988,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .rv-yx-knowall__media {
   position: relative;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 16 / 10;
   min-height: 0;
   border-radius: 1.25rem;
   background: var(--rv-pack-stage);
@@ -7272,13 +7286,31 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .rv-yx-knowall {
-    padding: 1.35rem 1.1rem;
+    padding: 1.35rem 1.1rem 0;
+    overflow: hidden;
   }
 
   .rv-yx-knowall__media {
-    min-height: 0;
-    aspect-ratio: 4 / 3;
-    max-height: 11rem;
+    min-height: 16.5rem;
+    aspect-ratio: auto;
+    max-height: none;
+    padding: 0;
+    margin-inline: -1.1rem;
+    width: calc(100% + 2.2rem);
+    border-radius: 0 0 1.35rem 1.35rem;
+  }
+
+  .rv-yx-knowall__media--dual {
+    align-items: center;
+    justify-content: center;
+    padding: 0.65rem 0.4rem 1.1rem;
+    gap: 0.35rem;
+  }
+
+  .rv-tx-vial-stage--sm {
+    width: min(50%, 200px);
+    max-height: 15.5rem;
+    object-fit: contain;
   }
 
   .rv-yx-knowall__actions {
@@ -8883,7 +8915,9 @@ img[data-nimg="fill"] {
 }
 
 .rv-tx-vial-stage--sm {
-  width: min(120px, 45%);
+  width: min(48%, 220px);
+  flex: 1 1 0;
+  max-height: 100%;
 }
 
 .rv-tx-vial-detail {
@@ -8913,9 +8947,47 @@ img[data-nimg="fill"] {
 
 .rv-yx-knowall__media--dual {
   display: flex;
-  gap: 1.5rem;
-  align-items: flex-end;
+  gap: clamp(0.75rem, 4vw, 1.5rem);
+  align-items: center;
   justify-content: center;
+  padding: clamp(0.75rem, 3vw, 1.25rem);
+  box-sizing: border-box;
+}
+
+@media (max-width: 767px) {
+  /* Mobile: compare vials go edge-to-edge */
+  .rv-yx-knowall {
+    margin-inline: -0.85rem;
+    width: auto;
+    padding: 1.15rem 1.1rem 0;
+    border-radius: 1.15rem 1.15rem 0 0;
+    border-left: none;
+    border-right: none;
+  }
+
+  .rv-yx-knowall__copy h2 {
+    scroll-margin-top: 6.5rem;
+  }
+
+  .rv-yx-knowall__media,
+  .rv-yx-knowall__media--dual {
+    margin-inline: -1.1rem;
+    width: calc(100% + 2.2rem);
+    min-height: 0;
+    aspect-ratio: auto;
+    border-radius: 0;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 0.15rem 0.1rem 0.35rem;
+    gap: 0;
+  }
+
+  .rv-tx-vial-stage--sm {
+    width: 50%;
+    max-width: none;
+    max-height: none;
+    flex: 1 1 50%;
+  }
 }
 
 .rv-yx-expect__grid--copy {

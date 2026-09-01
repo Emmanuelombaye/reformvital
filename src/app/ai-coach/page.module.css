@@ -230,11 +230,18 @@
 
 .deliverMediaContain {
   background: linear-gradient(165deg, #f7f5f0 0%, #eef2f1 100%);
-  padding: 1.25rem;
+  padding: 0.65rem;
+  box-sizing: border-box;
 }
 
 .deliverMediaContain .imageWrapper {
   border-radius: 0.85rem;
+}
+
+.deliverMediaContain img,
+.deliverMediaContain :global(img) {
+  object-fit: contain !important;
+  object-position: center center !important;
 }
 
 .sectionHead {
@@ -1162,33 +1169,22 @@
     gap: 2.25rem;
   }
 
-  .deliverMedia {
-    min-height: 0;
-    aspect-ratio: 4 / 3;
-    max-height: 16rem;
-    padding: 0.5rem;
-    box-sizing: border-box;
-    background: linear-gradient(165deg, #eef5f3 0%, #e8f0ee 100%);
-  }
-
   .deliverMediaContain {
-    padding: 0.55rem;
-  }
-
-  .deliverMedia img,
-  .deliverMedia :global(img),
-  .demoLifestyle img,
-  .demoLifestyle :global(img) {
-    object-fit: contain !important;
-    object-position: center center !important;
+    padding: 0.5rem;
   }
 
   .demoLifestyle {
     aspect-ratio: 4 / 3;
-    max-height: 16rem;
-    padding: 0.5rem;
+    max-height: none;
+    padding: 0;
     box-sizing: border-box;
-    background: linear-gradient(165deg, #eef5f3 0%, #e8f0ee 100%);
+    background: #13253a;
+  }
+
+  .demoLifestyle img,
+  .demoLifestyle :global(img) {
+    object-fit: cover !important;
+    object-position: center center !important;
   }
 
   .promptRow {
