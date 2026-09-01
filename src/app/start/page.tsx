@@ -29,7 +29,12 @@ export default function StartAssessmentPage() {
                 className="rv-start-photo__img"
                 sizes="(max-width: 900px) 100vw, 38vw"
                 priority
-                style={{ objectFit: "cover", objectPosition: "center 30%" }}
+                style={{
+                  objectFit: "cover",
+                  objectPosition: "center center",
+                  width: "100%",
+                  height: "100%",
+                }}
               />
             </aside>
 

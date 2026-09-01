@@ -41,7 +41,7 @@ const deliverRows = [
     proof: "Non-intrusive cadence matched to your protocol week",
     image: aiCoachPatient,
     alt: "Member using Reform Vital AI coach on a phone",
-    fit: "contain" as const,
+    fit: "cover" as const,
     reverse: false,
   },
   {
@@ -52,7 +52,7 @@ const deliverRows = [
     proof: "Evidence-aligned responses reviewed against care plans",
     image: aiCoachDoctor,
     alt: "Physician reviewing patient progress with AI coach insights",
-    fit: "contain" as const,
+    fit: "cover" as const,
     reverse: true,
   },
   {
@@ -318,15 +318,20 @@ export default function AICoachPage() {
                   </div>
                   <div
                     className={`${styles.deliverMedia}${
-                      row.fit === "contain" ? ` ${styles.deliverMediaContain}` : ""
+                      row.fit === "contain"
+                        ? ` ${styles.deliverMediaContain}`
+                        : ` ${styles.deliverMediaCover}`
                     }`}
                   >
                     <SmoothImage
                       src={row.image}
                       alt={row.alt}
                       fill
-                      sizes="(max-width: 900px) 100vw, 50vw"
-                      style={{ objectFit: "contain", objectPosition: "center" }}
+                      sizes="(max-width: 900px) 92vw, 50vw"
+                      style={{
+                        objectFit: row.fit,
+                        objectPosition: "center center",
+                      }}
                       placeholder="blur"
                     />
                   </div>

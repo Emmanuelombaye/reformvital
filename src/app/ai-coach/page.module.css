@@ -228,6 +228,15 @@
   color: var(--accent);
 }
 
+.deliverMedia :global(img) {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  max-height: none !important;
+}
+
 .deliverMediaContain {
   background: linear-gradient(165deg, #f7f5f0 0%, #eef2f1 100%);
   padding: 0.65rem;
@@ -235,12 +244,35 @@
 }
 
 .deliverMediaContain .imageWrapper {
+  inset: 0.65rem;
+  width: auto;
+  height: auto;
   border-radius: 0.85rem;
+  background: transparent;
 }
 
 .deliverMediaContain img,
 .deliverMediaContain :global(img) {
   object-fit: contain !important;
+  object-position: center center !important;
+}
+
+.deliverMediaCover {
+  padding: 0.55rem;
+  box-sizing: border-box;
+  background: #e8f0ee;
+}
+
+.deliverMediaCover .imageWrapper {
+  inset: 0.55rem;
+  width: auto;
+  height: auto;
+  border-radius: 0.95rem;
+}
+
+.deliverMediaCover img,
+.deliverMediaCover :global(img) {
+  object-fit: cover !important;
   object-position: center center !important;
 }
 
@@ -1171,6 +1203,18 @@
 
   .deliverMediaContain {
     padding: 0.5rem;
+  }
+
+  .deliverMediaContain .imageWrapper {
+    inset: 0.5rem;
+  }
+
+  .deliverMediaCover {
+    padding: 0.5rem;
+  }
+
+  .deliverMediaCover .imageWrapper {
+    inset: 0.5rem;
   }
 
   .demoLifestyle {
