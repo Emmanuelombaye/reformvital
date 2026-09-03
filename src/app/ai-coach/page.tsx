@@ -41,7 +41,7 @@ const deliverRows = [
     proof: "Non-intrusive cadence matched to your protocol week",
     image: aiCoachPatient,
     alt: "Member using Reform Vital AI coach on a phone",
-    fit: "cover" as const,
+    fit: "contain" as const,
     reverse: false,
   },
   {
