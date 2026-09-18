@@ -10394,7 +10394,7 @@ img[data-nimg="fill"] {
 
 .rv-fit-story__img {
   object-fit: cover;
-  object-position: 72% center;
+  object-position: 68% 18%;
 }
 
 .rv-fit-story__shade {
@@ -10405,15 +10405,10 @@ img[data-nimg="fill"] {
   background:
     linear-gradient(
       90deg,
-      rgba(246, 241, 234, 0.94) 0%,
-      rgba(246, 241, 234, 0.78) 28%,
-      rgba(246, 241, 234, 0.28) 52%,
-      transparent 72%
-    ),
-    linear-gradient(
-      180deg,
-      transparent 55%,
-      rgba(13, 27, 42, 0.18) 100%
+      rgba(232, 224, 214, 0.92) 0%,
+      rgba(232, 224, 214, 0.72) 26%,
+      rgba(232, 224, 214, 0.22) 48%,
+      transparent 66%
     );
 }
 
@@ -10529,22 +10524,17 @@ img[data-nimg="fill"] {
   }
 
   .rv-fit-story__img {
-    object-position: 78% 18%;
+    object-position: 70% 12%;
   }
 
   .rv-fit-story__shade {
     background:
       linear-gradient(
         180deg,
-        rgba(246, 241, 234, 0.92) 0%,
-        rgba(246, 241, 234, 0.72) 34%,
-        rgba(246, 241, 234, 0.2) 58%,
-        transparent 72%
-      ),
-      linear-gradient(
-        180deg,
-        transparent 70%,
-        rgba(13, 27, 42, 0.35) 100%
+        rgba(232, 224, 214, 0.94) 0%,
+        rgba(232, 224, 214, 0.78) 30%,
+        rgba(232, 224, 214, 0.28) 52%,
+        transparent 68%
       );
   }
 
