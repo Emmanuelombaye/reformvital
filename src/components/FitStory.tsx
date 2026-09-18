@@ -16,22 +16,21 @@ export default function FitStory() {
         <div className="rv-fit-story__shade" aria-hidden />
         <div className="rv-fit-story__content">
           <div className="container rv-fit-story__copy" data-animate="peak-fade">
-            <p className="rv-script-eyebrow">Real fit. Real story.</p>
-            <h2 id="fit-story-heading">When the jeans finally hang loose</h2>
+            <p className="rv-script-eyebrow">See the difference</p>
+            <h2 id="fit-story-heading">Room in the waist again</h2>
             <p className="rv-fit-story__lead">
-              Structured metabolic care with clear monthly pricing — progress measured in how you
-              feel and how clothes start to fit.
+              Old jeans hang loose. That gap is the goal — steady care, clear pricing, real fit.
             </p>
             <div className="rv-fit-story__actions">
               <Link href="/start" className="rv-script-btn rv-script-btn--primary">
-                Start clinical intake
+                Get started
               </Link>
               <Link href="/treatments" className="rv-script-btn rv-script-btn--secondary">
-                Compare programs
+                View programs
               </Link>
             </div>
             <p className="rv-fit-story__note">
-              Individual results vary · Intake ≠ prescription
+              Results vary. A prescription is never guaranteed.
             </p>
           </div>
         </div>
