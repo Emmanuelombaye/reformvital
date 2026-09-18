@@ -10361,6 +10361,195 @@ img[data-nimg="fill"] {
   }
 }
 
+.rv-script-faq--home {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
+.rv-script-faq--home .rv-script-faq__main {
+  max-width: 44rem;
+  margin: 0 auto;
+}
+
+.rv-script-faq--home .rv-script-faq__more {
+  margin-top: 1.25rem;
+  display: flex;
+  justify-content: center;
+}
+
+/* Home fit story — baggy jeans waist moment */
+.rv-fit-story {
+  padding: clamp(3rem, 6vw, 4.5rem) 0;
+  background:
+    radial-gradient(ellipse 70% 80% at 12% 20%, rgba(0, 168, 150, 0.08), transparent 55%),
+    linear-gradient(180deg, #fff 0%, #f3f8f7 100%);
+  overflow: hidden;
+}
+
+.rv-fit-story__grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: center;
+}
+
+.rv-fit-story__media {
+  position: relative;
+  margin: 0;
+}
+
+.rv-fit-story__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 0;
+}
+
+.rv-fit-story__caption {
+  margin: 0.75rem 0 0;
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--accent);
+}
+
+.rv-fit-story__copy h2 {
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.75rem, 3.2vw, 2.55rem);
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: var(--primary);
+}
+
+.rv-fit-story__copy > p {
+  margin: 0 0 1.25rem;
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  max-width: 34rem;
+}
+
+.rv-fit-story__beats {
+  list-style: none;
+  margin: 0 0 1.5rem;
+  padding: 0;
+  display: grid;
+  gap: 0.85rem;
+}
+
+.rv-fit-story__beats li {
+  display: grid;
+  gap: 0.15rem;
+  padding-left: 0.95rem;
+  border-left: 3px solid var(--accent);
+}
+
+.rv-fit-story__beats strong {
+  font-size: 0.98rem;
+  color: var(--primary);
+}
+
+.rv-fit-story__beats span {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+.rv-fit-story__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+}
+
+.rv-fit-story__note {
+  margin: 0;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  max-width: 32rem;
+  line-height: 1.45;
+}
+
+/* Slim continue strip (replaces bulky extras cards on index) */
+.rv-home-continue {
+  padding: 2.5rem 0;
+  background: #fff;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.rv-home-continue__head {
+  margin-bottom: 1.15rem;
+  max-width: 36rem;
+}
+
+.rv-home-continue__head h2 {
+  margin: 0;
+  font-size: clamp(1.35rem, 2.4vw, 1.75rem);
+  color: var(--primary);
+}
+
+.rv-home-continue__row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
+.rv-home-continue__link {
+  display: grid;
+  gap: 0.35rem;
+  padding: 1rem 0;
+  text-decoration: none;
+  color: inherit;
+  border-top: 2px solid transparent;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.rv-home-continue__link:hover {
+  border-top-color: var(--accent);
+}
+
+.rv-home-continue__link strong {
+  font-size: 1rem;
+  line-height: 1.35;
+  color: var(--primary);
+}
+
+.rv-home-continue__cta {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+@media (max-width: 900px) {
+  .rv-fit-story__grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .rv-fit-story__media {
+    margin-inline: calc(-1 * max(0.75rem, env(safe-area-inset-left, 0px)));
+    width: calc(100% + 2 * max(0.75rem, env(safe-area-inset-left, 0px)));
+  }
+
+  .rv-home-continue__row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .rv-home-continue__link {
+    padding: 0.95rem 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .rv-home-continue__link:hover {
+    border-top-color: var(--border);
+  }
+}
+
 /* Home extras — compact Scriptful index row */
 .rv-script-extras {
   display: grid;

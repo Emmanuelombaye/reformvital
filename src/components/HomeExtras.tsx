@@ -1,90 +1,42 @@
 import Link from "next/link";
-import Image from "next/image";
-import { brandConfig } from "@/brand.config";
-import { WEIGHT_TREATMENTS, getTherapyVialImage } from "@/lib/treatmentCatalog";
+
+const LINKS = [
+  {
+    eyebrow: "Memberships",
+    title: "Essentials · Performance · Elite",
+    href: "/memberships",
+    cta: "Compare tiers",
+  },
+  {
+    eyebrow: "AI Coach",
+    title: "Daily accountability between visits",
+    href: "/ai-coach",
+    cta: "Explore coaching",
+  },
+  {
+    eyebrow: "Health Academy",
+    title: "Physician-reviewed guides & habits",
+    href: "/resources",
+    cta: "Browse education",
+  },
+] as const;
 
 export default function HomeExtras() {
-  const { memberships, aiCoach, healthAcademy, memberExperience } = brandConfig;
-
   return (
-    <section className="rv-script-section" id="member-resources">
+    <section className="rv-home-continue" id="member-resources">
       <div className="container">
-        <div className="rv-script-section__head">
-          <p className="rv-script-eyebrow">Beyond the prescription</p>
-          <h2>Memberships, coaching &amp; education</h2>
-          <p>
-            Membership tiers, AI accountability coaching, and physician-reviewed education—linked
-            from your portal and available to explore anytime.
-          </p>
+        <div className="rv-home-continue__head">
+          <p className="rv-script-eyebrow">Keep exploring</p>
+          <h2>More support after you choose a program</h2>
         </div>
-
-        <div className="rv-script-extras">
-          <article className="rv-script-extras__card">
-            <p className="rv-script-eyebrow">Memberships</p>
-            <h3>Essentials · Performance · Elite</h3>
-            <ul className="rv-script-extras__tiers">
-              {memberships.map((plan) => (
-                <li key={plan.id}>
-                  <strong>{plan.name}</strong>
-                  <span>from ${plan.monthlyPrice}/mo</span>
-                </li>
-              ))}
-            </ul>
-            <ul className="rv-script-extras__bullets">
-              {memberExperience.inclusions.slice(0, 4).map((item) => (
-                <li key={item.label}>{item.label}</li>
-              ))}
-            </ul>
-            <Link href="/memberships" className="rv-script-btn rv-script-btn--secondary">
-              Compare tiers →
+        <div className="rv-home-continue__row">
+          {LINKS.map((item) => (
+            <Link key={item.href} href={item.href} className="rv-home-continue__link">
+              <span className="rv-script-eyebrow">{item.eyebrow}</span>
+              <strong>{item.title}</strong>
+              <span className="rv-home-continue__cta">{item.cta} →</span>
             </Link>
-          </article>
-
-          <article className="rv-script-extras__card">
-            <p className="rv-script-eyebrow">AI Health Coach</p>
-            <h3>{aiCoach.headline}</h3>
-            <p className="rv-script-extras__desc">{aiCoach.subheadline}</p>
-            <ul className="rv-script-extras__bullets">
-              {aiCoach.features.slice(0, 3).map((feat) => (
-                <li key={feat.title}>{feat.title}</li>
-              ))}
-            </ul>
-            <Link href="/ai-coach" className="rv-script-btn rv-script-btn--secondary">
-              Explore AI Coach →
-            </Link>
-          </article>
-
-          <article className="rv-script-extras__card">
-            <p className="rv-script-eyebrow">Programs</p>
-            <h3>Two weight-management options</h3>
-            <p className="rv-script-extras__desc">{healthAcademy.subtitle}</p>
-            <div className="rv-script-extras__cats">
-              {WEIGHT_TREATMENTS.map((program) => (
-                <Link
-                  key={program.slug}
-                  href={`/treatments/${program.slug}`}
-                  className="rv-script-extras__cat"
-                >
-                  <span className="rv-script-extras__cat-media">
-                    <Image
-                      src={getTherapyVialImage(program.slug, "thumb")}
-                      alt=""
-                      width={28}
-                      height={28}
-                      sizes="28px"
-                      quality={60}
-                      loading="lazy"
-                      className="rv-script-extras__cat-img"
-                    />
-                  </span>
-                  {program.name} · {program.price}
-                </Link>
-              ))}
-            </div>
-            <Link href="/treatments" className="rv-script-btn rv-script-btn--secondary">
-              Compare both programs →
-            </Link>
-          </article>
+          ))}
         </div>
       </div>
     </section>

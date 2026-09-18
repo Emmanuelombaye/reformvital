@@ -15,7 +15,20 @@ const FILTERS = [
 
 type FaqCategory = (typeof FILTERS)[number]["id"];
 
-export default function FAQAccordion({ showPageHero = false }: { showPageHero?: boolean }) {
+const HOME_FAQ_QUESTIONS = [
+  "How do I get started?",
+  "Who is eligible for Reform Vital care?",
+  "Are your medications compounded in certified pharmacies?",
+  "Who reviews my care?",
+] as const;
+
+export default function FAQAccordion({
+  showPageHero = false,
+  homeTeaser = false,
+}: {
+  showPageHero?: boolean;
+  homeTeaser?: boolean;
+}) {
   const [openIndex, setOpenIndex] = useState(0);
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState<FaqCategory>("all");
@@ -23,6 +36,13 @@ export default function FAQAccordion({ showPageHero = false }: { showPageHero?: 
   const faqs = brandConfig.faqs;
 
   const filtered = useMemo(() => {
+    if (homeTeaser) {
+      const picked = HOME_FAQ_QUESTIONS.map((q) => faqs.find((f) => f.question === q)).filter(
+        Boolean,
+      ) as typeof faqs;
+      return picked.length ? picked : faqs.slice(0, 4);
+    }
+
     const q = query.trim().toLowerCase();
     return faqs.filter((faq) => {
       const cat = ("category" in faq ? faq.category : "getting-started") as string;
@@ -33,10 +53,13 @@ export default function FAQAccordion({ showPageHero = false }: { showPageHero?: 
         faq.answer.toLowerCase().includes(q);
       return matchesCat && matchesQ;
     });
-  }, [faqs, filter, query]);
+  }, [faqs, filter, query, homeTeaser]);
 
   return (
-    <section className="rv-script-section rv-script-faq" id="faq">
+    <section
+      className={`rv-script-section rv-script-faq${homeTeaser ? " rv-script-faq--home" : ""}`}
+      id="faq"
+    >
       {showPageHero && (
         <div className="rv-script-page-hero">
           <div className="container">
@@ -50,62 +73,74 @@ export default function FAQAccordion({ showPageHero = false }: { showPageHero?: 
         </div>
       )}
 
-      <div className="container rv-script-faq__layout">
-        <aside className="rv-script-faq__sidebar">
-          {!showPageHero && (
-            <div className="rv-script-section__head rv-script-section__head--left">
-              <p className="rv-script-eyebrow">Support</p>
-              <h2>Frequently asked questions</h2>
-              <p>
-                Clear answers on physician care, compounding, memberships, AI coaching, and how
-                Reform Vital works—before you start your assessment.
-              </p>
+      <div className={`container${homeTeaser ? "" : " rv-script-faq__layout"}`}>
+        {!homeTeaser && (
+          <aside className="rv-script-faq__sidebar">
+            {!showPageHero && (
+              <div className="rv-script-section__head rv-script-section__head--left">
+                <p className="rv-script-eyebrow">Support</p>
+                <h2>Frequently asked questions</h2>
+                <p>
+                  Clear answers on physician care, compounding, memberships, AI coaching, and how
+                  Reform Vital works—before you start your assessment.
+                </p>
+              </div>
+            )}
+
+            <div className="rv-script-faq__support">
+              <p>Still need help?</p>
+              <a href={`mailto:${brandConfig.nav.email}`}>{brandConfig.nav.email}</a>
+              <a href={`tel:${brandConfig.nav.phone}`}>{brandConfig.nav.phone}</a>
+              <Link href="/start" className="rv-script-btn rv-script-btn--primary">
+                Start assessment →
+              </Link>
+            </div>
+          </aside>
+        )}
+
+        <div className="rv-script-faq__main">
+          {homeTeaser && (
+            <div className="rv-script-section__head">
+              <p className="rv-script-eyebrow">Quick answers</p>
+              <h2>A few questions before you start</h2>
+              <p>Full FAQ lives on its own page—here are the essentials.</p>
             </div>
           )}
 
-          <div className="rv-script-faq__support">
-            <p>Still need help?</p>
-            <a href={`mailto:${brandConfig.nav.email}`}>{brandConfig.nav.email}</a>
-            <a href={`tel:${brandConfig.nav.phone}`}>{brandConfig.nav.phone}</a>
-            <Link href="/start" className="rv-script-btn rv-script-btn--primary">
-              Start assessment →
-            </Link>
-          </div>
-        </aside>
-
-        <div className="rv-script-faq__main">
-          <div className="rv-script-faq__toolbar">
-            <label className="rv-script-faq__search">
-              <span className="sr-only">Search FAQs</span>
-              <input
-                type="search"
-                placeholder="Search questions…"
-                value={query}
-                onChange={(e) => {
-                  setQuery(e.target.value);
-                  setOpenIndex(0);
-                }}
-              />
-            </label>
-
-            <div className="rv-script-faq__filters" role="tablist" aria-label="FAQ categories">
-              {FILTERS.map((f) => (
-                <button
-                  key={f.id}
-                  type="button"
-                  role="tab"
-                  aria-selected={filter === f.id}
-                  className={filter === f.id ? "is-active" : undefined}
-                  onClick={() => {
-                    setFilter(f.id);
+          {!homeTeaser && (
+            <div className="rv-script-faq__toolbar">
+              <label className="rv-script-faq__search">
+                <span className="sr-only">Search FAQs</span>
+                <input
+                  type="search"
+                  placeholder="Search questions…"
+                  value={query}
+                  onChange={(e) => {
+                    setQuery(e.target.value);
                     setOpenIndex(0);
                   }}
-                >
-                  {f.label}
-                </button>
-              ))}
+                />
+              </label>
+
+              <div className="rv-script-faq__filters" role="tablist" aria-label="FAQ categories">
+                {FILTERS.map((f) => (
+                  <button
+                    key={f.id}
+                    type="button"
+                    role="tab"
+                    aria-selected={filter === f.id}
+                    className={filter === f.id ? "is-active" : undefined}
+                    onClick={() => {
+                      setFilter(f.id);
+                      setOpenIndex(0);
+                    }}
+                  >
+                    {f.label}
+                  </button>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
 
           <div className="rv-script-faq__list">
             {filtered.length === 0 ? (
@@ -138,6 +173,14 @@ export default function FAQAccordion({ showPageHero = false }: { showPageHero?: 
               })
             )}
           </div>
+
+          {homeTeaser && (
+            <div className="rv-script-faq__more">
+              <Link href="/faq" className="rv-script-btn rv-script-btn--secondary">
+                See all FAQs →
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </section>

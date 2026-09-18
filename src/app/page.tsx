@@ -2,9 +2,9 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import TrustSignals from "@/components/TrustSignals";
 import Treatments from "@/components/Treatments";
+import FitStory from "@/components/FitStory";
 import HowItWorks from "@/components/HowItWorks";
 import ScriptfulPricing from "@/components/ScriptfulPricing";
-import ScriptfulSafety from "@/components/ScriptfulSafety";
 import HomeExtras from "@/components/HomeExtras";
 import FAQAccordion from "@/components/FAQAccordion";
 import ScriptfulCompliance from "@/components/ScriptfulCompliance";
@@ -19,11 +19,11 @@ export default function HomePage() {
         <Hero />
         <TrustSignals />
         <Treatments />
+        <FitStory />
         <HowItWorks />
         <ScriptfulPricing />
-        <ScriptfulSafety />
         <HomeExtras />
-        <FAQAccordion />
+        <FAQAccordion homeTeaser />
         <ScriptfulCompliance />
         <ClosingCTA />
       </main>
