@@ -106,7 +106,68 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
   line-height: 1.12;
   letter-spacing: -0.03em;
-  color: var(--primary);
+  /* Inherit color so dark panels with color:#fff stay readable.
+     Light surfaces get navy from body { color: var(--text) }. */
+  color: inherit;
+}
+
+/* Dark surfaces: force light headings even if a nested rule forgets color */
+.rv-on-dark h1,
+.rv-on-dark h2,
+.rv-on-dark h3,
+.rv-on-dark h4,
+.rv-res-feature h1,
+.rv-res-feature h2,
+.rv-res-feature h3,
+.rv-res-feature__body h1,
+.rv-res-feature__body h2,
+.rv-res-feature__body h3,
+.rv-mag-monthly h1,
+.rv-mag-monthly h2,
+.rv-mag-monthly h3,
+.rv-mag-lead__hero h1,
+.rv-mag-lead__hero h2,
+.rv-mag-lead__hero h3,
+.rv-mag-lead__hero-body h1,
+.rv-mag-lead__hero-body h2,
+.rv-mag-lead__hero-body h3,
+.rv-yx-featured__body h1,
+.rv-yx-featured__body h2,
+.rv-yx-featured__body h3,
+.rv-resources-videos h1,
+.rv-resources-videos h2,
+.rv-resources-videos h3,
+.rv-resource-video-body h1,
+.rv-resource-video-body h2,
+.rv-resource-video-body h3,
+.rv-resources-cta h1,
+.rv-resources-cta h2,
+.rv-resources-cta h3,
+.rv-academy-guides h1,
+.rv-academy-guides h2,
+.rv-academy-guides h3,
+.rv-academy-guide h1,
+.rv-academy-guide h2,
+.rv-academy-guide h3,
+.rv-script-cta-band h1,
+.rv-script-cta-band h2,
+.rv-script-cta-band h3,
+.rv-script-notice h1,
+.rv-script-notice h2,
+.rv-script-notice h3,
+.rv-fit-story h1,
+.rv-fit-story h2,
+.rv-fit-story h3,
+.rv-page-hero-content h1,
+.rv-page-hero-content h2,
+.rv-page-hero-content h3,
+.rv-hiw-cta h1,
+.rv-hiw-cta h2,
+.rv-hiw-cta h3,
+.rv-hiw-cta__copy h1,
+.rv-hiw-cta__copy h2,
+.rv-hiw-cta__copy h3 {
+  color: #fff;
 }
 
 /* ── Keyframe Animations ── */
@@ -3013,6 +3074,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 800;
   margin: 0 0 0.45rem;
   line-height: 1.35;
+  color: #fff;
 }
 
 .rv-resource-video-body p {
@@ -3152,6 +3214,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 1.55rem;
   font-weight: 800;
   margin-bottom: 0.5rem;
+  color: #fff;
 }
 
 .rv-resources-cta p {
@@ -4160,6 +4223,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 800;
   margin-bottom: 0.45rem;
   line-height: 1.35;
+  color: #fff;
 }
 
 .rv-academy-guide p {
@@ -6491,6 +6555,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 900;
   letter-spacing: -0.03em;
   line-height: 1.15;
+  color: #fff;
 }
 
 .rv-yx-featured__body p {
@@ -7563,6 +7628,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 900;
   letter-spacing: -0.03em;
   line-height: 1.15;
+  color: #fff;
 }
 
 .rv-res-feature__body p {
@@ -7845,6 +7911,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 900;
   letter-spacing: -0.03em;
   line-height: 1.15;
+  color: #fff;
 }
 
 .rv-mag-lead__hero-body p {
@@ -8410,6 +8477,7 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0.45rem 0 0.55rem;
   font-size: 1.35rem;
   font-weight: 900;
+  color: #fff;
 }
 
 .rv-mag-monthly p {

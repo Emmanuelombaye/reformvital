@@ -725,6 +725,7 @@
   font-size: clamp(1.55rem, 2.8vw, 2.05rem);
   font-weight: 800;
   letter-spacing: -0.03em;
+  color: #fff;
 }
 
 .rv-hiw-cta__copy > p {
