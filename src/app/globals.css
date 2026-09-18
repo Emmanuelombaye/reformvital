@@ -10377,85 +10377,84 @@ img[data-nimg="fill"] {
   justify-content: center;
 }
 
-/* Home fit story — baggy jeans waist moment */
+/* Home fit story — full-bleed baggy jeans waist moment */
 .rv-fit-story {
-  padding: clamp(3rem, 6vw, 4.5rem) 0;
-  background:
-    radial-gradient(ellipse 70% 80% at 12% 20%, rgba(0, 168, 150, 0.08), transparent 55%),
-    linear-gradient(180deg, #fff 0%, #f3f8f7 100%);
+  padding: 0;
+  margin: 0;
+  background: #d8cfc4;
   overflow: hidden;
 }
 
-.rv-fit-story__grid {
-  display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: clamp(1.5rem, 4vw, 3rem);
-  align-items: center;
-}
-
-.rv-fit-story__media {
+.rv-fit-story__bleed {
   position: relative;
-  margin: 0;
+  width: 100%;
+  min-height: clamp(28rem, 72vw, 40rem);
+  isolation: isolate;
 }
 
 .rv-fit-story__img {
-  display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 4 / 3;
   object-fit: cover;
-  object-position: center top;
-  border-radius: 0;
+  object-position: 72% center;
 }
 
-.rv-fit-story__caption {
-  margin: 0.75rem 0 0;
-  font-size: 0.92rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  color: var(--accent);
+.rv-fit-story__shade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(246, 241, 234, 0.94) 0%,
+      rgba(246, 241, 234, 0.78) 28%,
+      rgba(246, 241, 234, 0.28) 52%,
+      transparent 72%
+    ),
+    linear-gradient(
+      180deg,
+      transparent 55%,
+      rgba(13, 27, 42, 0.18) 100%
+    );
+}
+
+.rv-fit-story__content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  min-height: inherit;
+  padding: clamp(2.5rem, 6vw, 4.5rem) 0;
+}
+
+.rv-fit-story__copy {
+  max-width: 28rem;
+}
+
+.rv-fit-story__copy .rv-script-eyebrow {
+  color: #0f766e;
 }
 
 .rv-fit-story__copy h2 {
   margin: 0 0 0.75rem;
-  font-size: clamp(1.75rem, 3.2vw, 2.55rem);
-  line-height: 1.15;
+  font-size: clamp(1.85rem, 3.6vw, 2.75rem);
+  line-height: 1.12;
   letter-spacing: -0.03em;
   color: var(--primary);
 }
 
-.rv-fit-story__copy > p {
-  margin: 0 0 1.25rem;
+.rv-fit-story__lead {
+  margin: 0 0 0.85rem;
   color: var(--text-muted);
   font-size: 1.05rem;
   line-height: 1.6;
-  max-width: 34rem;
 }
 
-.rv-fit-story__beats {
-  list-style: none;
-  margin: 0 0 1.5rem;
-  padding: 0;
-  display: grid;
-  gap: 0.85rem;
-}
-
-.rv-fit-story__beats li {
-  display: grid;
-  gap: 0.15rem;
-  padding-left: 0.95rem;
-  border-left: 3px solid var(--accent);
-}
-
-.rv-fit-story__beats strong {
-  font-size: 0.98rem;
-  color: var(--primary);
-}
-
-.rv-fit-story__beats span {
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  line-height: 1.45;
+.rv-fit-story__caption {
+  margin: 0 0 1.35rem;
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--accent);
 }
 
 .rv-fit-story__actions {
@@ -10469,7 +10468,7 @@ img[data-nimg="fill"] {
   margin: 0;
   font-size: 0.78rem;
   color: var(--text-muted);
-  max-width: 32rem;
+  max-width: 26rem;
   line-height: 1.45;
 }
 
@@ -10525,14 +10524,38 @@ img[data-nimg="fill"] {
 }
 
 @media (max-width: 900px) {
-  .rv-fit-story__grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+  .rv-fit-story__bleed {
+    min-height: clamp(34rem, 145vw, 46rem);
   }
 
-  .rv-fit-story__media {
-    margin-inline: calc(-1 * max(0.75rem, env(safe-area-inset-left, 0px)));
-    width: calc(100% + 2 * max(0.75rem, env(safe-area-inset-left, 0px)));
+  .rv-fit-story__img {
+    object-position: 78% 18%;
+  }
+
+  .rv-fit-story__shade {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(246, 241, 234, 0.92) 0%,
+        rgba(246, 241, 234, 0.72) 34%,
+        rgba(246, 241, 234, 0.2) 58%,
+        transparent 72%
+      ),
+      linear-gradient(
+        180deg,
+        transparent 70%,
+        rgba(13, 27, 42, 0.35) 100%
+      );
+  }
+
+  .rv-fit-story__content {
+    align-items: flex-start;
+    padding-top: 1.75rem;
+    padding-bottom: 2rem;
+  }
+
+  .rv-fit-story__copy {
+    max-width: 22rem;
   }
 
   .rv-home-continue__row {
