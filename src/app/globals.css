@@ -9432,12 +9432,35 @@ img[data-nimg="fill"] {
 }
 
 .rv-script-cta-band {
-  padding: 3rem 0;
-  background: var(--primary);
+  position: relative;
+  isolation: isolate;
+  padding: 3.25rem 0;
+  overflow: hidden;
   color: #fff;
+  background: var(--primary);
+}
+
+.rv-script-cta-band::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    linear-gradient(
+      100deg,
+      var(--primary) 0%,
+      var(--primary) 38%,
+      rgba(13, 27, 42, 0.88) 58%,
+      rgba(13, 27, 42, 0.45) 78%,
+      rgba(13, 27, 42, 0.15) 100%
+    ),
+    url("/images/cta-studio-edge.jpg") right center / cover no-repeat;
+  pointer-events: none;
 }
 
 .rv-script-cta-band__inner {
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -9448,18 +9471,38 @@ img[data-nimg="fill"] {
 .rv-script-cta-band h2 {
   margin: 0 0 0.5rem;
   font-size: clamp(1.6rem, 3vw, 2.2rem);
+  color: #fff;
+  text-shadow: 0 1px 18px rgba(7, 14, 23, 0.35);
 }
 
 .rv-script-cta-band p {
   margin: 0;
-  color: rgba(255, 255, 255, 0.82);
+  color: rgba(255, 255, 255, 0.88);
   max-width: 36rem;
+}
+
+.rv-script-cta-band .rv-script-eyebrow,
+.rv-script-cta-band .rv-script-eyebrow--light {
+  color: rgba(255, 255, 255, 0.82);
 }
 
 .rv-script-cta-band__actions {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
+}
+
+@media (max-width: 900px) {
+  .rv-script-cta-band::before {
+    background:
+      linear-gradient(
+        180deg,
+        var(--primary) 0%,
+        rgba(13, 27, 42, 0.92) 48%,
+        rgba(13, 27, 42, 0.72) 100%
+      ),
+      url("/images/cta-studio-edge.jpg") center 28% / cover no-repeat;
+  }
 }
 
 .nav--scriptful .nav-item-link {

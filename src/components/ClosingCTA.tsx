@@ -1,6 +1,6 @@
 export default function ClosingCTA() {
   return (
-    <section className="rv-script-cta-band">
+    <section className="rv-script-cta-band" aria-label="Ready to begin">
       <div className="container rv-script-cta-band__inner" data-animate="peak-fade">
         <div>
           <p className="rv-script-eyebrow rv-script-eyebrow--light">Ready to begin</p>
