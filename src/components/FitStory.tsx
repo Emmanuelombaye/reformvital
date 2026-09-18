@@ -7,7 +7,7 @@ export default function FitStory() {
       <div className="rv-fit-story__bleed">
         <Image
           src="/images/waist-baggy-jeans.jpg"
-          alt="Member from head to waist wearing oversized baggy jeans, showing the loose waistband gap"
+          alt="Centered close crop of oversized baggy jeans at the waist, showing how loose the waistband hangs"
           fill
           sizes="100vw"
           quality={82}

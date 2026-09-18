@@ -10377,24 +10377,26 @@ img[data-nimg="fill"] {
   justify-content: center;
 }
 
-/* Home fit story — full-bleed baggy jeans waist moment */
+/* Home fit story — full-bleed centered waist crop */
 .rv-fit-story {
   padding: 0;
   margin: 0;
-  background: #d8cfc4;
+  background: #c4b8a8;
   overflow: hidden;
 }
 
 .rv-fit-story__bleed {
   position: relative;
   width: 100%;
-  min-height: clamp(28rem, 72vw, 40rem);
+  min-height: clamp(22rem, 48vw, 32rem);
   isolation: isolate;
 }
 
 .rv-fit-story__img {
   object-fit: cover;
-  object-position: 68% 18%;
+  object-position: center center;
+  transform: scale(1.12);
+  transform-origin: center center;
 }
 
 .rv-fit-story__shade {
@@ -10405,10 +10407,10 @@ img[data-nimg="fill"] {
   background:
     linear-gradient(
       90deg,
-      rgba(232, 224, 214, 0.92) 0%,
-      rgba(232, 224, 214, 0.72) 26%,
-      rgba(232, 224, 214, 0.22) 48%,
-      transparent 66%
+      rgba(13, 27, 42, 0.78) 0%,
+      rgba(13, 27, 42, 0.55) 28%,
+      rgba(13, 27, 42, 0.18) 52%,
+      transparent 70%
     );
 }
 
@@ -10418,15 +10420,15 @@ img[data-nimg="fill"] {
   display: flex;
   align-items: center;
   min-height: inherit;
-  padding: clamp(2.5rem, 6vw, 4.5rem) 0;
+  padding: clamp(2rem, 5vw, 3.5rem) 0;
 }
 
 .rv-fit-story__copy {
-  max-width: 28rem;
+  max-width: 26rem;
 }
 
 .rv-fit-story__copy .rv-script-eyebrow {
-  color: #0f766e;
+  color: #f0a06a;
 }
 
 .rv-fit-story__copy h2 {
@@ -10434,12 +10436,12 @@ img[data-nimg="fill"] {
   font-size: clamp(1.85rem, 3.6vw, 2.75rem);
   line-height: 1.12;
   letter-spacing: -0.03em;
-  color: var(--primary);
+  color: #fff;
 }
 
 .rv-fit-story__lead {
-  margin: 0 0 0.85rem;
-  color: var(--text-muted);
+  margin: 0 0 1.15rem;
+  color: rgba(255, 255, 255, 0.9);
   font-size: 1.05rem;
   line-height: 1.6;
 }
@@ -10449,7 +10451,7 @@ img[data-nimg="fill"] {
   font-size: 1.05rem;
   font-weight: 800;
   letter-spacing: -0.02em;
-  color: var(--accent);
+  color: #fff;
 }
 
 .rv-fit-story__actions {
@@ -10459,10 +10461,21 @@ img[data-nimg="fill"] {
   margin-bottom: 0.85rem;
 }
 
+.rv-fit-story__actions .rv-script-btn--secondary {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+.rv-fit-story__actions .rv-script-btn--secondary:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
 .rv-fit-story__note {
   margin: 0;
   font-size: 0.78rem;
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.72);
   max-width: 26rem;
   line-height: 1.45;
 }
@@ -10520,21 +10533,22 @@ img[data-nimg="fill"] {
 
 @media (max-width: 900px) {
   .rv-fit-story__bleed {
-    min-height: clamp(34rem, 145vw, 46rem);
+    min-height: clamp(26rem, 118vw, 36rem);
   }
 
   .rv-fit-story__img {
-    object-position: 70% 12%;
+    object-position: center 42%;
+    transform: scale(1.2);
   }
 
   .rv-fit-story__shade {
     background:
       linear-gradient(
         180deg,
-        rgba(232, 224, 214, 0.94) 0%,
-        rgba(232, 224, 214, 0.78) 30%,
-        rgba(232, 224, 214, 0.28) 52%,
-        transparent 68%
+        rgba(13, 27, 42, 0.82) 0%,
+        rgba(13, 27, 42, 0.55) 36%,
+        rgba(13, 27, 42, 0.2) 58%,
+        transparent 74%
       );
   }
 
