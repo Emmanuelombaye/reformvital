@@ -54,8 +54,16 @@ export default function Navbar() {
             <li
               ref={treatmentsRef}
               className={`nav-item nav-item--more${treatmentsOpen ? " is-open" : ""}`}
-              onMouseEnter={() => setTreatmentsOpen(true)}
-              onMouseLeave={() => setTreatmentsOpen(false)}
+              onMouseEnter={() => {
+                if (typeof window !== "undefined" && window.matchMedia("(hover: hover)").matches) {
+                  setTreatmentsOpen(true);
+                }
+              }}
+              onMouseLeave={() => {
+                if (typeof window !== "undefined" && window.matchMedia("(hover: hover)").matches) {
+                  setTreatmentsOpen(false);
+                }
+              }}
             >
               <button
                 type="button"
@@ -69,12 +77,19 @@ export default function Navbar() {
                   <polyline points="6 9 12 15 18 9" />
                 </svg>
               </button>
-              <div className="nav-more-panel">
-                <a href="/treatments" className="nav-more-link" onClick={() => setTreatmentsOpen(false)}>
-                  All Treatments
+              <div className="nav-more-panel" role="menu">
+                <p className="nav-more-label">Programs</p>
+                <a href="/treatments" className="nav-more-link" role="menuitem" onClick={() => setTreatmentsOpen(false)}>
+                  All treatments
                 </a>
                 {TREATMENT_LINKS.map((link) => (
-                  <a key={link.href} href={link.href} className="nav-more-link" onClick={() => setTreatmentsOpen(false)}>
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    className="nav-more-link"
+                    role="menuitem"
+                    onClick={() => setTreatmentsOpen(false)}
+                  >
                     {link.label}
                   </a>
                 ))}
