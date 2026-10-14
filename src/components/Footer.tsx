@@ -104,12 +104,12 @@ export default function Footer() {
             <p className="rv-footer-domain">{brandConfig.domain}</p>
             <nav className="rv-footer-legal" aria-label="Legal">
               {LEGAL_LINKS.map((link) => (
-                <a key={link.href} href={link.href}>
+                <a key={link.slug} href={`/${link.slug}`}>
                   {link.label}
                 </a>
               ))}
             </nav>
-            <p className="rv-footer-copyright">{brandConfig.footer.copyright}</p>
+            <span>{brandConfig.footer.copyright}</span>
           </div>
         </div>
       </div>

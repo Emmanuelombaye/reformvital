@@ -20,7 +20,7 @@ const LINKS = [
     href: "/resources",
     cta: "Browse education",
   },
-] as const;
+];
 
 export default function HomeExtras() {
   return (
