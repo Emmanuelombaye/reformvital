@@ -64,13 +64,13 @@ export const HOW_STEPS = [
     n: "05",
     title: "Start your",
     titleItalic: "treatment",
-    body: "Care doesn't stop at delivery. From day one you get patient portal access, onboarding guidance, AI coaching between visits, and a care team for questions and adjustments.",
+    body: "Care doesn't stop at delivery. From day one you get patient portal access, onboarding guidance, and a care team for questions and adjustments.",
     image: {
       src: "/images/member-renew.webp",
       alt: "Patient starting treatment with Reform Vital care support",
       aspect: "3/2",
     },
-    chips: ["Patient portal", "AI coach", "Ongoing support"],
+    chips: ["Patient portal", "Provider messaging", "Ongoing support"],
   },
 ] as const;
 

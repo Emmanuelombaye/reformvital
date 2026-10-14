@@ -25,6 +25,25 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async redirects() {
+    return [
+      {
+        source: "/start",
+        destination: "https://intake.reformvital.com",
+        permanent: false,
+      },
+      {
+        source: "/portal",
+        destination: "https://patient.reformvital.com",
+        permanent: false,
+      },
+      {
+        source: "/ai-coach",
+        destination: "/",
+        permanent: false,
+      },
+    ];
+  },
   allowedDevOrigins: ["127.0.0.1", "localhost"],
 };
 

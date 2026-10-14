@@ -115,7 +115,7 @@ export default function Navbar() {
               <span className="nav-phone-text">{brandConfig.nav.phone}</span>
             </a>
             <a href={brandConfig.nav.ctaLink} className="btn btn-primary nav-cta nav-cta--desktop rv-script-nav-cta">
-              Explore Treatments
+              {brandConfig.nav.ctaText}
             </a>
             <button
               type="button"
@@ -177,11 +177,11 @@ export default function Navbar() {
                   Call {brandConfig.nav.phone}
                 </a>
                 <a
-                  href="/treatments"
+                  href={brandConfig.nav.ctaLink}
                   className="btn btn-primary rv-mobile-cta"
                   onClick={closeMobile}
                 >
-                  Explore Treatments
+                  {brandConfig.nav.ctaText}
                 </a>
               </li>
               </ul>

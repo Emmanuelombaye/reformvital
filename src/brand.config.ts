@@ -13,7 +13,7 @@ export const brandConfig = {
   pillars: [
     { title: "Physician Guided", desc: "Licensed medical providers supervising your weight-management program" },
     { title: "Two Programs", desc: "Semaglutide and Tirzepatide—one clear monthly price each" },
-    { title: "AI Powered Health Coach", desc: "24/7 accountability, habit coaching, and daily tracking" },
+    { title: "Secure Patient Portal", desc: "Intake, messaging, and progress tools with your care team" },
     { title: "Track. Improve. Thrive.", desc: "Measurable progress with provider follow-up and portal tools" },
   ],
 
@@ -48,7 +48,7 @@ export const brandConfig = {
     stamp: "Doctor Included",
     subtext: "Physician consultation, custom prescription & overnight pharmacy delivery.",
     ctaText: "Claim Consultation",
-    ctaLink: "/start",
+    ctaLink: "https://intake.reformvital.com",
   },
 
   // ──── Trust Proofs (Marquee) ────
@@ -64,15 +64,14 @@ export const brandConfig = {
       { label: "Treatments", href: "/treatments" },
       { label: "Memberships", href: "/memberships" },
       { label: "How It Works", href: "/how-it-works" },
-      { label: "AI Coach", href: "/ai-coach" },
       { label: "Health Academy", href: "/resources" },
       { label: "About", href: "/about" },
       { label: "FAQ", href: "/faq" },
     ],
     ctaText: "Start Assessment",
-    ctaLink: "/start",
+    ctaLink: "https://intake.reformvital.com",
     loginText: "Portal",
-    loginLink: "/portal",
+    loginLink: "https://patient.reformvital.com",
     phone: "(786) 651-2127",
     email: "admin@reformvital.com",
   },
@@ -81,7 +80,7 @@ export const brandConfig = {
   stats: [
     { value: "100%", label: "Licensed U.S. Medical Directors & MDs" },
     { value: "50 States", label: "Physician-Guided Telehealth Coverage" },
-    { value: "24/7", label: "AI Health Coach Between Visits" },
+    { value: "Portal", label: "Secure Intake & Care Messaging" },
   ],
 
   // ──── Hero Section ────
@@ -103,7 +102,7 @@ export const brandConfig = {
     primaryCtaText: "Explore Treatments",
     primaryCtaNote: "Licensed provider review · RX only if prescribed",
     secondaryCtaText: "How It Works",
-    ctaLink: "/start",
+    ctaLink: "https://intake.reformvital.com",
     cardHighlight: {
       category: "PHYSICIAN-GUIDED METABOLIC PROGRAM",
       title: "Compounded Semaglutide / Tirzepatide",
@@ -120,7 +119,7 @@ export const brandConfig = {
     socialProof: [
       { value: "100%", label: "Licensed U.S. medical directors" },
       { value: "50 States", label: "Physician-guided telehealth care" },
-      { rating: "24/7", ratingText: "Always on", label: "AI coach between physician visits" },
+      { rating: "Secure", ratingText: "Portal", label: "Intake and care messaging" },
     ],
   },
 
@@ -216,7 +215,7 @@ export const brandConfig = {
         "Licensed U.S. Physician Consultation",
         "Prescription Management & Refills",
         "Compounding Pharmacy Shipping Included",
-        "24/7 AI Health Coach Access",
+        "Secure Patient Portal Access",
         "Quarterly Provider Check-in",
       ],
       ctaText: "Choose Essentials",
@@ -436,11 +435,6 @@ export const brandConfig = {
         title: "Living Well Between Visits",
         articles: [
           {
-            title: "Using Your AI Health Coach",
-            summary: "Track protein, hydration, sleep, and adherence between appointments.",
-            href: "/resources/articles/ai-health-coach-between-visits",
-          },
-          {
             title: "Nutrition for Sustainable Weight Management",
             summary: "Protein targets, meal timing, and building habits that support your protocol.",
             href: "/resources/articles/nutrition-weight-management",
@@ -491,7 +485,7 @@ export const brandConfig = {
       { label: "Lab Reviews", desc: "Physician interpretation of metabolic, hormone, and wellness panels.", image: "/images/why-evidence.webp" },
       { label: "Treatment Adjustments", desc: "Protocol changes based on your response, labs, and clinical judgment.", image: "/images/member-renew.webp" },
       { label: "Prescription Management", desc: "Refills, dosage titration, and pharmacy coordination handled for you.", image: "/images/vials/tirzepatide.png" },
-      { label: "Progress Tracking", desc: "AI coach metrics, portal dashboards, and quarterly provider reports.", image: "/images/portal-performance.webp" },
+      { label: "Progress Tracking", desc: "Portal dashboards and quarterly provider reports.", image: "/images/portal-performance.webp" },
     ],
   },
 
@@ -501,7 +495,7 @@ export const brandConfig = {
       category: "getting-started",
       question: "What makes Reform Vital different from standard telehealth providers?",
       answer:
-        "Reform Vital combines licensed medical doctor oversight, Semaglutide and Tirzepatide weight-management programs, 24/7 AI accountability coaching, and full health metric tracking—rather than simply selling products online.",
+        "Reform Vital combines licensed medical doctor oversight, Semaglutide and Tirzepatide weight-management programs, secure patient portal access, and full health metric tracking—rather than simply selling products online.",
     },
     {
       category: "getting-started",
@@ -576,22 +570,16 @@ export const brandConfig = {
         "Licensed U.S. clinicians review every intake and determine whether treatment is appropriate. Prescriptions are issued only after individual clinical review—not automatically at purchase."
     },
     {
-      category: "ai-portal",
-      question: "How does the AI Health Coach work?",
-      answer:
-        "Your AI Coach is a 24/7 accountability partner between physician visits. It helps track protein, hydration, sleep, and weight trends and keeps you on protocol—without diagnosing or replacing your clinician.",
-    },
-    {
-      category: "ai-portal",
+      category: "portal",
       question: "Is there a patient portal for tracking progress?",
       answer:
-        "Yes. The Reform Vital Patient Portal is where you’ll manage goals, metrics, and AI coach check-ins between visits. Start with an online assessment to begin clinical onboarding and portal access.",
+        "Yes. The Reform Vital Patient Portal is where you’ll manage intake follow-up, goals, metrics, and secure messaging with your care team. Start with an online assessment to begin clinical onboarding and portal access.",
     },
     {
-      category: "ai-portal",
+      category: "portal",
       question: "How does follow-up care work?",
       answer:
-        "Membership includes scheduled follow-ups, secure messaging with your medical team, treatment adjustments, lab reviews, and AI coach progress tracking—so care continues long after your first prescription.",
+        "Membership includes scheduled follow-ups, secure messaging with your medical team, treatment adjustments, lab reviews, and portal progress tracking—so care continues long after your first prescription.",
     },
   ],
 

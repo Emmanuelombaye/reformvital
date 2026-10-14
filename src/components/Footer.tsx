@@ -12,14 +12,13 @@ const careLinks = [
 const companyLinks = [
   { label: "About Us", href: "/about" },
   { label: "How It Works", href: "/how-it-works" },
-  { label: "AI Health Coach", href: "/ai-coach" },
   { label: "Health Academy", href: "/resources" },
-  { label: "Patient Portal", href: "/portal" },
+  { label: "Patient Portal", href: brandConfig.nav.loginLink },
 ];
 
 const supportLinks = [
   { label: "FAQ", href: "/faq" },
-  { label: "Start Assessment", href: "/start" },
+  { label: "Start Assessment", href: brandConfig.nav.ctaLink },
   { label: "Email Support", href: `mailto:${brandConfig.nav.email}` },
   { label: "Call Us", href: `tel:${brandConfig.nav.phone}` },
 ];
@@ -51,7 +50,7 @@ export default function Footer() {
             </a>
           </div>
 
-          <a href="/start" className="btn btn-primary rv-footer-cta">
+          <a href={brandConfig.nav.ctaLink} className="btn btn-primary rv-footer-cta">
             Start Assessment →
           </a>
         </div>
@@ -83,12 +82,11 @@ export default function Footer() {
             <h3 className="rv-footer-heading">Support</h3>
             <ul>
               {supportLinks.map((link) => (
-                <li key={link.href + link.label}>
+                <li key={link.href}>
                   <a href={link.href}>{link.label}</a>
                 </li>
               ))}
             </ul>
-            <p className="rv-footer-domain">{brandConfig.domain}</p>
           </div>
         </nav>
       </div>
@@ -101,17 +99,17 @@ export default function Footer() {
 
       <div className="rv-footer-bottom">
         <div className="container rv-footer-bottom-inner">
-          <nav className="rv-footer-legal" aria-label="Legal">
-            {LEGAL_LINKS.map((link) => (
-              <a key={link.slug} href={`/${link.slug}`}>
-                {link.label}
-              </a>
-            ))}
-          </nav>
-
           <p className="rv-footer-disclaimer">{brandConfig.footer.disclaimer}</p>
           <div className="rv-footer-meta">
-            <span>{brandConfig.footer.copyright}</span>
+            <p className="rv-footer-domain">{brandConfig.domain}</p>
+            <nav className="rv-footer-legal" aria-label="Legal">
+              {LEGAL_LINKS.map((link) => (
+                <a key={link.href} href={link.href}>
+                  {link.label}
+                </a>
+              ))}
+            </nav>
+            <p className="rv-footer-copyright">{brandConfig.footer.copyright}</p>
           </div>
         </div>
       </div>

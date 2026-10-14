@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { brandConfig } from "@/brand.config";
 
 const LINKS = [
   {
@@ -8,10 +9,10 @@ const LINKS = [
     cta: "Compare tiers",
   },
   {
-    eyebrow: "AI Coach",
-    title: "Daily accountability between visits",
-    href: "/ai-coach",
-    cta: "Explore coaching",
+    eyebrow: "Patient Portal",
+    title: "Secure intake, messaging, and progress",
+    href: brandConfig.nav.loginLink,
+    cta: "Open portal",
   },
   {
     eyebrow: "Health Academy",

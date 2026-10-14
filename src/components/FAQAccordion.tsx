@@ -10,7 +10,7 @@ const FILTERS = [
   { id: "treatments", label: "Treatments" },
   { id: "pharmacy", label: "Pharmacy & shipping" },
   { id: "membership", label: "Membership & pricing" },
-  { id: "ai-portal", label: "AI coach & portal" },
+  { id: "portal", label: "Portal & follow-up" },
 ] as const;
 
 type FaqCategory = (typeof FILTERS)[number]["id"];
@@ -91,9 +91,9 @@ export default function FAQAccordion({
               <p>Still need help?</p>
               <a href={`mailto:${brandConfig.nav.email}`}>{brandConfig.nav.email}</a>
               <a href={`tel:${brandConfig.nav.phone}`}>{brandConfig.nav.phone}</a>
-              <Link href="/start" className="rv-script-btn rv-script-btn--primary">
-                Start assessment →
-              </Link>
+            <a href={brandConfig.nav.ctaLink} className="rv-script-btn rv-script-btn--primary">
+              Start assessment →
+            </a>
             </div>
           </aside>
         )}
