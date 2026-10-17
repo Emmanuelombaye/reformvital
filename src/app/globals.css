@@ -2051,6 +2051,26 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: center;
 }
 
+.rv-footer-legitscript {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.25rem 1rem;
+}
+
+.rv-footer-legitscript a {
+  display: inline-block;
+  line-height: 0;
+}
+
+.rv-footer-legitscript img {
+  display: block;
+  width: 73px;
+  height: 79px;
+}
+
 .rv-footer-bottom {
   position: relative;
   z-index: 1;

@@ -97,6 +97,23 @@ export default function Footer() {
         </div>
       </div>
 
+      <div className="rv-footer-legitscript">
+        <a
+          href="https://www.legitscript.com/websites/?checker_keywords=reformvital.com"
+          target="_blank"
+          title="Verify LegitScript Approval for www.reformvital.com"
+          rel="noopener noreferrer"
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element -- LegitScript requires their exact seal markup */}
+          <img
+            src="https://static.legitscript.com/seals/52137515.png"
+            alt="Verify Approval for www.reformvital.com"
+            width={73}
+            height={79}
+          />
+        </a>
+      </div>
+
       <div className="rv-footer-bottom">
         <div className="container rv-footer-bottom-inner">
           <p className="rv-footer-disclaimer">{brandConfig.footer.disclaimer}</p>
