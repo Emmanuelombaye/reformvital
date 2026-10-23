@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "node init && next dev",
+    "build": "node init && next build",
+    "start": "node init && next start",
     "generate:guides": "python scripts/generate_guide_pdfs.py",
     "replace:images": "python scripts/replace_client_images.py",
     "optimize:images": "python scripts/optimize_public_images.py",
@@ -13,7 +13,9 @@
     "apply:scriptful-vials": "python scripts/apply_scriptful_vials.py"
   },
   "dependencies": {
+    "dotenv": "^8.2.0",
     "next": "16.2.11",
+    "node-fetch": "^3.3.2",
     "react": "19.2.4",
     "react-dom": "19.2.4"
   },

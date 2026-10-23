@@ -60,7 +60,7 @@ export default async function TreatmentDetailPage({ params }: PageProps) {
                   <div className="rv-treatment-detail__price-label">All-inclusive program price</div>
                   <div className="rv-treatment-detail__price">{detail.price}</div>
                 </div>
-                <a href="/start" className="btn btn-primary">
+                <a href={`/start?treatment=${slug}`} className="btn btn-primary">
                   Select Program →
                 </a>
               </div>
