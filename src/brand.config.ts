@@ -48,7 +48,7 @@ export const brandConfig = {
     stamp: "Doctor Included",
     subtext: "Physician consultation, custom prescription & overnight pharmacy delivery.",
     ctaText: "Claim Consultation",
-    ctaLink: "https://intake.reformvital.com",
+    ctaLink: "/start",
   },
 
   // ──── Trust Proofs (Marquee) ────
@@ -69,7 +69,7 @@ export const brandConfig = {
       { label: "FAQ", href: "/faq" },
     ],
     ctaText: "Start Assessment",
-    ctaLink: "https://intake.reformvital.com",
+    ctaLink: "/start",
     loginText: "Portal",
     loginLink: "https://patient.reformvital.com",
     phone: "(786) 651-2127",
@@ -102,7 +102,7 @@ export const brandConfig = {
     primaryCtaText: "Explore Treatments",
     primaryCtaNote: "Licensed provider review · RX only if prescribed",
     secondaryCtaText: "How It Works",
-    ctaLink: "https://intake.reformvital.com",
+    ctaLink: "/start",
     cardHighlight: {
       category: "PHYSICIAN-GUIDED METABOLIC PROGRAM",
       title: "Compounded Semaglutide / Tirzepatide",

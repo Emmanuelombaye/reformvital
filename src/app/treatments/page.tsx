@@ -85,7 +85,10 @@ export default function TreatmentsPage() {
                   <p>{feature}</p>
                 </article>
               ))}
-              <a href="/start" className="rv-yx-side__cta rv-yx-protocol__cta">
+              <a
+                href={`/start?treatment=${selected.slug}`}
+                className="rv-yx-side__cta rv-yx-protocol__cta"
+              >
                 Select Program
               </a>
             </div>
@@ -115,7 +118,7 @@ export default function TreatmentsPage() {
                 not a purchase decision. Complete intake for licensed provider review.
               </p>
               <div className="rv-yx-knowall__actions">
-                <a href="/start" className="rv-yx-side__cta">
+                <a href={`/start?treatment=${selected.slug}`} className="rv-yx-side__cta">
                   Select Program
                 </a>
                 <a href="/how-it-works" className="rv-yx-side__link">

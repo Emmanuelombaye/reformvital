@@ -1,0 +1,124 @@
+/**
+ * Presentational mapping for VCO storefront products → Reformvital UI.
+ */
+import type { VcoProduct } from "./storefront";
+
+/** Local treatment slug → VCO SKU */
+export const TREATMENT_SKU: Record<string, string> = {
+  semaglutide: "STORE-SEMA",
+  tirzepatide: "STORE-TIRZ",
+};
+
+export type StorefrontProduct = {
+  id: string;
+  sku: string;
+  name: string;
+  description: string;
+  price: number | null;
+  intakeUrl: string | null;
+  requiresPrescription: boolean;
+  requiresIntake: boolean;
+  status: string;
+  image: string;
+  sort: number;
+};
+
+export const PRODUCT_PRESENTATION: Record<
+  string,
+  { image: string; sort: number }
+> = {
+  "STORE-SEMA": {
+    image: "/images/vials/semaglutide.png",
+    sort: 1,
+  },
+  "STORE-TIRZ": {
+    image: "/images/vials/tirzepatide.png",
+    sort: 2,
+  },
+};
+
+/** Offline / API-down catalog using known Reformvital storefront rows. */
+export const FALLBACK_CATALOG: VcoProduct[] = [
+  {
+    id: "a9e35a16-3872-4f54-bb1c-df507e01f6db",
+    name: "Semaglutide Weight Loss Therapy",
+    sku: "STORE-SEMA",
+    description:
+      "Physician-prescribed once-weekly subcutaneous GLP-1 therapy for safe, sustained weight management and metabolic health.",
+    price: 399,
+    intake_url:
+      "https://intake.reformvital.com/intake/a9e35a16-3872-4f54-bb1c-df507e01f6db",
+    requires_prescription: true,
+    requires_intake: true,
+    status: "active",
+  },
+];
+
+export function enrichProduct(raw: VcoProduct): StorefrontProduct {
+  const sku = raw.sku || raw.id;
+  const meta = PRODUCT_PRESENTATION[sku] || {
+    image: raw.image_url || "/images/vials/semaglutide.png",
+    sort: 99,
+  };
+
+  const name = raw.public_display_name || raw.name || "Treatment";
+  const image =
+    raw.image_url ||
+    (Array.isArray(raw.images) && raw.images[0]) ||
+    meta.image;
+
+  return {
+    id: raw.id,
+    sku,
+    name,
+    description: raw.description || "",
+    price: typeof raw.price === "number" ? raw.price : null,
+    intakeUrl: raw.intake_url || null,
+    requiresPrescription: !!raw.requires_prescription,
+    requiresIntake: raw.requires_intake !== false,
+    status: raw.status || "active",
+    image,
+    sort: meta.sort,
+  };
+}
+
+export function mapCatalog(rawProducts: VcoProduct[] | null | undefined): StorefrontProduct[] {
+  return (rawProducts || [])
+    .filter((p) => p && p.status !== "inactive")
+    .map(enrichProduct)
+    .sort((a, b) => a.sort - b.sort || a.name.localeCompare(b.name));
+}
+
+export function fallbackProducts(): StorefrontProduct[] {
+  return mapCatalog(FALLBACK_CATALOG);
+}
+
+export function findProductForTreatment(
+  products: StorefrontProduct[],
+  treatmentId: string | null | undefined,
+): StorefrontProduct | null {
+  if (!treatmentId) return null;
+  const sku = TREATMENT_SKU[treatmentId];
+  if (!sku) return null;
+  return products.find((p) => p.sku === sku) || null;
+}
+
+/**
+ * Prefer requested treatment (exact SKU match).
+ * When no treatment is requested, use the first product with an intake URL.
+ */
+export function resolveIntakeProduct(
+  products: StorefrontProduct[],
+  treatmentId?: string | null,
+): StorefrontProduct | null {
+  if (treatmentId) {
+    return findProductForTreatment(products, treatmentId);
+  }
+  return products.find((p) => p.intakeUrl) || products[0] || null;
+}
+
+/** CTA href for hosted intake handoff via /start */
+export function startHref(treatmentSlug?: string | null): string {
+  if (!treatmentSlug) return "/start";
+  return `/start?treatment=${encodeURIComponent(treatmentSlug)}`;
+}

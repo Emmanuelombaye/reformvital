@@ -107,7 +107,7 @@ export default function TreatmentExploreHero({
               {priceIsMo && <em>/mo</em>}
             </strong>
           </div>
-          <a href="/start" className="rv-tx-cta">
+          <a href={`/start?treatment=${selected.slug}`} className="rv-tx-cta">
             Select Program →
           </a>
         </div>
