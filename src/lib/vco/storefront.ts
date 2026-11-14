@@ -19,6 +19,13 @@ export type VcoProduct = {
   intake_url?: string | null;
   requires_prescription?: boolean;
   requires_intake?: boolean;
+  requires_video_consult?: boolean;
+  short_description?: string | null;
+  strength?: string | null;
+  dosage_form?: string | null;
+  category_name?: string | null;
+  supply?: { days: number | null; months: number | null; units_per_fill: number | null } | null;
+  seo?: { title: string; description: string | null; image: string | null };
 };
 
 async function commerceGet(path: string): Promise<unknown> {

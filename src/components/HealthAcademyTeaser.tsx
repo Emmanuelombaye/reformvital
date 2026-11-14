@@ -1,41 +1,40 @@
 import Link from "next/link";
-import Image from "next/image";
-import { WEIGHT_TREATMENTS, getTherapyVialImage } from "@/lib/treatmentCatalog";
+import TreatmentVial from "@/components/visuals/TreatmentVial";
+import { getCatalogSafe } from "@/lib/vco/catalog";
 
-export default function HealthAcademyTeaser() {
+export default async function HealthAcademyTeaser() {
+  const programs = await getCatalogSafe();
+  if (programs.length === 0) return null;
+
   return (
     <section className="rv-script-section rv-script-academy" id="health-academy">
       <div className="container">
         <div className="rv-script-section__head">
           <p className="rv-script-eyebrow">Programs</p>
-          <h2>Semaglutide &amp; Tirzepatide</h2>
-          <p>
-            Two clinician-guided weight-management programs—select the option that fits your
-            goals and budget.
-          </p>
+          <h2>{programs.map((p) => p.name).join(" & ")}</h2>
+          <p>Clinician-guided weight-management programs—select the option that fits your goals.</p>
         </div>
 
         <div className="rv-script-academy__grid rv-script-academy__grid--two">
-          {WEIGHT_TREATMENTS.map((program) => (
+          {programs.map((program) => (
             <Link
               key={program.slug}
               href={`/treatments/${program.slug}`}
               className="rv-script-academy__card"
             >
               <div className="rv-script-academy__media">
-                <Image
-                  src={getTherapyVialImage(program.slug, "thumb")}
-                  alt=""
-                  width={320}
-                  height={240}
-                  sizes="(max-width: 640px) 90vw, 320px"
-                  quality={65}
-                  loading="lazy"
+                <TreatmentVial
+                  name={program.name}
+                  concentration={program.concentration}
+                  imageUrl={program.imageUrl}
+                  artKey={program.artKey}
+                  showSyringe
                   className="rv-script-academy__img"
                 />
               </div>
               <span>
-                {program.name} · {program.price}
+                {program.name}
+                {program.priceLabel ? ` · ${program.priceLabel}` : ""}
               </span>
             </Link>
           ))}
@@ -43,7 +42,7 @@ export default function HealthAcademyTeaser() {
 
         <div className="rv-script-section__foot">
           <Link href="/treatments" className="rv-script-btn rv-script-btn--secondary">
-            Compare both programs →
+            View all programs →
           </Link>
         </div>
       </div>

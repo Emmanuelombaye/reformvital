@@ -1,35 +1,7 @@
-/** Weight-management treatment catalog — Scriptful-style vial product presentation */
-
-export type TherapyProduct = {
-  slug: string;
-  name: string;
-  desc: string;
-  price: string;
-  concentration: string;
-  form: string;
-  capColor: "teal" | "navy";
-};
-
-export const WEIGHT_TREATMENTS: TherapyProduct[] = [
-  {
-    slug: "semaglutide",
-    name: "Semaglutide",
-    desc: "A clinician-guided weight-management program built around your history, not a one-size plan.",
-    price: "$149/mo",
-    concentration: "2.5 mg/mL",
-    form: "Injectable solution",
-    capColor: "teal",
-  },
-  {
-    slug: "tirzepatide",
-    name: "Tirzepatide",
-    desc: "A dual-pathway weight-management program for people reviewed and approved by a licensed clinician.",
-    price: "$249/mo",
-    concentration: "5 mg/mL",
-    form: "Injectable solution",
-    capColor: "navy",
-  },
-];
+/**
+ * Presentation helpers for treatments (vial art, category copy).
+ * The product list itself, names and prices come from the VCO API: see lib/vco/catalog.ts.
+ */
 
 export const WEIGHT_CATEGORY = {
   id: "weight-management",
@@ -40,14 +12,6 @@ export const WEIGHT_CATEGORY = {
   tone: "wl",
   blurb: "Licensed provider review · Standard shipping included · RX only if prescribed.",
 };
-
-export function getTherapy(slug: string): TherapyProduct | undefined {
-  return WEIGHT_TREATMENTS.find((t) => t.slug === slug);
-}
-
-export function getTherapySlugs(): string[] {
-  return WEIGHT_TREATMENTS.map((t) => t.slug);
-}
 
 export function getTherapyVialImage(slug: string, variant: "hero" | "thumb" = "hero"): string {
   const suffix = variant === "thumb" ? "-thumb" : "";
@@ -65,11 +29,6 @@ export const SCRIPTFUL_VIAL_IMAGES = {
     thumb: getTherapyVialImage("tirzepatide", "thumb"),
   },
 } as const;
-
-/** @deprecated — only weight treatments remain */
-export const THERAPY_VIAL_MAP: Record<string, string> = Object.fromEntries(
-  WEIGHT_TREATMENTS.map((t) => [t.slug, getTherapyVialImage(t.slug)]),
-);
 
 export function getCategoryMeta(id: string) {
   if (id === "weight-management" || id === "weight-loss") {

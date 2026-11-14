@@ -1,16 +1,8 @@
 import { fetchProducts } from "./storefront";
-import {
-  fallbackProducts,
-  findProductForTreatment,
-  mapCatalog,
-  resolveIntakeProduct,
-  startHref,
-  type StorefrontProduct,
-} from "./productMap";
+import { mapCatalog, type StorefrontProduct } from "./productMap";
 
 export {
   TREATMENT_SKU,
-  fallbackProducts,
   findProductForTreatment,
   mapCatalog,
   resolveIntakeProduct,
@@ -20,16 +12,15 @@ export type { StorefrontProduct } from "./productMap";
 export { beginIntake, fetchProduct, fetchProducts } from "./storefront";
 export { VCO_API_URL, VCO_BRAND_ID } from "./config";
 
+/** Products listed on the website. Never falls back to hard-coded products. */
 export async function listStorefrontProducts(): Promise<StorefrontProduct[]> {
   try {
-    const raw = await fetchProducts();
-    return mapCatalog(raw);
+    return mapCatalog(await fetchProducts());
   } catch {
-    return fallbackProducts();
+    return [];
   }
 }
 
 export async function listStorefrontProductsStrict(): Promise<StorefrontProduct[]> {
-  const raw = await fetchProducts();
-  return mapCatalog(raw);
+  return mapCatalog(await fetchProducts());
 }

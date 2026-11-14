@@ -11,6 +11,7 @@ export const TREATMENT_SKU: Record<string, string> = {
 
 export type StorefrontProduct = {
   id: string;
+  slug: string;
   sku: string;
   name: string;
   description: string;
@@ -37,23 +38,6 @@ export const PRODUCT_PRESENTATION: Record<
   },
 };
 
-/** Offline / API-down catalog using known Reformvital storefront rows. */
-export const FALLBACK_CATALOG: VcoProduct[] = [
-  {
-    id: "a9e35a16-3872-4f54-bb1c-df507e01f6db",
-    name: "Semaglutide Weight Loss Therapy",
-    sku: "STORE-SEMA",
-    description:
-      "Physician-prescribed once-weekly subcutaneous GLP-1 therapy for safe, sustained weight management and metabolic health.",
-    price: 399,
-    intake_url:
-      "https://intake.reformvital.com/intake/a9e35a16-3872-4f54-bb1c-df507e01f6db",
-    requires_prescription: true,
-    requires_intake: true,
-    status: "active",
-  },
-];
-
 export function enrichProduct(raw: VcoProduct): StorefrontProduct {
   const sku = raw.sku || raw.id;
   const meta = PRODUCT_PRESENTATION[sku] || {
@@ -69,6 +53,7 @@ export function enrichProduct(raw: VcoProduct): StorefrontProduct {
 
   return {
     id: raw.id,
+    slug: raw.slug || sku,
     sku,
     name,
     description: raw.description || "",
@@ -89,15 +74,14 @@ export function mapCatalog(rawProducts: VcoProduct[] | null | undefined): Storef
     .sort((a, b) => a.sort - b.sort || a.name.localeCompare(b.name));
 }
 
-export function fallbackProducts(): StorefrontProduct[] {
-  return mapCatalog(FALLBACK_CATALOG);
-}
-
+/** Match by the product's real slug first, then by an old local name such as "semaglutide". */
 export function findProductForTreatment(
   products: StorefrontProduct[],
   treatmentId: string | null | undefined,
 ): StorefrontProduct | null {
   if (!treatmentId) return null;
+  const bySlug = products.find((p) => p.slug === treatmentId);
+  if (bySlug) return bySlug;
   const sku = TREATMENT_SKU[treatmentId];
   if (!sku) return null;
   return products.find((p) => p.sku === sku) || null;

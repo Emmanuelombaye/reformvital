@@ -2,10 +2,11 @@
 
 import { useState } from "react";
 import { WEIGHT_CATEGORY } from "@/lib/treatmentCatalog";
+import type { Therapy } from "@/lib/vco/catalog";
 import TreatmentExploreHero from "@/components/TreatmentExploreHero";
 
-export default function Treatments() {
-  const [therapySlug, setTherapySlug] = useState("semaglutide");
+export default function Treatments({ therapies }: { therapies: Therapy[] }) {
+  const [therapySlug, setTherapySlug] = useState(therapies[0]?.slug ?? "");
   const [animKey, setAnimKey] = useState(0);
 
   const selectTherapy = (slug: string) => {
@@ -22,14 +23,12 @@ export default function Treatments() {
         <h2>
           Choose your <em>weight-management</em> program
         </h2>
-        <p>
-          Two clinician-guided injectable programs · One clear monthly price · Licensed provider
-          review
-        </p>
+        <p>Clinician-guided programs · One clear monthly price · Licensed provider review</p>
       </div>
 
       <div className="rv-yx__panes">
         <TreatmentExploreHero
+          therapies={therapies}
           selectedSlug={therapySlug}
           onSelectTherapy={selectTherapy}
           animKey={animKey}

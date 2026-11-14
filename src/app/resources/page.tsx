@@ -2,11 +2,12 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AcademyStickyNav from "@/components/academy/AcademyStickyNav";
 import CardMedia from "@/components/CardMedia";
+import TreatmentVial from "@/components/visuals/TreatmentVial";
+import { getCatalogSafe } from "@/lib/vco/catalog";
 import { brandConfig } from "@/brand.config";
 import { academyArticles } from "@/content/academy";
 import { getGuidePdfUrl } from "@/content/academy";
 
-const TREATMENT_SLUGS = ["semaglutide", "tirzepatide"] as const;
 
 const treatmentArticles = academyArticles.filter(
   (article) =>
@@ -81,7 +82,8 @@ const externalReads = [
   },
 ];
 
-export default function ResourcesPage() {
+export default async function ResourcesPage() {
+  const therapies = await getCatalogSafe();
   const academy = brandConfig.healthAcademy;
   const lead = treatmentArticles[0];
 
@@ -117,29 +119,35 @@ export default function ResourcesPage() {
           <div className="container">
             <div className="rv-mag-section-head">
               <h2>Our programs</h2>
-              <p>Two clinician-guided options — each with transparent monthly pricing.</p>
+              <p>Clinician-guided options — each with transparent pricing.</p>
             </div>
             <div className="rv-res-treatments__grid">
-              {TREATMENT_SLUGS.map((slug) => {
-                const detail = brandConfig.treatmentDetails[slug];
-                const image = `/images/vials/${slug}.png`;
-                return (
-                  <a key={slug} href={`/treatments/${slug}`} className="rv-res-treatment-card">
+              {therapies.map((t) => (
+                <a key={t.slug} href={`/treatments/${t.slug}`} className="rv-res-treatment-card">
+                  {t.imageUrl ? (
+                    <TreatmentVial
+                      name={t.name}
+                      concentration={t.concentration}
+                      imageUrl={t.imageUrl}
+                    />
+                  ) : t.artKey ? (
                     <CardMedia
-                      src={image}
-                      alt={detail.name}
+                      src={`/images/vials/${t.artKey}.png`}
+                      alt={t.name}
                       aspect="1/1"
                       sizes="(max-width: 768px) 90vw, 420px"
                     />
-                    <div className="rv-res-treatment-card__body">
-                      <span>Weight management</span>
-                      <h3>{detail.name}</h3>
-                      <p>{detail.tagline}</p>
-                      <em>From {detail.price} · View program →</em>
-                    </div>
-                  </a>
-                );
-              })}
+                  ) : null}
+                  <div className="rv-res-treatment-card__body">
+                    <span>{t.category}</span>
+                    <h3>{t.name}</h3>
+                    <p>{t.desc}</p>
+                    <em>
+                      {t.priceLabel ? `From ${t.priceLabel} · ` : ""}View program →
+                    </em>
+                  </div>
+                </a>
+              ))}
             </div>
           </div>
         </section>

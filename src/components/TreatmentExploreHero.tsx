@@ -1,8 +1,7 @@
 "use client";
 
 import TreatmentVial from "@/components/visuals/TreatmentVial";
-import { brandConfig } from "@/brand.config";
-import { WEIGHT_TREATMENTS, type TherapyProduct } from "@/lib/treatmentCatalog";
+import type { Therapy } from "@/lib/vco/catalog";
 
 const PLAN_INCLUDES = [
   "Online licensed-provider review",
@@ -12,24 +11,31 @@ const PLAN_INCLUDES = [
 ];
 
 type Props = {
+  therapies: Therapy[];
   selectedSlug: string;
   onSelectTherapy: (slug: string) => void;
   animKey?: string | number;
 };
 
 export default function TreatmentExploreHero({
+  therapies,
   selectedSlug,
   onSelectTherapy,
   animKey = 0,
 }: Props) {
-  const selected =
-    WEIGHT_TREATMENTS.find((t) => t.slug === selectedSlug) || WEIGHT_TREATMENTS[0];
-  const detail =
-    brandConfig.treatmentDetails[
-      selected.slug as keyof typeof brandConfig.treatmentDetails
-    ];
+  const selected = therapies.find((t) => t.slug === selectedSlug) || therapies[0];
 
-  const rawPrice = selected.price;
+  if (!selected) {
+    return (
+      <div className="rv-tx-panel rv-tx-panel--scriptful">
+        <div className="rv-tx-copy">
+          <p className="rv-tx-copy__desc">Programs are coming soon.</p>
+        </div>
+      </div>
+    );
+  }
+
+  const rawPrice = selected.priceLabel;
   const priceIsMo = /\/mo$/i.test(rawPrice);
   const priceLabel = rawPrice.replace(/\/mo$/i, "");
 
@@ -39,39 +45,42 @@ export default function TreatmentExploreHero({
         <div className="rv-tx-media__top">
           <p className="rv-tx-media__eyebrow">{selected.concentration}</p>
           <div className="rv-tx-media__pills">
-            <span>{selected.form}</span>
+            {selected.form && <span>{selected.form}</span>}
             <span className="is-stock">RX ONLY</span>
           </div>
         </div>
 
-        <h3 className="rv-tx-media__title">{selected.name} Program</h3>
+        <h3 className="rv-tx-media__title">{selected.name}</h3>
 
         <div className="rv-tx-media__art rv-tx-media__art--vial">
           <TreatmentVial
-            slug={selected.slug}
             name={selected.name}
             concentration={selected.concentration}
             form={selected.form}
+            imageUrl={selected.imageUrl}
+            artKey={selected.artKey}
             className="rv-tx-vial-hero"
             priority
           />
         </div>
 
-        <div
-          className="rv-tx-media__badge"
-          aria-label={`${priceLabel}${priceIsMo ? " per month" : ""}`}
-        >
-          <strong>FROM</strong>
-          <em>{priceLabel}</em>
-          {priceIsMo && <span>/mo</span>}
-        </div>
+        {priceLabel && (
+          <div
+            className="rv-tx-media__badge"
+            aria-label={`${priceLabel}${priceIsMo ? " per month" : ""}`}
+          >
+            <strong>FROM</strong>
+            <em>{priceLabel}</em>
+            {priceIsMo && <span>/mo</span>}
+          </div>
+        )}
       </article>
 
       <div className="rv-tx-copy">
-        <p className="rv-tx-copy__desc">{detail?.description || selected.desc}</p>
+        <p className="rv-tx-copy__desc">{selected.description || selected.desc}</p>
 
         <div className="rv-tx-pickers" role="radiogroup" aria-label="Choose treatment">
-          {WEIGHT_TREATMENTS.map((t) => (
+          {therapies.map((t) => (
             <TreatmentPickerCard
               key={t.slug}
               therapy={t}
@@ -100,20 +109,28 @@ export default function TreatmentExploreHero({
         </p>
 
         <div className="rv-tx-cta-row">
-          <div className="rv-tx-cta-row__price">
-            <span>All-inclusive program price:</span>
-            <strong>
-              {priceLabel}
-              {priceIsMo && <em>/mo</em>}
-            </strong>
-          </div>
-          <a href={`/start?treatment=${selected.slug}`} className="rv-tx-cta">
-            Select Program →
-          </a>
+          {priceLabel && (
+            <div className="rv-tx-cta-row__price">
+              <span>All-inclusive program price:</span>
+              <strong>
+                {priceLabel}
+                {priceIsMo && <em>/mo</em>}
+              </strong>
+            </div>
+          )}
+          {selected.intakeUrl ? (
+            <a href={selected.intakeUrl} className="rv-tx-cta">
+              Select Program →
+            </a>
+          ) : (
+            <span className="rv-tx-cta" aria-disabled="true">
+              Coming soon
+            </span>
+          )}
         </div>
 
         <a href={`/treatments/${selected.slug}`} className="rv-tx-more">
-          View {selected.name} program details →
+          View {selected.name} details →
         </a>
       </div>
     </div>
@@ -125,12 +142,10 @@ function TreatmentPickerCard({
   active,
   onSelect,
 }: {
-  therapy: TherapyProduct;
+  therapy: Therapy;
   active: boolean;
   onSelect: () => void;
 }) {
-  const meta = WEIGHT_TREATMENTS.find((t) => t.slug === therapy.slug);
-
   return (
     <button
       type="button"
@@ -141,16 +156,17 @@ function TreatmentPickerCard({
     >
       <span className="rv-tx-picker__thumb">
         <TreatmentVial
-          slug={therapy.slug}
           name={therapy.name}
           concentration={therapy.concentration}
+          imageUrl={therapy.imageUrl}
+          artKey={therapy.artKey}
           showSyringe
           className="rv-tx-vial-thumb"
         />
       </span>
       <span className="rv-tx-picker__text">
         <strong>{therapy.name}</strong>
-        <em>{meta?.desc || therapy.desc}</em>
+        <em>{therapy.desc}</em>
       </span>
     </button>
   );

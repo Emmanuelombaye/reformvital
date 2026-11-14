@@ -1,13 +1,8 @@
 import { brandConfig } from "@/brand.config";
 import { LEGAL_LINKS } from "@/lib/legalLinks";
+import { getCatalogSafe } from "@/lib/vco/catalog";
 import { FooterTrustBadges } from "./FooterTrustBadges";
 import ReformVitalLogo from "./ReformVitalLogo";
-
-const careLinks = [
-  { label: "All Treatments", href: "/treatments" },
-  { label: "Semaglutide", href: "/treatments/semaglutide" },
-  { label: "Tirzepatide", href: "/treatments/tirzepatide" },
-];
 
 const companyLinks = [
   { label: "About Us", href: "/about" },
@@ -23,7 +18,13 @@ const supportLinks = [
   { label: "Call Us", href: `tel:${brandConfig.nav.phone}` },
 ];
 
-export default function Footer() {
+export default async function Footer() {
+  const therapies = await getCatalogSafe();
+  const careLinks = [
+    { label: "All Treatments", href: "/treatments" },
+    ...therapies.map((t) => ({ label: t.name, href: `/treatments/${t.slug}` })),
+  ];
+
   return (
     <footer className="rv-footer rv-footer--hims" id="site-footer">
       <div className="rv-footer-glow" aria-hidden />

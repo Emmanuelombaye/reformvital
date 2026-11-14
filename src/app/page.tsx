@@ -10,15 +10,18 @@ import FAQAccordion from "@/components/FAQAccordion";
 import ScriptfulCompliance from "@/components/ScriptfulCompliance";
 import ClosingCTA from "@/components/ClosingCTA";
 import Footer from "@/components/Footer";
+import { getCatalogSafe } from "@/lib/vco/catalog";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const therapies = await getCatalogSafe();
+
   return (
     <>
       <Navbar />
       <main>
         <Hero />
         <TrustSignals />
-        <Treatments />
+        <Treatments therapies={therapies} />
         <FitStory />
         <HowItWorks />
         <ScriptfulPricing />

@@ -130,20 +130,7 @@ export const brandConfig = {
       title: "Weight Management",
       subtitle:
         "Clinician-guided injectable weight-management programs with one clear monthly price.",
-      therapies: [
-        {
-          slug: "semaglutide",
-          name: "Semaglutide",
-          desc: "A clinician-guided weight-management program built around your history, not a one-size plan.",
-          price: "$149/mo",
-        },
-        {
-          slug: "tirzepatide",
-          name: "Tirzepatide",
-          desc: "A dual-pathway weight-management program for people reviewed and approved by a licensed clinician.",
-          price: "$249/mo",
-        },
-      ],
+      // Products, names and prices come from the VCO API (see lib/vco/catalog.ts), never from here.
     },
   ],
 
@@ -152,9 +139,6 @@ export const brandConfig = {
     semaglutide: {
       name: "Semaglutide",
       category: "Weight Management",
-      price: "$149/mo",
-      concentration: "2.5 mg/mL",
-      form: "Injectable solution",
       tagline:
         "A clinician-guided weight-management program built around your history, not a one-size plan.",
       image: "/images/vials/semaglutide.png",
@@ -176,9 +160,6 @@ export const brandConfig = {
     tirzepatide: {
       name: "Tirzepatide",
       category: "Weight Management",
-      price: "$249/mo",
-      concentration: "5 mg/mL",
-      form: "Injectable solution",
       tagline:
         "A dual-pathway weight-management program for people reviewed and approved by a licensed clinician.",
       image: "/images/vials/tirzepatide.png",
@@ -598,18 +579,3 @@ export type BrandConfig = typeof brandConfig;
 export type TreatmentDetail =
   (typeof brandConfig.treatmentDetails)[keyof typeof brandConfig.treatmentDetails];
 
-export function getAllTreatmentSlugs(): string[] {
-  const fromServices = brandConfig.services.flatMap((s) =>
-    s.therapies.map((t) => t.slug),
-  );
-  const fromDetails = Object.keys(brandConfig.treatmentDetails);
-  return Array.from(new Set([...fromServices, ...fromDetails]));
-}
-
-export function resolveTreatmentDetail(slug: string): TreatmentDetail | null {
-  const detail =
-    brandConfig.treatmentDetails[
-      slug as keyof typeof brandConfig.treatmentDetails
-    ];
-  return detail ?? null;
-}
