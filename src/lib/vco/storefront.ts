@@ -3,7 +3,7 @@
  * Auth: brand ID via query/header — never put API keys in the frontend.
  * Docs: https://portal.virtualclinicos.com/api-docs#storefront-auth
  */
-import { VCO_API_URL, VCO_BRAND_ID } from "./config";
+import { VCO_API_URL, VCO_BRAND_ID, VCO_TAG } from "./config";
 
 export type VcoProduct = {
   id: string;
@@ -27,15 +27,21 @@ async function commerceGet(path: string): Promise<unknown> {
     throw new Error("Missing NEXT_PUBLIC_VCO_BRAND_ID — set Reformvital brand ID.");
   }
 
-  const url = new URL(`${VCO_API_URL}${path}`);
+  // Server-only env (no NEXT_PUBLIC_): undefined in the browser, so nothing leaks.
+  const base = (process.env.VCO_API_BASE || VCO_API_URL).replace(/\/$/, "");
+  const key = process.env.VCO_STOREFRONT_KEY;
+
+  const url = new URL(`${base}${path}`);
   url.searchParams.set("brandId", brandId);
 
   const res = await fetch(url.toString(), {
     headers: {
       Accept: "application/json",
       "X-Brand-Id": brandId,
+      ...(key ? { Authorization: `Bearer ${key}` } : {}),
     },
-    next: { revalidate: 60 },
+    // Tagged: /api/vco-webhook refreshes it on product changes; hourly is a safety net.
+    next: { tags: [VCO_TAG], revalidate: 3600 },
   });
 
   let body: Record<string, unknown> | null = null;
@@ -56,26 +62,14 @@ async function commerceGet(path: string): Promise<unknown> {
   return body;
 }
 
-let productsCache: VcoProduct[] | null = null;
-let productsInflight: Promise<VcoProduct[]> | null = null;
-
-export async function fetchProducts({ force = false } = {}): Promise<VcoProduct[]> {
-  if (!force && productsCache) return productsCache;
-  if (!force && productsInflight) return productsInflight;
-
-  productsInflight = commerceGet("/api/commerce/v1/products")
-    .then((data) => {
-      const list = Array.isArray((data as { products?: unknown })?.products)
-        ? ((data as { products: VcoProduct[] }).products)
-        : [];
-      productsCache = list;
-      return list;
-    })
-    .finally(() => {
-      productsInflight = null;
-    });
-
-  return productsInflight;
+// No module-level cache: it would survive the webhook's revalidateTag on the server.
+// Next's tagged fetch cache (above) dedupes and caches instead.
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export async function fetchProducts(_opts: { force?: boolean } = {}): Promise<VcoProduct[]> {
+  const data = await commerceGet("/api/commerce/v1/products");
+  return Array.isArray((data as { products?: unknown })?.products)
+    ? (data as { products: VcoProduct[] }).products
+    : [];
 }
 
 export async function fetchProduct(slugOrSku: string): Promise<VcoProduct | null> {
