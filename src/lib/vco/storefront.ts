@@ -1,6 +1,6 @@
 /**
  * VirtualClinicOS Brand Storefront client (browser + server safe).
- * Auth: brand ID via query/header — never put API keys in the frontend.
+ * Auth: brand ID via query/header; the optional storefront key is server-only.
  * Docs: https://portal.virtualclinicos.com/api-docs#storefront-auth
  */
 import { VCO_API_URL, VCO_BRAND_ID, VCO_TAG } from "./config";
